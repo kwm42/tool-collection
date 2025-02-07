@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import AppBar from './AppBar';
 
-import SwitchDarkMode from './SwitchDarkMode';
-import SelectLanguage from './SelectLanguage';
+import SwitchDarkMode from './components/SwitchDarkMode';
+import SelectLanguage from './components/SelectLanguage';
 
 function App() {
   console.log(window.ipcRenderer);
@@ -44,11 +44,11 @@ function App() {
 
   return (
     <div className="flex flex-col">
-      {window.Main && (
+      {/* {window.Main && (
         <div className="flex-none">
           <AppBar />
         </div>
-      )}
+      )} */}
       <div className="flex-auto">
         <div className="ml-4 mr-4 mt-4 flex items-center justify-between">
           <SwitchDarkMode />
