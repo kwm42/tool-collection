@@ -9,6 +9,10 @@ const es = {
       send: 'Enviar',
       messageSent: '¡¡Mensaje enviado!!',
       hiElectron: 'hola desde el electrón'
+    },
+    menu: {
+      wallhavenDownload: 'Descargar Wallhaven',
+      viewKLine: 'Ver K-Line'
     }
   }
 };

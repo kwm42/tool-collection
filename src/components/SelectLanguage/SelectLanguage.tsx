@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import './select_language.css';
 
 function SelectLanguage() {
-  const [language, setLanguage] = React.useState('en');
+  const [language, setLanguage] = React.useState('zh');
 
   const { i18n, t } = useTranslation();
 

@@ -9,6 +9,10 @@ const zh = {
       send: '发送',
       messageSent: '消息已发送！！',
       hiElectron: 'hi from electron'
+    },
+    menu: {
+      wallhavenDownload: 'Wallhaven 下载',
+      viewKLine: '查看 K 线'
     }
   }
 };
