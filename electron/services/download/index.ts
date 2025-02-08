@@ -3,6 +3,7 @@ import { createWriteStream } from 'fs';
 import { ipcMain } from 'electron';
 import axios from 'axios';
 import { HttpsProxyAgent } from 'https-proxy-agent';
+import { loadData } from '../../dataManager';
 
 interface DownloadItem {
   url: string;
@@ -15,13 +16,17 @@ const downloadQueue: DownloadItem[] = [];
 const maxConcurrentDownloads = 3;
 let activeDownloads = 0;
 
-const downloadPath = 'D:/';
-
 const log = (message: string, ...args: any[]) => {
   console.log(`[Download Service] ${message}`, ...args);
 };
 
 const proxyAgent = new HttpsProxyAgent('http://127.0.0.1:7897');
+
+const getDownloadPath = () => {
+  const settings = loadData('settings');
+  console.log(settings)
+  return settings?.downloadPath || 'F:/';
+};
 
 const startDownload = async (item: DownloadItem) => {
   if (activeDownloads >= maxConcurrentDownloads) {
@@ -42,10 +47,11 @@ const startDownload = async (item: DownloadItem) => {
       httpsAgent: proxyAgent,
     });
 
-    const fileStream = createWriteStream(join(downloadPath, item.filename));
+    console.log(join(getDownloadPath(), item.filename))
+    const fileStream = createWriteStream(join(getDownloadPath(), item.filename));
     response.data.pipe(fileStream);
 
-    response.data.on('error', (error) => {
+    response.data.on('error', (error: any) => {
       item.status = 'failed';
       activeDownloads--;
       ipcMain.emit('download-status', item);
@@ -78,7 +84,7 @@ const processQueue = () => {
   }
 };
 
-ipcMain.on('download-file', (event, url: string, filename: string) => {
+ipcMain.on('download-file', (_event, url: string, filename: string) => {
   const downloadItem: DownloadItem = {
     url,
     filename,
@@ -92,7 +98,7 @@ ipcMain.on('download-file', (event, url: string, filename: string) => {
   processQueue();
 });
 
-ipcMain.on('retry-download', (event, url: string) => {
+ipcMain.on('retry-download', (_event: any, url: string) => {
   const item = downloadQueue.find((item) => item.url === url && item.status === 'failed');
   if (item) {
     item.status = 'pending';

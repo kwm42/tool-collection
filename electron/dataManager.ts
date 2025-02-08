@@ -5,7 +5,7 @@ import { join } from 'path';
 const dataFilePath = join(app.getPath('userData'), 'appData.json');
 
 export function saveData(key: string, value: any) {
-  let data = {};
+  let data: { [key: string]: any } = {};
   if (existsSync(dataFilePath)) {
     const fileContent = readFileSync(dataFilePath, 'utf-8');
     data = JSON.parse(fileContent);

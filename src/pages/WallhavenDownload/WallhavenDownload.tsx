@@ -18,7 +18,7 @@ function WallhavenDownload() {
   const { t } = useTranslation();
   const [keyword, setKeyword] = useState('Azur Lane');
   const [images, setImages] = useState<any[]>([]);
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [selectedImages, setSelectedImages] = useState<any[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -61,8 +61,9 @@ function WallhavenDownload() {
       return;
     }
 
-    const downloadImages = isSelectionMode ? selectedImages : images.map((img) => img.thumbs.original);
-    downloadImages.forEach((url) => {
+    const downloadImages = isSelectionMode ? selectedImages : images;
+    downloadImages.forEach((img) => {
+      const url = img.path;
       const filename = url.split('/').pop() || 'image.jpg';
       if (window.Main) {
         window.Main.send('download-file', url, filename);
@@ -70,6 +71,10 @@ function WallhavenDownload() {
         console.error('window.Main is not available');
       }
     });
+
+    // Exit selection mode after initiating downloads
+    setIsSelectionMode(false);
+    setSelectedImages([]);
   };
 
   const handleRefresh = () => {
@@ -99,7 +104,9 @@ function WallhavenDownload() {
   const handleSelectImage = (img: any) => {
     if (isSelectionMode) {
       setSelectedImages((prevSelected) =>
-        prevSelected.includes(img.thumbs.original) ? prevSelected.filter((url) => url !== img.thumbs.original) : [...prevSelected, img.thumbs.original]
+        prevSelected.some((selected) => selected.path === img.path)
+          ? prevSelected.filter((selected) => selected.path !== img.path)
+          : [...prevSelected, img]
       );
     } else {
       setLargeImage(img.path);
@@ -107,7 +114,7 @@ function WallhavenDownload() {
   };
 
   const handleSelectAll = () => {
-    setSelectedImages(images.map((img) => img.thumbs.original));
+    setSelectedImages(images);
   };
 
   const handleDeselectAll = () => {
@@ -191,7 +198,7 @@ function WallhavenDownload() {
                 alt={`wallhaven-${index}`}
                 onClick={() => handleSelectImage(img)}
                 onContextMenu={(e) => handleContextMenu(e, img)}
-                className={isSelectionMode && selectedImages.includes(img.thumbs.original) ? 'selected' : ''}
+                className={isSelectionMode && selectedImages.some((selected) => selected.path === img.path) ? 'selected' : ''}
               />
             ))}
           </Masonry>
