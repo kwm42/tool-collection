@@ -25,7 +25,15 @@ const en = {
     },
     menu: {
       wallhavenDownload: 'Wallhaven Download',
-      viewKLine: 'View K-Line'
+      viewKLine: 'View K-Line',
+      settings: 'Settings'
+    },
+    settings: {
+      title: 'Settings',
+      downloadPath: 'Download Path',
+      autoStart: 'Auto Start',
+      save: 'Save',
+      close: 'Close'
     }
   }
 };

@@ -25,7 +25,15 @@ const zh = {
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',
-      viewKLine: '查看 K 线'
+      viewKLine: '查看 K 线',
+      settings: '设置'
+    },
+    settings: {
+      title: '设置',
+      downloadPath: '下载路径',
+      autoStart: '自动启动',
+      save: '保存',
+      close: '关闭'
     }
   }
 };

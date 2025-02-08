@@ -25,7 +25,15 @@ const es = {
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',
-      viewKLine: 'Ver K-Line'
+      viewKLine: 'Ver K-Line',
+      settings: 'Configuraciones'
+    },
+    settings: {
+      title: 'Configuraciones',
+      downloadPath: 'Ruta de descarga',
+      autoStart: 'Inicio automático',
+      save: 'Guardar',
+      close: 'Cerrar'
     }
   }
 };

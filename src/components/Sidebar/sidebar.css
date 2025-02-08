@@ -24,6 +24,18 @@
   margin-bottom: 10px;
 }
 
+.sidebar-bottom a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  text-align: center;
+  display: block;
+}
+
+.sidebar-bottom a:hover {
+  background-color: #575757;
+}
+
 .sidebar ul {
   list-style-type: none;
   padding: 0;

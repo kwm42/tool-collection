@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SwitchDarkMode from '../SwitchDarkMode';
 import SelectLanguage from '../SelectLanguage';
+import SettingsModal from '../SettingsModal';
 import './sidebar.css';
 
 interface SidebarProps {
@@ -10,6 +11,7 @@ interface SidebarProps {
 
 function Sidebar({ setCurrentPage }: SidebarProps) {
   const { t } = useTranslation();
+  const [isSettingsOpen, setSettingsOpen] = useState(false);
 
   return (
     <div className="sidebar">
@@ -28,7 +30,11 @@ function Sidebar({ setCurrentPage }: SidebarProps) {
       <div className="sidebar-bottom">
         <SwitchDarkMode />
         <SelectLanguage />
+        <a href="#settings" onClick={() => setSettingsOpen(true)}>
+          {t('menu.settings')}
+        </a>
       </div>
+      {isSettingsOpen && <SettingsModal onClose={() => setSettingsOpen(false)} />}
     </div>
   );
 }

@@ -1,0 +1,69 @@
+.settings-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-modal-content {
+  background-color: #2c2c2c; /* Dark theme background */
+  color: #ffffff; /* Light text color */
+  padding: 20px;
+  border-radius: 10px; /* More rounded corners */
+  width: 400px;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.settings-item label {
+  margin-right: 10px;
+  color: #cccccc; /* Lighter label color */
+}
+
+.settings-item input[type="text"] {
+  flex: 1;
+  padding: 5px;
+  background-color: #444444; /* Darker input background */
+  color: #ffffff; /* Light text color */
+  border: 1px solid #555555; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.settings-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.settings-item button {
+  padding: 5px 10px;
+  background-color: #007bff; /* Primary button color */
+  color: #ffffff; /* Light text color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+}
+
+.settings-item button:hover {
+  background-color: #0056b3; /* Darker button color on hover */
+}
+
+.settings-modal-content button {
+  padding: 5px 10px;
+  background-color: #007bff; /* Primary button color */
+  color: #ffffff; /* Light text color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+}
+
+.settings-modal-content button:hover {
+  background-color: #0056b3; /* Darker button color on hover */
+}
