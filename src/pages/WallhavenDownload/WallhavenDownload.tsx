@@ -10,7 +10,7 @@ const API_KEY = 'TGOqr9tmdQNYOf7YG9ulyh5hlTtnHVtV';
 
 function WallhavenDownload() {
   const { t } = useTranslation();
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState('Azur Lane');
   const [images, setImages] = useState<any[]>([]);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [page, setPage] = useState(1);

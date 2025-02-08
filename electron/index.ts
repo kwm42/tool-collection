@@ -4,6 +4,7 @@ import { join } from 'path';
 // Packages
 import { BrowserWindow, app, ipcMain, IpcMainEvent, nativeTheme } from 'electron';
 import isDev from 'electron-is-dev';
+import { saveData, loadData } from './dataManager';
 
 const height = 900;
 const width = 1500;
@@ -48,6 +49,17 @@ function createWindow() {
 
   ipcMain.on('close', () => {
     window.close();
+  });
+
+  ipcMain.on('save-data', (event, key, value) => {
+    saveData(key, value);
+    event.sender.send('data-saved', key);
+  });
+
+  ipcMain.on('load-data', (event, key) => {
+    const value = loadData(key);
+    console.log('load-data', key, value);
+    event.sender.send('data-loaded', key, value);
   });
 
   nativeTheme.themeSource = 'dark';

@@ -183,8 +183,11 @@ const api = {
   /**
    * Provide an easier way to listen to events
    */
-  on: (channel: string, callback: (data: any) => void) => {
-    ipcRenderer.on(channel, (_, data) => callback(data));
+  on: (channel: string, callback: (...args: any[]) => void) => {
+    ipcRenderer.on(channel, (_, ...args) => callback(...args));
+  },
+  send: (channel: string, ...args: any[]) => {
+    ipcRenderer.send(channel, ...args);
   }
 };
 
