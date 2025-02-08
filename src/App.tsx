@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Sidebar from './components/Sidebar';
 import WallhavenDownload from './pages/WallhavenDownload';
 import ViewKLine from './pages/ViewKLine';
+import './App.css'; // Add this line to import the CSS file
 
 function App() {
   console.log(window.ipcRenderer);
@@ -54,12 +55,10 @@ function App() {
   };
 
   return (
-    <div className="flex flex-row h-screen">
+    <div className="app-container">
       <Sidebar setCurrentPage={setCurrentPage} />
-      <div className="flex flex-col flex-grow flex-1">
-        <div className="flex-auto">
-          <div className="flex flex-col justify-center items-center h-full">{renderPage()}</div>
-        </div>
+      <div className="content-container">
+        <div className="content">{renderPage()}</div>
       </div>
     </div>
   );

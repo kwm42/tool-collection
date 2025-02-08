@@ -8,7 +8,8 @@ const zh = {
       welcome: '💝 欢迎 💝，现在发送一条消息给Main 📩📩',
       send: '发送',
       messageSent: '消息已发送！！',
-      hiElectron: 'hi from electron'
+      hiElectron: 'hi from electron',
+      loading: '加载中...'
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',

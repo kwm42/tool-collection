@@ -26,8 +26,14 @@
   @apply bg-blue-500 text-white rounded hover:bg-blue-400 dark:bg-blue-700 dark:hover:bg-blue-600;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
 .image-display {
-  flex: 1;
+  flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
 }

@@ -8,7 +8,8 @@ const en = {
       welcome: '💝 Welcome 💝, now send a message to the Main 📩📩',
       send: 'Send',
       messageSent: 'Message sent!!',
-      hiElectron: 'hi from electron'
+      hiElectron: 'hi from electron',
+      loading: 'Loading...'
     },
     menu: {
       wallhavenDownload: 'Wallhaven Download',

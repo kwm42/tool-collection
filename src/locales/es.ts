@@ -8,7 +8,8 @@ const es = {
       welcome: '💝 Bienvenido 💝, ahora envía un mensaje al Principal 📩📩',
       send: 'Enviar',
       messageSent: '¡¡Mensaje enviado!!',
-      hiElectron: 'hola desde el electrón'
+      hiElectron: 'hola desde el electrón',
+      loading: 'Cargando...'
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',
