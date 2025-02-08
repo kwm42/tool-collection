@@ -18,6 +18,7 @@ function WallhavenDownload() {
   const [loading, setLoading] = useState(false);
   const [isSelectionMode, setIsSelectionMode] = useState(false);
   const [largeImage, setLargeImage] = useState<string | null>(null);
+  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; img: any } | null>(null);
 
   const handleSearch = async (pageNumber = 1) => {
     setLoading(true);
@@ -104,6 +105,44 @@ function WallhavenDownload() {
     setLargeImage(null);
   };
 
+  const handleContextMenu = (event: React.MouseEvent, img: any) => {
+    event.preventDefault();
+    setContextMenu({ x: event.clientX, y: event.clientY, img });
+  };
+
+  const handleDownloadImage = (img: any) => {
+    const link = document.createElement('a');
+    link.href = img.thumbs.original;
+    link.download = img.thumbs.original.split('/').pop() || 'image.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setContextMenu(null);
+  };
+
+  const handleViewDetails = (img: any) => {
+    setLargeImage(img.path);
+    setContextMenu(null);
+  };
+
+  const handlePrevImage = () => {
+    if (largeImage) {
+      const currentIndex = images.findIndex((img) => img.path === largeImage);
+      if (currentIndex > 0) {
+        setLargeImage(images[currentIndex - 1].path);
+      }
+    }
+  };
+
+  const handleNextImage = () => {
+    if (largeImage) {
+      const currentIndex = images.findIndex((img) => img.path === largeImage);
+      if (currentIndex < images.length - 1) {
+        setLargeImage(images[currentIndex + 1].path);
+      }
+    }
+  };
+
   return (
     <div className="wallhaven-download">
       <div className="toolbar">
@@ -137,6 +176,7 @@ function WallhavenDownload() {
                 src={img.thumbs.original}
                 alt={`wallhaven-${index}`}
                 onClick={() => handleSelectImage(img)}
+                onContextMenu={(e) => handleContextMenu(e, img)}
                 className={isSelectionMode && selectedImages.includes(img.thumbs.original) ? 'selected' : ''}
               />
             ))}
@@ -156,7 +196,37 @@ function WallhavenDownload() {
       </div>
       {largeImage && (
         <div className="large-image-overlay" onClick={closeLargeImage}>
+          <button
+            className="large-image-nav left"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrevImage();
+            }}
+            disabled={images.findIndex((img) => img.path === largeImage) === 0}
+          >
+            &lt;
+          </button>
           <img src={largeImage} alt="Large preview" className="large-image" />
+          <button
+            className="large-image-nav right"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNextImage();
+            }}
+            disabled={images.findIndex((img) => img.path === largeImage) === images.length - 1}
+          >
+            &gt;
+          </button>
+        </div>
+      )}
+      {contextMenu && (
+        <div
+          className="context-menu"
+          style={{ top: contextMenu.y, left: contextMenu.x }}
+          onClick={() => setContextMenu(null)}
+        >
+          <button onClick={() => handleDownloadImage(contextMenu.img)}>{t('common.download')}</button>
+          <button onClick={() => handleViewDetails(contextMenu.img)}>{t('common.viewDetails')}</button>
         </div>
       )}
     </div>

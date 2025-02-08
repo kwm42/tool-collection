@@ -20,7 +20,8 @@ const en = {
       exitSelection: 'Exit Selection Mode',
       selectAll: 'Select All',
       deselectAll: 'Deselect All',
-      noImagesSelected: 'No images selected'
+      noImagesSelected: 'No images selected',
+      viewDetails: 'View Details'
     },
     menu: {
       wallhavenDownload: 'Wallhaven Download',

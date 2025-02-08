@@ -20,7 +20,8 @@ const zh = {
       exitSelection: '退出选择模式',
       selectAll: '全选',
       deselectAll: '取消全选',
-      noImagesSelected: '未选择图片'
+      noImagesSelected: '未选择图片',
+      viewDetails: '查看详情'
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',
