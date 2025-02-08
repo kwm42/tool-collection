@@ -55,6 +55,22 @@
   @apply dark:text-white;
 }
 
+.pagination-input {
+  width: 60px;
+  padding: 5px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  @apply dark:bg-gray-700 dark:text-white dark:border-gray-600;
+}
+
+.pagination-input:focus {
+  outline: none;
+  border-color: #007bff;
+  @apply dark:border-blue-500;
+}
+
 .image-display {
   flex-grow: 1;
   overflow-y: auto;

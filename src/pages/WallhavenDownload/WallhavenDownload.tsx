@@ -26,6 +26,7 @@ function WallhavenDownload() {
   const [largeImage, setLargeImage] = useState<string | null>(null);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; img: any } | null>(null);
   const [columns, setColumns] = useState(calculateColumns());
+  const [customPage, setCustomPage] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
@@ -98,6 +99,18 @@ function WallhavenDownload() {
       const prevPage = page - 1;
       setPage(prevPage);
       handleSearch(prevPage);
+    }
+  };
+
+  const handleCustomPageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomPage(e.target.value);
+  };
+
+  const handleCustomPageSubmit = () => {
+    const pageNumber = parseInt(customPage, 10);
+    if (!isNaN(pageNumber) && pageNumber > 0 && pageNumber <= totalPages) {
+      setPage(pageNumber);
+      handleSearch(pageNumber);
     }
   };
 
@@ -213,6 +226,16 @@ function WallhavenDownload() {
         </span>
         <button onClick={handleNextPage} disabled={page === totalPages} className="pagination-button">
           {t('common.next')}
+        </button>
+        <input
+          type="number"
+          value={customPage}
+          onChange={handleCustomPageChange}
+          placeholder={t('common.page')}
+          className="pagination-input"
+        />
+        <button onClick={handleCustomPageSubmit} className="pagination-button">
+          {t('common.go')}
         </button>
       </div>
       {largeImage && (
