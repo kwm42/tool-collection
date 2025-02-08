@@ -11,12 +11,13 @@ const API_KEY = 'TGOqr9tmdQNYOf7YG9ulyh5hlTtnHVtV';
 function WallhavenDownload() {
   const { t } = useTranslation();
   const [keyword, setKeyword] = useState('');
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<any[]>([]);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [isSelectionMode, setIsSelectionMode] = useState(false);
+  const [largeImage, setLargeImage] = useState<string | null>(null);
 
   const handleSearch = async (pageNumber = 1) => {
     setLoading(true);
@@ -26,8 +27,7 @@ function WallhavenDownload() {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      const imageUrls = data.data.map((img: any) => img.thumbs.original);
-      setImages(imageUrls);
+      setImages(data.data); // Save all image data
       setTotalPages(data.meta.last_page);
     } catch (error) {
       console.error('Error:', error);
@@ -42,7 +42,7 @@ function WallhavenDownload() {
       return;
     }
 
-    const downloadImages = isSelectionMode ? selectedImages : images;
+    const downloadImages = isSelectionMode ? selectedImages : images.map((img) => img.thumbs.original);
     downloadImages.forEach((url) => {
       const link = document.createElement('a');
       link.href = url;
@@ -77,16 +77,18 @@ function WallhavenDownload() {
     }
   };
 
-  const handleSelectImage = (url: string) => {
+  const handleSelectImage = (img: any) => {
     if (isSelectionMode) {
       setSelectedImages((prevSelected) =>
-        prevSelected.includes(url) ? prevSelected.filter((img) => img !== url) : [...prevSelected, url]
+        prevSelected.includes(img.thumbs.original) ? prevSelected.filter((url) => url !== img.thumbs.original) : [...prevSelected, img.thumbs.original]
       );
+    } else {
+      setLargeImage(img.path);
     }
   };
 
   const handleSelectAll = () => {
-    setSelectedImages(images);
+    setSelectedImages(images.map((img) => img.thumbs.original));
   };
 
   const handleDeselectAll = () => {
@@ -96,6 +98,10 @@ function WallhavenDownload() {
   const toggleSelectionMode = () => {
     setIsSelectionMode(!isSelectionMode);
     setSelectedImages([]);
+  };
+
+  const closeLargeImage = () => {
+    setLargeImage(null);
   };
 
   return (
@@ -125,13 +131,13 @@ function WallhavenDownload() {
           <div className="loading">{t('common.loading')}</div>
         ) : (
           <Masonry breakpointCols={6} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
-            {images.map((url, index) => (
+            {images.map((img, index) => (
               <img
                 key={index}
-                src={url}
+                src={img.thumbs.original}
                 alt={`wallhaven-${index}`}
-                onClick={() => handleSelectImage(url)}
-                className={isSelectionMode && selectedImages.includes(url) ? 'selected' : ''}
+                onClick={() => handleSelectImage(img)}
+                className={isSelectionMode && selectedImages.includes(img.thumbs.original) ? 'selected' : ''}
               />
             ))}
           </Masonry>
@@ -148,6 +154,11 @@ function WallhavenDownload() {
           {t('common.next')}
         </button>
       </div>
+      {largeImage && (
+        <div className="large-image-overlay" onClick={closeLargeImage}>
+          <img src={largeImage} alt="Large preview" className="large-image" />
+        </div>
+      )}
     </div>
   );
 }
