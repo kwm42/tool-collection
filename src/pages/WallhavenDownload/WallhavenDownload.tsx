@@ -63,12 +63,12 @@ function WallhavenDownload() {
 
     const downloadImages = isSelectionMode ? selectedImages : images.map((img) => img.thumbs.original);
     downloadImages.forEach((url) => {
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = url.split('/').pop() || 'image.jpg';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const filename = url.split('/').pop() || 'image.jpg';
+      if (window.Main) {
+        window.Main.send('download-file', url, filename);
+      } else {
+        console.error('window.Main is not available');
+      }
     });
   };
 
@@ -129,13 +129,9 @@ function WallhavenDownload() {
   };
 
   const handleDownloadImage = (img: any) => {
-    const link = document.createElement('a');
-    link.href = img.thumbs.original;
-    link.download = img.thumbs.original.split('/').pop() || 'image.jpg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setContextMenu(null);
+    const url = img.path
+    const filename = url.split('/').pop() || 'image.jpg';
+    window.Main.send('download-file', url, filename);
   };
 
   const handleViewDetails = (img: any) => {

@@ -5,6 +5,7 @@ import { join } from 'path';
 import { BrowserWindow, app, ipcMain, IpcMainEvent, nativeTheme } from 'electron';
 import isDev from 'electron-is-dev';
 import { saveData, loadData } from './dataManager';
+import './services/index';
 
 const height = 900;
 const width = 1500;
