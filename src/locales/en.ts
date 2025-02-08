@@ -15,7 +15,12 @@ const en = {
       refresh: 'Refresh',
       previous: 'Previous',
       next: 'Next',
-      page: 'Page'
+      page: 'Page',
+      enterSelection: 'Enter Selection Mode',
+      exitSelection: 'Exit Selection Mode',
+      selectAll: 'Select All',
+      deselectAll: 'Deselect All',
+      noImagesSelected: 'No images selected'
     },
     menu: {
       wallhavenDownload: 'Wallhaven Download',

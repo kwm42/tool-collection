@@ -12,14 +12,16 @@ function WallhavenDownload() {
   const { t } = useTranslation();
   const [keyword, setKeyword] = useState('');
   const [images, setImages] = useState<string[]>([]);
+  const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [isSelectionMode, setIsSelectionMode] = useState(false);
 
   const handleSearch = async (pageNumber = 1) => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}?apikey=${API_KEY}&q=${keyword}&page=${pageNumber}`);
+      const response = await fetch(`${API_URL_TEST}?apikey=${API_KEY}&q=${keyword}&page=${pageNumber}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -35,7 +37,13 @@ function WallhavenDownload() {
   };
 
   const handleDownload = () => {
-    images.forEach((url) => {
+    if (!isSelectionMode || selectedImages.length === 0) {
+      alert(t('common.noImagesSelected'));
+      return;
+    }
+
+    const downloadImages = isSelectionMode ? selectedImages : images;
+    downloadImages.forEach((url) => {
       const link = document.createElement('a');
       link.href = url;
       link.download = url.split('/').pop() || 'image.jpg';
@@ -48,6 +56,7 @@ function WallhavenDownload() {
   const handleRefresh = () => {
     setKeyword('');
     setImages([]);
+    setSelectedImages([]);
     setPage(1);
     setTotalPages(1);
   };
@@ -68,6 +77,27 @@ function WallhavenDownload() {
     }
   };
 
+  const handleSelectImage = (url: string) => {
+    if (isSelectionMode) {
+      setSelectedImages((prevSelected) =>
+        prevSelected.includes(url) ? prevSelected.filter((img) => img !== url) : [...prevSelected, url]
+      );
+    }
+  };
+
+  const handleSelectAll = () => {
+    setSelectedImages(images);
+  };
+
+  const handleDeselectAll = () => {
+    setSelectedImages([]);
+  };
+
+  const toggleSelectionMode = () => {
+    setIsSelectionMode(!isSelectionMode);
+    setSelectedImages([]);
+  };
+
   return (
     <div className="wallhaven-download">
       <div className="toolbar">
@@ -80,6 +110,15 @@ function WallhavenDownload() {
         <button onClick={() => handleSearch()}>{t('common.search')}</button>
         <button onClick={handleDownload}>{t('common.download')}</button>
         <button onClick={handleRefresh}>{t('common.refresh')}</button>
+        <button onClick={toggleSelectionMode}>
+          {isSelectionMode ? t('common.exitSelection') : t('common.enterSelection')}
+        </button>
+        {isSelectionMode && (
+          <>
+            <button onClick={handleSelectAll}>{t('common.selectAll')}</button>
+            <button onClick={handleDeselectAll}>{t('common.deselectAll')}</button>
+          </>
+        )}
       </div>
       <div className="image-display">
         {loading ? (
@@ -87,7 +126,13 @@ function WallhavenDownload() {
         ) : (
           <Masonry breakpointCols={6} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
             {images.map((url, index) => (
-              <img key={index} src={url} alt={`wallhaven-${index}`} />
+              <img
+                key={index}
+                src={url}
+                alt={`wallhaven-${index}`}
+                onClick={() => handleSelectImage(url)}
+                className={isSelectionMode && selectedImages.includes(url) ? 'selected' : ''}
+              />
             ))}
           </Masonry>
         )}

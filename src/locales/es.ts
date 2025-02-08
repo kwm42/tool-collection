@@ -15,7 +15,12 @@ const es = {
       refresh: 'Actualizar',
       previous: 'Anterior',
       next: 'Siguiente',
-      page: 'Página'
+      page: 'Página',
+      enterSelection: 'Entrar en modo de selección',
+      exitSelection: 'Salir del modo de selección',
+      selectAll: 'Seleccionar todo',
+      deselectAll: 'Deseleccionar todo',
+      noImagesSelected: 'No se seleccionaron imágenes'
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',

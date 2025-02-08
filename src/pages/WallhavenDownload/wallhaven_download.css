@@ -91,3 +91,8 @@
   display: block;
   border-radius: 8px;
 }
+
+.selected {
+  border: 2px solid #007bff;
+  opacity: 0.7;
+}

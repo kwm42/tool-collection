@@ -15,7 +15,12 @@ const zh = {
       refresh: '刷新',
       previous: '上一页',
       next: '下一页',
-      page: '页'
+      page: '页',
+      enterSelection: '进入选择模式',
+      exitSelection: '退出选择模式',
+      selectAll: '全选',
+      deselectAll: '取消全选',
+      noImagesSelected: '未选择图片'
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',
