@@ -8,6 +8,12 @@ const API_URL_TEST = 'http://localhost:3001/wallhaven/search';
 const API_URL = 'https://wallhaven.cc/api/v1/search';
 const API_KEY = 'TGOqr9tmdQNYOf7YG9ulyh5hlTtnHVtV';
 
+const calculateColumns = () => {
+  const sidebarWidth = 250; // Adjust this value based on your sidebar width
+  const windowWidth = window.innerWidth - sidebarWidth;
+  return Math.max(1, Math.floor(windowWidth / 250));
+};
+
 function WallhavenDownload() {
   const { t } = useTranslation();
   const [keyword, setKeyword] = useState('Azur Lane');
@@ -19,6 +25,18 @@ function WallhavenDownload() {
   const [isSelectionMode, setIsSelectionMode] = useState(false);
   const [largeImage, setLargeImage] = useState<string | null>(null);
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; img: any } | null>(null);
+  const [columns, setColumns] = useState(calculateColumns());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setColumns(calculateColumns());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleSearch = async (pageNumber = 1) => {
     setLoading(true);
@@ -169,7 +187,7 @@ function WallhavenDownload() {
         {loading ? (
           <div className="loading">{t('common.loading')}</div>
         ) : (
-          <Masonry breakpointCols={6} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
+          <Masonry breakpointCols={columns} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
             {images.map((img, index) => (
               <img
                 key={index}
