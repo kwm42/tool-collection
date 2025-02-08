@@ -28,6 +28,17 @@ function SettingsModal({ onClose }: SettingsModalProps) {
     onClose();
   };
 
+  const handleSelectPath = async () => {
+    if (window.Main) {
+      const path = await window.Main.invoke('select-path');
+      if (path) {
+        setDownloadPath(path);
+      }
+    } else {
+      console.error('window.Main is not available');
+    }
+  };
+
   return (
     <div className="settings-modal">
       <div className="settings-modal-content">
@@ -37,8 +48,9 @@ function SettingsModal({ onClose }: SettingsModalProps) {
           <input
             type="text"
             value={downloadPath}
-            onChange={(e) => setDownloadPath(e.target.value)}
+            readOnly
           />
+          <button onClick={handleSelectPath}>{t('common.selectPath')}</button>
         </div>
         <div className="settings-item">
           <label>{t('settings.autoStart')}:</label>

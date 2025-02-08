@@ -21,7 +21,8 @@ const zh = {
       selectAll: '全选',
       deselectAll: '取消全选',
       noImagesSelected: '未选择图片',
-      viewDetails: '查看详情'
+      viewDetails: '查看详情',
+      selectPath: '选择路径' // Add this line
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',

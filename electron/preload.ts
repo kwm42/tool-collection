@@ -188,7 +188,8 @@ const api = {
   },
   send: (channel: string, ...args: any[]) => {
     ipcRenderer.send(channel, ...args);
-  }
+  },
+  invoke: (channel: string, ...args: any[]) => ipcRenderer.invoke(channel, ...args),
 };
 
 contextBridge.exposeInMainWorld('Main', api);

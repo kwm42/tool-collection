@@ -21,7 +21,8 @@ const es = {
       selectAll: 'Seleccionar todo',
       deselectAll: 'Deseleccionar todo',
       noImagesSelected: 'No se seleccionaron imágenes',
-      viewDetails: 'Ver detalles'
+      viewDetails: 'Ver detalles',
+      selectPath: 'Seleccionar ruta'
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',

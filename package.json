@@ -44,6 +44,7 @@
     "https-proxy-agent": "^7.0.6",
     "i18next": "^23.11.5",
     "koa": "^2.15.3",
+    "node-fetch": "2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^14.1.2",
