@@ -9,7 +9,13 @@ const es = {
       send: 'Enviar',
       messageSent: '¡¡Mensaje enviado!!',
       hiElectron: 'hola desde el electrón',
-      loading: 'Cargando...'
+      loading: 'Cargando...',
+      search: 'Buscar',
+      download: 'Descargar',
+      refresh: 'Actualizar',
+      previous: 'Anterior',
+      next: 'Siguiente',
+      page: 'Página'
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',

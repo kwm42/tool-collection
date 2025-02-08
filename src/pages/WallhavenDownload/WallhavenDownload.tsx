@@ -4,7 +4,8 @@ import Masonry from 'react-masonry-css';
 import { fetchData } from '../../utils/request';
 import './wallhaven_download.css';
 
-const API_URL = 'http://localhost:3001/wallhaven/search';
+const API_URL_TEST = 'http://localhost:3001/wallhaven/search';
+const API_URL = 'https://wallhaven.cc/api/v1/search';
 const API_KEY = 'TGOqr9tmdQNYOf7YG9ulyh5hlTtnHVtV';
 
 function WallhavenDownload() {
@@ -80,27 +81,27 @@ function WallhavenDownload() {
         <button onClick={handleDownload}>{t('common.download')}</button>
         <button onClick={handleRefresh}>{t('common.refresh')}</button>
       </div>
-      <div className="pagination">
-        <button onClick={handlePrevPage} disabled={page === 1}>
-          {t('common.previous')}
-        </button>
-        <span>
-          {page} / {totalPages}
-        </span>
-        <button onClick={handleNextPage} disabled={page === totalPages}>
-          {t('common.next')}
-        </button>
-      </div>
       <div className="image-display">
         {loading ? (
           <div className="loading">{t('common.loading')}</div>
         ) : (
-          <Masonry breakpointCols={3} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
+          <Masonry breakpointCols={6} className="my-masonry-grid" columnClassName="my-masonry-grid_column">
             {images.map((url, index) => (
               <img key={index} src={url} alt={`wallhaven-${index}`} />
             ))}
           </Masonry>
         )}
+      </div>
+      <div className="pagination">
+        <button onClick={handlePrevPage} disabled={page === 1} className="pagination-button">
+          {t('common.previous')}
+        </button>
+        <span className="pagination-info">
+          {page} / {totalPages}
+        </span>
+        <button onClick={handleNextPage} disabled={page === totalPages} className="pagination-button">
+          {t('common.next')}
+        </button>
       </div>
     </div>
   );

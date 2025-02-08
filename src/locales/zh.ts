@@ -9,7 +9,13 @@ const zh = {
       send: '发送',
       messageSent: '消息已发送！！',
       hiElectron: 'hi from electron',
-      loading: '加载中...'
+      loading: '加载中...',
+      search: '搜索',
+      download: '下载',
+      refresh: '刷新',
+      previous: '上一页',
+      next: '下一页',
+      page: '页'
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',
