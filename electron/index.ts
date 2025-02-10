@@ -7,6 +7,7 @@ import isDev from 'electron-is-dev';
 import { saveData, loadData } from './dataManager';
 import './services/index';
 import { logMessage as log } from './logger';
+import { getDownloadStatus } from './services/download';
 
 const height = 900;
 const width = 1500;
@@ -105,4 +106,8 @@ ipcMain.on('message', (event: IpcMainEvent, message: any) => {
   log(`Message received: ${message}`);
   console.log(message);
   setTimeout(() => event.sender.send('message', 'common.hiElectron'), 500);
+});
+
+ipcMain.handle('get-download-status', async () => {
+  return getDownloadStatus();
 });

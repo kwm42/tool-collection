@@ -205,6 +205,12 @@ const api = {
   getUserDataPath: () => {
     return ipcRenderer.invoke('get-user-data-path');
   },
+  getDownloadStatus: () => {
+    return ipcRenderer.invoke('get-download-status');
+  },
+  onDownloadStatus: (callback: (status: any) => void) => {
+    ipcRenderer.on('download-status', (_, status) => callback(status));
+  },
 };
 
 contextBridge.exposeInMainWorld('Main', api);

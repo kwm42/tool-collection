@@ -26,7 +26,13 @@ const en = {
       go: 'Go',
       openFolder: 'Open Folder',
       openAppPath: 'Open App Path',
-      openUserDataPath: 'Open User Data Path'
+      openUserDataPath: 'Open User Data Path',
+      openDownloadCenter: 'Open Download Center',
+      closeDownloadCenter: 'Close Download Center',
+      downloadCenter: 'Download Center',
+      currentDownloads: 'Current Downloads',
+      completedDownloads: 'Completed Downloads',
+      pendingDownloads: 'Pending Downloads'
     },
     menu: {
       wallhavenDownload: 'Wallhaven Download',

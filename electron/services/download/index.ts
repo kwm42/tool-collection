@@ -115,3 +115,7 @@ ipcMain.on('retry-download', (_event: any, url: string) => {
     processQueue();
   }
 });
+
+export const getDownloadStatus = () => {
+  return downloadQueue;
+};

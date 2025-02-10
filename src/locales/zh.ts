@@ -26,7 +26,13 @@ const zh = {
       go: '跳转',
       openFolder: '打开文件夹',
       openAppPath: '打开AppPath',
-      openUserDataPath: '打开用户数据目录'
+      openUserDataPath: '打开用户数据目录',
+      openDownloadCenter: '打开传输中心',
+      closeDownloadCenter: '关闭传输中心',
+      downloadCenter: '传输中心',
+      currentDownloads: '当前下载',
+      completedDownloads: '已完成下载',
+      pendingDownloads: '等待下载'
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',

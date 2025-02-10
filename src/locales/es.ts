@@ -26,7 +26,13 @@ const es = {
       go: 'Ir',
       openFolder: 'Abrir carpeta',
       openAppPath: 'Abrir ruta de la aplicación',
-      openUserDataPath: 'Abrir ruta de datos de usuario'
+      openUserDataPath: 'Abrir ruta de datos de usuario',
+      openDownloadCenter: 'Abrir Centro de Descargas',
+      closeDownloadCenter: 'Cerrar Centro de Descargas',
+      downloadCenter: 'Centro de Descargas',
+      currentDownloads: 'Descargas Actuales',
+      completedDownloads: 'Descargas Completadas',
+      pendingDownloads: 'Descargas Pendientes'
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',

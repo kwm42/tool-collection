@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Sidebar from './components/Sidebar';
 import WallhavenDownload from './pages/WallhavenDownload';
 import ViewKLine from './pages/ViewKLine';
+import DownloadCenter from './pages/DownloadCenter';
 import './App.css'; // Add this line to import the CSS file
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [isSent, setSent] = useState(false);
   const [fromMain, setFromMain] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<string>('wallhaven');
+  const [isDownloadCenterVisible, setDownloadCenterVisible] = useState(false);
   const { t } = useTranslation();
 
   const handleToggle = () => {
@@ -30,6 +32,10 @@ function App() {
       setFromMain(t('common.helloBrowser'));
     }
     setSent(true);
+  };
+
+  const toggleDownloadCenter = () => {
+    setDownloadCenterVisible(!isDownloadCenterVisible);
   };
 
   useEffect(() => {
@@ -60,6 +66,10 @@ function App() {
       <div className="content-container">
         <div className="content">{renderPage()}</div>
       </div>
+      <button className="floating-button" onClick={toggleDownloadCenter}>
+        {isDownloadCenterVisible ? t('common.closeDownloadCenter') : t('common.openDownloadCenter')}
+      </button>
+      {isDownloadCenterVisible && <DownloadCenter />}
     </div>
   );
 }
