@@ -36,7 +36,8 @@ const zh = {
       startPage: '起始页',
       endPage: '终止页',
       autoDownload: '自动下载',
-      invalidPageRange: '无效的页码范围'
+      invalidPageRange: '无效的页码范围',
+      toggleRatio: '切换比例'
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',

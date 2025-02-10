@@ -16,7 +16,7 @@ const calculateColumns = () => {
 
 function WallhavenDownload() {
   const { t } = useTranslation();
-  const [keyword, setKeyword] = useState('Azur Lane');
+  const [keyword, setKeyword] = useState('azur lane');
   const [images, setImages] = useState<any[]>([]);
   const [selectedImages, setSelectedImages] = useState<any[]>([]);
   const [page, setPage] = useState(1);
@@ -30,6 +30,8 @@ function WallhavenDownload() {
   const [startPage, setStartPage] = useState('');
   const [endPage, setEndPage] = useState('');
   const [isAutoDownloading, setIsAutoDownloading] = useState(false);
+  const [customParams, setCustomParams] = useState('categories=110&purity=110&sorting=favorites&order=desc&ai_art_filter=1');
+  const [ratio, setRatio] = useState('');
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,7 +47,7 @@ function WallhavenDownload() {
   const handleSearch = async (pageNumber = 1) => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL_TEST}?apikey=${API_KEY}&q=${keyword}&page=${pageNumber}`);
+      const response = await fetch(`${API_URL_TEST}?apikey=${API_KEY}&q=${keyword}&page=${pageNumber}&${customParams}&${ratio}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -61,7 +63,7 @@ function WallhavenDownload() {
     return []
   };
 
-  const handleDownloadAll = (data = []) => {
+  const handleDownloadAll = (data: any[] = []) => {
     if (data.length === 0) {
       alert(t('common.noImagesSelected'));
       return;
@@ -205,6 +207,14 @@ function WallhavenDownload() {
     }
   };
 
+  const toggleRatio = () => {
+    setRatio((prevRatio) => {
+      if (prevRatio === '') return 'ratios=portrait';
+      if (prevRatio === 'ratios=portrait') return 'ratios=landscape';
+      return '';
+    });
+  };
+
   return (
     <div className="wallhaven-download">
       <div className="toolbar">
@@ -214,7 +224,14 @@ function WallhavenDownload() {
           onChange={(e) => setKeyword(e.target.value)}
           placeholder={t('common.search')}
         />
+        <input
+          type="text"
+          value={customParams}
+          onChange={(e) => setCustomParams(e.target.value)}
+          placeholder="Custom Params"
+        />
         <button onClick={() => handleSearch()}>{t('common.search')}</button>
+        <button onClick={toggleRatio}>{t('common.toggleRatio') + ratio.replace('ratios=', '')}</button>
         <button onClick={() => handleDownloadAll(images)}>{t('common.download')}</button>
         {isSelectionMode && (
           <>

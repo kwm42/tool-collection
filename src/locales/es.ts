@@ -36,7 +36,8 @@ const es = {
       startPage: 'Página de inicio',
       endPage: 'Página final',
       autoDownload: 'Descarga automática',
-      invalidPageRange: 'Rango de páginas no válido'
+      invalidPageRange: 'Rango de páginas no válido',
+      toggleRatio: 'Cambiar relación'
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',

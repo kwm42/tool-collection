@@ -36,7 +36,8 @@ const en = {
       startPage: 'Start Page',
       endPage: 'End Page',
       autoDownload: 'Auto Download',
-      invalidPageRange: 'Invalid page range'
+      invalidPageRange: 'Invalid page range',
+      toggleRatio: 'Toggle Ratio'
     },
     menu: {
       wallhavenDownload: 'Wallhaven Download',
