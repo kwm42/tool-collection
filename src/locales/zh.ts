@@ -23,7 +23,10 @@ const zh = {
       noImagesSelected: '未选择图片',
       viewDetails: '查看详情',
       selectPath: '选择路径',
-      go: '跳转' // Add this line
+      go: '跳转',
+      openFolder: '打开文件夹',
+      openAppPath: '打开AppPath',
+      openUserDataPath: '打开用户数据目录'
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',

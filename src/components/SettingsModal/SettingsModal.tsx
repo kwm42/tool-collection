@@ -39,6 +39,41 @@ function SettingsModal({ onClose }: SettingsModalProps) {
     }
   };
 
+  const handleOpenFolder = async () => {
+    if (window.Main) {
+      const success = await window.Main.openFolder(downloadPath);
+      if (!success) {
+        console.error('Failed to open folder');
+      }
+    } else {
+      console.error('window.Main is not available');
+    }
+  };
+
+  const handleOpenAppPath = async () => {
+    if (window.Main) {
+      const appPath = await window.Main.invoke('get-app-path');
+      const success = await window.Main.openFolder(appPath);
+      if (!success) {
+        console.error('Failed to open app path');
+      }
+    } else {
+      console.error('window.Main is not available');
+    }
+  };
+
+  const handleOpenUserDataPath = async () => {
+    if (window.Main) {
+      const userDataPath = await window.Main.invoke('get-user-data-path');
+      const success = await window.Main.openFolder(userDataPath);
+      if (!success) {
+        console.error('Failed to open user data path');
+      }
+    } else {
+      console.error('window.Main is not available');
+    }
+  };
+
   return (
     <div className="settings-modal">
       <div className="settings-modal-content">
@@ -60,8 +95,12 @@ function SettingsModal({ onClose }: SettingsModalProps) {
             onChange={(e) => setAutoStart(e.target.checked)}
           />
         </div>
-        <button onClick={handleSave}>{t('settings.save')}</button>
-        <button onClick={onClose}>{t('settings.close')}</button>
+        <div className='flex gap-2 flex-wrap'>
+          <button onClick={handleSave}>{t('settings.save')}</button>
+          <button onClick={onClose}>{t('settings.close')}</button>
+          <button onClick={handleOpenAppPath}>{t('common.openAppPath')}</button>
+          <button onClick={handleOpenUserDataPath}>{t('common.openUserDataPath')}</button>
+        </div>
       </div>
     </div>
   );

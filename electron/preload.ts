@@ -190,6 +190,21 @@ const api = {
     ipcRenderer.send(channel, ...args);
   },
   invoke: (channel: string, ...args: any[]) => ipcRenderer.invoke(channel, ...args),
+  openFolder: (folderPath: string) => {
+    return ipcRenderer.invoke('open-folder', folderPath);
+  },
+  openAppPath: () => {
+    return ipcRenderer.invoke('open-app-path');
+  },
+  openUserDataPath: () => {
+    return ipcRenderer.invoke('open-user-data-path');
+  },
+  getAppPath: () => {
+    return ipcRenderer.invoke('get-app-path');
+  },
+  getUserDataPath: () => {
+    return ipcRenderer.invoke('get-user-data-path');
+  },
 };
 
 contextBridge.exposeInMainWorld('Main', api);

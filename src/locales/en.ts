@@ -23,7 +23,10 @@ const en = {
       noImagesSelected: 'No images selected',
       viewDetails: 'View Details',
       selectPath: 'Select Path',
-      go: 'Go'
+      go: 'Go',
+      openFolder: 'Open Folder',
+      openAppPath: 'Open App Path',
+      openUserDataPath: 'Open User Data Path'
     },
     menu: {
       wallhavenDownload: 'Wallhaven Download',

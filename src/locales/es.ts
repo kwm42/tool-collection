@@ -23,7 +23,10 @@ const es = {
       noImagesSelected: 'No se seleccionaron imágenes',
       viewDetails: 'Ver detalles',
       selectPath: 'Seleccionar ruta',
-      go: 'Ir'
+      go: 'Ir',
+      openFolder: 'Abrir carpeta',
+      openAppPath: 'Abrir ruta de la aplicación',
+      openUserDataPath: 'Abrir ruta de datos de usuario'
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',
