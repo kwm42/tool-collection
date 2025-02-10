@@ -32,7 +32,11 @@ const es = {
       downloadCenter: 'Centro de Descargas',
       currentDownloads: 'Descargas Actuales',
       completedDownloads: 'Descargas Completadas',
-      pendingDownloads: 'Descargas Pendientes'
+      pendingDownloads: 'Descargas Pendientes',
+      startPage: 'Página de inicio',
+      endPage: 'Página final',
+      autoDownload: 'Descarga automática',
+      invalidPageRange: 'Rango de páginas no válido'
     },
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',

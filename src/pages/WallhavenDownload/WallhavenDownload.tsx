@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Masonry from 'react-masonry-css';
 import { fetchData } from '../../utils/request';
@@ -27,6 +27,9 @@ function WallhavenDownload() {
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; img: any } | null>(null);
   const [columns, setColumns] = useState(calculateColumns());
   const [customPage, setCustomPage] = useState('');
+  const [startPage, setStartPage] = useState('');
+  const [endPage, setEndPage] = useState('');
+  const [isAutoDownloading, setIsAutoDownloading] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,20 +52,24 @@ function WallhavenDownload() {
       const data = await response.json();
       setImages(data.data); // Save all image data
       setTotalPages(data.meta.last_page);
+      return data.data
     } catch (error) {
       console.error('Error:', error);
     } finally {
       setLoading(false);
     }
+    return []
   };
 
-  const handleDownloadAll = () => {
-    if (images.length === 0) {
+  const handleDownloadAll = (data = []) => {
+    if (data.length === 0) {
       alert(t('common.noImagesSelected'));
       return;
     }
 
-    images.forEach((img) => {
+    console.log(data.map(img => img.id).join('/'))
+
+    data.forEach((img) => {
       const url = img.path;
       const filename = url.split('/').pop() || 'image.jpg';
       if (window.Main) {
@@ -172,6 +179,32 @@ function WallhavenDownload() {
     }
   };
 
+  const handleAutoDownload = async () => {
+    const start = parseInt(startPage, 10);
+    const end = parseInt(endPage, 10);
+    if (isNaN(start) || isNaN(end) || start <= 0 || end <= 0 || start > end) {
+      alert(t('common.invalidPageRange'));
+      return;
+    }
+
+    setIsAutoDownloading(true);
+    for (let pageNumber = start; pageNumber <= end; pageNumber++) {
+      setPage(pageNumber);
+      const data = await handleSearch(pageNumber);
+      handleDownloadAll(data);
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 seconds
+    }
+    setIsAutoDownloading(false);
+  };
+
+  const openDownloadFolder = () => {
+    if (window.Main) {
+      window.Main.send('open-download-folder');
+    } else {
+      console.error('window.Main is not available');
+    }
+  };
+
   return (
     <div className="wallhaven-download">
       <div className="toolbar">
@@ -182,17 +215,29 @@ function WallhavenDownload() {
           placeholder={t('common.search')}
         />
         <button onClick={() => handleSearch()}>{t('common.search')}</button>
-        <button onClick={handleDownloadAll}>{t('common.download')}</button>
-        <button onClick={handleRefresh}>{t('common.refresh')}</button>
-        <button onClick={toggleSelectionMode}>
-          {isSelectionMode ? t('common.exitSelection') : t('common.enterSelection')}
-        </button>
+        <button onClick={() => handleDownloadAll(images)}>{t('common.download')}</button>
         {isSelectionMode && (
           <>
             <button onClick={handleSelectAll}>{t('common.selectAll')}</button>
             <button onClick={handleDeselectAll}>{t('common.deselectAll')}</button>
           </>
         )}
+        <input
+          type="number"
+          value={startPage}
+          onChange={(e) => setStartPage(e.target.value)}
+          placeholder={t('common.startPage')}
+        />
+        <input
+          type="number"
+          value={endPage}
+          onChange={(e) => setEndPage(e.target.value)}
+          placeholder={t('common.endPage')}
+        />
+        <button onClick={handleAutoDownload} disabled={isAutoDownloading}>
+          {t('common.autoDownload')}
+        </button>
+        <button onClick={openDownloadFolder}>{t('common.openFolder')}</button>
       </div>
       <div className="image-display">
         {loading ? (

@@ -32,7 +32,11 @@ const zh = {
       downloadCenter: '传输中心',
       currentDownloads: '当前下载',
       completedDownloads: '已完成下载',
-      pendingDownloads: '等待下载'
+      pendingDownloads: '等待下载',
+      startPage: '起始页',
+      endPage: '终止页',
+      autoDownload: '自动下载',
+      invalidPageRange: '无效的页码范围'
     },
     menu: {
       wallhavenDownload: 'Wallhaven 下载',

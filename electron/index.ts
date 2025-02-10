@@ -2,7 +2,7 @@
 import { join } from 'path';
 
 // Packages
-import { BrowserWindow, app, ipcMain, IpcMainEvent, nativeTheme } from 'electron';
+import { BrowserWindow, app, ipcMain, IpcMainEvent, nativeTheme, shell } from 'electron';
 import isDev from 'electron-is-dev';
 import { saveData, loadData } from './dataManager';
 import './services/index';
@@ -70,6 +70,11 @@ function createWindow() {
     console.log('load-data', key, value);
     event.sender.send('data-loaded', key, value);
     log(`Data loaded: ${key}`);
+  });
+
+  ipcMain.on('open-download-folder', () => {
+    const downloadPath = loadData('settings')?.downloadPath || 'F:/';
+    shell.openPath(downloadPath);
   });
 
   nativeTheme.themeSource = 'dark';
