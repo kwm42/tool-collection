@@ -11,7 +11,7 @@ const es = {
       hiElectron: 'hola desde el electrón',
       loading: 'Cargando...',
       search: 'Buscar',
-      download: 'Descargar',
+      download: 'Descargar todo',
       refresh: 'Actualizar',
       previous: 'Anterior',
       next: 'Siguiente',

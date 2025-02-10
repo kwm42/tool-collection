@@ -11,7 +11,7 @@ const zh = {
       hiElectron: 'hi from electron',
       loading: '加载中...',
       search: '搜索',
-      download: '下载',
+      download: '一键下载',
       refresh: '刷新',
       previous: '上一页',
       next: '下一页',

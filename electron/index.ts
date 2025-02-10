@@ -6,7 +6,7 @@ import { BrowserWindow, app, ipcMain, IpcMainEvent, nativeTheme } from 'electron
 import isDev from 'electron-is-dev';
 import { saveData, loadData } from './dataManager';
 import './services/index';
-import { log } from './logger';
+import { logMessage as log } from './logger';
 
 const height = 900;
 const width = 1500;

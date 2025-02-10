@@ -56,14 +56,13 @@ function WallhavenDownload() {
     }
   };
 
-  const handleDownload = () => {
-    if (!isSelectionMode || selectedImages.length === 0) {
+  const handleDownloadAll = () => {
+    if (images.length === 0) {
       alert(t('common.noImagesSelected'));
       return;
     }
 
-    const downloadImages = isSelectionMode ? selectedImages : images;
-    downloadImages.forEach((img) => {
+    images.forEach((img) => {
       const url = img.path;
       const filename = url.split('/').pop() || 'image.jpg';
       if (window.Main) {
@@ -72,10 +71,6 @@ function WallhavenDownload() {
         console.error('window.Main is not available');
       }
     });
-
-    // Exit selection mode after initiating downloads
-    setIsSelectionMode(false);
-    setSelectedImages([]);
   };
 
   const handleRefresh = () => {
@@ -187,7 +182,7 @@ function WallhavenDownload() {
           placeholder={t('common.search')}
         />
         <button onClick={() => handleSearch()}>{t('common.search')}</button>
-        <button onClick={handleDownload}>{t('common.download')}</button>
+        <button onClick={handleDownloadAll}>{t('common.download')}</button>
         <button onClick={handleRefresh}>{t('common.refresh')}</button>
         <button onClick={toggleSelectionMode}>
           {isSelectionMode ? t('common.exitSelection') : t('common.enterSelection')}

@@ -1,9 +1,10 @@
 import { join } from 'path';
-import { createWriteStream } from 'fs';
+import { createWriteStream, existsSync } from 'fs';
 import { ipcMain } from 'electron';
 import axios from 'axios';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import { loadData } from '../../dataManager';
+import { logMessage as log } from '../../logger';
 
 interface DownloadItem {
   url: string;
@@ -15,10 +16,6 @@ interface DownloadItem {
 const downloadQueue: DownloadItem[] = [];
 const maxConcurrentDownloads = 3;
 let activeDownloads = 0;
-
-const log = (message: string, ...args: any[]) => {
-  console.log(`[Download Service] ${message}`, ...args);
-};
 
 const proxyAgent = new HttpsProxyAgent('http://127.0.0.1:7897');
 
@@ -33,10 +30,20 @@ const startDownload = async (item: DownloadItem) => {
     return;
   }
 
+  const filePath = join(getDownloadPath(), item.filename);
+  console.log(filePath, existsSync(filePath));
+  if (existsSync(filePath)) {
+    item.status = 'completed';
+    ipcMain.emit('download-status', item);
+    log('文件已存在，跳过下载', item);
+    processQueue();
+    return;
+  }
+
   activeDownloads++;
   item.status = 'downloading';
   ipcMain.emit('download-status', item);
-  log('Starting download', item);
+  log('开始下载', item);
 
   try {
     const response = await axios({
@@ -47,15 +54,15 @@ const startDownload = async (item: DownloadItem) => {
       httpsAgent: proxyAgent,
     });
 
-    console.log(join(getDownloadPath(), item.filename))
-    const fileStream = createWriteStream(join(getDownloadPath(), item.filename));
+    console.log(filePath);
+    const fileStream = createWriteStream(filePath);
     response.data.pipe(fileStream);
 
     response.data.on('error', (error: any) => {
       item.status = 'failed';
       activeDownloads--;
       ipcMain.emit('download-status', item);
-      log('Download failed', item, error);
+      log('下载失败', item, error);
       processQueue();
     });
 
@@ -63,14 +70,14 @@ const startDownload = async (item: DownloadItem) => {
       item.status = 'completed';
       activeDownloads--;
       ipcMain.emit('download-status', item);
-      log('Download completed', item);
+      log('下载完成', item);
       processQueue();
     });
   } catch (error) {
     item.status = 'failed';
     activeDownloads--;
     ipcMain.emit('download-status', item);
-    log('Download failed', item, error);
+    log('下载失败', item, error);
     processQueue();
   }
 };
@@ -92,7 +99,7 @@ ipcMain.on('download-file', (_event, url: string, filename: string) => {
     retryCount: 0,
   };
 
-  log('Queueing download', downloadItem);
+  log('排队下载', downloadItem);
   downloadQueue.push(downloadItem);
   ipcMain.emit('download-status', downloadItem);
   processQueue();
@@ -103,7 +110,7 @@ ipcMain.on('retry-download', (_event: any, url: string) => {
   if (item) {
     item.status = 'pending';
     item.retryCount++;
-    log('Retrying download', item);
+    log('重试下载', item);
     ipcMain.emit('download-status', item);
     processQueue();
   }

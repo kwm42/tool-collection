@@ -11,7 +11,7 @@ const en = {
       hiElectron: 'hi from electron',
       loading: 'Loading...',
       search: 'Search',
-      download: 'Download',
+      download: 'Download All',
       refresh: 'Refresh',
       previous: 'Previous',
       next: 'Next',
