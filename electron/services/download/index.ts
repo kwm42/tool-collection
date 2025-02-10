@@ -35,7 +35,7 @@ const startDownload = async (item: DownloadItem) => {
   if (existsSync(filePath)) {
     item.status = 'completed';
     ipcMain.emit('download-status', item);
-    log('文件已存在，跳过下载', item);
+    log('文件已存在，跳过下载' + item.filename);
     processQueue();
     return;
   }
@@ -43,7 +43,7 @@ const startDownload = async (item: DownloadItem) => {
   activeDownloads++;
   item.status = 'downloading';
   ipcMain.emit('download-status', item);
-  log('开始下载', item);
+  log('开始下载' + item.filename);
 
   try {
     const response = await axios({
@@ -62,7 +62,7 @@ const startDownload = async (item: DownloadItem) => {
       item.status = 'failed';
       activeDownloads--;
       ipcMain.emit('download-status', item);
-      log('下载失败', item, error);
+      log('下载失败' + item.filename + error.message);
       processQueue();
     });
 
@@ -70,14 +70,14 @@ const startDownload = async (item: DownloadItem) => {
       item.status = 'completed';
       activeDownloads--;
       ipcMain.emit('download-status', item);
-      log('下载完成', item);
+      log('下载完成' + item.filename);
       processQueue();
     });
   } catch (error) {
     item.status = 'failed';
     activeDownloads--;
     ipcMain.emit('download-status', item);
-    log('下载失败', item, error);
+    log('下载失败' + item.filename);
     processQueue();
   }
 };
@@ -99,7 +99,7 @@ ipcMain.on('download-file', (_event, url: string, filename: string) => {
     retryCount: 0,
   };
 
-  log('排队下载', downloadItem);
+  log('排队下载' + downloadItem.filename);
   downloadQueue.push(downloadItem);
   ipcMain.emit('download-status', downloadItem);
   processQueue();
@@ -110,7 +110,7 @@ ipcMain.on('retry-download', (_event: any, url: string) => {
   if (item) {
     item.status = 'pending';
     item.retryCount++;
-    log('重试下载', item);
+    log('重试下载' + item.filename);
     ipcMain.emit('download-status', item);
     processQueue();
   }
