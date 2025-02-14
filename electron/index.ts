@@ -116,3 +116,7 @@ ipcMain.on('message', (event: IpcMainEvent, message: any) => {
 ipcMain.handle('get-download-status', async () => {
   return getDownloadStatus();
 });
+
+ipcMain.on('open-url', (_event, url: string) => {
+  shell.openExternal(url);
+});

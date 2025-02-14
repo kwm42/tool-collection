@@ -44,6 +44,19 @@ function WallhavenDownload() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (contextMenu && !(event.target as HTMLElement).closest('.context-menu')) {
+        setContextMenu(null);
+      }
+    };
+
+    window.addEventListener('click', handleClickOutside);
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+    };
+  }, [contextMenu]);
+
   const handleSearch = async (pageNumber = 1) => {
     setLoading(true);
     try {
@@ -159,7 +172,11 @@ function WallhavenDownload() {
   };
 
   const handleViewDetails = (img: any) => {
-    setLargeImage(img.path);
+    if (window.Main) {
+      window.Main.send('open-url', img.url);
+    } else {
+      window.open(img.url, '_blank');
+    }
     setContextMenu(null);
   };
 
