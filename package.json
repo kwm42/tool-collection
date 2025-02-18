@@ -39,6 +39,7 @@
     "@material-tailwind/react": "^2.1.9",
     "@vitejs/plugin-react": "^1.2.0",
     "axios": "^1.7.9",
+    "crypto": "^1.0.1",
     "electron-is-dev": "^2.0.0",
     "electron-log": "^5.3.0",
     "fastify": "^5.2.1",

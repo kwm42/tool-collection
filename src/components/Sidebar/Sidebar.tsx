@@ -26,6 +26,11 @@ function Sidebar({ setCurrentPage }: SidebarProps) {
             {t('menu.viewKLine')}
           </a>
         </li>
+        <li>
+          <a href="#folder-tools" onClick={() => setCurrentPage('folder-tools')}>
+            {t('menu.folderTools')}
+          </a>
+        </li>
       </ul>
       <div className="sidebar-bottom">
         <SwitchDarkMode />

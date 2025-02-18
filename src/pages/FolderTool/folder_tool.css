@@ -1,0 +1,72 @@
+.folder-tool {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.folder-tool button {
+  margin-right: 10px;
+  padding: 10px 15px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.folder-tool button:hover {
+  background-color: var(--button-hover-background-color);
+}
+
+.folder-tool button:disabled {
+  background-color: var(--button-disabled-background-color);
+  cursor: not-allowed;
+}
+
+.duplicates-list, .folder-duplicates-list {
+  margin-top: 20px;
+}
+
+.duplicates-list ul, .folder-duplicates-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.duplicates-list li, .folder-duplicates-list li {
+  margin-bottom: 5px;
+  padding: 10px;
+  background-color: var(--list-item-background-color);
+  border: 1px solid var(--list-item-border-color);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.duplicates-list li button, .folder-duplicates-list li button {
+  padding: 5px 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.duplicates-list li button:hover, .folder-duplicates-list li button:hover {
+  background-color: var(--button-hover-background-color);
+}
+
+/* Dark theme variables */
+:root {
+  --text-color: #ffffff;
+  --background-color: #121212;
+  --button-background-color: #007bff;
+  --button-text-color: #ffffff;
+  --button-hover-background-color: #0056b3;
+  --button-disabled-background-color: #cccccc;
+  --list-item-background-color: #1e1e1e;
+  --list-item-border-color: #333333;
+}

@@ -60,7 +60,7 @@ function WallhavenDownload() {
   const handleSearch = async (pageNumber = 1) => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL_TEST}?apikey=${API_KEY}&q=${keyword}&page=${pageNumber}&${customParams}&${ratio}`);
+      const response = await fetch(`${API_URL}?apikey=${API_KEY}&q=${keyword}&page=${pageNumber}&${customParams}&${ratio}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

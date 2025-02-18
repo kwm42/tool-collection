@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import WallhavenDownload from './pages/WallhavenDownload';
 import ViewKLine from './pages/ViewKLine';
 import DownloadCenter from './pages/DownloadCenter';
+import FolderTool from './pages/FolderTool'; // Add this line
 import './App.css'; // Add this line to import the CSS file
 
 function App() {
@@ -55,6 +56,8 @@ function App() {
         return <WallhavenDownload />;
       case 'kline':
         return <ViewKLine />;
+      case 'folder-tools':
+        return <FolderTool />;
       default:
         return <WallhavenDownload />;
     }

@@ -1,4 +1,6 @@
 import { ipcMain, dialog, shell, app } from 'electron';
+import { readdirSync, statSync } from 'fs';
+import { join } from 'path';
 
 ipcMain.handle('select-path', async (_event) => {
   const result = await dialog.showOpenDialog({
@@ -48,4 +50,42 @@ ipcMain.handle('get-app-path', async () => {
 
 ipcMain.handle('get-user-data-path', async () => {
   return app.getPath('userData');
+});
+
+const findDuplicates = (dir: string, fileNames: { [key: string]: string[] }, folderDuplicates: { [key: string]: number }) => {
+  const files = readdirSync(dir);
+  const subDirs: string[] = [];
+
+  // First, list all files and collect subdirectories
+  files.forEach((file) => {
+    const filePath = join(dir, file);
+    const stats = statSync(filePath);
+    if (stats.isDirectory()) {
+      subDirs.push(filePath);
+    } else {
+      if (fileNames[file]) {
+        fileNames[file].push(filePath);
+        folderDuplicates[dir] = (folderDuplicates[dir] || 0) + 1;
+      } else {
+        fileNames[file] = [filePath];
+      }
+    }
+  });
+
+  // Then, process each subdirectory
+  subDirs.forEach((subDir) => {
+    findDuplicates(subDir, fileNames, folderDuplicates);
+  });
+};
+
+ipcMain.on('detect-duplicates', (event, folderPath: string) => {
+  const fileNames: { [key: string]: string[] } = {};
+  const folderDuplicates: { [key: string]: number } = {};
+  findDuplicates(folderPath, fileNames, folderDuplicates);
+  const duplicates = Object.fromEntries(Object.entries(fileNames).filter(([_, paths]) => paths.length > 1));
+  event.sender.send('duplicates-detected', { duplicates, folderDuplicates });
+});
+
+ipcMain.on('open-file-location', (_event, filePath: string) => {
+  shell.showItemInFolder(filePath);
 });

@@ -42,7 +42,8 @@ const en = {
     menu: {
       wallhavenDownload: 'Wallhaven Download',
       viewKLine: 'View K-Line',
-      settings: 'Settings'
+      settings: 'Settings',
+      folderTools: 'Folder Tools'
     },
     settings: {
       title: 'Settings',

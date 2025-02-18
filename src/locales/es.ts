@@ -42,7 +42,8 @@ const es = {
     menu: {
       wallhavenDownload: 'Descargar Wallhaven',
       viewKLine: 'Ver K-Line',
-      settings: 'Configuraciones'
+      settings: 'Configuraciones',
+      folderTools: 'Herramientas de Carpeta'
     },
     settings: {
       title: 'Configuraciones',

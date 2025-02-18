@@ -42,7 +42,8 @@ const zh = {
     menu: {
       wallhavenDownload: 'Wallhaven 下载',
       viewKLine: '查看 K 线',
-      settings: '设置'
+      settings: '设置',
+      folderTools: '文件夹工具'
     },
     settings: {
       title: '设置',
