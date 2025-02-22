@@ -1,6 +1,6 @@
 import { ipcMain, dialog, shell, app } from 'electron';
-import { readdirSync, statSync } from 'fs';
-import { join } from 'path';
+import { readdirSync, statSync, unlinkSync, renameSync, existsSync, mkdirSync } from 'fs';
+import { join, basename } from 'path';
 
 ipcMain.handle('select-path', async (_event) => {
   const result = await dialog.showOpenDialog({
@@ -78,14 +78,62 @@ const findDuplicates = (dir: string, fileNames: { [key: string]: string[] }, fol
   });
 };
 
+let detectedDuplicates: { [key: string]: string[] } = {};
+
 ipcMain.on('detect-duplicates', (event, folderPath: string) => {
   const fileNames: { [key: string]: string[] } = {};
   const folderDuplicates: { [key: string]: number } = {};
   findDuplicates(folderPath, fileNames, folderDuplicates);
-  const duplicates = Object.fromEntries(Object.entries(fileNames).filter(([_, paths]) => paths.length > 1));
-  event.sender.send('duplicates-detected', { duplicates, folderDuplicates });
+  detectedDuplicates = Object.fromEntries(Object.entries(fileNames).filter(([_, paths]) => paths.length > 1));
+  event.sender.send('duplicates-detected', { duplicates: detectedDuplicates, folderDuplicates });
 });
 
 ipcMain.on('open-file-location', (_event, filePath: string) => {
   shell.showItemInFolder(filePath);
+});
+
+ipcMain.on('delete-duplicates', (event, folderPath: string) => {
+  console.log(`Deleting duplicates in folder: ${folderPath}`);
+
+  Object.entries(detectedDuplicates).forEach(([fileName, paths]) => {
+    console.log(`Duplicate file: ${fileName}`);
+    if (paths[0].startsWith(folderPath)) {
+      paths.slice(1).forEach((filePath) => {
+        try {
+          unlinkSync(filePath);
+        } catch (error) {
+          console.error(`Failed to delete file: ${filePath}`, error);
+        }
+      });
+    }
+  });
+
+  event.sender.send('duplicates-deleted', folderPath);
+});
+
+ipcMain.on('move-duplicates', (event, folderPath: string) => {
+  console.log(`Moving duplicates in folder: ${folderPath}`);
+  const targetDir = 'F://duplicate';
+
+  if (!existsSync(targetDir)) {
+    mkdirSync(targetDir);
+  }
+
+  Object.entries(detectedDuplicates).forEach(([fileName, paths]) => {
+    console.log(`Duplicate file: ${fileName} ${JSON.stringify(paths)} ${folderPath}`);
+    paths.forEach((filePath) => {
+      console.log(`Duplicate file111: ${filePath} ${folderPath}`);
+      if (filePath.includes(folderPath)) {
+        try {
+          const targetPath = join(targetDir, basename(filePath));
+          renameSync(filePath, targetPath);
+          console.log(`Moved file: ${filePath} to ${targetPath}`);
+        } catch (error) {
+          console.error(`Failed to move file: ${filePath}`, error);
+        }
+      }
+    })
+  });
+
+  event.sender.send('duplicates-moved', folderPath);
 });
