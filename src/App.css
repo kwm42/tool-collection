@@ -7,6 +7,7 @@
 .content-container {
   flex-grow: 1;
   overflow-y: auto;
+  margin-left: 1.5rem;
 }
 
 .content {
@@ -40,9 +41,16 @@
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1001;
-  @apply dark:bg-blue-700 dark:hover:bg-blue-600;
 }
 
 .floating-button:hover {
   background-color: #0056b3;
+}
+
+body.dark .floating-button {
+  background-color: #1d4ed8;
+}
+
+body.dark .floating-button:hover {
+  background-color: #2563eb;
 }
