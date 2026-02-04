@@ -43,7 +43,8 @@ const es = {
       wallhavenDownload: 'Descargar Wallhaven',
       viewKLine: 'Ver K-Line',
       settings: 'Configuraciones',
-      folderTools: 'Herramientas de Carpeta'
+      folderTools: 'Herramientas de Carpeta',
+      sitemapMonitor: 'Monitor de Sitemap'
     },
     settings: {
       title: 'Configuraciones',

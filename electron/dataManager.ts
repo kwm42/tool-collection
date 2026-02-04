@@ -1,6 +1,7 @@
 import { app } from 'electron';
-import { writeFileSync, readFileSync, existsSync } from 'fs';
+import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+import { createDefaultSitemapStore, SitemapStore } from './types/sitemaps';
 
 const dataFilePath = join(app.getPath('userData'), 'appData.json');
 
@@ -22,3 +23,41 @@ export function loadData(key: string) {
   }
   return null;
 }
+
+const ensureDataFile = () => {
+  const dir = app.getPath('userData');
+  if (!existsSync(dir)) {
+    mkdirSync(dir, { recursive: true });
+  }
+  if (!existsSync(dataFilePath)) {
+    writeFileSync(dataFilePath, JSON.stringify({}, null, 2));
+  }
+};
+
+export const loadSitemapStore = (): SitemapStore => {
+  ensureDataFile();
+  const raw = loadData('sitemaps');
+  if (!raw) {
+    const initial = createDefaultSitemapStore();
+    saveData('sitemaps', initial);
+    return initial;
+  }
+  const store: SitemapStore = {
+    sites: Array.isArray(raw.sites) ? raw.sites : [],
+    history: Array.isArray(raw.history) ? raw.history : [],
+    settings: raw.settings && raw.settings.schedule
+      ? {
+          schedule: {
+            type: raw.settings.schedule.type === 'daily' ? 'daily' : 'interval',
+            value: Number(raw.settings.schedule.value) || 6
+          }
+        }
+      : createDefaultSitemapStore().settings
+  };
+  return store;
+};
+
+export const saveSitemapStore = (store: SitemapStore) => {
+  ensureDataFile();
+  saveData('sitemaps', store);
+};

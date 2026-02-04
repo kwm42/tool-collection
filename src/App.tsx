@@ -5,6 +5,7 @@ import WallhavenDownload from './pages/WallhavenDownload';
 import ViewKLine from './pages/ViewKLine';
 import DownloadCenter from './pages/DownloadCenter';
 import FolderTool from './pages/FolderTool'; // Add this line
+import SitemapMonitor from './pages/SitemapMonitor';
 import './App.css'; // Add this line to import the CSS file
 
 function App() {
@@ -58,6 +59,8 @@ function App() {
         return <ViewKLine />;
       case 'folder-tools':
         return <FolderTool />;
+      case 'sitemap-monitor':
+        return <SitemapMonitor />;
       default:
         return <WallhavenDownload />;
     }

@@ -69,6 +69,18 @@ function Sidebar({ setCurrentPage }: SidebarProps) {
             {t('menu.folderTools')}
           </MTTypography>
         </MTListItem>
+          <MTListItem
+            data-selected={activeItem === 'sitemap-monitor'}
+            onClick={() => handleNavigate('sitemap-monitor')}
+            className="sidebar-item"
+          >
+            <MTListItemPrefix>
+              <span className="sidebar-icon">S</span>
+            </MTListItemPrefix>
+            <MTTypography variant="h6" className="sidebar-label">
+              {t('menu.sitemapMonitor') ?? 'Sitemap Monitor'}
+            </MTTypography>
+          </MTListItem>
       </MTList>
       <div className="sidebar-footer">
         <div className="sidebar-control">

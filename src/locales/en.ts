@@ -43,7 +43,8 @@ const en = {
       wallhavenDownload: 'Wallhaven Download',
       viewKLine: 'View K-Line',
       settings: 'Settings',
-      folderTools: 'Folder Tools'
+      folderTools: 'Folder Tools',
+      sitemapMonitor: 'Sitemap Monitor'
     },
     settings: {
       title: 'Settings',

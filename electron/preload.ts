@@ -211,6 +211,13 @@ const api = {
   onDownloadStatus: (callback: (status: any) => void) => {
     ipcRenderer.on('download-status', (_, status) => callback(status));
   },
+  sitemap: {
+    getConfig: () => ipcRenderer.invoke('sitemap-get-config'),
+    getHistory: () => ipcRenderer.invoke('sitemap-get-history'),
+    runNow: (siteId: string) => ipcRenderer.invoke('sitemap-run-now', siteId),
+    runAll: () => ipcRenderer.invoke('sitemap-run-all'),
+    setSchedule: (schedule: any) => ipcRenderer.invoke('sitemap-set-schedule', schedule)
+  }
 };
 
 contextBridge.exposeInMainWorld('Main', api);
