@@ -1,80 +1,84 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
-<meta charset="UTF-8">
-<title>工具导航</title>
+    <meta charset="UTF-8">
+    <title>工具导航</title>
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f5f6fa;
-        margin: 0;
-        padding: 40px;
-        text-align: center;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
 
-    h1 {
-        margin-bottom: 40px;
-    }
+        h1 {
+            margin-bottom: 40px;
+        }
 
-    .container {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        flex-wrap: wrap;
-    }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
 
-    .card {
-        width: 220px;
-        padding: 25px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        text-decoration: none;
-        color: #333;
-        transition: 0.2s;
-    }
+        .card {
+            width: 220px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: #333;
+            transition: 0.2s;
+        }
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
 
-    .title {
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 10px;
-    }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-    .desc {
-        font-size: 14px;
-        color: #666;
-        margin-top: 8px;
-    }
-</style>
+        .desc {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+        }
+    </style>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
 
-<h1>🧰 工具导航</h1>
+    <h1>🧰 工具导航</h1>
 
-<div class="container">
+    <div class="container">
 
-    <!-- 外汇仓位计算器 -->
-    <a class="card" href="/pip-calculator/index.html">
-        <div style="font-size:40px;">💱</div>
-        <div class="title">外汇仓位计算器</div>
-        <div class="desc">计算不同货币对的开仓手数</div>
-    </a>
+        <!-- 外汇仓位计算器 -->
+        <a class="card" href="/pip-calculator/index.html">
+            <div style="font-size:40px;">💱</div>
+            <div class="title">外汇仓位计算器</div>
+            <div class="desc">计算不同货币对的开仓手数</div>
+        </a>
 
-    <!-- 图片查看器 -->
-    <a class="card" href="https://image-viewer-sooty.vercel.app/">
-        <div style="font-size:40px;">🖼️</div>
-        <div class="title">图片查看器</div>
-        <div class="desc">本地图片浏览工具</div>
-    </a>
+        <!-- 图片查看器 -->
+        <a class="card" href="https://image-viewer-sooty.vercel.app/">
+            <div style="font-size:40px;">🖼️</div>
+            <div class="title">图片查看器</div>
+            <div class="desc">本地图片浏览工具</div>
+        </a>
 
-</div>
+    </div>
 
 </body>
+
 </html>
