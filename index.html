@@ -1,21 +1,24 @@
-<!DOCTYPE html>
-<html lang="zh">
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>工具导航</title>
-
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
             background: #f5f6fa;
             margin: 0;
             padding: 40px;
             text-align: center;
+            color: #333;
         }
 
         h1 {
             margin-bottom: 40px;
+            font-size: 32px;
         }
 
         .container {
@@ -28,12 +31,12 @@
         .card {
             width: 220px;
             padding: 25px;
-            background: white;
+            background: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-decoration: none;
             color: #333;
-            transition: 0.2s;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card:hover {
@@ -41,9 +44,14 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
+        .icon {
+            font-size: 40px;
+            line-height: 1;
+        }
+
         .title {
             font-size: 18px;
-            font-weight: bold;
+            font-weight: 700;
             margin-top: 10px;
         }
 
@@ -51,34 +59,33 @@
             font-size: 14px;
             color: #666;
             margin-top: 8px;
+            line-height: 1.5;
         }
     </style>
-
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
-
     <h1>🧰 工具导航</h1>
 
     <div class="container">
-
-        <!-- 外汇仓位计算器 -->
         <a class="card" href="/pip-calculator/index.html">
-            <div style="font-size:40px;">💱</div>
+            <div class="icon">💶</div>
             <div class="title">外汇仓位计算器</div>
             <div class="desc">计算不同货币对的开仓手数</div>
         </a>
 
-        <!-- 图片查看器 -->
         <a class="card" href="https://image-viewer-sooty.vercel.app/">
-            <div style="font-size:40px;">🖼️</div>
+            <div class="icon">🖼️</div>
             <div class="title">图片查看器</div>
             <div class="desc">本地图片浏览工具</div>
         </a>
 
+        <a class="card" href="image-concat/dist/index.html">
+            <div class="icon">🧩</div>
+            <div class="title">ImageConcat</div>
+            <div class="desc">图片拼接工具入口</div>
+        </a>
     </div>
-
 </body>
 
 </html>
