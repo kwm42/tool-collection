@@ -1,13 +1,12 @@
-﻿import { useEffect, useMemo, useRef, useState } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { generateTelegramLayout } from "../lib/layout/telegramLayout";
 
 function useElementWidth() {
-  const ref = useRef(null);
+  const [node, setNode] = useState(null);
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) {
+    if (!node) {
       return;
     }
 
@@ -16,11 +15,12 @@ function useElementWidth() {
       setWidth((prev) => (Math.abs(prev - next) >= 2 ? next : prev));
     });
 
-    observer.observe(element);
+    setWidth(Math.floor(node.clientWidth || 0));
+    observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [node]);
 
-  return [ref, width];
+  return [setNode, width];
 }
 
 function getBoardStyle(background) {
@@ -44,10 +44,10 @@ export function PreviewPanel({ images, gap, radius, background, layoutMode, layo
 
   const layout = useMemo(() => {
     if (!images.length) {
-      return { width: 0, height: 0, boxes: [], mode: layoutMode };
+      return { width: 0, height: 0, boxes: [], mode: layoutMode, shape: canvasShape };
     }
 
-    const usableWidth = Math.max(containerWidth - 8, 280);
+    const usableWidth = Math.max(containerWidth, 280);
     return generateTelegramLayout(images, {
       width: usableWidth,
       gap,
@@ -74,11 +74,14 @@ export function PreviewPanel({ images, gap, radius, background, layoutMode, layo
       ) : (
         <div
           ref={viewportRef}
-          className="mt-4 flex-1 overflow-y-auto overflow-x-hidden rounded-2xl border border-slate-200 bg-slate-50 p-1"
+          className="mt-4 flex-1 overflow-y-auto overflow-x-hidden rounded-2xl border border-slate-200 bg-slate-50 p-0"
           style={{ scrollbarGutter: "stable" }}
         >
-          <div className="mx-auto" style={{ width: `${layout.width}px`, maxWidth: "100%" }}>
-            <div className="relative overflow-hidden" style={{ width: `${layout.width}px`, height: `${layout.height}px`, ...getBoardStyle(background) }}>
+          <div style={{ width: "100%" }}>
+            <div
+              className="relative overflow-hidden"
+              style={{ width: `${layout.width}px`, height: `${layout.height}px`, ...getBoardStyle(background) }}
+            >
               {layout.boxes.map((box) => {
                 const image = imageMap.get(box.id);
                 if (!image) {
