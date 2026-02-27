@@ -41,7 +41,7 @@ function pickCanvasAspect(items, seed, shape = "random") {
     return 1;
   }
   if (shape === "landscape") {
-    return 1.45;
+    return 1.9;
   }
 
   const roll = seededFloat(seed + 131);
@@ -76,6 +76,25 @@ function pickCanvasAspect(items, seed, shape = "random") {
 function calcTargetHeight(items, width, seed, shape) {
   const aspect = pickCanvasAspect(items, seed, shape);
   const avgRatio = items.reduce((acc, item) => acc + item.ratio, 0) / items.length;
+
+  if (shape === "landscape") {
+    const countBoost = clamp(0.78 + (items.length - 4) * 0.04, 0.68, 1.08);
+    const ratioBoost = clamp(1.04 - (avgRatio - 1) * 0.08, 0.88, 1.12);
+    return (width / aspect) * countBoost * ratioBoost;
+  }
+
+  if (shape === "square") {
+    const countBoost = clamp(0.9 + (items.length - 4) * 0.06, 0.82, 1.35);
+    const ratioBoost = clamp(1.06 - (avgRatio - 1) * 0.1, 0.86, 1.15);
+    return (width / aspect) * countBoost * ratioBoost;
+  }
+
+  if (shape === "portrait") {
+    const countBoost = clamp(0.96 + (items.length - 4) * 0.08, 0.9, 1.6);
+    const ratioBoost = clamp(1.12 - avgRatio * 0.18, 0.85, 1.24);
+    return (width / aspect) * countBoost * ratioBoost;
+  }
+
   const countBoost = clamp(0.92 + (items.length - 3) * 0.1, 0.85, 2.25);
   const portraitBoost = clamp(1.18 - avgRatio * 0.22, 0.8, 1.25);
   return (width / aspect) * countBoost * portraitBoost;
