@@ -50,12 +50,12 @@ export default function App() {
   const [radius, setRadius] = useState(4);
   const [background, setBackground] = useState("#ffffff");
   const [layoutMode, setLayoutMode] = useState("organic");
-  const [canvasShape, setCanvasShape] = useState("random");
+  const [canvasShape, setCanvasShape] = useState("landscape");
   const [layoutSeed, setLayoutSeed] = useState(() => Math.floor(Math.random() * 1_000_000));
   const [exportFormat, setExportFormat] = useState("png");
   const [exportQuality, setExportQuality] = useState(0.92);
   const [exportScale, setExportScale] = useState(2);
-  const [exportWidth, setExportWidth] = useState(1080);
+  const [exportWidth, setExportWidth] = useState(2560);
   const [isLoading, setIsLoading] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
   const [isCopying, setIsCopying] = useState(false);
@@ -168,7 +168,7 @@ export default function App() {
     mode: layoutMode,
     shape: canvasShape,
     seed: layoutSeed,
-    width: Math.max(360, Math.min(2400, Number(exportWidth) || 1080)),
+    width: Math.max(360, Math.min(4096, Number(exportWidth) || 2560)),
   };
 
   const handleExport = async () => {
@@ -234,16 +234,6 @@ export default function App() {
 
         <main className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <section className="flex min-w-0 flex-col gap-6">
-            <UploadPanel
-              images={images}
-              isLoading={isLoading}
-              error={error}
-              warning={warning}
-              summary={summary}
-              onFilesSelected={handleFilesSelected}
-              onRemove={handleRemove}
-              onClear={handleClear}
-            />
             <ControlsPanel
               gap={gap}
               radius={radius}
@@ -259,10 +249,20 @@ export default function App() {
               onBackgroundChange={setBackground}
               onLayoutModeChange={setLayoutMode}
               onCanvasShapeChange={setCanvasShape}
-              onExportWidthChange={(value) => setExportWidth(Math.max(360, Math.min(2400, value || 1080)))}
+              onExportWidthChange={(value) => setExportWidth(Math.max(360, Math.min(4096, value || 2560)))}
               onExportFormatChange={setExportFormat}
               onExportQualityChange={(value) => setExportQuality(Math.max(0.1, Math.min(1, value || 0.92)))}
               onExportScaleChange={(value) => setExportScale(value === 1 ? 1 : 2)}
+            />
+            <UploadPanel
+              images={images}
+              isLoading={isLoading}
+              error={error}
+              warning={warning}
+              summary={summary}
+              onFilesSelected={handleFilesSelected}
+              onRemove={handleRemove}
+              onClear={handleClear}
             />
           </section>
           <PreviewPanel

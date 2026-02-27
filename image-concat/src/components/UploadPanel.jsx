@@ -98,11 +98,11 @@ export function UploadPanel({ images, isLoading, error, warning, summary, onFile
       {empty ? (
         <p className="text-xs text-slate-500">No images yet. Upload at least 2 images for collage preview.</p>
       ) : (
-        <ul className="grid max-h-[320px] gap-3 overflow-auto pr-1 sm:grid-cols-2">
+        <ul className="grid max-h-[320px] grid-cols-3 gap-3 overflow-auto pr-1">
           {images.map((item) => (
             <li key={item.id} className="rounded-xl border border-slate-200 bg-slate-50 p-2">
               <div className="relative overflow-hidden rounded-lg bg-slate-200">
-                <img src={item.url} alt={item.name} className="h-24 w-full object-cover" loading="lazy" />
+                <img src={item.url} alt={item.name} className="aspect-square w-full object-cover" loading="lazy" />
                 <button
                   type="button"
                   className="absolute right-1 top-1 rounded bg-black/65 px-2 py-1 text-[10px] font-semibold text-white"

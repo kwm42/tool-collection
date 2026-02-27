@@ -113,7 +113,7 @@ export function ControlsPanel({
           <input
             type="number"
             min="360"
-            max="2400"
+            max="4096"
             step="10"
             className="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5"
             value={exportWidth}

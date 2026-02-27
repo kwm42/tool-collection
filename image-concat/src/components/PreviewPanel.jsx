@@ -1,5 +1,7 @@
 ﻿import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { generateTelegramLayout } from "../lib/layout/telegramLayout";
+import { createCollageBlob } from "../lib/canvas/exportCollage";
 
 function useElementWidth() {
   const [node, setNode] = useState(null);
@@ -41,6 +43,10 @@ function getBoardStyle(background) {
 
 export function PreviewPanel({ images, gap, radius, background, layoutMode, layoutSeed, canvasShape }) {
   const [viewportRef, containerWidth] = useElementWidth();
+  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const [isViewerLoading, setIsViewerLoading] = useState(false);
+  const [viewerUrl, setViewerUrl] = useState("");
+  const [viewerError, setViewerError] = useState("");
 
   const layout = useMemo(() => {
     if (!images.length) {
@@ -63,9 +69,63 @@ export function PreviewPanel({ images, gap, radius, background, layoutMode, layo
     return map;
   }, [images]);
 
+  useEffect(() => {
+    return () => {
+      if (viewerUrl) {
+        URL.revokeObjectURL(viewerUrl);
+      }
+    };
+  }, [viewerUrl]);
+
+  const handleOpenViewer = async () => {
+    if (!images.length || isViewerLoading) {
+      return;
+    }
+
+    setViewerError("");
+    setIsViewerLoading(true);
+
+    try {
+      const blob = await createCollageBlob(images, {
+        gap,
+        radius,
+        background,
+        mode: layoutMode,
+        shape: canvasShape,
+        seed: layoutSeed,
+        width: 1600,
+        scale: 1,
+        format: "png",
+      });
+
+      if (viewerUrl) {
+        URL.revokeObjectURL(viewerUrl);
+      }
+
+      setViewerUrl(URL.createObjectURL(blob));
+      setIsViewerOpen(true);
+    } catch (_err) {
+      setViewerError("Failed to generate full-screen preview.");
+    } finally {
+      setIsViewerLoading(false);
+    }
+  };
+
+  const handleCloseViewer = () => {
+    setIsViewerOpen(false);
+  };
+
   return (
-    <section className="panel flex min-h-[420px] min-w-0 flex-col">
+    <section className="panel relative flex min-h-[420px] min-w-0 flex-col">
       <h2 className="panel-title">Collage Preview</h2>
+      <button
+        type="button"
+        className="absolute right-5 top-5 rounded-md border border-slate-300 bg-white/90 px-2.5 py-1 text-xs font-semibold text-slate-700 hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
+        disabled={!images.length || isViewerLoading}
+        onClick={handleOpenViewer}
+      >
+        {isViewerLoading ? "Loading..." : "Zoom"}
+      </button>
 
       {images.length === 0 ? (
         <div className="mt-4 flex flex-1 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
@@ -113,6 +173,27 @@ export function PreviewPanel({ images, gap, radius, background, layoutMode, layo
         Layout mode: {layout.mode} · shape: {layout.shape} · {layout.boxes.length} item(s) · {Math.max(layout.width, 0)} x{" "}
         {Math.max(layout.height, 0)} px
       </p>
+      {viewerError ? <p className="mt-2 text-xs text-rose-600">{viewerError}</p> : null}
+
+      {isViewerOpen
+        ? createPortal(
+            <div className="fixed inset-0 z-[9999] bg-black/75 p-4 md:p-8 lg:p-12" onClick={handleCloseViewer}>
+              <button
+                type="button"
+                className="absolute right-4 top-4 rounded-md bg-white/90 px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-white"
+                onClick={handleCloseViewer}
+              >
+                Close
+              </button>
+              <div className="flex h-full w-full items-center justify-center" onClick={(event) => event.stopPropagation()}>
+                {viewerUrl ? (
+                  <img src={viewerUrl} alt="Full collage preview" className="max-h-full max-w-full object-contain shadow-2xl" />
+                ) : null}
+              </div>
+            </div>,
+            document.body
+          )
+        : null}
     </section>
   );
 }
