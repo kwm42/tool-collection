@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTT 转 SRT 转换器</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s, background 0.3s;
+            margin-bottom: 20px;
+        }
+        .upload-area:hover {
+            border-color: #4a90d9;
+            background: #f8fafc;
+        }
+        .upload-area.dragover {
+            border-color: #4a90d9;
+            background: #e8f4fc;
+        }
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .upload-text {
+            color: #666;
+        }
+        .upload-hint {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+        }
+        #fileInput {
+            display: none;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4a90d9;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #357abd;
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .result {
+            margin-top: 30px;
+            display: none;
+        }
+        .result.show {
+            display: block;
+        }
+        .file-list {
+            margin-bottom: 20px;
+        }
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 15px;
+            background: #f8fafc;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        .file-item-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .file-icon {
+            font-size: 24px;
+        }
+        .file-name {
+            font-weight: 500;
+        }
+        .file-arrow {
+            color: #999;
+        }
+        .file-status {
+            font-size: 14px;
+            color: #4a90d9;
+        }
+        .file-status.error {
+            color: #e74c3c;
+        }
+        .preview {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 15px;
+            background: #fafafa;
+        }
+        .info {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4a90d9;
+            text-decoration: none;
+        }
+        .back:hover {
+            text-decoration: underline;
+        }
+        .clear-btn {
+            background: #e74c3c;
+        }
+        .clear-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <a class="back" href="/">← 返回工具导航</a>
+    <h1>VTT 转 SRT 转换器</h1>
+    <div class="container">
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">点击或拖拽 VTT 文件到这里</div>
+            <div class="upload-hint">支持一次上传多个文件</div>
+        </div>
+        <input type="file" id="fileInput" accept=".vtt" multiple>
+        
+        <div class="result" id="result">
+            <div class="info" id="fileInfo"></div>
+            <div class="file-list" id="fileList"></div>
+            <div class="btn-group">
+                <button class="btn" id="downloadAllBtn">下载全部 (ZIP)</button>
+                <button class="btn clear-btn" id="clearBtn">清空</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const result = document.getElementById('result');
+        const fileList = document.getElementById('fileList');
+        const fileInfo = document.getElementById('fileInfo');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+        const clearBtn = document.getElementById('clearBtn');
+
+        const convertedFiles = [];
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.vtt'));
+            if (files.length > 0) {
+                processFiles(files);
+            } else {
+                alert('请上传 VTT 文件');
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            if (files.length > 0) {
+                processFiles(files);
+            }
+            fileInput.value = '';
+        });
+
+        async function processFiles(files) {
+            result.classList.add('show');
+            fileInfo.textContent = `已选择 ${files.length} 个文件`;
+            
+            for (const file of files) {
+                try {
+                    const content = await readFile(file);
+                    const srtContent = vttToSrt(content);
+                    const srtFileName = file.name.replace('.vtt', '.srt');
+                    
+                    convertedFiles.push({
+                        originalName: file.name,
+                        srtName: srtFileName,
+                        content: srtContent
+                    });
+                    
+                    renderFileList();
+                } catch (err) {
+                    console.error(`处理文件 ${file.name} 失败:`, err);
+                }
+            }
+        }
+
+        function readFile(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.onerror = reject;
+                reader.readAsText(file);
+            });
+        }
+
+        function renderFileList() {
+            fileList.innerHTML = convertedFiles.map((file, index) => `
+                <div class="file-item">
+                    <div class="file-item-left">
+                        <span class="file-icon">📄</span>
+                        <span class="file-name">${file.originalName}</span>
+                        <span class="file-arrow">→</span>
+                        <span class="file-name">${file.srtName}</span>
+                    </div>
+                    <span class="file-status">✓ 已转换</span>
+                </div>
+            `).join('');
+        }
+
+        function vttToSrt(vttContent) {
+            let content = vttContent.replace(/^\uFEFF/, '');
+            
+            content = content.replace(/^WEBVTT.*$/m, '');
+            
+            content = content.replace(/^\s*\d{2}:\d{2}:\d{2}\.\d{3}\s*-->\s*\d{2}:\d{2}:\d{2}\.\d{3}/gm, (match) => {
+                const parts = match.split('-->');
+                return convertTime(parts[0].trim()) + ' --> ' + convertTime(parts[1].trim());
+            });
+            
+            content = content.replace(/NOTE.*/g, '');
+            content = content.replace(/STYLE.*/g, '');
+            
+            const blocks = content.split(/\n\n+/).filter(block => block.trim());
+            
+            let srtContent = '';
+            let index = 1;
+            
+            for (const block of blocks) {
+                const lines = block.split('\n').filter(line => line.trim());
+                if (lines.length >= 2) {
+                    const timeLine = lines.find(line => line.includes('-->'));
+                    if (timeLine) {
+                        srtContent += index + '\n';
+                        srtContent += timeLine + '\n';
+                        
+                        const textLines = lines.slice(lines.indexOf(timeLine) + 1);
+                        srtContent += textLines.join('\n') + '\n\n';
+                        index++;
+                    }
+                }
+            }
+            
+            return srtContent.trim();
+        }
+
+        function convertTime(timeStr) {
+            const parts = timeStr.split(':');
+            if (parts.length === 3) {
+                const hours = parts[0];
+                const minutes = parts[1];
+                const seconds = parts[2].replace('.', ',');
+                return `${hours}:${minutes}:${seconds}`;
+            }
+            return timeStr.replace('.', ',');
+        }
+
+        downloadAllBtn.addEventListener('click', async () => {
+            if (convertedFiles.length === 0) return;
+            
+            if (convertedFiles.length === 1) {
+                const file = convertedFiles[0];
+                downloadFile(file.content, file.srtName);
+                return;
+            }
+            
+            const zip = new JSZip();
+            for (const file of convertedFiles) {
+                zip.file(file.srtName, file.content);
+            }
+            
+            const blob = await zip.generateAsync({ type: 'blob' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'converted_srt_files.zip';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        function downloadFile(content, fileName) {
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        clearBtn.addEventListener('click', () => {
+            convertedFiles.length = 0;
+            result.classList.remove('show');
+            fileInput.value = '';
+        });
+    </script>
+</body>
+</html>
