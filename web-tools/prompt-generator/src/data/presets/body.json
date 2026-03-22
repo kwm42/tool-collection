@@ -20,6 +20,168 @@
       "name": "健美曲线型",
       "prompt": "athletic body, fit figure, curves, toned",
       "weight": 1.0
+    },
+    {
+      "id": "body004",
+      "name": "丰满身材",
+      "prompt": "voluptuous body, curvy figure, busty, full figure, womanly curves",
+      "weight": 0.9
+    },
+    {
+      "id": "body005",
+      "name": "纤细骨感",
+      "prompt": "slim and slender, thin body, delicate frame, elegant thinness",
+      "weight": 0.9
+    },
+    {
+      "id": "body006",
+      "name": "微胖肉感",
+      "prompt": "chubby figure, plump body, soft curves, cute fat, fuller figure",
+      "weight": 0.8
+    },
+    {
+      "id": "body007",
+      "name": "健身型",
+      "prompt": "fit body, athletic build, muscular yet feminine, gym physique",
+      "weight": 0.8
+    },
+    {
+      "id": "body008",
+      "name": "蜜桃身材",
+      "prompt": "peach figure, big butt, curvy hips, shapely figure, hourglass",
+      "weight": 0.9
+    },
+    {
+      "id": "body009",
+      "name": "少女体型",
+      "prompt": "slim teenage body, petite, youthful figure, flat chest, youthful",
+      "weight": 0.7
+    },
+    {
+      "id": "body010",
+      "name": "御姐身材",
+      "prompt": "mature body, developed figure, womanly curves, mature physique",
+      "weight": 0.9
+    },
+    {
+      "id": "body011",
+      "name": "高挑长腿",
+      "prompt": "tall with long legs, model height, long and slender, statuesque",
+      "weight": 1.0
+    },
+    {
+      "id": "body012",
+      "name": "娇小玲珑",
+      "prompt": "short and petite, small frame, little, pocket-sized beauty",
+      "weight": 1.0
+    },
+    {
+      "id": "body013",
+      "name": "葫芦型身材",
+      "prompt": "hourglass figure, curvy waist and hips, busty, classic feminine curves",
+      "weight": 1.0
+    },
+    {
+      "id": "body014",
+      "name": "水蛇腰",
+      "prompt": "very slim waist, wasp waist, tiny waist, hourglass narrow waist",
+      "weight": 0.9
+    },
+    {
+      "id": "body015",
+      "name": "魔鬼身材",
+      "prompt": "perfect proportions, ideal body, goddess figure, flawless curves",
+      "weight": 1.0
+    },
+    {
+      "id": "body016",
+      "name": "棉花糖身材",
+      "prompt": "soft and curvy, squishy, plush body, cute chubby, soft figure",
+      "weight": 0.8
+    },
+    {
+      "id": "body017",
+      "name": "纸片人身材",
+      "prompt": "extremely thin, flat body, slender as paper, wafer-thin",
+      "weight": 0.7
+    },
+    {
+      "id": "body018",
+      "name": "健壮型",
+      "prompt": "strong body, muscular, powerful build, amazonian, strong woman",
+      "weight": 0.6
+    },
+    {
+      "id": "body019",
+      "name": "匀称标准",
+      "prompt": "well-proportioned, balanced figure, average healthy body, normal",
+      "weight": 1.1
+    },
+    {
+      "id": "body020",
+      "name": "排骨精",
+      "prompt": "very skinny, bony, extremely thin, emaciated look",
+      "weight": 0.5
+    },
+    {
+      "id": "body021",
+      "name": "S型曲线",
+      "prompt": "S-curve body, sexy curves, feminine silhouette, seductive shape",
+      "weight": 1.0
+    },
+    {
+      "id": "body022",
+      "name": "幼态身材",
+      "prompt": "childlike body, petite, flat, youthful figure, innocent physique",
+      "weight": 0.5
+    },
+    {
+      "id": "body023",
+      "name": "熟女身材",
+      "prompt": "mature woman body, developed curves, full figure, womanly",
+      "weight": 0.9
+    },
+    {
+      "id": "body024",
+      "name": "运动辣妹",
+      "prompt": "sports girl body, athletic, toned legs, fit abs, active lifestyle",
+      "weight": 0.9
+    },
+    {
+      "id": "body025",
+      "name": "舞蹈身材",
+      "prompt": "dancer body, flexible, graceful, ballet body, elongated limbs",
+      "weight": 0.9
+    },
+    {
+      "id": "body026",
+      "name": "瑜伽身材",
+      "prompt": "yoga body, flexible, zen figure, calm, wellness physique",
+      "weight": 0.9
+    },
+    {
+      "id": "body027",
+      "name": "孕妇体型",
+      "prompt": "pregnant, expecting mother, baby bump, maternal, expecting",
+      "weight": 0.5
+    },
+    {
+      "id": "body028",
+      "name": "产后妈妈",
+      "prompt": "postpartum mother, mom body, natural curves, maternal beauty",
+      "weight": 0.7
+    },
+    {
+      "id": "body029",
+      "name": "大码身材",
+      "prompt": "plus size, big beautiful, curvy plus, full-figured, BBW",
+      "weight": 0.8
+    },
+    {
+      "id": "body030",
+      "name": "模特黄金比例",
+      "prompt": "model proportions, perfect height to leg ratio, runway ready",
+      "weight": 1.0
     }
   ],
   "subDimensionOptions": {

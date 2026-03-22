@@ -38,6 +38,378 @@
       "name": "婚纱礼服",
       "prompt": "wedding dress, bridal gown, white dress, elegant veil",
       "weight": 0.9
+    },
+    {
+      "id": "cloth007",
+      "name": "兔女郎",
+      "prompt": "bunny suit, corset, ears, bow tie, tail, stockings, heels, classic playboy bunny",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth008",
+      "name": "护士服装",
+      "prompt": "nurse outfit, white dress, nurse cap, short skirt, stockings, stethoscope, seductive",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth009",
+      "name": "教师服装",
+      "prompt": "teacher outfit, blazer, pencil skirt, white blouse, glasses, authoritative pose",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth010",
+      "name": "比基尼",
+      "prompt": "bikini, micro bikini, string bikini, tan lines, tropical beach, water droplets, wet skin",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth011",
+      "name": "女仆服装",
+      "prompt": "maid outfit, frilly apron, headband, short skirt, white blouse, black dress, stockings",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth012",
+      "name": "啦啦队",
+      "prompt": "cheerleader outfit, crop top, short skirt, pom poms, thigh highs, ponytail, energetic pose",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth013",
+      "name": "和服/浴衣",
+      "prompt": "traditional kimono, floral pattern, obi sash, exposed back, sleeves, japanese style, elegant",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth014",
+      "name": "校服",
+      "prompt": "school uniform, sailor fuku, white blouse, pleated skirt, knee socks, ribbon, japanese schoolgirl",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth015",
+      "name": "警察服装",
+      "prompt": "police uniform, tight dress, miniskirt, cap, thigh highs, badge, authoritative pose",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth016",
+      "name": "女巫服装",
+      "prompt": "witch costume, black dress, pointed hat, lace trim, corset, witch boots, halloween, magical",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth017",
+      "name": "恶魔服装",
+      "prompt": "demon girl, devil costume, horns, bat wings, tail, black lingerie, red accents, dark atmosphere",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth018",
+      "name": "天使服装",
+      "prompt": "angel costume, white dress, halo, wings, gold accessories, heavenly, ethereal, divine",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth019",
+      "name": "猫女服装",
+      "prompt": "catgirl outfit, ears, tail, maid headdress, collar with bell, wrist bells, paws, leotard, cute",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth020",
+      "name": "水手服",
+      "prompt": "sailor uniform, sailor fuku, navy blue, white accents, ribbon, pleated skirt, schoolgirl",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth021",
+      "name": "牛仔女孩",
+      "prompt": "cowgirl outfit, denim shorts, crop top, cowboy boots, hat, belt with buckle, western",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth022",
+      "name": "军装",
+      "prompt": "military uniform, officer uniform, miniskirt, epaulettes, cap, stockings, authoritative",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth023",
+      "name": "空姐服装",
+      "prompt": "flight attendant uniform, blazer, skirt, scarf, hat, professional pose, airline logo",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth024",
+      "name": "健身服装",
+      "prompt": "gym outfit, sports bra, yoga pants, athletic body, sweaty, fitness, workout clothes",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth025",
+      "name": "乳胶服装",
+      "prompt": "latex catsuit, tight fitting, shiny, bodysuit, zipper details, glossy skin",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth026",
+      "name": "PVC服装",
+      "prompt": "pvc dress, glossy, shiny material, tight fitting, miniskirt, cleavage, plastic fashion",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth027",
+      "name": "皮革服装",
+      "prompt": "leather outfit, leather dress, corset, studs, zippers, boots, rock style, edgy",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth028",
+      "name": "内衣",
+      "prompt": "lingerie, lace bra, matching panties, garter belt, stockings, sheer, delicate, bedroom",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth029",
+      "name": "泳装",
+      "prompt": "one-piece swimsuit, tight, curves, wet skin, water droplets, pool, beach, summer",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth030",
+      "name": "哥特洛丽塔",
+      "prompt": "gothic lolita, black dress, lace trim, ruffles, cross accessories, parasol, elegant, dark",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth031",
+      "name": "Cosplay",
+      "prompt": "detailed cosplay, accurate costume, wig, anime character inspired, convention, roleplay",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth032",
+      "name": "女服务员",
+      "prompt": "waitress outfit, uniform dress, apron, short skirt, stockings, serving pose, restaurant",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth033",
+      "name": "西部牛仔",
+      "prompt": "cowgirl outfit, denim shorts, tank top, cowboy boots, hat, belt, rodeo style, western",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth034",
+      "name": "图书管理员",
+      "prompt": "librarian outfit, glasses, cardigan, skirt, hair bun, glasses, intellectual, bookish",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth035",
+      "name": "秘书服装",
+      "prompt": "secretary outfit, business suit, pencil skirt, blouse, glasses, professional, office",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth036",
+      "name": "消防员",
+      "prompt": "firefighter outfit, uniform, suspenders, helmet, boots, heroic pose, rescue setting",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth037",
+      "name": "忍者服装",
+      "prompt": "ninja outfit, black bodysuit, mask, throwing stars, katana, stealth pose, martial arts",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth038",
+      "name": "武士服装",
+      "prompt": "samurai outfit, armor, kimono, katana, traditional japanese, warrior pose, historical",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth039",
+      "name": "中世纪服装",
+      "prompt": "medieval dress, corset, long skirt, historical, renaissance, renaissance faire, period costume",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth040",
+      "name": "维多利亚时代",
+      "prompt": "victorian dress, corset, bustle, long skirt, lace, high collar, elegant, historical fashion",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth041",
+      "name": "蒸汽朋克",
+      "prompt": "steampunk outfit, corset, gears, goggles, victorian style, leather, brass accessories, mechanical",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth042",
+      "name": "赛博朋克服装",
+      "prompt": "cyberpunk outfit, neon lights, futuristic, techwear, glowing accents, holographic, sci-fi",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth043",
+      "name": "马甲服装",
+      "prompt": "harness outfit, leather harness, bare skin, straps, bondage style, edgy, revealing",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth044",
+      "name": "海盗服装",
+      "prompt": "pirate outfit, corset, boots, tricorne hat, captain coat, treasure, adventurous",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth045",
+      "name": "吸血鬼服装",
+      "prompt": "vampire outfit, gothic dress, corset, lace, fangs, pale skin, coffin, dark elegance",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth046",
+      "name": "妖精服装",
+      "prompt": "fairy costume, flowy dress, wings, flower crown, glitter, ethereal, forest, magical",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth047",
+      "name": "美人鱼服装",
+      "prompt": "mermaid costume, scales, shell bikini top, flowing hair, underwater, ocean, magical",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth048",
+      "name": "骷髅服装",
+      "prompt": "skeleton costume, bone patterns, corset, mini dress, halloween, spooky, dramatic",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth049",
+      "name": "僵尸服装",
+      "prompt": "zombie outfit, torn dress, blood, decayed makeup, horror, undead, post-apocalyptic",
+      "weight": 0.5
+    },
+    {
+      "id": "cloth050",
+      "name": "外星人服装",
+      "prompt": "alien outfit, sleek bodysuit, antennas, glowing makeup, sci-fi, otherworldly, futuristic",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth051",
+      "name": "机器人服装",
+      "prompt": "robot costume, metallic bodysuit, circuits, LED lights, mechanical, futuristic, sci-fi",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth052",
+      "name": "修女服装",
+      "prompt": "nun outfit, habit, veil, wimple, modest dress, religious, innocent yet forbidden",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth053",
+      "name": "圣诞服装",
+      "prompt": "sexy santa costume, mini dress, hat, boots, Christmas, holiday, festive, Mrs Claus",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth054",
+      "name": "万圣节服装",
+      "prompt": "halloween costume, witch, cat, devil, vampire, zombie, pirate, costumes, spooky night",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth055",
+      "name": "运动服装",
+      "prompt": "sports outfit, basketball jersey, short shorts, sneakers, athletic, sweaty, training",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth056",
+      "name": "瑜伽服装",
+      "prompt": "yoga outfit, tight leggings, sports bra, flexible pose, athletic body, zen, peaceful",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth057",
+      "name": "夜店服装",
+      "prompt": "club outfit, mini dress, high heels, sparkling, nightlife, party, dance floor, flashy",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth058",
+      "name": "约会服装",
+      "prompt": "date night outfit, elegant dress, heels, romantic, dinner, candlelight, sophisticated",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth059",
+      "name": "睡衣",
+      "prompt": "sleepwear, nightgown, silk, lace trim, sheer, bedtime, intimate, soft lighting, bedroom",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth060",
+      "name": "沐浴服装",
+      "prompt": "bathing scene, towel, wet hair, bathrobe, steam, bathroom, intimate, relaxed, bare shoulder",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth061",
+      "name": "帝国服装",
+      "prompt": "imperial gown, elaborate dress, crown, jewels, royal, elegant, regal, empire style",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth062",
+      "name": "部落服装",
+      "prompt": "tribal outfit, leaf bikini, body paint, tribal markings, jungle, native, earthy, primal",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth063",
+      "name": "商务服装",
+      "prompt": "business suit, blazer, skirt, blouse, professional, office, career woman, powerful",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth064",
+      "name": "休闲服装",
+      "prompt": "casual outfit, t-shirt, jeans, sneakers, everyday, comfortable, relaxed, normal day",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth065",
+      "name": "运动装",
+      "prompt": "athletic wear, sports bra, leggings, sneakers, gym, workout, fitness, athletic body",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth066",
+      "name": "连体泳装",
+      "prompt": "one-piece swimsuit, tight, curves, wet skin, pool, beach, summer, elegant",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth067",
+      "name": "兔耳女仆",
+      "prompt": "reverse bunnysuit, pasties, maebari, crotchless pantyhose, cat ears, bunny tail, latex, shiny",
+      "weight": 0.5
+    },
+    {
+      "id": "cloth068",
+      "name": "舞者服装",
+      "prompt": "belly dancer costume, harem pants, crop top, hip scarf, gold accessories, veils, dynamic pose",
+      "weight": 0.8
     }
   ],
   "subDimensionOptions": {

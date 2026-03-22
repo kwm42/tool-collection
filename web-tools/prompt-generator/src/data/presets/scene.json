@@ -38,6 +38,210 @@
       "name": "纯色背景",
       "prompt": "simple background, solid color, clean, minimalist",
       "weight": 0.9
+    },
+    {
+      "id": "scene007",
+      "name": "卧室私密",
+      "prompt": "bedroom, intimate setting, soft lighting, romantic, bedroom",
+      "weight": 0.8
+    },
+    {
+      "id": "scene008",
+      "name": "浴室湿身",
+      "prompt": "bathroom, shower, wet skin, steam, tiles, mirror, intimate",
+      "weight": 0.7
+    },
+    {
+      "id": "scene009",
+      "name": "天台夜景",
+      "prompt": "rooftop at night, city lights, stars, romantic night view",
+      "weight": 1.0
+    },
+    {
+      "id": "scene010",
+      "name": "森林精灵",
+      "prompt": "forest, enchanted woods, fairy, mystical, green atmosphere",
+      "weight": 0.9
+    },
+    {
+      "id": "scene011",
+      "name": "花海仙境",
+      "prompt": "flower field, garden of eden, colorful flowers, dreamy, ethereal",
+      "weight": 1.0
+    },
+    {
+      "id": "scene012",
+      "name": "海边泳池",
+      "prompt": "poolside, swimming pool, summer, tropical, resort",
+      "weight": 0.9
+    },
+    {
+      "id": "scene013",
+      "name": "酒吧夜店",
+      "prompt": "bar, nightclub, dance floor, neon lights, party atmosphere",
+      "weight": 0.8
+    },
+    {
+      "id": "scene014",
+      "name": "教室学园",
+      "prompt": "classroom, school, academic, youthful, anime style school",
+      "weight": 0.9
+    },
+    {
+      "id": "scene015",
+      "name": "图书馆书香",
+      "prompt": "library, bookshelves, vintage, intellectual, warm lighting",
+      "weight": 0.9
+    },
+    {
+      "id": "scene016",
+      "name": "教堂神圣",
+      "prompt": "church, cathedral, stained glass, holy, religious architecture",
+      "weight": 0.8
+    },
+    {
+      "id": "scene017",
+      "name": "古堡神秘",
+      "prompt": "castle, ancient castle, gothic, mysterious, dramatic lighting",
+      "weight": 0.8
+    },
+    {
+      "id": "scene018",
+      "name": "废墟朋克",
+      "prompt": "ruins, abandoned building, post-apocalyptic, urban decay",
+      "weight": 0.7
+    },
+    {
+      "id": "scene019",
+      "name": "沙漠异域",
+      "prompt": "desert, sand dunes, exotic, middle eastern, warm lighting",
+      "weight": 0.8
+    },
+    {
+      "id": "scene020",
+      "name": "热带雨林",
+      "prompt": "tropical rainforest, lush greenery, exotic, humid atmosphere",
+      "weight": 0.8
+    },
+    {
+      "id": "scene021",
+      "name": "雪景唯美",
+      "prompt": "snowy landscape, winter, snowflakes, cold atmosphere, beautiful",
+      "weight": 1.0
+    },
+    {
+      "id": "scene022",
+      "name": "山顶日出",
+      "prompt": "mountain top at sunrise, dramatic sky, morning mist, epic",
+      "weight": 0.9
+    },
+    {
+      "id": "scene023",
+      "name": "湖边倒影",
+      "prompt": "lake, calm water, reflection, peaceful, serene atmosphere",
+      "weight": 1.0
+    },
+    {
+      "id": "scene024",
+      "name": "街头潮流",
+      "prompt": "urban street, graffiti, street art, hip hop, trendy",
+      "weight": 0.9
+    },
+    {
+      "id": "scene025",
+      "name": "赛博空间",
+      "prompt": "cyberspace, digital world, holographic, futuristic, virtual reality",
+      "weight": 0.8
+    },
+    {
+      "id": "scene026",
+      "name": "太空站",
+      "prompt": "space station, sci-fi, stars, zero gravity, cosmic",
+      "weight": 0.7
+    },
+    {
+      "id": "scene027",
+      "name": "水下世界",
+      "prompt": "underwater, submarine, ocean depths, aquatic, mysterious blue",
+      "weight": 0.7
+    },
+    {
+      "id": "scene028",
+      "name": "和室榻榻米",
+      "prompt": "traditional japanese room, tatami, shoji screen, zen, peaceful",
+      "weight": 0.9
+    },
+    {
+      "id": "scene029",
+      "name": "露台花园",
+      "prompt": "garden terrace, balcony garden, flowers, sunshine, romantic",
+      "weight": 1.0
+    },
+    {
+      "id": "scene030",
+      "name": "阁楼工业风",
+      "prompt": "loft apartment, industrial style, exposed brick, modern hipster",
+      "weight": 0.8
+    },
+    {
+      "id": "scene031",
+      "name": "游乐园",
+      "prompt": "amusement park, ferris wheel, colorful, fun, playful atmosphere",
+      "weight": 0.9
+    },
+    {
+      "id": "scene032",
+      "name": "演唱会现场",
+      "prompt": "concert, stage lights, music venue, energetic, dramatic lighting",
+      "weight": 0.8
+    },
+    {
+      "id": "scene033",
+      "name": "复古唱片店",
+      "prompt": "vintage record store, vinyl, retro, nostalgic, warm lighting",
+      "weight": 0.8
+    },
+    {
+      "id": "scene034",
+      "name": "海边悬崖",
+      "prompt": "cliff by the sea, dramatic coast, waves crashing, scenic",
+      "weight": 0.9
+    },
+    {
+      "id": "scene035",
+      "name": "枫叶林秋景",
+      "prompt": "autumn forest, maple leaves, fall colors, red leaves, romantic",
+      "weight": 1.0
+    },
+    {
+      "id": "scene036",
+      "name": "樱花季校园",
+      "prompt": "school campus, cherry blossoms, spring, youthful, anime school",
+      "weight": 1.1
+    },
+    {
+      "id": "scene037",
+      "name": "温泉旅馆",
+      "prompt": "hot spring inn, onsen, steam, traditional japanese, relaxing",
+      "weight": 0.9
+    },
+    {
+      "id": "scene038",
+      "name": "深夜便利店",
+      "prompt": "convenience store at night, 24h store, blue light, urban night",
+      "weight": 0.8
+    },
+    {
+      "id": "scene039",
+      "name": "海边灯塔",
+      "prompt": "lighthouse by the sea, coastal, dramatic, romantic sunset",
+      "weight": 0.9
+    },
+    {
+      "id": "scene040",
+      "name": "空中索道",
+      "prompt": "ropeway, cable car, aerial view, mountain, scenic beauty",
+      "weight": 0.8
     }
   ],
   "subDimensionOptions": {

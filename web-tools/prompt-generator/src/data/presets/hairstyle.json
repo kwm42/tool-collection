@@ -50,6 +50,246 @@
       "name": "赛博朋克挑染",
       "prompt": "cyberpunk hair, neon blue highlights, long spiky hair, futuristic",
       "weight": 0.9
+    },
+    {
+      "id": "hair009",
+      "name": "黑长直",
+      "prompt": "long straight black hair, silky, glossy, classic beauty, traditional",
+      "weight": 1.1
+    },
+    {
+      "id": "hair010",
+      "name": "空气感大波浪",
+      "prompt": "big loose waves, voluminous hair, bouncy curls, romantic, dreamy",
+      "weight": 1.1
+    },
+    {
+      "id": "hair011",
+      "name": "法式慵懒卷",
+      "prompt": "french wavy hair, effortless waves, messy chic, natural beauty",
+      "weight": 1.0
+    },
+    {
+      "id": "hair012",
+      "name": "韩系八字刘海",
+      "prompt": "korean style curtain bangs, long hair, elegant, sophisticated",
+      "weight": 1.1
+    },
+    {
+      "id": "hair013",
+      "name": "动漫双马尾",
+      "prompt": "anime twin tails, pigtails, ribbons, animated style, kawaii",
+      "weight": 1.0
+    },
+    {
+      "id": "hair014",
+      "name": "高马尾活力",
+      "prompt": "high ponytail, dynamic, energetic, sporty, youthful",
+      "weight": 1.0
+    },
+    {
+      "id": "hair015",
+      "name": "低马尾知性",
+      "prompt": "low ponytail, intellectual, mature, professional, elegant",
+      "weight": 1.0
+    },
+    {
+      "id": "hair016",
+      "name": "丸子头可爱",
+      "prompt": "bun hairstyle, messy bun, casual cute, relaxed, adorable",
+      "weight": 1.0
+    },
+    {
+      "id": "hair017",
+      "name": "半扎公主头",
+      "prompt": "half updo, half ponytail, princess hairstyle, elegant, feminine",
+      "weight": 1.0
+    },
+    {
+      "id": "hair018",
+      "name": "拳击辫辣妹",
+      "prompt": "boxing braids, cornrows, sporty, fierce, athletic",
+      "weight": 0.9
+    },
+    {
+      "id": "hair019",
+      "name": "脏辫嘻哈",
+      "prompt": "dreadlocks, hip hop style, urban, street, edgy",
+      "weight": 0.7
+    },
+    {
+      "id": "hair020",
+      "name": "羊毛卷可爱",
+      "prompt": "curly hair, perm curls, volume curls, cute, playful",
+      "weight": 0.9
+    },
+    {
+      "id": "hair021",
+      "name": "公主切姬发",
+      "prompt": "hime cut, straight bangs, long side hair, japanese subculture",
+      "weight": 0.9
+    },
+    {
+      "id": "hair022",
+      "name": "鲻鱼头帅气",
+      "prompt": "mullet hairstyle, business in front party in back, edgy, trendy",
+      "weight": 0.8
+    },
+    {
+      "id": "hair023",
+      "name": "男士短发",
+      "prompt": "boyish short hair, tomboy, androgynous, cool, gender neutral",
+      "weight": 0.7
+    },
+    {
+      "id": "hair024",
+      "name": "精灵短发",
+      "prompt": "pixie cut, elf cut, short and stylish, cute, chic",
+      "weight": 0.8
+    },
+    {
+      "id": "hair025",
+      "name": "波波头减龄",
+      "prompt": "bob hair, rounded bob, youthful, cute, bob cut",
+      "weight": 1.0
+    },
+    {
+      "id": "hair026",
+      "name": "锁骨发优雅",
+      "prompt": "lob, long bob, collarbone length, elegant, sophisticated",
+      "weight": 1.1
+    },
+    {
+      "id": "hair027",
+      "name": "挑染渐变",
+      "prompt": "highlighted hair, balayage, gradient color, trendy, stylish",
+      "weight": 0.9
+    },
+    {
+      "id": "hair028",
+      "name": "白金色高级",
+      "prompt": "platinum blonde hair, silver blonde, high fashion, elegant",
+      "weight": 0.9
+    },
+    {
+      "id": "hair029",
+      "name": "樱花粉甜美",
+      "prompt": "pink hair, cherry blossom pink, pastel, kawaii, cute",
+      "weight": 0.8
+    },
+    {
+      "id": "hair030",
+      "name": "奶奶灰时尚",
+      "prompt": "silver gray hair, elderly gray, fashion forward, trendy, cool",
+      "weight": 0.8
+    },
+    {
+      "id": "hair031",
+      "name": "渐变蓝紫",
+      "prompt": "blue purple gradient hair, ombre, fantasy, magical, colorful",
+      "weight": 0.8
+    },
+    {
+      "id": "hair032",
+      "name": "火焰红张扬",
+      "prompt": "fiery red hair, bright red, bold, confident, eye-catching",
+      "weight": 0.9
+    },
+    {
+      "id": "hair033",
+      "name": "蜂蜜棕温婉",
+      "prompt": "honey brown hair, warm brown, gentle, approachable, sweet",
+      "weight": 1.0
+    },
+    {
+      "id": "hair034",
+      "name": "黑茶色自然",
+      "prompt": "dark brown hair, natural black brown, understated, elegant",
+      "weight": 1.1
+    },
+    {
+      "id": "hair035",
+      "name": "洛丽塔双马尾",
+      "prompt": "lolita twin tails, elaborate ribbons, frills, cute subculture",
+      "weight": 0.9
+    },
+    {
+      "id": "hair036",
+      "name": "哥特风黑长直",
+      "prompt": "gothic long straight hair, black hair, dark, mysterious, gothic",
+      "weight": 0.8
+    },
+    {
+      "id": "hair037",
+      "name": "护士包头巾",
+      "prompt": "nurse cap, covered hair, traditional, neat, professional",
+      "weight": 0.7
+    },
+    {
+      "id": "hair038",
+      "name": "女仆蝴蝶结",
+      "prompt": "maid headdress, white bow, frills, anime maid style",
+      "weight": 0.8
+    },
+    {
+      "id": "hair039",
+      "name": "花嫁盘发",
+      "prompt": "bridal updo, wedding hairstyle, elegant, flowers, beautiful bride",
+      "weight": 0.9
+    },
+    {
+      "id": "hair040",
+      "name": "古典发髻",
+      "prompt": "traditional bun, chinese style, hair bun, elegant, classical",
+      "weight": 0.9
+    },
+    {
+      "id": "hair041",
+      "name": "武侠风束发",
+      "prompt": "martial arts hairstyle, warrior style, high bun, fierce, heroic",
+      "weight": 0.8
+    },
+    {
+      "id": "hair042",
+      "name": "猫耳发型",
+      "prompt": "cat ear hair, nekomimi, anime style, cute, playful",
+      "weight": 0.9
+    },
+    {
+      "id": "hair043",
+      "name": "兔耳朵造型",
+      "prompt": "bunny ear hair, long hair styled up, cute, playful, anime",
+      "weight": 0.8
+    },
+    {
+      "id": "hair044",
+      "name": "水手风双辫",
+      "prompt": "sailor braids, double braids, nautical, youthful, anime sailor",
+      "weight": 0.9
+    },
+    {
+      "id": "hair045",
+      "name": "麻花辫田园",
+      "prompt": "braided hair, braid crown, cottagecore, natural, bohemian",
+      "weight": 0.9
+    },
+    {
+      "id": "hair046",
+      "name": "湿发诱惑",
+      "prompt": "wet hair, wet look, dripping, seductive, sexy, intimate",
+      "weight": 0.8
+    },
+    {
+      "id": "hair047",
+      "name": "凌乱睡发",
+      "prompt": "messy bedhead hair, just woke up, casual, relaxed, morning after",
+      "weight": 0.9
+    },
+    {
+      "id": "hair048",
+      "name": "运动马尾",
+      "prompt": "sports ponytail, fitness, active, dynamic, athletic girl",
+      "weight": 1.0
     }
   ],
   "subDimensionOptions": {

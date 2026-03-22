@@ -100,7 +100,7 @@ export function generatePrompt(
   }
   
   return {
-    positive: parts.join(',\n> '),
+    positive: '> ' + parts.join(',\n> '),
     positiveChinese: chineseParts.join('\n'),
     negative: DEFAULT_NEGATIVE_PROMPT,
   };

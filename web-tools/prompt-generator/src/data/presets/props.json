@@ -26,6 +26,582 @@
       "name": "咖啡时光",
       "prompt": "holding coffee cup, cafe vibes, cozy",
       "weight": 1.0
+    },
+    {
+      "id": "props005",
+      "name": "猫咪相伴",
+      "prompt": "with cat, holding cat, cute, pet, feline companion",
+      "weight": 1.2
+    },
+    {
+      "id": "props006",
+      "name": "气球派对",
+      "prompt": "holding balloons, party, colorful, celebration",
+      "weight": 1.0
+    },
+    {
+      "id": "props007",
+      "name": "吉他弹唱",
+      "prompt": "playing guitar, holding guitar, musical, cool",
+      "weight": 1.0
+    },
+    {
+      "id": "props008",
+      "name": "魔法少女",
+      "prompt": "holding magic wand, magical girl, sparkle effects, transformation",
+      "weight": 0.9
+    },
+    {
+      "id": "props009",
+      "name": "樱花飘落",
+      "prompt": "cherry blossom petals falling, sakura, spring, romantic atmosphere",
+      "weight": 1.2
+    },
+    {
+      "id": "props010",
+      "name": "烛光晚餐",
+      "prompt": "candles, romantic dinner, candlelight, intimate atmosphere",
+      "weight": 1.0
+    },
+    {
+      "id": "props011",
+      "name": "相机写真",
+      "prompt": "holding camera, taking photo, photography, stylish",
+      "weight": 1.0
+    },
+    {
+      "id": "props012",
+      "name": "雨伞和服",
+      "prompt": "holding traditional umbrella, japanese, elegant, rain",
+      "weight": 1.0
+    },
+    {
+      "id": "props013",
+      "name": "蝴蝶环绕",
+      "prompt": "butterflies around, magical, ethereal, fantasy",
+      "weight": 1.0
+    },
+    {
+      "id": "props014",
+      "name": "天使光环",
+      "prompt": "halo, angel wings, heavenly, divine, pure",
+      "weight": 0.9
+    },
+    {
+      "id": "props015",
+      "name": "恶魔角",
+      "prompt": "demon horns, devil horns, evil, dark, mischievous",
+      "weight": 0.8
+    },
+    {
+      "id": "props016",
+      "name": "兔耳朵",
+      "prompt": "bunny ears headband, cute, playful, maid style",
+      "weight": 1.0
+    },
+    {
+      "id": "props017",
+      "name": "猫耳朵",
+      "prompt": "cat ears headband, nekomimi, cute, anime",
+      "weight": 1.0
+    },
+    {
+      "id": "props018",
+      "name": "狐狸面具",
+      "prompt": "fox mask, Kitsune, japanese festival, mysterious",
+      "weight": 0.9
+    },
+    {
+      "id": "props019",
+      "name": "面具舞会",
+      "prompt": "wearing mask, masquerade, elegant, mysterious party",
+      "weight": 0.9
+    },
+    {
+      "id": "props020",
+      "name": "皇冠加冕",
+      "prompt": "wearing crown, tiara, royal, elegant, queen",
+      "weight": 1.0
+    },
+    {
+      "id": "props021",
+      "name": "花环头饰",
+      "prompt": "flower wreath, floral crown, goddess, ethereal, natural",
+      "weight": 1.0
+    },
+    {
+      "id": "props022",
+      "name": "丝带飘扬",
+      "prompt": "ribbon, flowing ribbons, magical girl, energetic",
+      "weight": 0.9
+    },
+    {
+      "id": "props023",
+      "name": "手持气球",
+      "prompt": "holding heart-shaped balloon, romantic, cute, love",
+      "weight": 1.0
+    },
+    {
+      "id": "props024",
+      "name": "奶茶在手",
+      "prompt": "holding bubble tea, trendy, cute, modern",
+      "weight": 1.1
+    },
+    {
+      "id": "props025",
+      "name": "红酒微醺",
+      "prompt": "holding wine glass, elegant, sophisticated, bar",
+      "weight": 0.9
+    },
+    {
+      "id": "props026",
+      "name": "手捧蛋糕",
+      "prompt": "holding cake, birthday, celebration, sweet",
+      "weight": 0.9
+    },
+    {
+      "id": "props027",
+      "name": "冰淇淋",
+      "prompt": "holding ice cream, summer, sweet, cute",
+      "weight": 1.0
+    },
+    {
+      "id": "props028",
+      "name": "棒棒糖",
+      "prompt": "holding lollipop, sweet, cute, colorful",
+      "weight": 0.9
+    },
+    {
+      "id": "props029",
+      "name": "草莓甜心",
+      "prompt": "holding strawberry, cute, sweet, kawaii",
+      "weight": 0.9
+    },
+    {
+      "id": "props030",
+      "name": "购物袋",
+      "prompt": "holding shopping bags, retail therapy, fashionable",
+      "weight": 0.8
+    },
+    {
+      "id": "props031",
+      "name": "手机自拍",
+      "prompt": "taking selfie, holding phone, modern, trendy",
+      "weight": 1.0
+    },
+    {
+      "id": "props032",
+      "name": "耳机音乐",
+      "prompt": "wearing headphones, listening to music, cool, modern",
+      "weight": 1.0
+    },
+    {
+      "id": "props033",
+      "name": "书本在手",
+      "prompt": "holding stack of books, studious, intellectual, library",
+      "weight": 1.0
+    },
+    {
+      "id": "props034",
+      "name": "日记本",
+      "prompt": "holding diary, journal, personal, secret",
+      "weight": 0.9
+    },
+    {
+      "id": "props035",
+      "name": "羽毛笔",
+      "prompt": "holding quill pen, fantasy, medieval, elegant",
+      "weight": 0.8
+    },
+    {
+      "id": "props036",
+      "name": "剑与魔法",
+      "prompt": "holding sword, warrior, brave, fantasy RPG",
+      "weight": 0.8
+    },
+    {
+      "id": "props037",
+      "name": "弓箭手",
+      "prompt": "holding bow and arrow, archer, athletic, fierce",
+      "weight": 0.8
+    },
+    {
+      "id": "props038",
+      "name": "魔法书",
+      "prompt": "holding grimoire, spell book, magic, wizard",
+      "weight": 0.9
+    },
+    {
+      "id": "props039",
+      "name": "水晶球",
+      "prompt": "holding crystal ball, fortune teller, mystical, oracle",
+      "weight": 0.9
+    },
+    {
+      "id": "props040",
+      "name": "塔罗牌",
+      "prompt": "holding tarot cards, fortune telling, mysterious, occult",
+      "weight": 0.9
+    },
+    {
+      "id": "props041",
+      "name": "占卜符文",
+      "prompt": "holding runes, divination, mystical, viking",
+      "weight": 0.8
+    },
+    {
+      "id": "props042",
+      "name": "武士刀",
+      "prompt": "holding katana, samurai, japanese warrior, honorable",
+      "weight": 0.8
+    },
+    {
+      "id": "props043",
+      "name": "忍者飞镖",
+      "prompt": "holding shuriken, ninja, stealth, martial arts",
+      "weight": 0.7
+    },
+    {
+      "id": "props044",
+      "name": "枪械辣妹",
+      "prompt": "holding gun, gunslinger, western, tough girl",
+      "weight": 0.6
+    },
+    {
+      "id": "props045",
+      "name": "手枪玩具",
+      "prompt": "holding toy gun, playful, costume, roleplay",
+      "weight": 0.6
+    },
+    {
+      "id": "props046",
+      "name": "电吉他",
+      "prompt": "playing electric guitar, rock, cool, band",
+      "weight": 0.9
+    },
+    {
+      "id": "props047",
+      "name": "小提琴",
+      "prompt": "playing violin, classical, elegant, musician",
+      "weight": 0.9
+    },
+    {
+      "id": "props048",
+      "name": "钢琴演奏",
+      "prompt": "playing piano, classical music, elegant, refined",
+      "weight": 0.9
+    },
+    {
+      "id": "props049",
+      "name": "麦克风",
+      "prompt": "holding microphone, singer, idol, performance",
+      "weight": 0.9
+    },
+    {
+      "id": "props050",
+      "name": "架子鼓",
+      "prompt": "playing drums, rock band, energetic, cool",
+      "weight": 0.8
+    },
+    {
+      "id": "props051",
+      "name": "尤克里里",
+      "prompt": "playing ukulele, cute, Hawaiian, cheerful",
+      "weight": 0.9
+    },
+    {
+      "id": "props052",
+      "name": "笛子",
+      "prompt": "playing flute, classical, elegant, bamboo",
+      "weight": 0.8
+    },
+    {
+      "id": "props053",
+      "name": "口琴",
+      "prompt": "playing harmonica, blues, cool, street performer",
+      "weight": 0.8
+    },
+    {
+      "id": "props054",
+      "name": "狗狗伙伴",
+      "prompt": "with dog, puppy, loyal companion, cute pet",
+      "weight": 1.1
+    },
+    {
+      "id": "props055",
+      "name": "兔子萌宠",
+      "prompt": "with bunny, rabbit, soft, cute, fluffy",
+      "weight": 1.0
+    },
+    {
+      "id": "props056",
+      "name": "仓鼠在手",
+      "prompt": "holding hamster, tiny pet, cute, pocket sized",
+      "weight": 0.9
+    },
+    {
+      "id": "props057",
+      "name": "小鸟依人",
+      "prompt": "with bird, parrot, colorful, tropical",
+      "weight": 0.8
+    },
+    {
+      "id": "props058",
+      "name": "猫头鹰",
+      "prompt": "with owl, wise, magical, mysterious",
+      "weight": 0.8
+    },
+    {
+      "id": "props059",
+      "name": "小狐狸",
+      "prompt": "with fox, Kitsune companion, magical, cute",
+      "weight": 0.9
+    },
+    {
+      "id": "props060",
+      "name": "龙崽伙伴",
+      "prompt": "with baby dragon, fantasy pet, magical companion",
+      "weight": 0.7
+    },
+    {
+      "id": "props061",
+      "name": "漂浮书本",
+      "prompt": "floating books, magic, fantasy, telekinesis",
+      "weight": 0.9
+    },
+    {
+      "id": "props062",
+      "name": "漂浮宝石",
+      "prompt": "floating gems, magic, treasure, fantasy",
+      "weight": 0.8
+    },
+    {
+      "id": "props063",
+      "name": "魔法光环",
+      "prompt": "magic circle, spell circle, mystical, fantasy",
+      "weight": 0.9
+    },
+    {
+      "id": "props064",
+      "name": "雪花飘落",
+      "prompt": "falling snow, winter, cold, beautiful, snowy",
+      "weight": 1.1
+    },
+    {
+      "id": "props065",
+      "name": "枫叶纷飞",
+      "prompt": "falling maple leaves, autumn, fall, romantic",
+      "weight": 1.0
+    },
+    {
+      "id": "props066",
+      "name": "雨滴效果",
+      "prompt": "rain drops, rain effect, wet, romantic rain",
+      "weight": 1.0
+    },
+    {
+      "id": "props067",
+      "name": "光粒子",
+      "prompt": "light particles, sparkles, magical, ethereal",
+      "weight": 1.0
+    },
+    {
+      "id": "props068",
+      "name": "烟雾缭绕",
+      "prompt": "smoke effect, mist, mysterious, dramatic",
+      "weight": 0.9
+    },
+    {
+      "id": "props069",
+      "name": "灯串装饰",
+      "prompt": "fairy lights, string lights, cozy, romantic",
+      "weight": 1.1
+    },
+    {
+      "id": "props070",
+      "name": "灯笼夜景",
+      "prompt": "holding lantern, traditional, japanese, night",
+      "weight": 1.0
+    },
+    {
+      "id": "props071",
+      "name": "油纸伞",
+      "prompt": "holding oil paper umbrella, traditional chinese, elegant",
+      "weight": 1.0
+    },
+    {
+      "id": "props072",
+      "name": "樱花扇",
+      "prompt": "holding folding fan, cherry blossom, traditional, elegant",
+      "weight": 1.0
+    },
+    {
+      "id": "props073",
+      "name": "武士头盔",
+      "prompt": "wearing samurai helmet, kabuto, warrior, japanese",
+      "weight": 0.8
+    },
+    {
+      "id": "props074",
+      "name": "海盗眼罩",
+      "prompt": "wearing eyepatch, pirate, swashbuckler, adventurous",
+      "weight": 0.7
+    },
+    {
+      "id": "props075",
+      "name": "水手领结",
+      "prompt": "wearing sailor collar, nautical, anime, cute",
+      "weight": 0.9
+    },
+    {
+      "id": "props076",
+      "name": "蝴蝶结项圈",
+      "prompt": "wearing ribbon collar, cute, pet style, adorable",
+      "weight": 1.0
+    },
+    {
+      "id": "props077",
+      "name": "铃铛项圈",
+      "prompt": "wearing bell collar, catgirl, cute, anime",
+      "weight": 1.0
+    },
+    {
+      "id": "props078",
+      "name": "十字架项链",
+      "prompt": "wearing cross necklace, gothic, elegant, religious",
+      "weight": 0.9
+    },
+    {
+      "id": "props079",
+      "name": "珍珠项链",
+      "prompt": "wearing pearl necklace, elegant, sophisticated, classy",
+      "weight": 1.0
+    },
+    {
+      "id": "props080",
+      "name": "choker颈圈",
+      "prompt": "wearing choker, edgy, gothic, stylish",
+      "weight": 0.9
+    },
+    {
+      "id": "props081",
+      "name": "手铐道具",
+      "prompt": "handcuffs, roleplay, bondage, kinky",
+      "weight": 0.5
+    },
+    {
+      "id": "props082",
+      "name": "皮鞭",
+      "prompt": "whip, bondage, leather, kinky, roleplay",
+      "weight": 0.4
+    },
+    {
+      "id": "props083",
+      "name": "眼罩",
+      "prompt": "wearing blindfold, bondage, mysterious, kinky",
+      "weight": 0.5
+    },
+    {
+      "id": "props084",
+      "name": "丝带捆绑",
+      "prompt": "ribbon bonds, decorative binding, artistic, aesthetic",
+      "weight": 0.6
+    },
+    {
+      "id": "props085",
+      "name": "护士听诊器",
+      "prompt": "wearing stethoscope, nurse costume, medical roleplay",
+      "weight": 0.7
+    },
+    {
+      "id": "props086",
+      "name": "拳击手套",
+      "prompt": "wearing boxing gloves, sporty, fierce, athletic",
+      "weight": 0.8
+    },
+    {
+      "id": "props087",
+      "name": "网球拍",
+      "prompt": "holding tennis racket, sporty, athletic, summer",
+      "weight": 0.9
+    },
+    {
+      "id": "props088",
+      "name": "篮球",
+      "prompt": "holding basketball, sporty, athletic, tomboy",
+      "weight": 0.9
+    },
+    {
+      "id": "props089",
+      "name": "啦啦队彩球",
+      "prompt": "holding pom poms, cheerleader, energetic, cute",
+      "weight": 0.9
+    },
+    {
+      "id": "props090",
+      "name": "瑜伽垫",
+      "prompt": "yoga mat, fitness, flexible, wellness, zen",
+      "weight": 0.9
+    },
+    {
+      "id": "props091",
+      "name": "滑板",
+      "prompt": "holding skateboard, cool, street style, trendy",
+      "weight": 0.9
+    },
+    {
+      "id": "props092",
+      "name": "冲浪板",
+      "prompt": "holding surfboard, beach, summer, sporty, tan",
+      "weight": 0.9
+    },
+    {
+      "id": "props093",
+      "name": "雨靴水坑",
+      "prompt": "wearing rain boots, puddle jumping, rainy day, cute",
+      "weight": 0.9
+    },
+    {
+      "id": "props094",
+      "name": "草帽田园",
+      "prompt": "wearing straw hat, sun hat, countryside, pastoral",
+      "weight": 1.0
+    },
+    {
+      "id": "props095",
+      "name": "贝雷帽",
+      "prompt": "wearing beret, artistic, chic, french style",
+      "weight": 1.0
+    },
+    {
+      "id": "props096",
+      "name": "鸭舌帽",
+      "prompt": "wearing cap, sporty, casual, street style",
+      "weight": 1.0
+    },
+    {
+      "id": "props097",
+      "name": "皇冠女王",
+      "prompt": "wearing crown, queen, royal, majestic, elegant",
+      "weight": 1.0
+    },
+    {
+      "id": "props098",
+      "name": "蝴蝶结发夹",
+      "prompt": "wearing hair bow, ribbon, cute, kawaii, sweet",
+      "weight": 1.1
+    },
+    {
+      "id": "props099",
+      "name": "发簪古风",
+      "prompt": "wearing hair stick, traditional chinese, elegant",
+      "weight": 1.0
+    },
+    {
+      "id": "props100",
+      "name": "头戴花环",
+      "prompt": "flower wreath on head, floral crown, goddess, fairy",
+      "weight": 1.0
     }
   ],
   "subDimensionOptions": {

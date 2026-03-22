@@ -53,7 +53,7 @@ export function PreviewPanel({
         <div>
           <div className="text-helper text-text-secondary mb-1">正向提示词</div>
           <div className="text-body text-text-primary bg-background-hover p-padding rounded-sm max-h-48 overflow-y-auto whitespace-pre-wrap font-mono text-xs">
-            {"> "}{positivePrompt || '点击"一键随机生成"开始'}
+            {positivePrompt || '点击"一键随机生成"开始'}
           </div>
         </div>
         

@@ -26,6 +26,162 @@
       "name": "御姐方脸",
       "prompt": "charming face, square jaw, strong features, mature",
       "weight": 0.9
+    },
+    {
+      "id": "app005",
+      "name": "混血颜",
+      "prompt": "mixed race features, western features, high cheekbones, piercing eyes",
+      "weight": 0.9
+    },
+    {
+      "id": "app006",
+      "name": "娃娃颜",
+      "prompt": "baby face, large eyes, small face, doll-like, cute",
+      "weight": 1.1
+    },
+    {
+      "id": "app007",
+      "name": "高级厌世脸",
+      "prompt": "high-class aloof expression,model look, aloof, cool, intimidating beauty",
+      "weight": 0.8
+    },
+    {
+      "id": "app008",
+      "name": "治愈系颜",
+      "prompt": "healing expression, warm smile, gentle eyes, approachable, comforting",
+      "weight": 1.0
+    },
+    {
+      "id": "app009",
+      "name": "清冷禁欲系",
+      "prompt": "cold expression, pure and cold, aloof, distant, untouchable beauty",
+      "weight": 0.9
+    },
+    {
+      "id": "app010",
+      "name": "甜辣系",
+      "prompt": "sweet and spicy look, cute yet seductive, hot and cold, dual charm",
+      "weight": 1.0
+    },
+    {
+      "id": "app011",
+      "name": "元气少女",
+      "prompt": "energetic girl, bright smile, lively, cheerful, youthful vitality",
+      "weight": 1.1
+    },
+    {
+      "id": "app012",
+      "name": "优雅成熟",
+      "prompt": "elegant and mature, sophisticated, graceful, refined beauty",
+      "weight": 1.0
+    },
+    {
+      "id": "app013",
+      "name": "病娇美学",
+      "prompt": "yandere features, obsessive gaze, unhinged beauty, dark charm",
+      "weight": 0.6
+    },
+    {
+      "id": "app014",
+      "name": "清雅脱俗",
+      "prompt": "ethereal beauty, otherworldly, pure, untainted, spiritual",
+      "weight": 0.9
+    },
+    {
+      "id": "app015",
+      "name": "复古美人",
+      "prompt": "retro beauty, vintage look, old school glamour, classic elegance",
+      "weight": 0.9
+    },
+    {
+      "id": "app016",
+      "name": "氧气美女",
+      "prompt": "fresh beauty, natural look, clean, refreshing, natural charm",
+      "weight": 1.0
+    },
+    {
+      "id": "app017",
+      "name": "浓颜系",
+      "prompt": "bold features, strong facial features, dramatic makeup, striking",
+      "weight": 0.9
+    },
+    {
+      "id": "app018",
+      "name": "淡颜系",
+      "prompt": "subtle features, soft features, natural makeup, understated beauty",
+      "weight": 1.0
+    },
+    {
+      "id": "app019",
+      "name": "精灵系",
+      "prompt": "elf-like features, pointed ears, ethereal, fairy-like, mystical",
+      "weight": 0.8
+    },
+    {
+      "id": "app020",
+      "name": "吸血鬼颜",
+      "prompt": "vampire features, pale skin, sharp fangs, gothic beauty, nocturnal charm",
+      "weight": 0.7
+    },
+    {
+      "id": "app021",
+      "name": "野兽少女",
+      "prompt": "wild girl, feral beauty, untamed, fierce eyes, primal",
+      "weight": 0.7
+    },
+    {
+      "id": "app022",
+      "name": "大和抚子",
+      "prompt": "yamato nadeshiko, japanese ideal beauty, gentle, obedient, traditional",
+      "weight": 0.9
+    },
+    {
+      "id": "app023",
+      "name": "冰山美人",
+      "prompt": "ice queen, cold beauty, icy gaze, untouchable, distant",
+      "weight": 0.8
+    },
+    {
+      "id": "app024",
+      "name": "魅惑妖精",
+      "prompt": "enchanting fairy, seductive, alluring, tempting, irresistible",
+      "weight": 0.8
+    },
+    {
+      "id": "app025",
+      "name": "邻家女孩",
+      "prompt": "girl next door, friendly, approachable, down to earth, relatable",
+      "weight": 1.0
+    },
+    {
+      "id": "app026",
+      "name": "高冷御姐",
+      "prompt": "cool beauty, mature and aloof, confident, sophisticated, intimidating",
+      "weight": 0.9
+    },
+    {
+      "id": "app027",
+      "name": "傲娇系",
+      "prompt": "tsundere expression, proud yet shy, conflicting emotions, cute anger",
+      "weight": 0.8
+    },
+    {
+      "id": "app028",
+      "name": "软萌系",
+      "prompt": "soft and cute, fluffy, adorable, gentle, innocent",
+      "weight": 1.0
+    },
+    {
+      "id": "app029",
+      "name": "腹黑系",
+      "prompt": "dark cunning expression, cunning smile, mysterious, calculating",
+      "weight": 0.7
+    },
+    {
+      "id": "app030",
+      "name": "阳光开朗",
+      "prompt": "sunny disposition, bright smile, cheerful, optimistic, radiant",
+      "weight": 1.1
     }
   ],
   "subDimensionOptions": {
