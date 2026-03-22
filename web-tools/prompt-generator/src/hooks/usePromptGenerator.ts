@@ -175,7 +175,7 @@ export function usePromptGenerator() {
     });
   }, []);
 
-  const selectPreset = useCallback((dimensionKey: string, presetId: string) => {
+  const selectPreset = useCallback((dimensionKey: string, presetId: string, preserveLock?: boolean) => {
     setDimensions(prev => ({
       ...prev,
       [dimensionKey]: {
@@ -183,6 +183,7 @@ export function usePromptGenerator() {
         mode: 'preset',
         selectedPresetId: presetId,
         selectedSubDimensions: {},
+        locked: preserveLock ? prev[dimensionKey].locked : false,
       },
     }));
   }, []);

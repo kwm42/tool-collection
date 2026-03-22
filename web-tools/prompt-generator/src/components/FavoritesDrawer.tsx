@@ -1,5 +1,5 @@
 import { X, Star, Trash2, Download, Upload } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Button, Card } from './common';
 import type { FavoriteItem } from '../hooks/useFavorites';
 
@@ -23,6 +23,7 @@ export function FavoritesDrawer({
   onImport,
 }: FavoritesDrawerProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [hoveredItem, setHoveredItem] = useState<FavoriteItem | null>(null);
 
   if (!isOpen) return null;
 
@@ -73,8 +74,8 @@ export function FavoritesDrawer({
   return (
     <div
       className={`
-        fixed inset-0 w-full max-w-md ml-auto bg-background-card z-50
-        shadow-drawer transition-transform duration-300 ease-out
+        fixed inset-y-0 right-0 w-full max-w-2xl bg-background-card z-50
+        shadow-drawer transition-transform duration-300 ease-out flex flex-col
         ${isOpen ? 'translate-x-0' : 'translate-x-full'}
       `}
     >
@@ -111,7 +112,7 @@ export function FavoritesDrawer({
         />
       </div>
 
-      <div className="h-[calc(100%-4rem)] overflow-y-auto p-padding">
+      <div className="flex-1 overflow-y-auto p-padding">
         {favorites.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-text-secondary">
             <Star className="w-12 h-12 mb-3 opacity-30" />
@@ -126,8 +127,19 @@ export function FavoritesDrawer({
                 variant="hover"
                 className="p-padding cursor-pointer"
                 onClick={() => onApply(item)}
+                onMouseEnter={() => setHoveredItem(item)}
+                onMouseLeave={() => setHoveredItem(null)}
               >
-                <div className="flex items-start justify-between gap-2">
+                <div className="flex gap-gap-sm">
+                  {item.previewImage && (
+                    <div className="w-20 h-20 rounded overflow-hidden shrink-0 bg-background-hover">
+                      <img
+                        src={item.previewImage}
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1">
                       <Star className="w-4 h-4 text-accent shrink-0" />
@@ -136,6 +148,11 @@ export function FavoritesDrawer({
                     <div className="text-helper text-text-secondary mt-1 line-clamp-2">
                       {Object.values(item.dimensionSummary).filter(Boolean).join(' + ')}
                     </div>
+                    {item.generationParams && (
+                      <div className="text-helper text-accent mt-1">
+                        {item.generationParams.style} · {item.generationParams.checkpoint}
+                      </div>
+                    )}
                     <div className="text-helper text-text-placeholder mt-1">
                       {formatDate(item.timestamp)}
                     </div>
@@ -158,6 +175,16 @@ export function FavoritesDrawer({
           </div>
         )}
       </div>
+
+      {hoveredItem && hoveredItem.previewImage && (
+        <div className="fixed right-full top-0 h-full w-96 bg-background-card border-l border-border shadow-lg z-[60] flex items-center justify-center mr-2">
+          <img
+            src={hoveredItem.previewImage}
+            alt={hoveredItem.name}
+            className="max-w-full max-h-full object-contain p-2"
+          />
+        </div>
+      )}
     </div>
   );
 }

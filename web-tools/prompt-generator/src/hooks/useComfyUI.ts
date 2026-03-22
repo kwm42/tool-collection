@@ -17,7 +17,7 @@ interface UseComfyUIReturn {
   state: GenerationState;
   updateParams: (params: Partial<GenerationParams>) => void;
   testConnection: () => Promise<boolean>;
-  generate: (theme: string, character: string, negativePrompt: string) => Promise<void>;
+  generate: (theme: string, character: string, negativePrompt: string) => void;
   clear: () => void;
   isGenerating: boolean;
 }
@@ -110,11 +110,11 @@ export function useComfyUI(): UseComfyUIReturn {
           theme,
           character,
           negativePrompt,
-          params.steps,
-          params.cfg,
           params.width,
           params.height,
-          seed
+          seed,
+          params.style,
+          params.checkpoint
         );
 
         if (!result?.prompt_id) {

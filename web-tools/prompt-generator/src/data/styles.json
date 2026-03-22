@@ -1,0 +1,50 @@
+{
+    "武田弘光": {
+        "lora": "illustrious\\anime_style\\Takeda_Hiromitsu-000002.safetensors",
+        "trigger": "Takeda Hiromitsu"
+    },
+    "武田弘光 TH": {
+        "lora": "illustrious\\anime_style\\Artist Style(TH)_ Illustrious.safetensors",
+        "trigger": "TH,<lora:TH:0.8>"
+    },
+    "TRexStyle": {
+        "lora": "illustrious\\anime_style\\ATRex_style-12V2Rev.safetensors",
+        "trigger": "TRexStyle"
+    },
+    "Brave new world": {
+        "lora": "illustrious\\anime_style\\Brave_new_world_manhwa_styleupgraded_2.0_illustrious.safetensors",
+        "trigger": "new world,<lora:Brave_new_world_manhwa_styleupgraded_2.0_illustrious:1.0>"
+    },
+    "暗黑画风": {
+        "lora": "illustrious\\anime_style\\dark_art_style_illustriousXL.safetensors",
+        "trigger": "dark_art_style"
+    },
+    "油腻画风": {
+        "lora": "illustrious\\anime_style\\hentai_studio_quality-000013.safetensors",
+        "trigger": "hentai_studio_quality, shiny skin"
+    },
+    "超写实画风": {
+        "lora": "illustrious\\anime_style\\Hyperrealistic_illustrious.safetensors",
+        "trigger": "fuyumur4s4ki_style"
+    },
+    "肉感/mature": {
+        "lora": "illustrious\\anime_style\\mature body.safetensors",
+        "trigger": ""
+    },
+    "MoriiMee 哥特": {
+        "lora": "illustrious\\anime_style\\MoriiMee_Gothic_Realistic.safetensors",
+        "trigger": "<lora:MoriiMee_Gothic_Realistic:0.9>,artist:moriimee,morimee_style"
+    },
+    "VRChat_Style": {
+        "lora": "illustrious\\anime_style\\VRChat_Style_for_IllustriousV04.safetensors",
+        "trigger": "vrchat3d"
+    },
+    "薄塗り/USNR": {
+        "lora": "illustrious\\anime_style\\薄塗り USNR_STYLE_ILL_V1_lokr3-000024.safetensors",
+        "trigger": "usnr"
+    },
+    "雷火剑": {
+        "lora": "illustrious\\anime_style\\雷火剑 artstyle.safetensors",
+        "trigger": "leihuojian artstyle"
+    }
+}

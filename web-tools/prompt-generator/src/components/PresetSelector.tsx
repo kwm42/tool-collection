@@ -1,4 +1,4 @@
-import { Shuffle, Check, X, Lock, Unlock } from 'lucide-react';
+import { Shuffle, Check, X, Lock, Unlock, Eye, EyeOff } from 'lucide-react';
 import type { DimensionPreset } from '../types';
 import { Button, Card } from './common';
 
@@ -10,6 +10,8 @@ interface PresetSelectorProps {
   onRandom: () => void;
   isLocked?: boolean;
   onToggleLock?: () => void;
+  nsfwEnabled?: boolean;
+  onToggleNsfw?: () => void;
 }
 
 export function PresetSelector({
@@ -20,7 +22,15 @@ export function PresetSelector({
   onRandom,
   isLocked = false,
   onToggleLock,
+  nsfwEnabled = true,
+  onToggleNsfw,
 }: PresetSelectorProps) {
+  const filteredPresets = config.presets.filter((preset) => {
+    if (!nsfwEnabled && preset.id.startsWith('nsfw_')) {
+      return false;
+    }
+    return true;
+  });
   return (
     <div className="space-y-gap-sm">
       <div className="flex items-center justify-between">
@@ -38,6 +48,21 @@ export function PresetSelector({
                 <Lock className="w-4 h-4" />
               ) : (
                 <Unlock className="w-4 h-4" />
+              )}
+            </Button>
+          )}
+          {onToggleNsfw && (
+            <Button
+              variant="icon"
+              size="sm"
+              onClick={onToggleNsfw}
+              title={nsfwEnabled ? '隐藏NSFW内容' : '显示NSFW内容'}
+              className={nsfwEnabled ? 'text-error' : 'text-text-secondary'}
+            >
+              {nsfwEnabled ? (
+                <Eye className="w-4 h-4" />
+              ) : (
+                <EyeOff className="w-4 h-4" />
               )}
             </Button>
           )}
@@ -59,7 +84,7 @@ export function PresetSelector({
       </div>
       
       <div className="grid gap-gap-sm">
-        {config.presets.map((preset) => (
+        {filteredPresets.map((preset) => (
           <Card
             key={preset.id}
             variant={selectedId === preset.id ? 'selected' : 'hover'}

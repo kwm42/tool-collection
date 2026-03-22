@@ -4,7 +4,7 @@ import { Button, Card } from './common';
 import { ImageModal } from './ImageModal';
 import type { GenerationParams, GenerationStatus } from '../types/comfyui';
 import type { DimensionState } from '../types';
-import { dimensionPresets } from '../data';
+import { dimensionPresets, styles, checkpoints } from '../data';
 import type { DimensionPreset } from '../types';
 
 interface ClickableSegment {
@@ -296,31 +296,40 @@ export function PreviewPanel({
                 <div className="grid grid-cols-2 gap-3 p-3 bg-background-hover rounded-sm">
                   <div>
                     <label className="block text-xs text-text-secondary mb-1">
-                      Steps: {generationParams.steps}
+                      画风
                     </label>
-                    <input
-                      type="range"
-                      min="1"
-                      max="100"
-                      value={generationParams.steps}
-                      onChange={() => {}}
-                      className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer accent-primary"
-                    />
+                    <select
+                      value={generationParams.style}
+                      onChange={(e) => {
+                        onUpdateParams?.({ style: e.target.value });
+                      }}
+                      className="w-full px-2 py-1.5 bg-background-card border border-border rounded text-xs text-text-primary cursor-pointer"
+                    >
+                      {Object.keys(styles).map((name) => (
+                        <option key={name} value={name}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div>
                     <label className="block text-xs text-text-secondary mb-1">
-                      CFG: {generationParams.cfg.toFixed(1)}
+                      Checkpoint
                     </label>
-                    <input
-                      type="range"
-                      min="0"
-                      max="20"
-                      step="0.5"
-                      value={generationParams.cfg}
-                      onChange={() => {}}
-                      className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer accent-primary"
-                    />
+                    <select
+                      value={generationParams.checkpoint}
+                      onChange={(e) => {
+                        onUpdateParams?.({ checkpoint: e.target.value });
+                      }}
+                      className="w-full px-2 py-1.5 bg-background-card border border-border rounded text-xs text-text-primary cursor-pointer"
+                    >
+                      {Object.keys(checkpoints).map((name) => (
+                        <option key={name} value={name}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
                   <div>

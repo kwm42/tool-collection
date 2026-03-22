@@ -1,11 +1,14 @@
-import { Lock, Unlock, Shuffle, ChevronRight, X, Copy, Check } from 'lucide-react';
+import { Lock, Unlock, Shuffle, ChevronRight, X, Copy, Check, Eye, EyeOff } from 'lucide-react';
 import { useState } from 'react';
 import type { DimensionPreset, DimensionState } from '../types';
 
 interface DimensionRowProps {
+  dimensionKey: string;
   config: DimensionPreset;
   state: DimensionState;
   currentSummary: string;
+  nsfwEnabled: boolean;
+  onToggleNsfw: () => void;
   onToggleLock: () => void;
   onRandom: () => void;
   onClear: () => void;
@@ -14,9 +17,12 @@ interface DimensionRowProps {
 }
 
 export function DimensionRow({
+  dimensionKey,
   config,
   state,
   currentSummary,
+  nsfwEnabled,
+  onToggleNsfw,
   onToggleLock,
   onRandom,
   onClear,
@@ -92,6 +98,23 @@ export function DimensionRow({
             className="p-1.5 rounded text-text-secondary hover:text-error hover:bg-background-hover transition-colors"
           >
             <X className="w-4 h-4" />
+          </button>
+        )}
+        
+        {dimensionKey === 'action' && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleNsfw();
+            }}
+            title={nsfwEnabled ? '隐藏NSFW内容' : '显示NSFW内容'}
+            className={`p-1.5 rounded transition-colors ${
+              nsfwEnabled
+                ? 'text-error hover:bg-error/10'
+                : 'text-text-secondary hover:bg-background-hover'
+            }`}
+          >
+            {nsfwEnabled ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
           </button>
         )}
         

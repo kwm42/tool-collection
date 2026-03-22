@@ -4,10 +4,10 @@ export interface ComfyUIConfig {
 }
 
 export interface GenerationParams {
-  steps: number;
-  cfg: number;
   width: number;
   height: number;
+  style: string;
+  checkpoint: string;
   seed?: number;
   useSameSeed: boolean;
 }
@@ -51,10 +51,10 @@ export interface ComfyUIHistoryItem {
 }
 
 export const DEFAULT_PARAMS: GenerationParams = {
-  steps: 20,
-  cfg: 4.0,
   width: 720,
   height: 1280,
+  style: '雷火剑',
+  checkpoint: 'oneObsessionBranch_matureMAXEPS',
   useSameSeed: false,
 };
 

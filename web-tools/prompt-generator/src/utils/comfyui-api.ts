@@ -2,6 +2,7 @@ import type {
   ComfyUIPromptResult,
   ComfyUIHistoryItem,
 } from '../types/comfyui';
+import { styles, checkpoints } from '../data';
 
 const SERVER_BASE = 'http://127.0.0.1:8188';
 
@@ -18,19 +19,26 @@ export async function queuePrompt(
   theme: string,
   character: string,
   negativePrompt: string,
-  steps: number,
-  cfg: number,
   width: number,
   height: number,
-  seed: number
+  seed: number,
+  style: string,
+  checkpoint: string
 ): Promise<ComfyUIPromptResult | null> {
   try {
+    const defaultStyle = '雷火剑';
+    const defaultCheckpoint = 'oneObsessionBranch_matureMAXEPS';
+    const styleConfig = styles[style as keyof typeof styles] || styles[defaultStyle as keyof typeof styles];
+    const styleLoraPath = styleConfig.lora;
+    const styleTrigger = styleConfig.trigger;
+    const checkpointPath = checkpoints[checkpoint as keyof typeof checkpoints] || checkpoints[defaultCheckpoint as keyof typeof checkpoints];
+
     const workflow = {
       "3": {
         "inputs": {
           "seed": seed,
-          "steps": steps,
-          "cfg": cfg,
+          "steps": 20,
+          "cfg": 4.0,
           "sampler_name": "dpmpp_2m",
           "scheduler": "karras",
           "denoise": 1,
@@ -39,34 +47,49 @@ export async function queuePrompt(
           "negative": ["7", 0],
           "latent_image": ["36", 0]
         },
-        "class_type": "KSampler"
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "K采样器"
+        }
       },
       "6": {
         "inputs": {
           "text": "",
           "clip": ["183", 1]
         },
-        "class_type": "CLIPTextEncode"
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP文本编码"
+        }
       },
       "7": {
         "inputs": {
           "text": negativePrompt,
           "clip": ["183", 1]
         },
-        "class_type": "CLIPTextEncode"
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP文本编码"
+        }
       },
       "8": {
         "inputs": {
           "samples": ["3", 0],
           "vae": ["23", 2]
         },
-        "class_type": "VAEDecode"
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAE解码"
+        }
       },
       "23": {
         "inputs": {
-          "ckpt_name": "Illustrious\\oneObsessionBranch_matureMAXEPS.safetensors"
+          "ckpt_name": checkpointPath
         },
-        "class_type": "CheckpointLoaderSimple"
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "检查点加载器(简单)"
+        }
       },
       "36": {
         "inputs": {
@@ -74,7 +97,10 @@ export async function queuePrompt(
           "height": height,
           "batch_size": 1
         },
-        "class_type": "EmptyLatentImage"
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+          "title": "空Latent图像"
+        }
       },
       "83": {
         "inputs": {
@@ -84,23 +110,33 @@ export async function queuePrompt(
           "model": ["92", 0],
           "clip": ["92", 1]
         },
-        "class_type": "LoraLoader"
+        "class_type": "LoraLoader",
+        "_meta": {
+          "title": "LoRA加载器（仅模型）"
+        }
       },
       "84": {
         "inputs": {
           "images": ["8", 0]
         },
-        "class_type": "PreviewImage"
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "预览图像"
+        }
       },
       "92": {
         "inputs": {
-          "lora_name": "illustrious\\anime_style\\雷火剑 artstyle.safetensors",
+          // "lora_name": "illustrious\\anime_style\\雷火剑 artstyle.safetensors",
+          "lora_name": styleLoraPath,
           "strength_model": 0.85,
           "strength_clip": 0.8,
           "model": ["23", 0],
           "clip": ["184", 0]
         },
-        "class_type": "LoraLoader"
+        "class_type": "LoraLoader",
+        "_meta": {
+          "title": "LoRA加载器（仅模型）"
+        }
       },
       "132": {
         "inputs": {
@@ -111,20 +147,29 @@ export async function queuePrompt(
           "string_2": ["166", 0],
           "string_3": ["194", 0]
         },
-        "class_type": "JoinStringMulti"
+        "class_type": "JoinStringMulti",
+        "_meta": {
+          "title": "合并字符串"
+        }
       },
       "137": {
         "inputs": {
           "text": ["132", 0],
           "clip": ["183", 1]
         },
-        "class_type": "CLIPTextEncode"
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIP文本编码"
+        }
       },
       "166": {
         "inputs": {
-          "string": theme
+          "string": styleTrigger ? `${theme}, ${styleTrigger}` : theme
         },
-        "class_type": "String Literal (Image Saver)"
+        "class_type": "String Literal (Image Saver)",
+        "_meta": {
+          "title": "字符串字面量"
+        }
       },
       "168": {
         "inputs": {
@@ -132,13 +177,19 @@ export async function queuePrompt(
           "preview_text": `embedding:lazypos\n,${character}`,
           "source": ["132", 0]
         },
-        "class_type": "PreviewAny"
+        "class_type": "PreviewAny",
+        "_meta": {
+          "title": "预览任意内容"
+        }
       },
       "177": {
         "inputs": {
           "string": "embedding:lazypos\n"
         },
-        "class_type": "String Literal (Image Saver)"
+        "class_type": "String Literal (Image Saver)",
+        "_meta": {
+          "title": "字符串字面量"
+        }
       },
       "183": {
         "inputs": {
@@ -148,27 +199,39 @@ export async function queuePrompt(
           "model": ["83", 0],
           "clip": ["83", 1]
         },
-        "class_type": "LoraLoader"
+        "class_type": "LoraLoader",
+        "_meta": {
+          "title": "LoRA加载器（仅模型）"
+        }
       },
       "184": {
         "inputs": {
           "stop_at_clip_layer": -2,
           "clip": ["23", 1]
         },
-        "class_type": "CLIPSetLastLayer"
+        "class_type": "CLIPSetLastLayer",
+        "_meta": {
+          "title": "设置CLIP最后一层"
+        }
       },
       "194": {
         "inputs": {
           "string": character
         },
-        "class_type": "String Literal (Image Saver)"
+        "class_type": "String Literal (Image Saver)",
+        "_meta": {
+          "title": "字符串字面量"
+        }
       },
       "197": {
         "inputs": {
           "filename_prefix": "ComfyUI",
           "images": ["8", 0]
         },
-        "class_type": "SaveImage"
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "保存图像"
+        }
       }
     };
     

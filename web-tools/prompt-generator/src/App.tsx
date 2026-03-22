@@ -26,8 +26,10 @@ import {
   useComfyUI,
   useFavorites,
   useDimensionPresets,
+  useNsfwToggle,
 } from './hooks';
 import type { FavoriteItem } from './hooks/useFavorites';
+import { blobUrlToDataUrl, compressImageToBase64 } from './utils/image';
 
 import bg1 from './assets/images/bg-1.png';
 import bg2 from './assets/images/bg-2.png';
@@ -65,6 +67,7 @@ function App() {
   const { favorites, addFavorite, removeFavorite, clearFavorites } = useFavorites();
   const { presets: dimensionCustomPresets, savePreset: saveDimensionPreset, deletePreset: deleteDimensionPreset, clearPresets: clearDimensionPresets } = useDimensionPresets();
   const { copied, copy } = useClipboard();
+  const { nsfwEnabled, toggleNsfw } = useNsfwToggle();
   const [historyExpanded, setHistoryExpanded] = useState(false);
   const [favoritesDrawerOpen, setFavoritesDrawerOpen] = useState(false);
   const [dimensionPresetsDrawerOpen, setDimensionPresetsDrawerOpen] = useState(false);
@@ -130,7 +133,7 @@ function App() {
     }
   }, [dimensions, toggleLock]);
 
-  const handleAddFavorite = useCallback(() => {
+  const handleAddFavorite = useCallback(async () => {
     const summary: Record<string, string> = {};
     for (const key of dimensionOrder) {
       summary[key] = getCurrentSummary(key);
@@ -141,13 +144,24 @@ function App() {
       summary.body,
       summary.clothing,
     ].filter(Boolean).join(' + ');
+    
+    let previewImage: string | undefined;
+    if (comfyUIState.imageUrl) {
+      const dataUrl = await blobUrlToDataUrl(comfyUIState.imageUrl);
+      if (dataUrl) {
+        previewImage = await compressImageToBase64(dataUrl);
+      }
+    }
+    
     addFavorite(
       name,
       currentPrompt.positive,
       currentPrompt.negative,
-      summary
+      summary,
+      { style: comfyUIParams.style, checkpoint: comfyUIParams.checkpoint },
+      previewImage
     );
-  }, [addFavorite, getCurrentSummary, currentPrompt]);
+  }, [addFavorite, getCurrentSummary, currentPrompt, comfyUIParams, comfyUIState.imageUrl]);
 
   const handleApplyFavorite = useCallback((item: FavoriteItem) => {
     for (const key of dimensionOrder) {
@@ -156,16 +170,15 @@ function App() {
       if (summaryName && dimConfig) {
         const preset = dimConfig.presets.find((p) => p.name === summaryName);
         if (preset) {
-          selectPreset(key, preset.id);
-        } else {
-          clearDimension(key);
+          selectPreset(key, preset.id, true);
         }
-      } else {
-        clearDimension(key);
       }
     }
+    if (item.generationParams) {
+      updateComfyUIParams(item.generationParams);
+    }
     setFavoritesDrawerOpen(false);
-  }, [selectPreset, clearDimension]);
+  }, [selectPreset, updateComfyUIParams]);
 
   const handleImportFavorites = useCallback((importedFavorites: FavoriteItem[]) => {
     for (const fav of importedFavorites) {
@@ -326,9 +339,12 @@ function App() {
                 return (
                   <DimensionRow
                     key={key}
+                    dimensionKey={key}
                     config={config}
                     state={state}
                     currentSummary={getCurrentSummary(key)}
+                    nsfwEnabled={nsfwEnabled}
+                    onToggleNsfw={toggleNsfw}
                     onToggleLock={() => toggleLock(key)}
                     onRandom={() => randomDimension(key)}
                     onClear={() => clearDimension(key)}
@@ -361,6 +377,8 @@ function App() {
             onRandom={() => currentDimension && randomDimension(currentDimension)}
             isLocked={currentDimensionState.locked}
             onToggleLock={() => currentDimension && toggleLock(currentDimension)}
+            nsfwEnabled={nsfwEnabled}
+            onToggleNsfw={toggleNsfw}
           />
         </Drawer>
       )}

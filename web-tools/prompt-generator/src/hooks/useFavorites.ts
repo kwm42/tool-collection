@@ -1,12 +1,15 @@
 import { useState, useCallback, useEffect } from 'react';
 import type { HistoryItem } from '../types';
 import { randomId } from '../utils/random';
+import type { GenerationParams } from '../types/comfyui';
 
 const MAX_FAVORITES = 100;
 const STORAGE_KEY = 'prompt-generator-favorites';
 
 export interface FavoriteItem extends HistoryItem {
   name: string;
+  generationParams?: Pick<GenerationParams, 'style' | 'checkpoint'>;
+  previewImage?: string;
 }
 
 export function useFavorites() {
@@ -22,7 +25,8 @@ export function useFavorites() {
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
-    } catch {
+    } catch (err){
+      console.error(err)
       console.error('Failed to save favorites to localStorage');
     }
   }, [favorites]);
@@ -31,7 +35,9 @@ export function useFavorites() {
     name: string,
     positivePrompt: string,
     negativePrompt: string,
-    dimensionSummary: Record<string, string>
+    dimensionSummary: Record<string, string>,
+    generationParams?: Pick<GenerationParams, 'style' | 'checkpoint'>,
+    previewImage?: string
   ) => {
     const item: FavoriteItem = {
       id: randomId(),
@@ -40,6 +46,8 @@ export function useFavorites() {
       positivePrompt,
       negativePrompt,
       dimensionSummary,
+      generationParams,
+      previewImage,
     };
     
     setFavorites(prev => {

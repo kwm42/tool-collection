@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { GenerationParams } from '../types/comfyui';
+import { styles, checkpoints } from '../data';
 
 interface GenerationSettingsProps {
   params: GenerationParams;
@@ -9,6 +10,9 @@ interface GenerationSettingsProps {
 
 export function GenerationSettings({ params, onUpdate }: GenerationSettingsProps) {
   const [expanded, setExpanded] = useState(false);
+
+  const styleOptions = Object.keys(styles);
+  const checkpointOptions = Object.keys(checkpoints);
 
   return (
     <div className="space-y-gap-sm">
@@ -29,35 +33,38 @@ export function GenerationSettings({ params, onUpdate }: GenerationSettingsProps
           <div className="grid grid-cols-2 gap-gap-md">
             <div>
               <label className="block text-helper text-text-secondary mb-1">
-                Steps: {params.steps}
+                画风
               </label>
-              <input
-                type="range"
-                min="1"
-                max="100"
-                value={params.steps}
-                onChange={(e) => onUpdate({ steps: Number(e.target.value) })}
-                className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer accent-primary"
-              />
+              <select
+                value={params.style}
+                onChange={(e) => onUpdate({ style: e.target.value })}
+                className="w-full px-3 py-1.5 bg-background-card border border-border rounded-md text-body text-text-primary focus:outline-none focus:border-primary"
+              >
+                {styleOptions.map((name) => (
+                  <option key={name} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
               <label className="block text-helper text-text-secondary mb-1">
-                CFG: {params.cfg.toFixed(1)}
+                Checkpoint
               </label>
-              <input
-                type="range"
-                min="0"
-                max="20"
-                step="0.5"
-                value={params.cfg}
-                onChange={(e) => onUpdate({ cfg: Number(e.target.value) })}
-                className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer accent-primary"
-              />
+              <select
+                value={params.checkpoint}
+                onChange={(e) => onUpdate({ checkpoint: e.target.value })}
+                className="w-full px-3 py-1.5 bg-background-card border border-border rounded-md text-body text-text-primary focus:outline-none focus:border-primary"
+              >
+                {checkpointOptions.map((name) => (
+                  <option key={name} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
             </div>
-          </div>
 
-          <div className="grid grid-cols-2 gap-gap-md">
             <div>
               <label className="block text-helper text-text-secondary mb-1">
                 Width: {params.width}
@@ -106,7 +113,7 @@ export function GenerationSettings({ params, onUpdate }: GenerationSettingsProps
           </div>
 
           <div className="text-xs text-text-secondary">
-            当前设置: {params.width}×{params.height} | Steps: {params.steps} | CFG: {params.cfg.toFixed(1)}
+            当前设置: {params.width}×{params.height} | 画风: {params.style} | Checkpoint: {params.checkpoint} | Steps: 20 | CFG: 4.0
           </div>
         </div>
       )}
