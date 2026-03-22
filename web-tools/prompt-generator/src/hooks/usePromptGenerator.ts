@@ -129,6 +129,42 @@ export function usePromptGenerator() {
     }));
   }, []);
 
+  const lockAll = useCallback(() => {
+    setDimensions(prev => {
+      const newDims = { ...prev };
+      for (const key of dimensionOrder) {
+        newDims[key] = { ...newDims[key], locked: true };
+      }
+      return newDims;
+    });
+  }, []);
+
+  const unlockAll = useCallback(() => {
+    setDimensions(prev => {
+      const newDims = { ...prev };
+      for (const key of dimensionOrder) {
+        newDims[key] = { ...newDims[key], locked: false };
+      }
+      return newDims;
+    });
+  }, []);
+
+  const clearAll = useCallback(() => {
+    setDimensions(prev => {
+      const newDims = { ...prev };
+      for (const key of dimensionOrder) {
+        newDims[key] = {
+          ...newDims[key],
+          locked: false,
+          mode: 'preset',
+          selectedPresetId: null,
+          selectedSubDimensions: {},
+        };
+      }
+      return newDims;
+    });
+  }, []);
+
   const selectPreset = useCallback((dimensionKey: string, presetId: string) => {
     setDimensions(prev => ({
       ...prev,
@@ -183,6 +219,9 @@ export function usePromptGenerator() {
     randomDimension,
     clearDimension,
     toggleLock,
+    lockAll,
+    unlockAll,
+    clearAll,
     selectPreset,
     getCurrentSummary,
     getDimensionLabel,

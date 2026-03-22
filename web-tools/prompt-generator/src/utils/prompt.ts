@@ -68,6 +68,7 @@ export function generatePrompt(
         const preset = dimData.presets.find(p => p.id === dimState.selectedPresetId);
         if (preset) {
           parts.push(preset.prompt);
+          chineseParts.push(preset.name);
         }
       }
       continue;

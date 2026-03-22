@@ -7,6 +7,9 @@ import {
   Drawer,
   PresetSelector,
   HistoryPanel,
+  ComfyUISettings,
+  FavoritesDrawer,
+  DimensionPresetPanel,
 } from './components';
 import {
   dimensionPresets,
@@ -18,7 +21,10 @@ import {
   useHistory,
   useClipboard,
   useTheme,
+  useComfyUI,
+  useFavorites,
 } from './hooks';
+import type { FavoriteItem } from './hooks/useFavorites';
 
 import bg1 from './assets/images/bg-1.png';
 import bg2 from './assets/images/bg-2.png';
@@ -42,6 +48,9 @@ function App() {
     randomDimension,
     clearDimension,
     toggleLock,
+    lockAll,
+    unlockAll,
+    clearAll,
     selectPreset,
     getCurrentSummary,
     getDimensionPromptForCopy,
@@ -49,8 +58,22 @@ function App() {
 
   const { isOpen, currentDimension, openDrawer, closeDrawer } = useDrawer();
   const { history, addHistory, removeHistory, clearHistory } = useHistory();
+  const { favorites, addFavorite, removeFavorite, clearFavorites } = useFavorites();
   const { copied, copy } = useClipboard();
   const [historyExpanded, setHistoryExpanded] = useState(false);
+  const [favoritesDrawerOpen, setFavoritesDrawerOpen] = useState(false);
+
+  const [comfyUISettingsOpen, setComfyUISettingsOpen] = useState(false);
+
+  const {
+    connected,
+    params: comfyUIParams,
+    state: comfyUIState,
+    testConnection,
+    generate: comfyUIGenerate,
+    isGenerating,
+    updateParams: updateComfyUIParams,
+  } = useComfyUI();
 
   const handleGenerate = useCallback(() => {
     generate();
@@ -69,6 +92,78 @@ function App() {
   const handleCopy = useCallback(() => {
     copy(currentPrompt.positive);
   }, [copy, currentPrompt.positive]);
+
+  const handleComfyUIGenerate = useCallback(() => {
+    if (!currentPrompt.positive) return;
+    const character = currentPrompt.positiveChinese.split('\n')[0] || '';
+    comfyUIGenerate(
+      currentPrompt.positive,
+      character,
+      currentPrompt.negative
+    );
+  }, [comfyUIGenerate, currentPrompt]);
+
+  const handleComfyUISettingsOpen = useCallback(() => {
+    setComfyUISettingsOpen(true);
+  }, []);
+
+  const handleApplyDimensionPreset = useCallback((preset: { locks: Record<string, boolean> }) => {
+    for (const key of dimensionOrder) {
+      const shouldLock = preset.locks[key];
+      if (dimensions[key].locked !== shouldLock) {
+        toggleLock(key);
+      }
+    }
+  }, [dimensions, toggleLock]);
+
+  const handleAddFavorite = useCallback(() => {
+    const summary: Record<string, string> = {};
+    for (const key of dimensionOrder) {
+      summary[key] = getCurrentSummary(key);
+    }
+    const name = [
+      summary.appearance,
+      summary.hairstyle,
+      summary.body,
+      summary.clothing,
+    ].filter(Boolean).join(' + ');
+    addFavorite(
+      name,
+      currentPrompt.positive,
+      currentPrompt.negative,
+      summary
+    );
+  }, [addFavorite, getCurrentSummary, currentPrompt]);
+
+  const handleApplyFavorite = useCallback((item: FavoriteItem) => {
+    for (const key of dimensionOrder) {
+      const summaryName = item.dimensionSummary[key];
+      const dimConfig = dimensionPresets[key];
+      if (summaryName && dimConfig) {
+        const preset = dimConfig.presets.find((p) => p.name === summaryName);
+        if (preset) {
+          selectPreset(key, preset.id);
+        } else {
+          clearDimension(key);
+        }
+      } else {
+        clearDimension(key);
+      }
+    }
+    setFavoritesDrawerOpen(false);
+  }, [selectPreset, clearDimension]);
+
+  const handleImportFavorites = useCallback((importedFavorites: FavoriteItem[]) => {
+    for (const fav of importedFavorites) {
+      const existing = favorites.find((f) => f.name === fav.name);
+      if (existing) {
+        removeFavorite(existing.id);
+      }
+    }
+    for (const fav of importedFavorites) {
+      addFavorite(fav.name, fav.positivePrompt, fav.negativePrompt, fav.dimensionSummary);
+    }
+  }, [favorites, addFavorite, removeFavorite]);
 
   const currentDimensionConfig = currentDimension 
     ? dimensionPresets[currentDimension] 
@@ -90,10 +185,10 @@ function App() {
       />
       {isDark && <div className="fixed inset-0 bg-black/40 -z-10" />}
       
-      <Header />
+      <Header onOpenComfyUISettings={handleComfyUISettingsOpen} connected={connected} />
       
       <main className="flex-1 overflow-y-auto">
-        <div className="max-w-3xl mx-auto px-padding py-gap-lg space-y-gap-lg">
+        <div className="max-w-[1440px] mx-auto px-padding py-gap-lg space-y-gap-lg">
           <GenerateButton onGenerate={handleGenerate} />
           
           <PreviewPanel
@@ -102,6 +197,19 @@ function App() {
             negativePrompt={currentPrompt.negative}
             onCopy={handleCopy}
             copied={copied}
+            onOpenSettings={handleComfyUISettingsOpen}
+            comfyUIEnabled={true}
+            generationState={comfyUIState}
+            generationParams={comfyUIParams}
+            onGenerate={handleComfyUIGenerate}
+            onRegenerate={handleComfyUIGenerate}
+            onUpdateParams={updateComfyUIParams}
+            dimensions={dimensions}
+            dimensionOrder={dimensionOrder}
+            onOpenDimension={openDrawer}
+            onAddFavorite={handleAddFavorite}
+            onOpenFavorites={() => setFavoritesDrawerOpen(true)}
+            favoritesCount={favorites.length}
           />
           
           <HistoryPanel
@@ -118,30 +226,48 @@ function App() {
             onClear={clearHistory}
           />
           
+          <DimensionPresetPanel
+            dimensionOrder={dimensionOrder.map(key => ({
+              key,
+              label: dimensionPresets[key].label,
+              icon: dimensionPresets[key].icon,
+            }))}
+            locks={Object.fromEntries(
+              dimensionOrder.map(key => [key, dimensions[key]?.locked || false])
+            )}
+            onToggleLock={toggleLock}
+            onApplyPreset={handleApplyDimensionPreset}
+            onClearAll={clearAll}
+            onLockAll={lockAll}
+            onUnlockAll={unlockAll}
+          />
+          
           <div className="space-y-gap-sm">
             <span className="text-section-title text-text-secondary">
               维度配置
             </span>
-            {dimensionOrder.map((key) => {
-              const config = dimensionPresets[key];
-              const state = dimensions[key];
-              return (
-                <DimensionRow
-                  key={key}
-                  config={config}
-                  state={state}
-                  currentSummary={getCurrentSummary(key)}
-                  onToggleLock={() => toggleLock(key)}
-                  onRandom={() => randomDimension(key)}
-                  onClear={() => clearDimension(key)}
-                  onOpen={() => openDrawer(key)}
-                  onCopy={() => {
-                    const prompt = getDimensionPromptForCopy(key);
-                    if (prompt) copy(prompt);
-                  }}
-                />
-              );
-            })}
+            <div className="max-w-[1000px] mx-auto space-y-gap-sm">
+              {dimensionOrder.map((key) => {
+                const config = dimensionPresets[key];
+                const state = dimensions[key];
+                return (
+                  <DimensionRow
+                    key={key}
+                    config={config}
+                    state={state}
+                    currentSummary={getCurrentSummary(key)}
+                    onToggleLock={() => toggleLock(key)}
+                    onRandom={() => randomDimension(key)}
+                    onClear={() => clearDimension(key)}
+                    onOpen={() => openDrawer(key)}
+                    onCopy={() => {
+                      const prompt = getDimensionPromptForCopy(key);
+                      if (prompt) copy(prompt);
+                    }}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
       </main>
@@ -152,7 +278,7 @@ function App() {
           onClose={closeDrawer}
           title={currentDimensionConfig.label}
           icon={currentDimensionConfig.icon}
-          onRandom={() => currentDimension && randomDimension(currentDimension)}
+          isLocked={currentDimensionState.locked}
         >
           <PresetSelector
             config={currentDimensionConfig}
@@ -160,9 +286,29 @@ function App() {
             onSelect={(id) => currentDimension && selectPreset(currentDimension, id)}
             onClear={() => currentDimension && clearDimension(currentDimension)}
             onRandom={() => currentDimension && randomDimension(currentDimension)}
+            isLocked={currentDimensionState.locked}
+            onToggleLock={() => currentDimension && toggleLock(currentDimension)}
           />
         </Drawer>
       )}
+
+      <ComfyUISettings
+        isOpen={comfyUISettingsOpen}
+        onClose={() => setComfyUISettingsOpen(false)}
+        connected={connected}
+        isTesting={isGenerating}
+        onTestConnection={testConnection}
+      />
+
+      <FavoritesDrawer
+        isOpen={favoritesDrawerOpen}
+        onClose={() => setFavoritesDrawerOpen(false)}
+        favorites={favorites}
+        onApply={handleApplyFavorite}
+        onDelete={removeFavorite}
+        onClear={clearFavorites}
+        onImport={handleImportFavorites}
+      />
     </div>
   );
 }

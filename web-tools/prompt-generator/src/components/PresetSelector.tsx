@@ -1,4 +1,4 @@
-import { Shuffle, Check, X } from 'lucide-react';
+import { Shuffle, Check, X, Lock, Unlock } from 'lucide-react';
 import type { DimensionPreset } from '../types';
 import { Button, Card } from './common';
 
@@ -8,6 +8,8 @@ interface PresetSelectorProps {
   onSelect: (id: string) => void;
   onClear: () => void;
   onRandom: () => void;
+  isLocked?: boolean;
+  onToggleLock?: () => void;
 }
 
 export function PresetSelector({
@@ -16,11 +18,30 @@ export function PresetSelector({
   onSelect,
   onClear,
   onRandom,
+  isLocked = false,
+  onToggleLock,
 }: PresetSelectorProps) {
   return (
     <div className="space-y-gap-sm">
       <div className="flex items-center justify-between">
-        <span className="text-section-title">预设模板</span>
+        <div className="flex items-center gap-1">
+          <span className="text-section-title">预设模板</span>
+          {onToggleLock && (
+            <Button 
+              variant="icon" 
+              size="sm" 
+              onClick={onToggleLock} 
+              title={isLocked ? '解锁' : '锁定'}
+              className={isLocked ? 'text-random' : ''}
+            >
+              {isLocked ? (
+                <Lock className="w-4 h-4" />
+              ) : (
+                <Unlock className="w-4 h-4" />
+              )}
+            </Button>
+          )}
+        </div>
         <div className="flex gap-2">
           <Button variant="secondary" size="sm" onClick={onClear} className="gap-1">
             <X className="w-3 h-3" />
