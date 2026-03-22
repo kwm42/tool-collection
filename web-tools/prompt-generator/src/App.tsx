@@ -188,7 +188,14 @@ function App() {
       }
     }
     for (const fav of importedFavorites) {
-      addFavorite(fav.name, fav.positivePrompt, fav.negativePrompt, fav.dimensionSummary);
+      addFavorite(
+        fav.name,
+        fav.positivePrompt,
+        fav.negativePrompt,
+        fav.dimensionSummary,
+        fav.generationParams,
+        fav.previewImage
+      );
     }
   }, [favorites, addFavorite, removeFavorite]);
 
