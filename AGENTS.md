@@ -1,16 +1,19 @@
 # AGENTS.md - Agent Coding Guidelines
 
-This is a multi-tool collection project with 3 independent sub-projects. Each has its own technology stack and commands.
+This is a multi-tool collection project. Tools are divided into two categories: web tools and desktop tools.
 
 ## Project Structure
 
 ```
 tool-collection/
 ├── index.html              # Main navigation page
-├── image-concat/           # React image拼接工具 (Vite + React + Tailwind)
-├── pip-calculator/         # 外汇仓位计算器 (Vanilla HTML/JS/Bootstrap)
-├── pip-calculator-react/  # 外汇仓位计算器 (React + Vite + Tailwind)
-└── WallTools/              # Wallhaven图片下载器 (Electron + React + TypeScript)
+├── desktop-tools/          # Desktop tools
+│   └── WallTools/          # Wallhaven 图片下载器 (Electron + React + TypeScript)
+└── web-tools/              # Web tools
+    ├── image-concat/       # React 图片拼接工具 (Vite + React + Tailwind)
+    ├── pip-calculator/     # 外汇仓位计算器 (Vanilla HTML/JS/Bootstrap)
+    ├── pip-calculator-react/  # 外汇仓位计算器 (React + Vite + Tailwind)
+    └── vtt-to-srt/         # 字幕格式转换
 ```
 
 ---
@@ -21,7 +24,7 @@ tool-collection/
 
 ```bash
 # Navigate to WallTools directory
-cd WallTools
+cd desktop-tools/WallTools
 
 # Install dependencies
 yarn install  # or npm install
@@ -50,7 +53,7 @@ yarn type-check            # TypeScript type check
 ### image-concat (React Image Tool)
 
 ```bash
-cd image-concat
+cd web-tools/image-concat
 
 # Install dependencies
 pnpm install  # or npm install
@@ -70,7 +73,7 @@ No build required. Direct HTML/JS files - edit directly.
 ### pip-calculator-react (React Calculator)
 
 ```bash
-cd pip-calculator-react
+cd web-tools/pip-calculator-react
 
 # Install dependencies
 pnpm install  # or npm install
