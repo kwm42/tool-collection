@@ -83,6 +83,11 @@ function App() {
   } = useComfyUI();
 
   const lastLKeyTime = useRef<number>(0);
+  const currentPromptRef = useRef(currentPrompt);
+
+  useEffect(() => {
+    currentPromptRef.current = currentPrompt;
+  }, [currentPrompt]);
 
   const handleGenerate = useCallback(() => {
     generate();
@@ -210,11 +215,22 @@ function App() {
       if (e.key === 'l' || e.key === 'L') {
         const now = Date.now();
         if (now - lastLKeyTime.current < 500) {
-          if (!isGenerating && currentPrompt.positive) {
-            handleGenerate();
-            if (connected) {
-              handleComfyUIGenerate();
-            }
+          if (!isGenerating) {
+            generate();
+            setTimeout(() => {
+              const prompt = currentPromptRef.current;
+              const summary: Record<string, string> = {};
+              for (const key of dimensionOrder) {
+                summary[key] = getCurrentSummary(key);
+              }
+              
+              addHistory(prompt.positive, prompt.negative, summary);
+              
+              if (connected && prompt.positive) {
+                const character = prompt.positiveChinese.split('\n')[0] || '';
+                comfyUIGenerate(prompt.positive, character, prompt.negative);
+              }
+            }, 100);
           }
           lastLKeyTime.current = 0;
         } else {
@@ -225,7 +241,7 @@ function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isGenerating, currentPrompt.positive, connected]);
+  }, [isGenerating, connected, generate, addHistory, getCurrentSummary]);
 
   return (
     <div className="h-screen flex flex-col">

@@ -450,6 +450,10 @@ export function PreviewPanel({
         </div>
       </div>
 
+      <div className="text-helper text-text-placeholder text-center mt-2">
+        双击 L 键快速随机生成 + 生成图片
+      </div>
+
       <ImageModal
         isOpen={fullscreenImage !== null}
         onClose={() => setFullscreenImage(null)}
