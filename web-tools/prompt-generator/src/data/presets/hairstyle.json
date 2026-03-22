@@ -1,0 +1,101 @@
+{
+  "dimension": "hairstyle",
+  "label": "发型",
+  "icon": "💇",
+  "presets": [
+    {
+      "id": "hair001",
+      "name": "韩系长发女神",
+      "prompt": "long straight hair, silky hair, black hair, center part, Korean style",
+      "weight": 1.2
+    },
+    {
+      "id": "hair002",
+      "name": "日系微卷中发",
+      "prompt": "medium wavy hair, brown hair, loose curls, casual, Japanese style",
+      "weight": 1.2
+    },
+    {
+      "id": "hair003",
+      "name": "甜美双马尾",
+      "prompt": "twin tails, pink hair, hair bows, high ponytails, cute",
+      "weight": 1.1
+    },
+    {
+      "id": "hair004",
+      "name": "酷感短发",
+      "prompt": "short hair, undercut, asymmetric cut, platinum blonde, edgy",
+      "weight": 1.0
+    },
+    {
+      "id": "hair005",
+      "name": "复古波浪卷",
+      "prompt": "vintage waves, red hair, finger curls, 1950s style, glamour",
+      "weight": 1.0
+    },
+    {
+      "id": "hair006",
+      "name": "二次元姬发式",
+      "prompt": "anime style, blunt bangs, long hair, two-tone hair, colorful",
+      "weight": 1.1
+    },
+    {
+      "id": "hair007",
+      "name": "优雅低盘发",
+      "prompt": "elegant low bun, long hair, side part, pearl hairpin, sophisticated",
+      "weight": 1.0
+    },
+    {
+      "id": "hair008",
+      "name": "赛博朋克挑染",
+      "prompt": "cyberpunk hair, neon blue highlights, long spiky hair, futuristic",
+      "weight": 0.9
+    }
+  ],
+  "subDimensionOptions": {
+    "length": [
+      { "value": "超短发", "prompt": "pixie cut", "weight": 0.5 },
+      { "value": "短发", "prompt": "short hair", "weight": 0.7 },
+      { "value": "锁骨发", "prompt": "bob hair, collar bone length", "weight": 0.9 },
+      { "value": "中长发", "prompt": "medium long hair", "weight": 1.0 },
+      { "value": "长发", "prompt": "long hair", "weight": 1.1 },
+      { "value": "超长发", "prompt": "very long hair, waist length", "weight": 0.8 }
+    ],
+    "style": [
+      { "value": "直发", "prompt": "straight hair", "weight": 1.0 },
+      { "value": "微卷", "prompt": "slightly wavy", "weight": 1.0 },
+      { "value": "大波浪", "prompt": "big waves, beach waves", "weight": 1.1 },
+      { "value": "小卷", "prompt": "curly hair, ringlets", "weight": 0.9 },
+      { "value": "羊毛卷", "prompt": "curly afro, perm hair", "weight": 0.8 },
+      { "value": "公主切", "prompt": "hime cut, straight cut bangs", "weight": 0.9 }
+    ],
+    "color": [
+      { "value": "纯黑色", "prompt": "jet black hair", "weight": 1.0 },
+      { "value": "自然棕", "prompt": "brown hair, chestnut", "weight": 1.1 },
+      { "value": "亚麻色", "prompt": "ash blonde, linen color", "weight": 1.0 },
+      { "value": "蜜糖棕", "prompt": "honey brown, caramel", "weight": 1.0 },
+      { "value": "白金金", "prompt": "platinum blonde, silver blonde", "weight": 0.8 },
+      { "value": "奶奶灰", "prompt": "silver gray hair, granny hair", "weight": 0.7 },
+      { "value": "樱花粉", "prompt": "cherry blossom pink", "weight": 0.8 },
+      { "value": "雾霾蓝", "prompt": "dusty blue, lavender blue", "weight": 0.8 },
+      { "value": "渐变紫", "prompt": "gradient purple, purple ombre", "weight": 0.9 },
+      { "value": "红棕色", "prompt": "auburn, red brown", "weight": 1.0 }
+    ],
+    "bangs": [
+      { "value": "无刘海", "prompt": "no bangs, pulled back", "weight": 1.0 },
+      { "value": "空气刘海", "prompt": "air bangs, wispy bangs", "weight": 1.1 },
+      { "value": "法式刘海", "prompt": "curtain bangs, fringe", "weight": 1.0 },
+      { "value": "齐刘海", "prompt": "blunt bangs, straight bangs", "weight": 0.9 },
+      { "value": "斜刘海", "prompt": "side swept bangs", "weight": 1.0 },
+      { "value": "狗啃刘海", "prompt": "choppy bangs, asymmetric bangs", "weight": 0.7 }
+    ],
+    "accessories": [
+      { "value": "无发饰", "prompt": "", "weight": 1.0 },
+      { "value": "蝴蝶结", "prompt": "hair bows", "weight": 1.0 },
+      { "value": "发夹", "prompt": "hair clips, barrettes", "weight": 0.9 },
+      { "value": "发带", "prompt": "headband, hair band", "weight": 0.9 },
+      { "value": "发簪", "prompt": "hair stick, hair ornament", "weight": 0.8 },
+      { "value": "头花", "prompt": "flower hair accessory", "weight": 0.8 }
+    ]
+  }
+}

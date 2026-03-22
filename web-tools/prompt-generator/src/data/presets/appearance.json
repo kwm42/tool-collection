@@ -1,0 +1,83 @@
+{
+  "dimension": "appearance",
+  "label": "外貌",
+  "icon": "👤",
+  "presets": [
+    {
+      "id": "app001",
+      "name": "精致瓜子脸",
+      "prompt": "beautiful face, pointed chin, delicate features, elegant",
+      "weight": 1.2
+    },
+    {
+      "id": "app002",
+      "name": "可爱鹅蛋脸",
+      "prompt": "cute face, oval shape, soft features, approachable",
+      "weight": 1.1
+    },
+    {
+      "id": "app003",
+      "name": "清纯圆脸",
+      "prompt": "innocent face, round cheeks, youthful, fresh",
+      "weight": 1.0
+    },
+    {
+      "id": "app004",
+      "name": "御姐方脸",
+      "prompt": "charming face, square jaw, strong features, mature",
+      "weight": 0.9
+    }
+  ],
+  "subDimensionOptions": {
+    "faceShape": [
+      { "value": "瓜子脸", "prompt": "pointed chin face", "weight": 1.0 },
+      { "value": "鹅蛋脸", "prompt": "oval face", "weight": 1.0 },
+      { "value": "圆脸", "prompt": "round face", "weight": 1.0 },
+      { "value": "方脸", "prompt": "square jaw face", "weight": 0.8 },
+      { "value": "心形脸", "prompt": "heart-shaped face", "weight": 0.9 }
+    ],
+    "eyes": [
+      { "value": "杏眼", "prompt": "almond eyes", "weight": 1.0 },
+      { "value": "丹凤眼", "prompt": "phoenix eyes", "weight": 0.9 },
+      { "value": "桃花眼", "prompt": "peach blossom eyes", "weight": 1.0 },
+      { "value": "猫眼", "prompt": "cat eyes", "weight": 0.8 },
+      { "value": "大眼睛", "prompt": "big eyes", "weight": 1.1 },
+      { "value": "小眼睛", "prompt": "small eyes", "weight": 0.7 }
+    ],
+    "eyebrows": [
+      { "value": "柳叶眉", "prompt": "willow leaf eyebrows", "weight": 1.0 },
+      { "value": "剑眉", "prompt": "sword eyebrows", "weight": 0.9 },
+      { "value": "一字眉", "prompt": "straight eyebrows", "weight": 1.0 },
+      { "value": "弯月眉", "prompt": "crescent eyebrows", "weight": 0.9 }
+    ],
+    "nose": [
+      { "value": "翘鼻", "prompt": "upturned nose", "weight": 1.0 },
+      { "value": "鹰钩鼻", "prompt": "aquiline nose", "weight": 0.8 },
+      { "value": "圆鼻头", "prompt": "round nose tip", "weight": 0.9 },
+      { "value": "小巧鼻", "prompt": "small delicate nose", "weight": 1.1 }
+    ],
+    "lips": [
+      { "value": "微笑唇", "prompt": "smiling lips", "weight": 1.0 },
+      { "value": "嘟嘟唇", "prompt": "pouty lips", "weight": 1.0 },
+      { "value": "薄唇", "prompt": "thin lips", "weight": 0.8 },
+      { "value": "咬唇", "prompt": "bitten lips", "weight": 0.9 }
+    ],
+    "ears": [
+      { "value": "精灵耳", "prompt": "elf ears", "weight": 0.7 },
+      { "value": "招风耳", "prompt": "protruding ears", "weight": 0.6 },
+      { "value": "正常耳", "prompt": "normal ears", "weight": 1.0 }
+    ],
+    "skin": [
+      { "value": "瓷白肌", "prompt": "porcelain white skin", "weight": 1.0 },
+      { "value": "奶油肌", "prompt": "creamy skin", "weight": 1.1 },
+      { "value": "小麦色", "prompt": "wheat colored skin", "weight": 0.9 },
+      { "value": "古铜肌", "prompt": "bronze skin", "weight": 0.8 }
+    ],
+    "freckles": [
+      { "value": "无雀斑", "prompt": "clear skin", "weight": 1.0 },
+      { "value": "少许雀斑", "prompt": "slight freckles", "weight": 0.9 },
+      { "value": "点缀雀斑", "prompt": "scattered freckles", "weight": 0.8 },
+      { "value": "明显雀斑", "prompt": "prominent freckles", "weight": 0.7 }
+    ]
+  }
+}

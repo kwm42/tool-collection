@@ -1,0 +1,62 @@
+{
+  "dimension": "time",
+  "label": "时间",
+  "icon": "⏰",
+  "presets": [
+    {
+      "id": "time001",
+      "name": "金色夕阳",
+      "prompt": "golden hour, sunset, warm lighting, golden sunlight",
+      "weight": 1.2
+    },
+    {
+      "id": "time002",
+      "name": "浪漫黄昏",
+      "prompt": "dusk, twilight, purple sky, romantic atmosphere",
+      "weight": 1.1
+    },
+    {
+      "id": "time003",
+      "name": "明亮正午",
+      "prompt": "bright daylight, noon sun, clear sky, vibrant",
+      "weight": 1.0
+    },
+    {
+      "id": "time004",
+      "name": "神秘夜晚",
+      "prompt": "night scene, moonlight, stars, mysterious",
+      "weight": 1.0
+    }
+  ],
+  "subDimensionOptions": {
+    "period": [
+      { "value": "日出", "prompt": "sunrise, morning light", "weight": 1.0 },
+      { "value": "朝阳", "prompt": "morning sun, early light", "weight": 1.0 },
+      { "value": "上午", "prompt": "morning, late morning", "weight": 1.0 },
+      { "value": "正午", "prompt": "noon, midday sun", "weight": 1.0 },
+      { "value": "午后", "prompt": "afternoon, afternoon light", "weight": 1.0 },
+      { "value": "夕阳", "prompt": "sunset, evening sun", "weight": 1.2 },
+      { "value": "黄昏", "prompt": "dusk, twilight", "weight": 1.1 },
+      { "value": "夜晚", "prompt": "night, nighttime", "weight": 1.0 },
+      { "value": "深夜", "prompt": "late night, midnight", "weight": 0.8 }
+    ],
+    "specialMoment": [
+      { "value": "黎明", "prompt": "dawn, first light", "weight": 0.9 },
+      { "value": "破晓", "prompt": "daybreak, first rays", "weight": 0.9 },
+      { "value": "星光", "prompt": "starlight, starry", "weight": 1.0 },
+      { "value": "月光", "prompt": "moonlight, lunar glow", "weight": 1.1 },
+      { "value": "极光", "prompt": "aurora, northern lights", "weight": 0.7 }
+    ],
+    "colorTemp": [
+      { "value": "暖色调", "prompt": "warm tones, warm color grading", "weight": 1.1 },
+      { "value": "冷色调", "prompt": "cool tones, cool color grading", "weight": 1.0 },
+      { "value": "中性色调", "prompt": "neutral tones, natural colors", "weight": 1.0 }
+    ],
+    "atmosphere": [
+      { "value": "温馨", "prompt": "cozy, warm atmosphere", "weight": 1.0 },
+      { "value": "寂寥", "prompt": "lonely, desolate atmosphere", "weight": 0.9 },
+      { "value": "神秘", "prompt": "mysterious atmosphere", "weight": 1.0 },
+      { "value": "浪漫", "prompt": "romantic atmosphere", "weight": 1.1 }
+    ]
+  }
+}

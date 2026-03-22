@@ -1,0 +1,65 @@
+{
+  "dimension": "composition",
+  "label": "构图",
+  "icon": "📷",
+  "presets": [
+    {
+      "id": "comp001",
+      "name": "半身特写",
+      "prompt": "half-body shot, waist up, upper body portrait",
+      "weight": 1.2
+    },
+    {
+      "id": "comp002",
+      "name": "全身人像",
+      "prompt": "full body shot, full length portrait",
+      "weight": 1.1
+    },
+    {
+      "id": "comp003",
+      "name": "面部特写",
+      "prompt": "face close-up, headshot, portrait",
+      "weight": 1.0
+    },
+    {
+      "id": "comp004",
+      "name": "环境人像",
+      "prompt": "full body with environment, environmental portrait",
+      "weight": 1.0
+    }
+  ],
+  "subDimensionOptions": {
+    "shot": [
+      { "value": "特写", "prompt": "close-up shot, extreme close-up", "weight": 1.0 },
+      { "value": "半身照", "prompt": "half-body shot, waist up", "weight": 1.2 },
+      { "value": "全身照", "prompt": "full body shot, full length", "weight": 1.1 },
+      { "value": "环境人像", "prompt": "environmental portrait, contextual", "weight": 1.0 }
+    ],
+    "angle": [
+      { "value": "平视", "prompt": "eye level shot, straight on", "weight": 1.1 },
+      { "value": "仰视", "prompt": "low angle shot, looking up", "weight": 0.9 },
+      { "value": "俯视", "prompt": "high angle shot, bird's eye", "weight": 0.8 },
+      { "value": "侧视", "prompt": "profile shot, side view", "weight": 0.9 }
+    ],
+    "lensType": [
+      { "value": "肖像镜头", "prompt": "portrait lens, 85mm style", "weight": 1.0 },
+      { "value": "广角镜头", "prompt": "wide angle lens, expansive", "weight": 0.8 },
+      { "value": "微距镜头", "prompt": "macro lens, detailed", "weight": 0.7 },
+      { "value": "电影镜头", "prompt": "cinematic, anamorphic look", "weight": 1.0 }
+    ],
+    "background": [
+      { "value": "纯色", "prompt": "solid color background, plain", "weight": 0.9 },
+      { "value": "虚化", "prompt": "blurred background, bokeh, shallow DOF", "weight": 1.1 },
+      { "value": "城市背景", "prompt": "city background, urban scenery", "weight": 1.0 },
+      { "value": "自然背景", "prompt": "nature background, outdoor scenery", "weight": 1.0 },
+      { "value": "星空背景", "prompt": "starry background, night sky", "weight": 0.9 },
+      { "value": "樱花背景", "prompt": "cherry blossom background, sakura", "weight": 1.0 }
+    ],
+    "compositionRule": [
+      { "value": "中央构图", "prompt": "center composition, centered", "weight": 1.0 },
+      { "value": "三分法", "prompt": "rule of thirds composition", "weight": 1.1 },
+      { "value": "对角线", "prompt": "diagonal composition", "weight": 0.9 },
+      { "value": "引导线", "prompt": "leading lines composition", "weight": 0.9 }
+    ]
+  }
+}

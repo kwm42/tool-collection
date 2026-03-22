@@ -1,0 +1,72 @@
+{
+  "dimension": "lighting",
+  "label": "光照",
+  "icon": "💡",
+  "presets": [
+    {
+      "id": "light001",
+      "name": "自然柔光",
+      "prompt": "natural lighting, soft lighting, gentle light, diffused",
+      "weight": 1.2
+    },
+    {
+      "id": "light002",
+      "name": "戏剧侧光",
+      "prompt": "dramatic side lighting, chiaroscuro, contrast, moody",
+      "weight": 1.1
+    },
+    {
+      "id": "light003",
+      "name": "逆光剪影",
+      "prompt": "backlighting, silhouette, rim light, ethereal",
+      "weight": 1.0
+    },
+    {
+      "id": "light004",
+      "name": "赛博霓虹",
+      "prompt": "neon lighting, cyberpunk lights, colorful, futuristic",
+      "weight": 1.0
+    }
+  ],
+  "subDimensionOptions": {
+    "lightSource": [
+      { "value": "自然光", "prompt": "natural light, sunlight", "weight": 1.1 },
+      { "value": "人工光", "prompt": "artificial light, indoor lighting", "weight": 1.0 },
+      { "value": "霓虹光", "prompt": "neon lights, neon glow", "weight": 1.0 },
+      { "value": "烛光", "prompt": "candlelight, warm candlelight", "weight": 1.0 },
+      { "value": "萤火虫光", "prompt": "firefly light, bioluminescence", "weight": 0.8 }
+    ],
+    "lightDirection": [
+      { "value": "正面光", "prompt": "front lighting, flat lighting", "weight": 0.9 },
+      { "value": "侧光", "prompt": "side lighting, split lighting", "weight": 1.0 },
+      { "value": "逆光", "prompt": "backlighting, contre-jour", "weight": 1.1 },
+      { "value": "顶光", "prompt": "top lighting, overhead light", "weight": 0.8 },
+      { "value": "底光", "prompt": "under lighting, uplighting", "weight": 0.6 }
+    ],
+    "lightStyle": [
+      { "value": "柔光", "prompt": "soft lighting, diffused light", "weight": 1.2 },
+      { "value": "硬光", "prompt": "hard lighting, direct light", "weight": 0.9 },
+      { "value": "戏剧光", "prompt": "dramatic lighting, theatrical", "weight": 1.0 },
+      { "value": "伦勃朗光", "prompt": "Rembrandt lighting", "weight": 0.9 },
+      { "value": "蝴蝶光", "prompt": "butterfly lighting, paramount lighting", "weight": 0.9 }
+    ],
+    "lightEffect": [
+      { "value": "柔焦", "prompt": "soft focus, bokeh", "weight": 1.0 },
+      { "value": "光晕", "prompt": "lens flare, light halo", "weight": 1.0 },
+      { "value": "光斑", "prompt": "light spots, dappled light", "weight": 1.0 },
+      { "value": "耶稣光", "prompt": "god rays, sunbeams", "weight": 1.1 },
+      { "value": "边缘光", "prompt": "edge lighting, rim light", "weight": 1.0 }
+    ],
+    "cyberStyle": [
+      { "value": "霓虹灯", "prompt": "neon lights, neon signs", "weight": 1.0 },
+      { "value": "激光", "prompt": "laser lights, laser beams", "weight": 0.8 },
+      { "value": "荧光", "prompt": "fluorescent glow, glow effect", "weight": 0.9 },
+      { "value": "全息投影", "prompt": "hologram, holographic projection", "weight": 0.7 }
+    ],
+    "artisticEffect": [
+      { "value": "体积光", "prompt": "volumetric lighting, god rays", "weight": 1.0 },
+      { "value": "光束", "prompt": "light beams, rays of light", "weight": 1.0 },
+      { "value": "光散射", "prompt": "light scattering, subsurface scattering", "weight": 0.9 }
+    ]
+  }
+}

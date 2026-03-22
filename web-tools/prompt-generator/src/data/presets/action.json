@@ -1,0 +1,73 @@
+{
+  "dimension": "action",
+  "label": "行为",
+  "icon": "🎭",
+  "presets": [
+    {
+      "id": "action001",
+      "name": "优雅微笑",
+      "prompt": "gentle smile, elegant pose, graceful, sophisticated",
+      "weight": 1.2
+    },
+    {
+      "id": "action002",
+      "name": "活泼可爱",
+      "prompt": "cheerful expression, lively pose, energetic, playful",
+      "weight": 1.1
+    },
+    {
+      "id": "action003",
+      "name": "高冷御姐",
+      "prompt": "cold expression, confident pose, aloof, mature",
+      "weight": 1.0
+    },
+    {
+      "id": "action004",
+      "name": "神秘诱惑",
+      "prompt": "seductive expression, alluring pose, mysterious, tempting",
+      "weight": 0.9
+    }
+  ],
+  "subDimensionOptions": {
+    "expression": [
+      { "value": "微笑", "prompt": "smiling", "weight": 1.2 },
+      { "value": "大笑", "prompt": "laughing, big smile", "weight": 0.9 },
+      { "value": "害羞", "prompt": "shy expression, blushing", "weight": 1.0 },
+      { "value": "冷漠", "prompt": "cold expression, emotionless", "weight": 0.9 },
+      { "value": "忧郁", "prompt": "melancholic expression, sad", "weight": 0.8 },
+      { "value": "魅惑", "prompt": "seductive expression, alluring", "weight": 0.9 },
+      { "value": "惊讶", "prompt": "surprised expression, shocked", "weight": 0.8 }
+    ],
+    "gaze": [
+      { "value": "注视前方", "prompt": "looking at viewer, direct gaze", "weight": 1.0 },
+      { "value": "眼神撩人", "prompt": "seductive eyes, alluring gaze", "weight": 0.9 },
+      { "value": "回眸", "prompt": "looking back, over shoulder", "weight": 1.1 },
+      { "value": "闭眼", "prompt": "eyes closed", "weight": 1.0 },
+      { "value": "仰望", "prompt": "looking up, gazing upward", "weight": 0.9 },
+      { "value": "侧目", "prompt": "looking sideways, sidelong glance", "weight": 0.8 }
+    ],
+    "handGesture": [
+      { "value": "托腮", "prompt": "resting chin on hand", "weight": 1.0 },
+      { "value": "撩发", "prompt": "touching hair, playing with hair", "weight": 1.0 },
+      { "value": "手插兜", "prompt": "hand in pocket", "weight": 0.9 },
+      { "value": "比心", "prompt": "finger heart, cute gesture", "weight": 0.9 },
+      { "value": "招手", "prompt": "waving hand", "weight": 0.8 },
+      { "value": "双手交叠", "prompt": "arms crossed or hands folded", "weight": 0.9 }
+    ],
+    "bodyAction": [
+      { "value": "转身", "prompt": "turning body, three-quarter view", "weight": 1.0 },
+      { "value": "侧身", "prompt": "side profile, sideways pose", "weight": 1.0 },
+      { "value": "弯腰", "prompt": "bending forward, leaning", "weight": 0.8 },
+      { "value": "伸展", "prompt": "stretching, arms spread", "weight": 0.7 },
+      { "value": "倚靠", "prompt": "leaning on something, prop", "weight": 0.9 }
+    ],
+    "mood": [
+      { "value": "活泼", "prompt": "lively, energetic, cheerful", "weight": 1.0 },
+      { "value": "优雅", "prompt": "elegant, graceful, refined", "weight": 1.1 },
+      { "value": "冷艳", "prompt": "elegant and cold, aloof beauty", "weight": 1.0 },
+      { "value": "甜美", "prompt": "sweet, cute, adorable", "weight": 1.0 },
+      { "value": "酷炫", "prompt": "cool, trendy, stylish", "weight": 1.0 },
+      { "value": "神秘", "prompt": "mysterious, enigmatic", "weight": 0.9 }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "dimension": "props",
+  "label": "道具",
+  "icon": "🎁",
+  "presets": [
+    {
+      "id": "props001",
+      "name": "手捧花束",
+      "prompt": "holding flower bouquet, flowers in hand, romantic",
+      "weight": 1.2
+    },
+    {
+      "id": "props002",
+      "name": "阅读时光",
+      "prompt": "holding book, reading, intellectual, studious",
+      "weight": 1.0
+    },
+    {
+      "id": "props003",
+      "name": "雨中漫步",
+      "prompt": "holding umbrella, rainy day, romantic walk",
+      "weight": 1.1
+    },
+    {
+      "id": "props004",
+      "name": "咖啡时光",
+      "prompt": "holding coffee cup, cafe vibes, cozy",
+      "weight": 1.0
+    }
+  ],
+  "subDimensionOptions": {
+    "handheld": [
+      { "value": "花束", "prompt": "holding flower bouquet, flowers", "weight": 1.1 },
+      { "value": "书本", "prompt": "holding book", "weight": 1.0 },
+      { "value": "手机", "prompt": "holding phone, smartphone", "weight": 0.9 },
+      { "value": "雨伞", "prompt": "holding umbrella", "weight": 1.0 },
+      { "value": "咖啡杯", "prompt": "holding coffee cup", "weight": 1.0 },
+      { "value": "气球", "prompt": "holding balloons", "weight": 0.9 },
+      { "value": "风筝", "prompt": "holding kite", "weight": 0.8 }
+    ],
+    "weapons": [
+      { "value": "剑", "prompt": "holding sword", "weight": 0.7 },
+      { "value": "刀", "prompt": "holding knife", "weight": 0.6 },
+      { "value": "枪", "prompt": "holding gun", "weight": 0.5 },
+      { "value": "法杖", "prompt": "holding staff, magic wand", "weight": 0.7 },
+      { "value": "弓箭", "prompt": "holding bow and arrow", "weight": 0.6 }
+    ],
+    "instruments": [
+      { "value": "吉他", "prompt": "playing guitar, holding guitar", "weight": 0.9 },
+      { "value": "钢琴", "prompt": "playing piano", "weight": 0.8 },
+      { "value": "小提琴", "prompt": "playing violin", "weight": 0.8 },
+      { "value": "笛子", "prompt": "playing flute", "weight": 0.7 },
+      { "value": "架子鼓", "prompt": "playing drums", "weight": 0.6 }
+    ],
+    "pets": [
+      { "value": "猫咪", "prompt": "with cat, holding cat", "weight": 1.0 },
+      { "value": "狗狗", "prompt": "with dog, holding dog", "weight": 1.0 },
+      { "value": "兔子", "prompt": "with rabbit, bunny", "weight": 0.9 },
+      { "value": "鸟儿", "prompt": "with bird, perching bird", "weight": 0.8 },
+      { "value": "蝴蝶", "prompt": "with butterfly, butterflies", "weight": 0.9 },
+      { "value": "龙崽", "prompt": "with baby dragon, dragon companion", "weight": 0.6 }
+    ],
+    "decorations": [
+      { "value": "灯串", "prompt": "fairy lights, string lights", "weight": 1.0 },
+      { "value": "蜡烛", "prompt": "holding candle", "weight": 0.9 },
+      { "value": "玻璃球", "prompt": "holding crystal ball", "weight": 0.8 },
+      { "value": "镜子", "prompt": "holding mirror", "weight": 0.7 },
+      { "value": "钟表", "prompt": "clock, pocket watch", "weight": 0.6 }
+    ],
+    "techGear": [
+      { "value": "全息投影", "prompt": "holographic display, hologram", "weight": 0.7 },
+      { "value": "终端", "prompt": "holding terminal, handheld device", "weight": 0.8 },
+      { "value": "悬浮屏幕", "prompt": "floating screen, holographic display", "weight": 0.7 },
+      { "value": "无人机", "prompt": "with drone", "weight": 0.6 }
+    ],
+    "specialEffects": [
+      { "value": "飘落的花瓣", "prompt": "falling flower petals, cherry blossoms falling", "weight": 1.1 },
+      { "value": "雪花", "prompt": "falling snow, snowflakes", "weight": 1.0 },
+      { "value": "枫叶", "prompt": "falling maple leaves", "weight": 0.9 },
+      { "value": "光粒子", "prompt": "light particles, sparkles", "weight": 1.0 },
+      { "value": "烟雾", "prompt": "smoke effect, mist", "weight": 0.9 }
+    ]
+  }
+}

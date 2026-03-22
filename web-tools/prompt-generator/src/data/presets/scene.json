@@ -1,0 +1,90 @@
+{
+  "dimension": "scene",
+  "label": "场景",
+  "icon": "🏞️",
+  "presets": [
+    {
+      "id": "scene001",
+      "name": "樱花树下",
+      "prompt": "under cherry blossom tree, sakura, spring, romantic",
+      "weight": 1.3
+    },
+    {
+      "id": "scene002",
+      "name": "海边日落",
+      "prompt": "beach at sunset, ocean, seaside, waves, golden hour",
+      "weight": 1.2
+    },
+    {
+      "id": "scene003",
+      "name": "城市霓虹",
+      "prompt": "city street at night, neon lights, urban, cyberpunk",
+      "weight": 1.1
+    },
+    {
+      "id": "scene004",
+      "name": "神社古风",
+      "prompt": "shrine, traditional Japanese, torii gate, cultural",
+      "weight": 1.0
+    },
+    {
+      "id": "scene005",
+      "name": "咖啡厅",
+      "prompt": "coffee shop, cafe interior, cozy, relaxed atmosphere",
+      "weight": 1.0
+    },
+    {
+      "id": "scene006",
+      "name": "纯色背景",
+      "prompt": "simple background, solid color, clean, minimalist",
+      "weight": 0.9
+    }
+  ],
+  "subDimensionOptions": {
+    "locationType": [
+      { "value": "室内", "prompt": "indoor, interior", "weight": 1.0 },
+      { "value": "室外", "prompt": "outdoor, exterior", "weight": 1.1 },
+      { "value": "无特定背景", "prompt": "no specific background", "weight": 0.8 },
+      { "value": "纯色背景", "prompt": "solid color background", "weight": 0.9 }
+    ],
+    "urban": [
+      { "value": "街道", "prompt": "city street", "weight": 1.0 },
+      { "value": "商场", "prompt": "shopping mall", "weight": 0.8 },
+      { "value": "咖啡厅", "prompt": "cafe, coffee shop", "weight": 1.0 },
+      { "value": "天台", "prompt": "rooftop, terrace", "weight": 1.0 },
+      { "value": "地铁站", "prompt": "metro station, subway", "weight": 0.8 },
+      { "value": "霓虹街", "prompt": "neon street, light signs", "weight": 1.0 }
+    ],
+    "nature": [
+      { "value": "海边", "prompt": "seaside, beach, ocean", "weight": 1.2 },
+      { "value": "森林", "prompt": "forest, woods, trees", "weight": 1.0 },
+      { "value": "草地", "prompt": "meadow, grassy field", "weight": 1.0 },
+      { "value": "花田", "prompt": "flower field, garden", "weight": 1.1 },
+      { "value": "山顶", "prompt": "mountain top, hilltop", "weight": 0.9 },
+      { "value": "湖泊", "prompt": "lake, pond, water", "weight": 1.0 }
+    ],
+    "indoor": [
+      { "value": "卧室", "prompt": "bedroom", "weight": 1.0 },
+      { "value": "浴室", "prompt": "bathroom", "weight": 0.7 },
+      { "value": "教室", "prompt": "classroom, school", "weight": 0.9 },
+      { "value": "图书馆", "prompt": "library", "weight": 0.9 },
+      { "value": "餐厅", "prompt": "restaurant, dining", "weight": 0.8 }
+    ],
+    "fantasy": [
+      { "value": "废墟", "prompt": "ruins, abandoned place", "weight": 0.8 },
+      { "value": "废墟都市", "prompt": "post-apocalyptic city, ruins", "weight": 0.7 },
+      { "value": "太空站", "prompt": "space station, sci-fi", "weight": 0.6 },
+      { "value": "水下", "prompt": "underwater, submarine", "weight": 0.6 },
+      { "value": "古堡", "prompt": "castle, ancient building", "weight": 0.8 },
+      { "value": "异世界", "prompt": "fantasy world, otherworldly", "weight": 0.7 }
+    ],
+    "specificPlace": [
+      { "value": "樱花树下", "prompt": "under cherry blossom tree", "weight": 1.2 },
+      { "value": "神社", "prompt": "shrine, torii gate", "weight": 1.0 },
+      { "value": "教堂", "prompt": "church, cathedral", "weight": 0.9 },
+      { "value": "酒吧", "prompt": "bar, pub", "weight": 0.8 },
+      { "value": "天台", "prompt": "rooftop, terrace", "weight": 1.0 },
+      { "value": "阳台", "prompt": "balcony", "weight": 1.0 }
+    ]
+  }
+}

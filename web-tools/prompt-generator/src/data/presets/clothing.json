@@ -1,0 +1,93 @@
+{
+  "dimension": "clothing",
+  "label": "服装",
+  "icon": "👗",
+  "presets": [
+    {
+      "id": "cloth001",
+      "name": "学院风制服",
+      "prompt": "school uniform, sailor uniform, pleated skirt, white blouse, neat",
+      "weight": 1.2
+    },
+    {
+      "id": "cloth002",
+      "name": "优雅连衣裙",
+      "prompt": "elegant dress, evening gown, flowing skirt, sophisticated",
+      "weight": 1.1
+    },
+    {
+      "id": "cloth003",
+      "name": "休闲日常",
+      "prompt": "casual outfit, t-shirt and jeans, comfortable, relaxed",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth004",
+      "name": "和服美人",
+      "prompt": "traditional kimono, Japanese clothing, elegant, cultural",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth005",
+      "name": "赛博朋克",
+      "prompt": "cyberpunk outfit, futuristic clothing, neon accents, edgy",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth006",
+      "name": "婚纱礼服",
+      "prompt": "wedding dress, bridal gown, white dress, elegant veil",
+      "weight": 0.9
+    }
+  ],
+  "subDimensionOptions": {
+    "type": [
+      { "value": "T恤", "prompt": "t-shirt, casual top", "weight": 1.0 },
+      { "value": "衬衫", "prompt": "blouse, shirt", "weight": 1.0 },
+      { "value": "连衣裙", "prompt": "dress, one-piece", "weight": 1.1 },
+      { "value": "西装", "prompt": "suit, blazer", "weight": 0.9 },
+      { "value": "和服", "prompt": "kimono, traditional Japanese", "weight": 0.8 },
+      { "value": "校服", "prompt": "school uniform", "weight": 1.0 },
+      { "value": "泳装", "prompt": "swimsuit, bikini", "weight": 0.7 },
+      { "value": "睡衣", "prompt": "pajamas, nightwear", "weight": 0.8 }
+    ],
+    "style": [
+      { "value": "休闲", "prompt": "casual style", "weight": 1.1 },
+      { "value": "商务", "prompt": "business style, formal", "weight": 0.9 },
+      { "value": "运动", "prompt": "sportswear, athletic", "weight": 0.9 },
+      { "value": "朋克", "prompt": "punk style, edgy", "weight": 0.7 },
+      { "value": "洛丽塔", "prompt": "lolita style, frilly", "weight": 0.8 },
+      { "value": "哥特", "prompt": "gothic style, dark", "weight": 0.7 },
+      { "value": "学院风", "prompt": "school style, preppy", "weight": 1.0 }
+    ],
+    "color": [
+      { "value": "白色", "prompt": "white clothing", "weight": 1.0 },
+      { "value": "黑色", "prompt": "black clothing", "weight": 1.0 },
+      { "value": "红色", "prompt": "red clothing", "weight": 0.9 },
+      { "value": "蓝色", "prompt": "blue clothing", "weight": 0.9 },
+      { "value": "粉色", "prompt": "pink clothing", "weight": 1.0 },
+      { "value": "撞色", "prompt": "colorful outfit, vibrant colors", "weight": 0.8 }
+    ],
+    "material": [
+      { "value": "丝绸", "prompt": "silk fabric, silky", "weight": 1.0 },
+      { "value": "皮革", "prompt": "leather, leather material", "weight": 0.8 },
+      { "value": "棉麻", "prompt": "cotton, linen fabric", "weight": 1.0 },
+      { "value": "蕾丝", "prompt": "lace, lace details", "weight": 0.9 },
+      { "value": "金属感", "prompt": "metallic texture, shiny", "weight": 0.7 }
+    ],
+    "accessories": [
+      { "value": "项链", "prompt": "wearing necklace", "weight": 1.0 },
+      { "value": "耳环", "prompt": "wearing earrings", "weight": 1.0 },
+      { "value": "手链", "prompt": "wearing bracelet", "weight": 0.9 },
+      { "value": "眼镜", "prompt": "wearing glasses", "weight": 0.9 },
+      { "value": "帽子", "prompt": "wearing hat, cap", "weight": 0.8 },
+      { "value": "围巾", "prompt": "wearing scarf", "weight": 0.8 }
+    ],
+    "footwear": [
+      { "value": "高跟鞋", "prompt": "high heels", "weight": 1.0 },
+      { "value": "运动鞋", "prompt": "sneakers, sports shoes", "weight": 1.0 },
+      { "value": "靴子", "prompt": "boots", "weight": 0.9 },
+      { "value": "平底鞋", "prompt": "flat shoes, flats", "weight": 1.0 }
+    ]
+  }
+}

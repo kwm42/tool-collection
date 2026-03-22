@@ -1,0 +1,60 @@
+{
+  "dimension": "body",
+  "label": "身材",
+  "icon": "🧍",
+  "presets": [
+    {
+      "id": "body001",
+      "name": "模特身材",
+      "prompt": "tall, slender figure, model body, elegant posture",
+      "weight": 1.1
+    },
+    {
+      "id": "body002",
+      "name": "可爱娇小型",
+      "prompt": "petite figure, small stature, cute, youthful",
+      "weight": 1.0
+    },
+    {
+      "id": "body003",
+      "name": "健美曲线型",
+      "prompt": "athletic body, fit figure, curves, toned",
+      "weight": 1.0
+    }
+  ],
+  "subDimensionOptions": {
+    "figure": [
+      { "value": "苗条", "prompt": "slim figure", "weight": 1.0 },
+      { "value": "纤细", "prompt": "slender figure", "weight": 1.0 },
+      { "value": "匀称", "prompt": "well-proportioned figure", "weight": 1.1 },
+      { "value": "丰满", "prompt": "voluptuous figure, curvy", "weight": 0.9 },
+      { "value": "健美", "prompt": "athletic figure, muscular", "weight": 0.8 },
+      { "value": "微胖", "prompt": "slightly plump, soft figure", "weight": 0.7 }
+    ],
+    "height": [
+      { "value": "娇小", "prompt": "petite height", "weight": 1.0 },
+      { "value": "适中", "prompt": "average height", "weight": 1.1 },
+      { "value": "高挑", "prompt": "tall height", "weight": 1.0 },
+      { "value": "模特身材", "prompt": "model height", "weight": 0.9 }
+    ],
+    "age": [
+      { "value": "少女", "prompt": "young girl, teenage", "weight": 0.8 },
+      { "value": "年轻女性", "prompt": "young woman", "weight": 1.1 },
+      { "value": "成熟女性", "prompt": "mature woman", "weight": 1.0 },
+      { "value": "中年女性", "prompt": "middle-aged woman", "weight": 0.7 }
+    ],
+    "posture": [
+      { "value": "站姿", "prompt": "standing pose", "weight": 1.0 },
+      { "value": "坐姿", "prompt": "sitting pose", "weight": 0.9 },
+      { "value": "卧姿", "prompt": "lying pose", "weight": 0.7 },
+      { "value": "运动姿态", "prompt": "dynamic pose, action stance", "weight": 0.8 }
+    ],
+    "features": [
+      { "value": "大长腿", "prompt": "long legs", "weight": 1.0 },
+      { "value": "细腰", "prompt": "slim waist", "weight": 1.0 },
+      { "value": "蜜桃臀", "prompt": "peach butt, shapely hips", "weight": 0.9 },
+      { "value": "腹肌", "prompt": "abs, six pack", "weight": 0.7 },
+      { "value": "马甲线", "prompt": "toned stomach, athletic figure", "weight": 0.8 }
+    ]
+  }
+}

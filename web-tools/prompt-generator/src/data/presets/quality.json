@@ -1,0 +1,64 @@
+{
+  "dimension": "quality",
+  "label": "质量",
+  "icon": "✨",
+  "presets": [
+    {
+      "id": "quality001",
+      "name": "最高质量",
+      "prompt": "masterpiece, best quality, high quality, ultra detailed, amazing quality",
+      "weight": 1.5
+    },
+    {
+      "id": "quality002",
+      "name": "写实风格",
+      "prompt": "realistic, photorealistic, professional photography, detailed skin texture",
+      "weight": 1.2
+    },
+    {
+      "id": "quality003",
+      "name": "动漫风格",
+      "prompt": "anime style, illustration, vibrant colors, detailed illustration",
+      "weight": 1.1
+    },
+    {
+      "id": "quality004",
+      "name": "电影质感",
+      "prompt": "cinematic, cinematic lighting, film grain, dramatic atmosphere, movie still",
+      "weight": 1.1
+    },
+    {
+      "id": "quality005",
+      "name": "8K高清",
+      "prompt": "8k, 8K resolution, ultra high definition, sharp focus, highly detailed",
+      "weight": 1.0
+    }
+  ],
+  "subDimensionOptions": {
+    "baseQuality": [
+      { "value": "masterpiece", "prompt": "masterpiece", "weight": 1.5 },
+      { "value": "best quality", "prompt": "best quality", "weight": 1.5 },
+      { "value": "high quality", "prompt": "high quality", "weight": 1.3 },
+      { "value": "ultra detailed", "prompt": "ultra detailed", "weight": 1.3 }
+    ],
+    "detailEnhance": [
+      { "value": "详细眼睛", "prompt": "beautiful detailed eyes", "weight": 1.2 },
+      { "value": "详细皮肤", "prompt": "detailed skin texture", "weight": 1.1 },
+      { "value": "详细头发", "prompt": "detailed hair", "weight": 1.1 },
+      { "value": "复杂细节", "prompt": "intricate details", "weight": 1.0 }
+    ],
+    "style": [
+      { "value": "写实", "prompt": "realistic, photorealistic", "weight": 1.2 },
+      { "value": "摄影", "prompt": "professional photography", "weight": 1.1 },
+      { "value": "RAW照片", "prompt": "RAW photo, unprocessed", "weight": 1.0 },
+      { "value": "电影感", "prompt": "cinematic, film still", "weight": 1.1 },
+      { "value": "获奖照片", "prompt": "award winning photo", "weight": 0.9 }
+    ],
+    "negativeTags": [
+      { "value": "基础负面", "prompt": "low quality, worst quality, blurry", "weight": 1.0 },
+      { "value": "解剖错误", "prompt": "deformed, bad anatomy, bad hands", "weight": 1.0 },
+      { "value": "多余手指", "prompt": "extra fingers, extra limbs", "weight": 1.0 },
+      { "value": "丑陋", "prompt": "ugly, disfigured, poorly drawn", "weight": 1.0 }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "dimension": "weather",
+  "label": "天气",
+  "icon": "🌤️",
+  "presets": [
+    {
+      "id": "weather001",
+      "name": "晴朗明媚",
+      "prompt": "clear sky, sunny day, bright, cheerful",
+      "weight": 1.2
+    },
+    {
+      "id": "weather002",
+      "name": "雨天浪漫",
+      "prompt": "rainy day, rain, wet, romantic, melancholy",
+      "weight": 1.1
+    },
+    {
+      "id": "weather003",
+      "name": "雪天纯净",
+      "prompt": "snowing, snowy, winter, pure, peaceful",
+      "weight": 1.0
+    },
+    {
+      "id": "weather004",
+      "name": "雾中朦胧",
+      "prompt": "foggy, misty, hazy, mysterious, ethereal",
+      "weight": 1.0
+    }
+  ],
+  "subDimensionOptions": {
+    "weatherType": [
+      { "value": "晴天", "prompt": "clear sky, sunny", "weight": 1.2 },
+      { "value": "阴天", "prompt": "overcast, cloudy", "weight": 1.0 },
+      { "value": "多云", "prompt": "partly cloudy, clouds", "weight": 1.0 },
+      { "value": "薄雾", "prompt": "thin fog, mist", "weight": 1.0 },
+      { "value": "雾霾", "prompt": "haze, smog, atmospheric", "weight": 0.8 }
+    ],
+    "precipitation": [
+      { "value": "无降水", "prompt": "no rain, dry", "weight": 1.0 },
+      { "value": "雨天", "prompt": "rain, rainy", "weight": 1.0 },
+      { "value": "毛毛雨", "prompt": "light rain, drizzle", "weight": 1.0 },
+      { "value": "雷阵雨", "prompt": "thunderstorm, lightning", "weight": 0.7 },
+      { "value": "暴雨", "prompt": "heavy rain, storm", "weight": 0.6 }
+    ],
+    "specialWeather": [
+      { "value": "雪天", "prompt": "snowing, snowfall", "weight": 1.0 },
+      { "value": "雾凇", "prompt": "rime ice, frost", "weight": 0.8 },
+      { "value": "彩虹", "prompt": "rainbow", "weight": 0.8 },
+      { "value": "极光", "prompt": "aurora, northern lights", "weight": 0.6 }
+    ],
+    "extremeWeather": [
+      { "value": "雷电交加", "prompt": "thunder and lightning, dramatic", "weight": 0.6 },
+      { "value": "流星雨", "prompt": "meteor shower, shooting stars", "weight": 0.7 }
+    ],
+    "airQuality": [
+      { "value": "空气清新", "prompt": "fresh air, clean atmosphere", "weight": 1.0 },
+      { "value": "薄雾笼罩", "prompt": "covered in mist, foggy", "weight": 1.0 },
+      { "value": "尘埃漂浮", "prompt": "dust particles floating, motes", "weight": 0.8 }
+    ]
+  }
+}
