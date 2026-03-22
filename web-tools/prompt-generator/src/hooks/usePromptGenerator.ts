@@ -129,6 +129,16 @@ export function usePromptGenerator() {
     }));
   }, []);
 
+  const setLock = useCallback((dimensionKey: string, locked: boolean) => {
+    setDimensions(prev => ({
+      ...prev,
+      [dimensionKey]: {
+        ...prev[dimensionKey],
+        locked,
+      },
+    }));
+  }, []);
+
   const lockAll = useCallback(() => {
     setDimensions(prev => {
       const newDims = { ...prev };
@@ -219,6 +229,7 @@ export function usePromptGenerator() {
     randomDimension,
     clearDimension,
     toggleLock,
+    setLock,
     lockAll,
     unlockAll,
     clearAll,

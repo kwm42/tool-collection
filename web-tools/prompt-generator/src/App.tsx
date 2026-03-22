@@ -10,6 +10,8 @@ import {
   ComfyUISettings,
   FavoritesDrawer,
   DimensionPresetPanel,
+  DimensionPresetsDrawer,
+  SavePresetModal,
 } from './components';
 import {
   dimensionPresets,
@@ -23,6 +25,7 @@ import {
   useTheme,
   useComfyUI,
   useFavorites,
+  useDimensionPresets,
 } from './hooks';
 import type { FavoriteItem } from './hooks/useFavorites';
 
@@ -48,6 +51,7 @@ function App() {
     randomDimension,
     clearDimension,
     toggleLock,
+    setLock,
     lockAll,
     unlockAll,
     clearAll,
@@ -59,9 +63,12 @@ function App() {
   const { isOpen, currentDimension, openDrawer, closeDrawer } = useDrawer();
   const { history, addHistory, removeHistory, clearHistory } = useHistory();
   const { favorites, addFavorite, removeFavorite, clearFavorites } = useFavorites();
+  const { presets: dimensionCustomPresets, savePreset: saveDimensionPreset, deletePreset: deleteDimensionPreset, clearPresets: clearDimensionPresets } = useDimensionPresets();
   const { copied, copy } = useClipboard();
   const [historyExpanded, setHistoryExpanded] = useState(false);
   const [favoritesDrawerOpen, setFavoritesDrawerOpen] = useState(false);
+  const [dimensionPresetsDrawerOpen, setDimensionPresetsDrawerOpen] = useState(false);
+  const [savePresetModalOpen, setSavePresetModalOpen] = useState(false);
 
   const [comfyUISettingsOpen, setComfyUISettingsOpen] = useState(false);
 
@@ -107,7 +114,7 @@ function App() {
     setComfyUISettingsOpen(true);
   }, []);
 
-  const handleApplyDimensionPreset = useCallback((preset: { locks: Record<string, boolean> }) => {
+  const handleApplyBuiltInPreset = useCallback((preset: { locks: Record<string, boolean> }) => {
     for (const key of dimensionOrder) {
       const shouldLock = preset.locks[key];
       if (dimensions[key].locked !== shouldLock) {
@@ -164,6 +171,29 @@ function App() {
       addFavorite(fav.name, fav.positivePrompt, fav.negativePrompt, fav.dimensionSummary);
     }
   }, [favorites, addFavorite, removeFavorite]);
+
+  const handleSaveDimensionPreset = useCallback((name: string) => {
+    saveDimensionPreset(name, dimensions, Object.fromEntries(
+      dimensionOrder.map(key => [key, dimensions[key]?.locked || false])
+    ));
+  }, [dimensions, saveDimensionPreset]);
+
+  const handleApplyDimensionPreset = useCallback((preset: { dimensions: Record<string, import('./types').DimensionState>; locks: Record<string, boolean> }) => {
+    for (const key of dimensionOrder) {
+      if (preset.dimensions[key]?.selectedPresetId) {
+        selectPreset(key, preset.dimensions[key].selectedPresetId);
+      } else {
+        clearDimension(key);
+      }
+    }
+    setTimeout(() => {
+      for (const key of dimensionOrder) {
+        const shouldLock = preset.locks[key] ?? false;
+        setLock(key, shouldLock);
+      }
+    }, 0);
+    setDimensionPresetsDrawerOpen(false);
+  }, [selectPreset, clearDimension, setLock]);
 
   const currentDimensionConfig = currentDimension 
     ? dimensionPresets[currentDimension] 
@@ -236,10 +266,13 @@ function App() {
               dimensionOrder.map(key => [key, dimensions[key]?.locked || false])
             )}
             onToggleLock={toggleLock}
-            onApplyPreset={handleApplyDimensionPreset}
+            onApplyPreset={handleApplyBuiltInPreset}
             onClearAll={clearAll}
             onLockAll={lockAll}
             onUnlockAll={unlockAll}
+            onSavePreset={() => setSavePresetModalOpen(true)}
+            onOpenPresets={() => setDimensionPresetsDrawerOpen(true)}
+            customPresetsCount={dimensionCustomPresets.length}
           />
           
           <div className="space-y-gap-sm">
@@ -308,6 +341,21 @@ function App() {
         onDelete={removeFavorite}
         onClear={clearFavorites}
         onImport={handleImportFavorites}
+      />
+
+      <DimensionPresetsDrawer
+        isOpen={dimensionPresetsDrawerOpen}
+        onClose={() => setDimensionPresetsDrawerOpen(false)}
+        presets={dimensionCustomPresets}
+        onApply={handleApplyDimensionPreset}
+        onDelete={deleteDimensionPreset}
+        onClear={clearDimensionPresets}
+      />
+
+      <SavePresetModal
+        isOpen={savePresetModalOpen}
+        onClose={() => setSavePresetModalOpen(false)}
+        onConfirm={handleSaveDimensionPreset}
       />
     </div>
   );

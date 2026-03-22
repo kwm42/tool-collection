@@ -6,7 +6,7 @@
     {
       "id": "comp001",
       "name": "半身特写",
-      "prompt": "half-body shot, waist up, upper body portrait",
+      "prompt": "cowboy shot, from mid-thigh up, waist up with thighs,(cowboy shot:1.2)",
       "weight": 1.2
     },
     {

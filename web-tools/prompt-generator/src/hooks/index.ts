@@ -5,3 +5,4 @@ export { useClipboard } from './useClipboard';
 export { useTheme } from './useTheme';
 export { useComfyUI } from './useComfyUI';
 export { useFavorites } from './useFavorites';
+export { useDimensionPresets } from './useDimensionPresets';

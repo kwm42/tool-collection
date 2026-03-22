@@ -14,3 +14,5 @@ export { ThemeToggle } from './ThemeToggle';
 export { FavoritesDrawer } from './FavoritesDrawer';
 export { ImageModal } from './ImageModal';
 export { DimensionPresetPanel } from './DimensionPresetPanel';
+export { DimensionPresetsDrawer } from './DimensionPresetsDrawer';
+export { SavePresetModal } from './SavePresetModal';

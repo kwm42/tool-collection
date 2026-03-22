@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Lock, Unlock, X, ChevronDown, ChevronUp } from 'lucide-react';
+import { Lock, Unlock, X, ChevronDown, ChevronUp, Save, FolderOpen } from 'lucide-react';
 import { Button, Card } from './common';
 
 interface DimensionPresetConfig {
@@ -72,8 +72,8 @@ const BUILT_IN_PRESETS: DimensionPresetConfig[] = [
       body: false,
       action: true,
       clothing: false,
-      time: false,
-      scene: false,
+      time: true,
+      scene: true,
       weather: true,
       lighting: true,
       props: true,
@@ -166,6 +166,9 @@ interface DimensionPresetPanelProps {
   onClearAll: () => void;
   onLockAll: () => void;
   onUnlockAll: () => void;
+  onSavePreset: () => void;
+  onOpenPresets: () => void;
+  customPresetsCount?: number;
 }
 
 export function DimensionPresetPanel({
@@ -176,6 +179,9 @@ export function DimensionPresetPanel({
   onClearAll,
   onLockAll,
   onUnlockAll,
+  onSavePreset,
+  onOpenPresets,
+  customPresetsCount = 0,
 }: DimensionPresetPanelProps) {
   const [expanded, setExpanded] = useState(true);
 
@@ -202,18 +208,41 @@ export function DimensionPresetPanel({
             </span>
           )}
         </div>
-        <Button
-          variant="icon"
-          size="sm"
-          onClick={() => setExpanded(!expanded)}
-          title={expanded ? '收起' : '展开'}
-        >
-          {expanded ? (
-            <ChevronUp className="w-4 h-4" />
-          ) : (
-            <ChevronDown className="w-4 h-4" />
-          )}
-        </Button>
+        <div className="flex items-center gap-1">
+          <Button
+            variant="icon"
+            size="sm"
+            onClick={onSavePreset}
+            title="保存当前配置"
+          >
+            <Save className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="icon"
+            size="sm"
+            onClick={onOpenPresets}
+            title="我的预设"
+          >
+            <FolderOpen className="w-4 h-4" />
+            {customPresetsCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-white text-xs rounded-full flex items-center justify-center">
+                {customPresetsCount}
+              </span>
+            )}
+          </Button>
+          <Button
+            variant="icon"
+            size="sm"
+            onClick={() => setExpanded(!expanded)}
+            title={expanded ? '收起' : '展开'}
+          >
+            {expanded ? (
+              <ChevronUp className="w-4 h-4" />
+            ) : (
+              <ChevronDown className="w-4 h-4" />
+            )}
+          </Button>
+        </div>
       </div>
 
       {expanded && (
