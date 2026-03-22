@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo } from 'react';
+import { useCallback, useState, useMemo, useRef, useEffect } from 'react';
 import {
   Header,
   GenerateButton,
@@ -81,6 +81,8 @@ function App() {
     isGenerating,
     updateParams: updateComfyUIParams,
   } = useComfyUI();
+
+  const lastLKeyTime = useRef<number>(0);
 
   const handleGenerate = useCallback(() => {
     generate();
@@ -202,6 +204,28 @@ function App() {
   const currentDimensionState = currentDimension 
     ? dimensions[currentDimension] 
     : null;
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'l' || e.key === 'L') {
+        const now = Date.now();
+        if (now - lastLKeyTime.current < 500) {
+          if (!isGenerating && currentPrompt.positive) {
+            handleGenerate();
+            if (connected) {
+              handleComfyUIGenerate();
+            }
+          }
+          lastLKeyTime.current = 0;
+        } else {
+          lastLKeyTime.current = now;
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isGenerating, currentPrompt.positive, connected]);
 
   return (
     <div className="h-screen flex flex-col">

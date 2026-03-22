@@ -3,7 +3,7 @@ import type {
   ComfyUIHistoryItem,
 } from '../types/comfyui';
 
-const SERVER_BASE = 'http://localhost:8188';
+const SERVER_BASE = 'http://127.0.0.1:8188';
 
 export async function testConnection(): Promise<boolean> {
   try {
