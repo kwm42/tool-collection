@@ -35,7 +35,7 @@ function loadFromStorage(): Record<string, DimensionState> | null {
   return null;
 }
 
-export function usePromptGenerator() {
+export function usePromptGenerator(nsfwEnabled: boolean = true) {
   const [dimensions, setDimensions] = useState<Record<string, DimensionState>>(() => {
     return loadFromStorage() || createInitialDimensions();
   });
@@ -47,6 +47,18 @@ export function usePromptGenerator() {
   
   const isInitialized = useRef(false);
   const pendingGenerate = useRef(false);
+  const nsfwEnabledRef = useRef(nsfwEnabled);
+
+  useEffect(() => {
+    nsfwEnabledRef.current = nsfwEnabled;
+  }, [nsfwEnabled]);
+
+  const getFilteredPresets = useCallback((presets: { id: string; name: string; prompt: string; weight: number }[]) => {
+    if (nsfwEnabledRef.current) {
+      return presets;
+    }
+    return presets.filter(p => !p.id.startsWith('nsfw_'));
+  }, []);
 
   useEffect(() => {
     if (isInitialized.current) {
@@ -63,7 +75,10 @@ export function usePromptGenerator() {
     const presetData = dimensionPresets[dimensionKey];
     if (!presetData) return;
 
-    const newPreset = weightedRandom(presetData.presets);
+    const filteredPresets = getFilteredPresets(presetData.presets);
+    if (filteredPresets.length === 0) return;
+    
+    const newPreset = weightedRandom(filteredPresets);
     
     setDimensions(prev => ({
       ...prev,
@@ -100,7 +115,9 @@ export function usePromptGenerator() {
       if (!dimState.locked) {
         const presetData = dimensionPresets[key];
         if (presetData) {
-          const newPreset = weightedRandom(presetData.presets);
+          const filteredPresets = getFilteredPresets(presetData.presets);
+          if (filteredPresets.length === 0) continue;
+          const newPreset = weightedRandom(filteredPresets);
           newDimensions[key] = {
             ...dimState,
             mode: 'preset',
@@ -117,7 +134,7 @@ export function usePromptGenerator() {
       const result = generatePrompt(dimensionPresets, newDimensions);
       setCurrentPrompt(result);
     }, 50);
-  }, [dimensions]);
+  }, [dimensions, getFilteredPresets]);
 
   const toggleLock = useCallback((dimensionKey: string) => {
     setDimensions(prev => ({

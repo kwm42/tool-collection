@@ -360,10 +360,26 @@ export function PreviewPanel({
                       <input
                         type="checkbox"
                         checked={generationParams.useSameSeed}
-                        onChange={() => {}}
+                        onChange={(e) => {
+                          onUpdateParams?.({ useSameSeed: e.target.checked });
+                        }}
                         className="w-4 h-4 accent-primary"
                       />
                       使用相同 Seed
+                    </label>
+                  </div>
+
+                  <div className="col-span-2">
+                    <label className="flex items-center gap-2 text-xs text-text-secondary cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={generationParams.randomStyle}
+                        onChange={(e) => {
+                          onUpdateParams?.({ randomStyle: e.target.checked });
+                        }}
+                        className="w-4 h-4 accent-primary"
+                      />
+                      随机画风
                     </label>
                   </div>
                 </div>

@@ -16,6 +16,7 @@ import {
 import {
   dimensionPresets,
   dimensionOrder,
+  styles,
 } from './data';
 import {
   usePromptGenerator,
@@ -46,6 +47,8 @@ function App() {
     return backgrounds[Math.floor(Math.random() * backgrounds.length)];
   }, []);
 
+  const { nsfwEnabled, toggleNsfw } = useNsfwToggle();
+
   const {
     dimensions,
     currentPrompt,
@@ -60,14 +63,14 @@ function App() {
     selectPreset,
     getCurrentSummary,
     getDimensionPromptForCopy,
-  } = usePromptGenerator();
+  } = usePromptGenerator(nsfwEnabled);
 
   const { isOpen, currentDimension, openDrawer, closeDrawer } = useDrawer();
   const { history, addHistory, removeHistory, clearHistory } = useHistory();
   const { favorites, addFavorite, removeFavorite, clearFavorites } = useFavorites();
   const { presets: dimensionCustomPresets, savePreset: saveDimensionPreset, deletePreset: deleteDimensionPreset, clearPresets: clearDimensionPresets } = useDimensionPresets();
   const { copied, copy } = useClipboard();
-  const { nsfwEnabled, toggleNsfw } = useNsfwToggle();
+
   const [historyExpanded, setHistoryExpanded] = useState(false);
   const [favoritesDrawerOpen, setFavoritesDrawerOpen] = useState(false);
   const [dimensionPresetsDrawerOpen, setDimensionPresetsDrawerOpen] = useState(false);
@@ -95,6 +98,12 @@ function App() {
   const handleGenerate = useCallback(() => {
     generate();
     
+    if (comfyUIParams.randomStyle) {
+      const styleKeys = Object.keys(styles);
+      const randomStyleKey = styleKeys[Math.floor(Math.random() * styleKeys.length)];
+      updateComfyUIParams({ style: randomStyleKey });
+    }
+    
     const summary: Record<string, string> = {};
     for (const key of dimensionOrder) {
       summary[key] = getCurrentSummary(key);
@@ -104,7 +113,7 @@ function App() {
       currentPrompt.negative,
       summary
     );
-  }, [generate, getCurrentSummary, addHistory, currentPrompt]);
+  }, [generate, getCurrentSummary, addHistory, currentPrompt, comfyUIParams.randomStyle, updateComfyUIParams, nsfwEnabled]);
 
   const handleCopy = useCallback(() => {
     copy(currentPrompt.positive);

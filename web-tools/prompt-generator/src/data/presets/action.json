@@ -26,6 +26,102 @@
       "name": "神秘诱惑",
       "prompt": "seductive expression, alluring pose, mysterious, tempting",
       "weight": 0.9
+    },
+    {
+      "id": "action005",
+      "name": "站立",
+      "prompt": "standing pose, upright posture, standing straight",
+      "weight": 1.2
+    },
+    {
+      "id": "action006",
+      "name": "行走",
+      "prompt": "walking pose, mid-stride, walking forward",
+      "weight": 1.0
+    },
+    {
+      "id": "action007",
+      "name": "跑步",
+      "prompt": "running pose, in motion, dynamic stride",
+      "weight": 0.9
+    },
+    {
+      "id": "action008",
+      "name": "坐姿",
+      "prompt": "sitting pose, seated, sitting on surface",
+      "weight": 1.1
+    },
+    {
+      "id": "action009",
+      "name": "侧坐",
+      "prompt": "sitting sideways, legs crossed, side sitting",
+      "weight": 1.0
+    },
+    {
+      "id": "action010",
+      "name": "跪坐",
+      "prompt": "kneeling pose, sitting on knees, kneeling",
+      "weight": 0.9
+    },
+    {
+      "id": "action011",
+      "name": "躺姿",
+      "prompt": "lying pose, lying down, reclining",
+      "weight": 1.0
+    },
+    {
+      "id": "action012",
+      "name": "侧卧",
+      "prompt": "lying on side, sideways lie, lateral position",
+      "weight": 1.0
+    },
+    {
+      "id": "action013",
+      "name": "趴卧",
+      "prompt": "lying on stomach, prone position, lying face down",
+      "weight": 0.9
+    },
+    {
+      "id": "action014",
+      "name": "盘腿坐",
+      "prompt": "cross-legged sitting, lotus position, seated cross-legged",
+      "weight": 1.0
+    },
+    {
+      "id": "action015",
+      "name": "蹲姿",
+      "prompt": "squatting pose, crouching, in squat position",
+      "weight": 0.8
+    },
+    {
+      "id": "action016",
+      "name": "跳跃",
+      "prompt": "jumping pose, mid-air, leap motion",
+      "weight": 0.8
+    },
+    {
+      "id": "action017",
+      "name": "舞蹈",
+      "prompt": "dancing pose, dynamic dance move, graceful movement",
+      "weight": 0.9
+    },
+    {
+      "id": "action018",
+      "name": "伸展",
+      "prompt": "stretching pose, arms extended, reaching",
+      "weight": 0.9
+    },
+    {
+      "id": "action019",
+      "name": "鞠躬",
+      "prompt": "bowing pose, bowing down, respectful gesture",
+      "weight": 0.8
+    },
+    {
+      "id": "action020",
+      "name": "敬礼",
+      "prompt": "saluting, hand to forehead, military salute",
+      "weight": 0.8
     }
   ],
   "subDimensionOptions": {

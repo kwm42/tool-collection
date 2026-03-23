@@ -10,6 +10,7 @@ export interface GenerationParams {
   checkpoint: string;
   seed?: number;
   useSameSeed: boolean;
+  randomStyle: boolean;
 }
 
 export type GenerationStatus =
@@ -56,6 +57,7 @@ export const DEFAULT_PARAMS: GenerationParams = {
   style: '雷火剑',
   checkpoint: 'oneObsessionBranch_matureMAXEPS',
   useSameSeed: false,
+  randomStyle: false,
 };
 
 export const DEFAULT_CONFIG: ComfyUIConfig = {
