@@ -88,9 +88,7 @@ export function useComfyUI(): UseComfyUIReturn {
         setConnected(true);
       }
 
-      if (state.imageUrl) {
-        URL.revokeObjectURL(state.imageUrl);
-      }
+      const previousImageUrl = state.imageUrl;
 
       let seed = params.seed;
       if (!params.useSameSeed || seed === undefined) {
@@ -103,6 +101,7 @@ export function useComfyUI(): UseComfyUIReturn {
         progress: 0,
         elapsedTime: 0,
         seed,
+        imageUrl: previousImageUrl,
       });
 
       try {
@@ -131,6 +130,9 @@ export function useComfyUI(): UseComfyUIReturn {
         );
 
         if (completion.success && completion.imageUrl) {
+          if (state.imageUrl && state.imageUrl !== completion.imageUrl) {
+            URL.revokeObjectURL(state.imageUrl);
+          }
           setState({
             status: 'completed',
             progress: 100,

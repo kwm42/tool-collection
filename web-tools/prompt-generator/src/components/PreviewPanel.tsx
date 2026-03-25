@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { Copy, Check, Download, RefreshCw, Image as ImageIcon, Loader2, AlertCircle, ChevronDown, ChevronUp, Star, Maximize2 } from 'lucide-react';
+import { useState, useMemo, useEffect } from 'react';
+import { Copy, Check, Download, RefreshCw, Image as ImageIcon, Loader2, AlertCircle, ChevronDown, ChevronUp, Star, Maximize2, Shuffle } from 'lucide-react';
 import { Button, Card } from './common';
 import { ImageModal } from './ImageModal';
 import type { GenerationParams, GenerationStatus } from '../types/comfyui';
@@ -52,6 +52,7 @@ interface PreviewPanelProps {
   generationParams?: GenerationParams;
   onGenerate?: () => void;
   onRegenerate?: () => void;
+  onRandomAndGenerate?: () => void;
   onUpdateParams?: (params: Partial<GenerationParams>) => void;
   dimensions?: Record<string, DimensionState>;
   dimensionOrder?: string[];
@@ -73,6 +74,7 @@ export function PreviewPanel({
   generationParams,
   onGenerate,
   onRegenerate,
+  onRandomAndGenerate,
   onUpdateParams,
   dimensions = {},
   dimensionOrder = [],
@@ -80,9 +82,15 @@ export function PreviewPanel({
   onAddFavorite,
   onOpenFavorites,
   favoritesCount = 0,
-}: PreviewPanelProps) {
+} : PreviewPanelProps) {
   const [settingsExpanded, setSettingsExpanded] = useState(true);
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (fullscreenImage && generationState?.imageUrl && generationState.status === 'completed') {
+      setFullscreenImage(generationState.imageUrl);
+    }
+  }, [generationState?.imageUrl, generationState?.status]);
 
   const clickableSegments = useMemo<ClickableSegment[]>(() => {
     if (!positiveChinese || !dimensionOrder.length) return [];
@@ -266,15 +274,29 @@ export function PreviewPanel({
             </Button>
 
             {comfyUIEnabled && (
-              <Button
-                variant="primary"
-                onClick={handleRegenerate}
-                disabled={isGenerating || !positivePrompt}
-                className={`gap-2 px-4 py-2 ${getButtonClass()}`}
-              >
-                {isGenerating && <Loader2 className="w-5 h-5 animate-spin" />}
-                生成图片
-              </Button>
+              <>
+                <Button
+                  variant="primary"
+                  onClick={handleRegenerate}
+                  disabled={isGenerating || !positivePrompt}
+                  className={`gap-2 px-4 py-2 ${getButtonClass()}`}
+                >
+                  {isGenerating && <Loader2 className="w-5 h-5 animate-spin" />}
+                  生成图片
+                </Button>
+                {onRandomAndGenerate && (
+                  <Button
+                    variant="primary"
+                    onClick={onRandomAndGenerate}
+                    disabled={isGenerating}
+                    className="gap-2 px-4 py-2 bg-random hover:bg-random/90"
+                    title="随机生成并发送图片到 ComfyUI"
+                  >
+                    <Shuffle className="w-5 h-5" />
+                    随机生成
+                  </Button>
+                )}
+              </>
             )}
           </div>
 
@@ -406,10 +428,22 @@ export function PreviewPanel({
             )}
 
             {(generationState?.status === 'connecting' || generationState?.status === 'queued' || generationState?.status === 'generating') && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-text-secondary">
-                <Loader2 className="w-16 h-16 mb-2 animate-spin opacity-50" />
-                <span className="text-sm">{generationState.status === 'generating' ? `生成中 ${generationState.elapsedTime}s` : '等待中...'}</span>
-              </div>
+              <>
+                {generationState.imageUrl ? (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src={generationState.imageUrl}
+                      alt="Previous"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-text-secondary">
+                    <Loader2 className="w-16 h-16 mb-2 animate-spin opacity-50" />
+                    <span className="text-sm">{generationState.status === 'generating' ? `生成中 ${generationState.elapsedTime}s` : '等待中...'}</span>
+                  </div>
+                )}
+              </>
             )}
 
             {generationState?.status === 'error' && (

@@ -1,4 +1,10 @@
 import { useCallback, useState, useMemo, useRef, useEffect } from 'react';
+
+declare global {
+  interface Window {
+    triggerRandomAndGenerate?: () => void;
+  }
+}
 import {
   Header,
   GenerateButton,
@@ -90,10 +96,25 @@ function App() {
 
   const lastLKeyTime = useRef<number>(0);
   const currentPromptRef = useRef(currentPrompt);
+  const isGeneratingRef = useRef(isGenerating);
+  const connectedRef = useRef(connected);
+  const comfyUIGenerateRef = useRef<typeof comfyUIGenerate | null>(null);
 
   useEffect(() => {
     currentPromptRef.current = currentPrompt;
   }, [currentPrompt]);
+
+  useEffect(() => {
+    isGeneratingRef.current = isGenerating;
+  }, [isGenerating]);
+
+  useEffect(() => {
+    connectedRef.current = connected;
+  }, [connected]);
+
+  useEffect(() => {
+    comfyUIGenerateRef.current = comfyUIGenerate;
+  }, [comfyUIGenerate]);
 
   const handleGenerate = useCallback(() => {
     generate();
@@ -128,6 +149,40 @@ function App() {
       currentPrompt.negative
     );
   }, [comfyUIGenerate, currentPrompt]);
+
+  const triggerRandomAndGenerate = useCallback(() => {
+    console.log('triggerRandomAndGenerate called', {
+      isGenerating: isGeneratingRef.current,
+      connected: connectedRef.current,
+      comfyUIGenerate: !!comfyUIGenerateRef.current
+    });
+    if (isGeneratingRef.current) return;
+    generate();
+    setTimeout(() => {
+      const prompt = currentPromptRef.current;
+      console.log('setTimeout callback', { 
+        prompt: prompt?.positive, 
+        connected: connectedRef.current,
+        hasComfyFn: !!comfyUIGenerateRef.current
+      });
+      const summary: Record<string, string> = {};
+      for (const key of dimensionOrder) {
+        summary[key] = getCurrentSummary(key);
+      }
+      
+      addHistory(prompt.positive, prompt.negative, summary);
+      
+      if (prompt.positive) {
+        const character = prompt.positiveChinese.split('\n')[0] || '';
+        console.log('calling comfyUIGenerate', { 
+          positive: prompt.positive, 
+          character,
+          hasFn: !!comfyUIGenerateRef.current
+        });
+        comfyUIGenerateRef.current?.(prompt.positive, character, prompt.negative);
+      }
+    }, 100);
+  }, [generate, addHistory, getCurrentSummary, dimensionOrder]);
 
   const handleComfyUISettingsOpen = useCallback(() => {
     setComfyUISettingsOpen(true);
@@ -244,23 +299,7 @@ function App() {
       if (e.key === 'l' || e.key === 'L') {
         const now = Date.now();
         if (now - lastLKeyTime.current < 500) {
-          if (!isGenerating) {
-            generate();
-            setTimeout(() => {
-              const prompt = currentPromptRef.current;
-              const summary: Record<string, string> = {};
-              for (const key of dimensionOrder) {
-                summary[key] = getCurrentSummary(key);
-              }
-              
-              addHistory(prompt.positive, prompt.negative, summary);
-              
-              if (connected && prompt.positive) {
-                const character = prompt.positiveChinese.split('\n')[0] || '';
-                comfyUIGenerate(prompt.positive, character, prompt.negative);
-              }
-            }, 100);
-          }
+          triggerRandomAndGenerate();
           lastLKeyTime.current = 0;
         } else {
           lastLKeyTime.current = now;
@@ -270,7 +309,14 @@ function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isGenerating, connected, generate, addHistory, getCurrentSummary]);
+  }, [triggerRandomAndGenerate]);
+
+  useEffect(() => {
+    window.triggerRandomAndGenerate = triggerRandomAndGenerate;
+    return () => {
+      delete window.triggerRandomAndGenerate;
+    };
+  }, [triggerRandomAndGenerate]);
 
   return (
     <div className="h-screen flex flex-col">
@@ -302,6 +348,7 @@ function App() {
             generationParams={comfyUIParams}
             onGenerate={handleComfyUIGenerate}
             onRegenerate={handleComfyUIGenerate}
+            onRandomAndGenerate={triggerRandomAndGenerate}
             onUpdateParams={updateComfyUIParams}
             dimensions={dimensions}
             dimensionOrder={dimensionOrder}
