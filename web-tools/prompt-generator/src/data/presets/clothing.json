@@ -410,6 +410,648 @@
       "name": "舞者服装",
       "prompt": "belly dancer costume, harem pants, crop top, hip scarf, gold accessories, veils, dynamic pose",
       "weight": 0.8
+    },
+    {
+      "id": "cloth069",
+      "name": "汉服",
+      "prompt": "hanfu, traditional Chinese dress, han dynasty style, flowing robes, cross collar, belt, elegant",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth070",
+      "name": "医生白大褂",
+      "prompt": "white coat doctor, medical uniform, stethoscope, surgical scrub, professional, clinical",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth071",
+      "name": "芭蕾舞裙",
+      "prompt": "ballet costume, tutu dress, leotard, ballet shoes, pink, graceful, dancer pose, classical ballet",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth072",
+      "name": "街头潮流",
+      "prompt": "streetwear, oversized hoodie, joggers, sneakers, snapback, urban, hip hop, trendy",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth073",
+      "name": "宫廷礼服",
+      "prompt": "royal court dress, ball gown, corset, elaborate embroidery, jewels, crown, aristocratic",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth074",
+      "name": "OL装",
+      "prompt": "office lady, blouse, pencil skirt, stockings, professional, business attire, career",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth075",
+      "name": "jk水手服",
+      "prompt": "jk uniform, sailor blouse, sailor collar, pleated skirt, ribbon, knee socks, schoolgirl, japanese",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth076",
+      "name": "jk西装",
+      "prompt": "jk blazer, school uniform, blazer with tie, pleated skirt, loafers, academic, japanese school",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth077",
+      "name": "电竞选手",
+      "prompt": "esports uniform, gaming jersey, headphones, competitive, team logo, gaming setup, streamer",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth078",
+      "name": "宇航员",
+      "prompt": "spacesuit, astronaut uniform, helmet, space gear, NASA, futuristic, space exploration",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth079",
+      "name": "DJ",
+      "prompt": "dj outfit, headphones, neon, club, music festival, turntables, electronic music, energetic",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth080",
+      "name": "赛车手",
+      "prompt": "racing suit, racing suit, helmet, racing gloves, speed, motorsport, competitive, pit crew",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth081",
+      "name": "体操服",
+      "prompt": "gymnastics leotard, athletic bodysuit, flexible, sporty, gymnastics, competition pose, graceful",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth082",
+      "name": "钢管舞",
+      "prompt": "pole dance outfit, tiny bikini, high heels, pole, seductive pose, fitness, exotic dance",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth083",
+      "name": "战损服",
+      "prompt": "battle damaged armor, torn clothes, scars, blood, war, post-battle, dramatic, intense",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth084",
+      "name": "精灵套装",
+      "prompt": "elf outfit, leaf-embellished dress, pointed ears, nature-themed, fantasy, mystical, forest",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth085",
+      "name": "兽装",
+      "prompt": "fursuit, mascot costume, animal costume, fuzzy, cute, kigurumi, fluffy, playful",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth086",
+      "name": "紧身衣",
+      "prompt": "bodysuit, form-fitting, sleek, one-piece, athletic, catsuit, dynamic pose",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth087",
+      "name": "公主裙",
+      "prompt": "princess dress, puffy skirt, tiara, royal, elegant, fairytale, sparkle, pink, frills",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth088",
+      "name": "韩服",
+      "prompt": "hanbok, traditional Korean dress, jeogori, chima, vibrant colors, cultural, elegant",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth089",
+      "name": "唐装",
+      "prompt": "tang suit, chinese traditional, mandarin collar, dragon pattern, formal, cultural, elegant",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth090",
+      "name": "旗袍",
+      "prompt": "qipao, chinese dress, cheongsam, mandarin collar, slits, elegant, traditional, vintage",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth091",
+      "name": "瑜伽教练",
+      "prompt": "yoga instructor, sports bra, yoga pants, yoga mat, flexible pose, wellness, zen, fit body",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth092",
+      "name": "啦啦队套装",
+      "prompt": "cheerleader outfit, crop top, short skirt, pom poms, thigh highs, ponytail, energetic pose",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth093",
+      "name": "体操运动员",
+      "prompt": "gymnast leotard, competition costume, athletic body, sporty, graceful, gymnastics event",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth094",
+      "name": "啦啦队队长",
+      "prompt": "cheer captain, varsity jacket, pom poms, short skirt, energetic, leadership, school spirit",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth095",
+      "name": "网红",
+      "prompt": "influencer outfit, trendy fashion, stylish, camera ready, social media, influencer pose, vlog",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth096",
+      "name": "Coser",
+      "prompt": "cosplayer, detailed costume, wig, props, anime convention, accurate costume, roleplay",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth097",
+      "name": "showgirl",
+      "prompt": "showgirl costume, feather headdress, sparkling bikini, showgirl, vegas, glamorous, stage",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth098",
+      "name": "啦啦队表演",
+      "prompt": "cheerleader outfit, crop top, short skirt, pom poms, thigh highs, ponytail, energetic pose",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth099",
+      "name": "JK西式校服",
+      "prompt": "jk school uniform, blazer, pleated skirt, ribbon, knee socks, loafers, schoolgirl aesthetic",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth100",
+      "name": "jk不良少女",
+      "prompt": "delinquent girl, leather jacket, school uniform, cigarettes, rebellious, yankee, tough girl",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth101",
+      "name": "jk运动服",
+      "prompt": "jk sportswear, track suit, athletic, gym uniform, japanese school, active, sporty",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth102",
+      "name": "jk泳装",
+      "prompt": "jk swimsuit, school swimsuit, competition swimsuit, high leg, retro, japanese schoolgirl",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth103",
+      "name": "jk体操服",
+      "prompt": "jk gym uniform, bloomers, sailor top, japanese school, physical education, athletic",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth104",
+      "name": "jk体育课",
+      "prompt": "jk pe uniform, shorts, t-shirt, gym clothes, school, athletic, active, youthful",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth105",
+      "name": "jk Vest",
+      "prompt": "jk vest, vest outfit, layered, school uniform, stylish, layered look, japanese fashion",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth106",
+      "name": "jk毛衣",
+      "prompt": "jk sweater, knit sweater, school uniform, cozy, warm, layered, cardigan",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth107",
+      "name": "jk针织衫",
+      "prompt": "knit cardigan, layered uniform, school fashion, cozy, cute, layered, preppy",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth108",
+      "name": "jk短袖",
+      "prompt": "jk short sleeve, summer uniform, light, airy, schoolgirl, japanese, casual school",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth109",
+      "name": "jk长袖",
+      "prompt": "jk long sleeve, winter uniform, warm, cozy, schoolgirl, layered, seasonal",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth110",
+      "name": "jk部活",
+      "prompt": "jk club activity, club uniform, sports club, cultural club, after school, active",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth111",
+      "name": "jk毕业",
+      "prompt": "graduation outfit, school uniform, graduation ceremony, formal, academic, diploma",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth112",
+      "name": "jk冬装",
+      "prompt": "jk winter uniform, coat, scarf, mittens, warm, cozy, winter season, snowy",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth113",
+      "name": "jk夏装",
+      "prompt": "jk summer uniform, short sleeves, light, airy, summer heat, seasonal, casual",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth114",
+      "name": "jk日常",
+      "prompt": "jk casual, everyday school, normal day, uniform, daily, school life, relatable",
+      "weight": 1.0
+    },
+    {
+      "id": "cloth115",
+      "name": "jk制服诱惑",
+      "prompt": "seductive schoolgirl, uniform, plaid skirt, white shirt, stockings, tempting, allure",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth116",
+      "name": "jk救助",
+      "prompt": "jk rescue uniform, life guard, uniform, helping, hero, rescue pose, heroic",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth117",
+      "name": "jk购物",
+      "prompt": "jk shopping, casual outing, casual uniform, street, mall, everyday, relaxed",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth118",
+      "name": "jk约会",
+      "prompt": "jk date, date outfit, schoolgirl, romantic, couple, dating, special occasion",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth119",
+      "name": "jk社团",
+      "prompt": "jk club member, club activities, after school, uniform variation, dedicated, active",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth120",
+      "name": "jk执事",
+      "prompt": "butler uniform, formal suit, white gloves, serving, elegant, professional, classic",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth121",
+      "name": "jk女仆",
+      "prompt": "maid schoolgirl, apron, headband, cute, uniform, serving, japanese cafe",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth122",
+      "name": "jk管家",
+      "prompt": "maid outfit, uniform, apron, serving pose, helpful, cute, cafe style",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth123",
+      "name": "jk服务生",
+      "prompt": "waitress schoolgirl, part-time job, restaurant uniform, casual, helping, part-time",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth124",
+      "name": "jk便利店",
+      "prompt": "convenience store uniform, part-time job, apron, clerk, japanese, retail, helpful",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth125",
+      "name": "jk咖啡厅",
+      "prompt": "cafe uniform, coffee shop, apron, waitress, part-time job, cozy, welcoming",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth126",
+      "name": "jk书店",
+      "prompt": "bookstore uniform, glasses, apron, literary, intellectual, part-time, cozy",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth127",
+      "name": "jk图书馆",
+      "prompt": "librarian outfit, glasses, cardigan, bun hair, quiet, studying, library, intellectual",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth128",
+      "name": "jk教室",
+      "prompt": "classroom setting, school uniform, desk, studying, classroom, education, school life",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth129",
+      "name": "jk操场",
+      "prompt": "school playground, sports ground, outdoor, active, PE class, exercise, sunny day",
+      "weight": 0.9
+    },
+    {
+      "id": "cloth130",
+      "name": "jk社团活动",
+      "prompt": "club activities, school club, after school, dedicated, passionate, hobby, social",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth131",
+      "name": "jk运动会",
+      "prompt": "sports day, athletic meet, uniform, competitive, running, relay, school event",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth132",
+      "name": "jk文化祭",
+      "prompt": "cultural festival, school festival, cosplay, costumes, fun, celebration, event",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth133",
+      "name": "jk合唱团",
+      "prompt": "choir uniform, concert, music, performance, singing, formal, elegant, classical",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth134",
+      "name": "jk吹奏乐",
+      "prompt": "band uniform, instrumental, music club, uniform, performance, classical, elegant",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth135",
+      "name": "jk体操部",
+      "prompt": "gymnastics club, athletic wear, flexible, sporty, active, training, exercise",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth136",
+      "name": "jk篮球部",
+      "prompt": "basketball jersey, sports uniform, athletic, team, sporty, active, competition",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth137",
+      "name": "jk足球部",
+      "prompt": "soccer uniform, sports jersey, athletic, team sport, active, competition, field",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth138",
+      "name": "jk网球部",
+      "prompt": "tennis uniform, sportswear, athletic, racket, sporty, active, court, white",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth139",
+      "name": "jk羽毛球部",
+      "prompt": "badminton uniform, sportswear, athletic, racket, sporty, active, competition",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth140",
+      "name": "jk乒乓球部",
+      "prompt": "table tennis uniform, sportswear, athletic, paddle, sporty, active, competition",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth141",
+      "name": "jk游泳部",
+      "prompt": "swimsuit, competition swimsuit, school swimsuit, athletic, swimming, pool, sporty",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth142",
+      "name": "jk田径部",
+      "prompt": "track and field, athletic wear, running, sporty, competition, track suit, active",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth143",
+      "name": "jk登山部",
+      "prompt": "mountaineering club, outdoor gear, hiking, nature, adventure, mountain, outdoor",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth144",
+      "name": "jk野营",
+      "prompt": "camping outfit, outdoor, nature, adventure, tent, campfire, wilderness, practical",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth145",
+      "name": "jk科学部",
+      "prompt": "science club, lab coat, glasses, academic, research, curious, intellectual, science",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth146",
+      "name": "jk电工部",
+      "prompt": "technical club, work clothes, practical, hands-on, technical, skills, engineering",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth147",
+      "name": "jk美术部",
+      "prompt": "art club, paint smock, artistic, creative, paint, easel, artistic, colorful",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth148",
+      "name": "jk摄影部",
+      "prompt": "photography club, camera, photographer, artistic, creative, photo, artistic",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth149",
+      "name": "jk料理部",
+      "prompt": "cooking club, chef uniform, apron, cooking, culinary, kitchen, chef hat, tasty",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth150",
+      "name": "jk茶道部",
+      "prompt": "tea ceremony club, traditional kimono, tea ceremony, cultural, elegant, japanese",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth151",
+      "name": "jk花道部",
+      "prompt": "flower arrangement club, kimono, ikebana, traditional, cultural, elegant, artistic",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth152",
+      "name": "jk和服部",
+      "prompt": "kimono club, traditional, cultural, elegant, japanese, kimono wearing, cultural",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth153",
+      "name": "jk剑道部",
+      "prompt": "kendo uniform, protective gear, bamboo sword, martial arts, traditional, sporty",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth154",
+      "name": "jk柔道部",
+      "prompt": "judo uniform, gi, martial arts, traditional, sporty, athletic, combat sports",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth155",
+      "name": "jk空手道部",
+      "prompt": "karate uniform, gi, martial arts, traditional, sporty, athletic, combat sports",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth156",
+      "name": "jk弓道部",
+      "prompt": "kyudo, archery uniform, traditional, bow, arrows, martial arts, focused, elegant",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth157",
+      "name": "jk麻将部",
+      "prompt": "mahjong club, casual, relaxed, game, social, tile, japanese, entertainment",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth158",
+      "name": "jk围棋部",
+      "prompt": "go club, traditional, intellectual, board game, strategic, quiet, focused",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth159",
+      "name": "jk将棋部",
+      "prompt": "shogi club, traditional, intellectual, board game, strategic, focused, japanese",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth160",
+      "name": "jk游戏部",
+      "prompt": "gaming club, casual, gaming, relaxed, controller, esports, social, fun",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth161",
+      "name": "jk轻音部",
+      "prompt": "light music club, band outfit, casual, musical, rock, performance, instruments",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth162",
+      "name": "jk广播部",
+      "prompt": "broadcasting club, headphones, microphone, radio, voice, communication, studio",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth163",
+      "name": "jk新闻部",
+      "prompt": "newspaper club, notepad, pen, journalist, reporting, news, editorial, professional",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth164",
+      "name": "jk演剧部",
+      "prompt": "drama club, theater costume, acting, stage, performance, theatrical, dramatic",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth165",
+      "name": "jk合唱团表演",
+      "prompt": "choir club, concert outfit, singing, harmony, musical, performance, formal",
+      "weight": 0.8
+    },
+    {
+      "id": "cloth166",
+      "name": "jk志愿者",
+      "prompt": "volunteer, community service, helping, charitable, volunteer vest, service, kind",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth167",
+      "name": "jk志愿服务",
+      "prompt": "volunteer service, helping, community, charity, uniform, kind, service oriented",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth168",
+      "name": "jk学园祭执行委员",
+      "prompt": "festival committee, organizer, leadership, planning, event, responsible, active",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth169",
+      "name": "jk风纪委员",
+      "prompt": "discipline committee, armband, authority, rule enforcement, serious, responsible",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth170",
+      "name": "jk保健委员",
+      "prompt": "health committee, nurse, medical, helping, health, caring, responsible, first aid",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth171",
+      "name": "jk图书委员",
+      "prompt": "library committee, books, reading, quiet, helpful, library, organized, neat",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth172",
+      "name": "jk劳动委员",
+      "prompt": "cleaning duty, cleaning, responsible,卫生, orderly, helping, cleaning",
+      "weight": 0.6
+    },
+    {
+      "id": "cloth173",
+      "name": "jk班长",
+      "prompt": "class president, leader, responsible, role model, organized, academic, capable",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth174",
+      "name": "jk学习委员",
+      "prompt": "study committee, academic, responsible, books, studying, intellectual, organized",
+      "weight": 0.7
+    },
+    {
+      "id": "cloth175",
+      "name": "jk生活委员",
+      "prompt": "living committee, daily life, organized, responsible, helpful, class duties",
+      "weight": 0.6
     }
   ],
   "subDimensionOptions": {

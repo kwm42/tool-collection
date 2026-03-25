@@ -122,6 +122,606 @@
       "name": "敬礼",
       "prompt": "saluting, hand to forehead, military salute",
       "weight": 0.8
+    },
+    {
+      "id": "action021",
+      "name": "战斗姿态",
+      "prompt": "combat pose, fighting stance, ready for battle",
+      "weight": 0.8
+    },
+    {
+      "id": "action022",
+      "name": "武术姿势",
+      "prompt": "martial arts pose, kung fu stance, action pose",
+      "weight": 0.8
+    },
+    {
+      "id": "action023",
+      "name": "拳击姿势",
+      "prompt": "boxing stance, guard position, fist raised",
+      "weight": 0.8
+    },
+    {
+      "id": "action024",
+      "name": "游泳姿势",
+      "prompt": "swimming pose, freestyle stroke, in water",
+      "weight": 0.7
+    },
+    {
+      "id": "action025",
+      "name": "攀爬",
+      "prompt": "climbing pose, reaching up, climbing motion",
+      "weight": 0.7
+    },
+    {
+      "id": "action026",
+      "name": "悬空",
+      "prompt": "levitating, floating in air, mid-air pose",
+      "weight": 0.7
+    },
+    {
+      "id": "action027",
+      "name": "飞翔",
+      "prompt": "flying pose, wings spread, soaring",
+      "weight": 0.7
+    },
+    {
+      "id": "action028",
+      "name": "拥抱",
+      "prompt": "hugging pose, arms open, embrace",
+      "weight": 1.0
+    },
+    {
+      "id": "action029",
+      "name": "牵手",
+      "prompt": "holding hands, hand in hand",
+      "weight": 1.0
+    },
+    {
+      "id": "action030",
+      "name": "举臂",
+      "prompt": "arms raised, arms up, victory pose",
+      "weight": 0.9
+    },
+    {
+      "id": "action031",
+      "name": "叉腰",
+      "prompt": "hands on hips, akimbo, confident stance",
+      "weight": 1.0
+    },
+    {
+      "id": "action032",
+      "name": "抱胸",
+      "prompt": "arms crossed, folded arms, defensive pose",
+      "weight": 1.0
+    },
+    {
+      "id": "action033",
+      "name": "捂脸",
+      "prompt": "hands on face, covering face, shy gesture",
+      "weight": 0.9
+    },
+    {
+      "id": "action034",
+      "name": "掩嘴",
+      "prompt": "hand over mouth, surprised, covering mouth",
+      "weight": 0.9
+    },
+    {
+      "id": "action035",
+      "name": "扶眼镜",
+      "prompt": "adjusting glasses, pushing up glasses",
+      "weight": 1.0
+    },
+    {
+      "id": "action036",
+      "name": "打电话",
+      "prompt": "talking on phone, holding phone to ear",
+      "weight": 0.9
+    },
+    {
+      "id": "action037",
+      "name": "看书",
+      "prompt": "reading book, holding book, reading pose",
+      "weight": 1.0
+    },
+    {
+      "id": "action038",
+      "name": "撑伞",
+      "prompt": "holding umbrella, under umbrella",
+      "weight": 0.9
+    },
+    {
+      "id": "action039",
+      "name": "骑乘",
+      "prompt": "riding, on horseback, riding pose",
+      "weight": 0.8
+    },
+    {
+      "id": "action040",
+      "name": "演奏乐器",
+      "prompt": "playing instrument, musical pose, performing",
+      "weight": 0.9
+    },
+    {
+      "id": "action041",
+      "name": "祈祷",
+      "prompt": "praying pose, clasped hands, religious pose",
+      "weight": 1.0
+    },
+    {
+      "id": "action042",
+      "name": "冥想",
+      "prompt": "meditation pose, eyes closed, meditative",
+      "weight": 1.0
+    },
+    {
+      "id": "action043",
+      "name": "前倾",
+      "prompt": "leaning forward, forward bend, bending",
+      "weight": 0.9
+    },
+    {
+      "id": "action044",
+      "name": "后仰",
+      "prompt": "leaning back, backward tilt, arching back",
+      "weight": 0.9
+    },
+    {
+      "id": "action045",
+      "name": "单脚站立",
+      "prompt": "one leg raised, balancing pose, standing on one leg",
+      "weight": 0.8
+    },
+    {
+      "id": "action046",
+      "name": "踢腿",
+      "prompt": "kicking pose, leg kick, high kick",
+      "weight": 0.7
+    },
+    {
+      "id": "action047",
+      "name": "劈叉",
+      "prompt": "split pose, splits, wide leg spread",
+      "weight": 0.7
+    },
+    {
+      "id": "action048",
+      "name": "瑜伽姿势",
+      "prompt": "yoga pose, yoga position, flexible pose",
+      "weight": 0.8
+    },
+    {
+      "id": "action049",
+      "name": "吃东西",
+      "prompt": "eating, holding food, taking a bite",
+      "weight": 0.9
+    },
+    {
+      "id": "action050",
+      "name": "喝饮料",
+      "prompt": "drinking, holding cup, sipping beverage",
+      "weight": 0.9
+    },
+    {
+      "id": "action051",
+      "name": "烹饪",
+      "prompt": "cooking pose, in kitchen, cooking action",
+      "weight": 0.8
+    },
+    {
+      "id": "action052",
+      "name": "打扫",
+      "prompt": "cleaning pose, holding mop, cleaning",
+      "weight": 0.8
+    },
+    {
+      "id": "action053",
+      "name": "钓鱼",
+      "prompt": "fishing pose, holding fishing rod, fishing",
+      "weight": 0.8
+    },
+    {
+      "id": "action054",
+      "name": "购物",
+      "prompt": "shopping pose, carrying bags, shopping",
+      "weight": 0.9
+    },
+    {
+      "id": "action055",
+      "name": "跑步机",
+      "prompt": "on treadmill, running on machine, jogging",
+      "weight": 0.8
+    },
+    {
+      "id": "action056",
+      "name": "健身",
+      "prompt": "working out, at gym, exercising",
+      "weight": 0.8
+    },
+    {
+      "id": "action057",
+      "name": "举重",
+      "prompt": "weightlifting pose, lifting weights, strength training",
+      "weight": 0.7
+    },
+    {
+      "id": "action058",
+      "name": "俯卧撑",
+      "prompt": "doing push-up, push-up position, exercising",
+      "weight": 0.7
+    },
+    {
+      "id": "action059",
+      "name": "荡秋千",
+      "prompt": "swinging on swing, on playground swing",
+      "weight": 0.8
+    },
+    {
+      "id": "action060",
+      "name": "滑滑梯",
+      "prompt": "sliding down slide, on slide, playing",
+      "weight": 0.8
+    },
+    {
+      "id": "action061",
+      "name": "滑雪",
+      "prompt": "skiing pose, skiing down slope, on skis",
+      "weight": 0.7
+    },
+    {
+      "id": "action062",
+      "name": "冲浪",
+      "prompt": "surfing pose, on surfboard, riding wave",
+      "weight": 0.7
+    },
+    {
+      "id": "action063",
+      "name": "潜水",
+      "prompt": "diving pose, underwater, scuba diving",
+      "weight": 0.7
+    },
+    {
+      "id": "action064",
+      "name": "骑自行车",
+      "prompt": "riding bicycle, on bike, cycling",
+      "weight": 0.8
+    },
+    {
+      "id": "action065",
+      "name": "驾驶",
+      "prompt": "driving pose, in car, holding steering wheel",
+      "weight": 0.8
+    },
+    {
+      "id": "action066",
+      "name": "骑摩托车",
+      "prompt": "riding motorcycle, on motorbike, speeding",
+      "weight": 0.8
+    },
+    {
+      "id": "action067",
+      "name": "打招呼",
+      "prompt": "saying hello, waving, greeting gesture",
+      "weight": 1.0
+    },
+    {
+      "id": "action068",
+      "name": "再见",
+      "prompt": "saying goodbye, waving bye, farewell",
+      "weight": 0.9
+    },
+    {
+      "id": "action069",
+      "name": "点赞",
+      "prompt": "thumbs up, giving thumbs up, approving",
+      "weight": 1.0
+    },
+    {
+      "id": "action070",
+      "name": "OK手势",
+      "prompt": "OK sign, fingers forming OK, gesture",
+      "weight": 1.0
+    },
+    {
+      "id": "action071",
+      "name": "胜利手势",
+      "prompt": "peace sign, V sign, victory gesture",
+      "weight": 1.0
+    },
+    {
+      "id": "action072",
+      "name": "摇滚手势",
+      "prompt": "rock and roll sign, devil horns, metal gesture",
+      "weight": 0.9
+    },
+    {
+      "id": "action073",
+      "name": "摊手",
+      "prompt": "shrugging, shoulders shrugged, helpless gesture",
+      "weight": 1.0
+    },
+    {
+      "id": "action074",
+      "name": "挠头",
+      "prompt": "scratching head, confused gesture, thoughtful",
+      "weight": 0.9
+    },
+    {
+      "id": "action075",
+      "name": "捏脸",
+      "prompt": "pinching cheek, touching face, playful",
+      "weight": 0.9
+    },
+    {
+      "id": "action076",
+      "name": "拉裙子",
+      "prompt": "holding dress, pulling skirt, adjusting clothing",
+      "weight": 0.9
+    },
+    {
+      "id": "action077",
+      "name": "整理头发",
+      "prompt": "fixing hair, arranging hair, hair adjustment",
+      "weight": 1.0
+    },
+    {
+      "id": "action078",
+      "name": "戴眼镜",
+      "prompt": "wearing glasses, putting on glasses, adjusting spectacles",
+      "weight": 1.0
+    },
+    {
+      "id": "action079",
+      "name": "涂口红",
+      "prompt": "applying lipstick, putting on makeup, touching up lips",
+      "weight": 0.9
+    },
+    {
+      "id": "action080",
+      "name": "伸懒腰",
+      "prompt": "stretching arms, yawning, waking up",
+      "weight": 0.9
+    },
+    {
+      "id": "action081",
+      "name": "打哈欠",
+      "prompt": "yawning, sleepy, tired",
+      "weight": 0.9
+    },
+    {
+      "id": "action082",
+      "name": "打喷嚏",
+      "prompt": "sneezing, covering nose, atishoo",
+      "weight": 0.8
+    },
+    {
+      "id": "action083",
+      "name": "伸舌头",
+      "prompt": "sticking out tongue, playful tongue, mischievous",
+      "weight": 0.9
+    },
+    {
+      "id": "action084",
+      "name": "wink",
+      "prompt": "winking, one eye closed, playful wink",
+      "weight": 1.0
+    },
+    {
+      "id": "action085",
+      "name": "咬唇",
+      "prompt": "biting lip, lip bite, seductive",
+      "weight": 0.9
+    },
+    {
+      "id": "action086",
+      "name": "舔唇",
+      "prompt": "licking lips, tongue on lip, tempting",
+      "weight": 0.9
+    },
+    {
+      "id": "action087",
+      "name": "壁咚",
+      "prompt": "wall slam, hand on wall, romantic pose",
+      "weight": 0.9
+    },
+    {
+      "id": "action088",
+      "name": "背后拥抱",
+      "prompt": "hug from behind, embracing from back",
+      "weight": 1.0
+    },
+    {
+      "id": "action089",
+      "name": "公主抱",
+      "prompt": "bridal carry, carrying in arms, lifted up",
+      "weight": 0.8
+    },
+    {
+      "id": "action090",
+      "name": "背人",
+      "prompt": "carrying on back, piggyback ride",
+      "weight": 0.8
+    },
+    {
+      "id": "action091",
+      "name": "扛在肩上",
+      "prompt": "carrying on shoulder, on shoulder",
+      "weight": 0.8
+    },
+    {
+      "id": "action092",
+      "name": "公主提裙",
+      "prompt": "holding dress hem, curtsy preparation, elegant",
+      "weight": 1.0
+    },
+    {
+      "id": "action093",
+      "name": "提起裤脚",
+      "prompt": "lifting pant leg, adjusting trousers",
+      "weight": 0.9
+    },
+    {
+      "id": "action094",
+      "name": "席地而坐",
+      "prompt": "sitting on ground, sitting on floor",
+      "weight": 1.0
+    },
+    {
+      "id": "action095",
+      "name": "靠墙站",
+      "prompt": "leaning against wall, standing against wall",
+      "weight": 1.0
+    },
+    {
+      "id": "action096",
+      "name": "靠墙坐",
+      "prompt": "sitting against wall, seated against wall",
+      "weight": 1.0
+    },
+    {
+      "id": "action097",
+      "name": "跪姿",
+      "prompt": "kneeling, on knees, kneeling pose",
+      "weight": 0.9
+    },
+    {
+      "id": "action098",
+      "name": "双手撑地",
+      "prompt": "hands on ground, supporting body, on all fours",
+      "weight": 0.8
+    },
+    {
+      "id": "action099",
+      "name": "倒立",
+      "prompt": "handstand, upside down, inverted pose",
+      "weight": 0.7
+    },
+    {
+      "id": "action100",
+      "name": "翻滚",
+      "prompt": "rolling, doing somersault, flipping",
+      "weight": 0.7
+    },
+    {
+      "id": "action101",
+      "name": "打鼓",
+      "prompt": "playing drums, drumming, percussion",
+      "weight": 0.8
+    },
+    {
+      "id": "action102",
+      "name": "弹吉他",
+      "prompt": "playing guitar, holding guitar, strumming",
+      "weight": 0.9
+    },
+    {
+      "id": "action103",
+      "name": "弹钢琴",
+      "prompt": "playing piano, at piano, keyboard",
+      "weight": 0.9
+    },
+    {
+      "id": "action104",
+      "name": "拉小提琴",
+      "prompt": "playing violin, holding violin, violinist",
+      "weight": 0.9
+    },
+    {
+      "id": "action105",
+      "name": "唱歌",
+      "prompt": "singing, holding microphone, performing",
+      "weight": 0.9
+    },
+    {
+      "id": "action106",
+      "name": "拍照",
+      "prompt": "taking photo, holding camera, photography",
+      "weight": 0.9
+    },
+    {
+      "id": "action107",
+      "name": "使用电脑",
+      "prompt": "using computer, typing, at desk",
+      "weight": 0.9
+    },
+    {
+      "id": "action108",
+      "name": "写字",
+      "prompt": "writing, holding pen, taking notes",
+      "weight": 0.9
+    },
+    {
+      "id": "action109",
+      "name": "画画",
+      "prompt": "painting, holding brush, creating art",
+      "weight": 0.9
+    },
+    {
+      "id": "action110",
+      "name": "下棋",
+      "prompt": "playing chess, at chess board, strategic",
+      "weight": 0.9
+    },
+    {
+      "id": "action111",
+      "name": "打伞",
+      "prompt": "holding umbrella, under rainy sky",
+      "weight": 0.9
+    },
+    {
+      "id": "action112",
+      "name": "淋雨",
+      "prompt": "in rain, getting wet, standing in rain",
+      "weight": 0.8
+    },
+    {
+      "id": "action113",
+      "name": "堆雪人",
+      "prompt": "making snowman, in snow, winter activity",
+      "weight": 0.8
+    },
+    {
+      "id": "action114",
+      "name": "泡温泉",
+      "prompt": "in hot spring, bathing, relaxing in water",
+      "weight": 0.8
+    },
+    {
+      "id": "action115",
+      "name": "游泳",
+      "prompt": "swimming, in pool, aquatic pose",
+      "weight": 0.8
+    },
+    {
+      "id": "action116",
+      "name": "跳水",
+      "prompt": "diving, jumping into water, diving board",
+      "weight": 0.7
+    },
+    {
+      "id": "action117",
+      "name": "日光浴",
+      "prompt": "sunbathing, lying in sun, tanning",
+      "weight": 0.9
+    },
+    {
+      "id": "action118",
+      "name": "野餐",
+      "prompt": "picnic pose, on picnic blanket, outdoor meal",
+      "weight": 0.9
+    },
+    {
+      "id": "action119",
+      "name": "露营",
+      "prompt": "camping, at campsite, tent",
+      "weight": 0.8
+    },
+    {
+      "id": "action120",
+      "name": "骑马",
+      "prompt": "horseback riding, on horse, equestrian",
+      "weight": 0.8
     }
   ],
   "subDimensionOptions": {
