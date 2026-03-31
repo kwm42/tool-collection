@@ -157,6 +157,77 @@
         .clear-btn:hover {
             background: #c0392b;
         }
+        .preview-btn {
+            padding: 6px 12px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #fff;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+        }
+        .modal-body {
+            flex: 1;
+            overflow: auto;
+            padding: 20px;
+        }
+        .preview-section {
+            margin-bottom: 20px;
+        }
+        .preview-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .preview-content {
+            width: 100%;
+            height: 150px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 13px;
+            resize: vertical;
+            background: #fafafa;
+        }
     </style>
 </head>
 <body>
@@ -165,10 +236,10 @@
     <div class="container">
         <div class="upload-area" id="uploadArea">
             <div class="upload-icon">📁</div>
-            <div class="upload-text">点击或拖拽 VTT 文件到这里</div>
+            <div class="upload-text">点击或拖拽 VTT/LRC 文件到这里</div>
             <div class="upload-hint">支持一次上传多个文件</div>
         </div>
-        <input type="file" id="fileInput" accept=".vtt" multiple>
+        <input type="file" id="fileInput" accept=".vtt,.lrc" multiple>
         
         <div class="result" id="result">
             <div class="info" id="fileInfo"></div>
@@ -176,6 +247,25 @@
             <div class="btn-group">
                 <button class="btn" id="downloadAllBtn">下载全部 (ZIP)</button>
                 <button class="btn clear-btn" id="clearBtn">清空</button>
+            </div>
+        </div>
+        
+        <div class="modal" id="previewModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title" id="modalTitle">预览</span>
+                    <button class="modal-close" id="modalClose">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="preview-section">
+                        <div class="preview-label">转换前:</div>
+                        <textarea class="preview-content" id="originalContent" readonly></textarea>
+                    </div>
+                    <div class="preview-section">
+                        <div class="preview-label">转换后:</div>
+                        <textarea class="preview-content" id="convertedContent" readonly></textarea>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -189,8 +279,14 @@
         const fileInfo = document.getElementById('fileInfo');
         const downloadAllBtn = document.getElementById('downloadAllBtn');
         const clearBtn = document.getElementById('clearBtn');
+        const previewModal = document.getElementById('previewModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const originalContent = document.getElementById('originalContent');
+        const convertedContent = document.getElementById('convertedContent');
 
         const convertedFiles = [];
+        const originalContents = {};
 
         uploadArea.addEventListener('click', () => fileInput.click());
 
@@ -206,11 +302,11 @@
         uploadArea.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadArea.classList.remove('dragover');
-            const files = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.vtt'));
+            const files = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.vtt') || f.name.endsWith('.lrc'));
             if (files.length > 0) {
                 processFiles(files);
             } else {
-                alert('请上传 VTT 文件');
+                alert('请上传 VTT 或 LRC 文件');
             }
         });
 
@@ -229,9 +325,17 @@
             for (const file of files) {
                 try {
                     const content = await readFile(file);
-                    const srtContent = vttToSrt(content);
-                    const srtFileName = file.name.replace('.vtt', '.srt');
+                    let srtContent, srtFileName;
                     
+                    if (file.name.endsWith('.vtt')) {
+                        srtContent = vttToSrt(content);
+                        srtFileName = file.name.replace('.vtt', '.srt');
+                    } else if (file.name.endsWith('.lrc')) {
+                        srtContent = lrcToSrt(content);
+                        srtFileName = file.name.replace('.lrc', '.srt');
+                    }
+                    
+                    originalContents[file.name] = content;
                     convertedFiles.push({
                         originalName: file.name,
                         srtName: srtFileName,
@@ -263,10 +367,38 @@
                         <span class="file-arrow">→</span>
                         <span class="file-name">${file.srtName}</span>
                     </div>
-                    <span class="file-status">✓ 已转换</span>
+                    <div>
+                        <button class="btn preview-btn" data-index="${index}">预览</button>
+                        <span class="file-status">✓ 已转换</span>
+                    </div>
                 </div>
             `).join('');
+            
+            document.querySelectorAll('.preview-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.dataset.index);
+                    showPreview(index);
+                });
+            });
         }
+        
+        function showPreview(index) {
+            const file = convertedFiles[index];
+            modalTitle.textContent = `${file.originalName} → ${file.srtName}`;
+            originalContent.value = originalContents[file.originalName] || '';
+            convertedContent.value = file.content;
+            previewModal.classList.add('show');
+        }
+        
+        modalClose.addEventListener('click', () => {
+            previewModal.classList.remove('show');
+        });
+        
+        previewModal.addEventListener('click', (e) => {
+            if (e.target === previewModal) {
+                previewModal.classList.remove('show');
+            }
+        });
 
         function vttToSrt(vttContent) {
             let content = vttContent.replace(/^\uFEFF/, '');
@@ -313,6 +445,59 @@
                 return `${hours}:${minutes}:${seconds}`;
             }
             return timeStr.replace('.', ',');
+        }
+
+        function lrcToSrt(lrcContent) {
+            const lines = lrcContent.split('\n').filter(line => line.trim());
+            const timeRegex = /\[(\d{2}):(\d{2})\.(\d{2,3})\](.*)/;
+            
+            const subtitles = [];
+            
+            for (const line of lines) {
+                const match = line.match(timeRegex);
+                if (match) {
+                    const minutes = parseInt(match[1], 10);
+                    const seconds = parseInt(match[2], 10);
+                    const ms = match[3].padEnd(3, '0').slice(0, 3);
+                    const text = match[4].trim();
+                    
+                    const startTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:${ms},000`;
+                    
+                    const existing = subtitles.find(s => s.startTime === startTime);
+                    if (existing) {
+                        existing.text += '\n' + text;
+                    } else {
+                        subtitles.push({ startTime, text });
+                    }
+                }
+            }
+            
+            if (subtitles.length === 0) {
+                return '';
+            }
+            
+            for (let i = 0; i < subtitles.length - 1; i++) {
+                subtitles[i].endTime = subtitles[i + 1].startTime;
+            }
+            subtitles[subtitles.length - 1].endTime = addSeconds(subtitles[subtitles.length - 1].startTime, 20);
+            
+            let srtContent = '';
+            subtitles.forEach((sub, index) => {
+                srtContent += `${index + 1}\n${sub.startTime} --> ${sub.endTime}\n${sub.text}\n\n`;
+            });
+            
+            return srtContent.trim();
+        }
+        
+        function addSeconds(timeStr, seconds) {
+            const [time, ms] = timeStr.split(',');
+            const [hh, mm, ss] = time.split(':').map(Number);
+            let totalSeconds = hh * 3600 + mm * 60 + ss + seconds;
+            const newHh = Math.floor(totalSeconds / 3600);
+            totalSeconds %= 3600;
+            const newMm = Math.floor(totalSeconds / 60);
+            const newSs = totalSeconds % 60;
+            return `${String(newHh).padStart(2, '0')}:${String(newMm).padStart(2, '0')}:${String(newSs).padStart(2, '0')},${ms}`;
         }
 
         downloadAllBtn.addEventListener('click', async () => {
