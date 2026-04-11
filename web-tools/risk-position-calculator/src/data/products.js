@@ -1,26 +1,26 @@
 export const products = [
   // Forex - Direct (quote currency is USD)
-  { symbol: 'EURUSD', category: 'Forex', type: 'Direct', tickSize: 0.0001, contractSize: 100000 },
-  { symbol: 'GBPUSD', category: 'Forex', type: 'Direct', tickSize: 0.0001, contractSize: 100000 },
-  { symbol: 'AUDUSD', category: 'Forex', type: 'Direct', tickSize: 0.0001, contractSize: 100000 },
+  { symbol: 'EURUSD', category: 'Forex', type: 'Direct', contractSize: 100000, tickSize: 0.0001, defaultCommission: 7, defaultCommissionType: 'perLot' },
+  { symbol: 'GBPUSD', category: 'Forex', type: 'Direct', contractSize: 100000, tickSize: 0.0001, defaultCommission: 7, defaultCommissionType: 'perLot' },
+  { symbol: 'AUDUSD', category: 'Forex', type: 'Direct', contractSize: 100000, tickSize: 0.0001, defaultCommission: 7, defaultCommissionType: 'perLot' },
   
   // Forex - Indirect (base currency is USD)
-  { symbol: 'USDJPY', category: 'Forex', type: 'Indirect', tickSize: 0.01, contractSize: 100000 },
-  { symbol: 'USDCHF', category: 'Forex', type: 'Indirect', tickSize: 0.0001, contractSize: 100000 },
-  { symbol: 'USDCAD', category: 'Forex', type: 'Indirect', tickSize: 0.0001, contractSize: 100000 },
+  { symbol: 'USDJPY', category: 'Forex', type: 'Indirect', contractSize: 100000, tickSize: 0.01, defaultCommission: 7, defaultCommissionType: 'perLot' },
+  { symbol: 'USDCHF', category: 'Forex', type: 'Indirect', contractSize: 100000, tickSize: 0.0001, defaultCommission: 7, defaultCommissionType: 'perLot' },
+  { symbol: 'USDCAD', category: 'Forex', type: 'Indirect', contractSize: 100000, tickSize: 0.0001, defaultCommission: 7, defaultCommissionType: 'perLot' },
   
   // Metals
-  { symbol: 'XAUUSD', category: 'Metals', type: 'Direct', tickSize: 0.01, contractSize: 100 },
-  { symbol: 'XAGUSD', category: 'Metals', type: 'Direct', tickSize: 0.01, contractSize: 5000 },
+  { symbol: 'XAUUSD', category: 'Metals', type: 'Direct', contractSize: 100, defaultCommission: 7, defaultCommissionType: 'perLot' },
+  { symbol: 'XAGUSD', category: 'Metals', type: 'Direct', contractSize: 5000, defaultCommission: 7, defaultCommissionType: 'perLot' },
   
   // Index
-  { symbol: 'SP500', category: 'Index', type: 'Direct', tickSize: 0.1, contractSize: 1 },
-  { symbol: 'NAS100', category: 'Index', type: 'Direct', tickSize: 0.1, contractSize: 1 },
-  { symbol: 'US30', category: 'Index', type: 'Direct', tickSize: 1, contractSize: 1 },
+  { symbol: 'SP500', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
+  { symbol: 'NAS100', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
+  { symbol: 'US30', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
   
   // Crypto
-  { symbol: 'BTCUSDT', category: 'Crypto', type: 'Direct', tickSize: 0.01, contractSize: 1 },
-  { symbol: 'ETHUSDT', category: 'Crypto', type: 'Direct', tickSize: 0.01, contractSize: 1 },
+  { symbol: 'BTCUSDT', category: 'Crypto', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
+  { symbol: 'ETHUSDT', category: 'Crypto', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
 ]
 
 export const defaultPrices = {
