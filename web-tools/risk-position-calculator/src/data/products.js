@@ -14,9 +14,9 @@ export const products = [
   { symbol: 'XAGUSD', category: 'Metals', type: 'Direct', contractSize: 5000, defaultCommission: 7, defaultCommissionType: 'perLot' },
   
   // Index
-  { symbol: 'SP500', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
-  { symbol: 'NAS100', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
-  { symbol: 'US30', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
+  { symbol: 'SP500', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 3, defaultCommissionType: 'perLot' },
+  { symbol: 'OIL', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
+  { symbol: 'ES1!', category: 'Index', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
   
   // Crypto
   { symbol: 'BTCUSDT', category: 'Crypto', type: 'Direct', contractSize: 1, defaultCommission: 2, defaultCommissionType: 'perLot' },
