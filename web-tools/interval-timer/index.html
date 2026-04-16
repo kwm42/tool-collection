@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时提醒器</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 48px 64px;
+            min-width: 500px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+        }
+        .time-display {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        .time-value {
+            text-align: center;
+            font-size: 72px;
+            font-weight: 200;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 40px;
+        }
+        .section-label {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 12px;
+            margin-top: 24px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+        .btn:hover { border-color: #bbb; }
+        .btn.active {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+        .custom-input {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #999;
+        }
+        .custom-input input {
+            width: 80px;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .status {
+            text-align: center;
+            margin: 32px 0;
+            font-size: 18px;
+            color: #666;
+        }
+        .status.running { color: #4CAF50; }
+        .status .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: currentColor;
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .actions .btn {
+            flex: 1;
+            padding: 16px;
+            font-size: 18px;
+        }
+        .btn-start { background: #333; color: white; border-color: #333; }
+        .btn-start:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-stop { background: #f5f5f5; }
+        .btn-test { background: #FF9800; color: white; border-color: #FF9800; }
+        .next-reminder {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 16px;
+            color: #999;
+            min-height: 50px;
+            line-height: 1.8;
+        }
+        .next-reminder .time {
+            font-size: 20px;
+            color: #333;
+            font-weight: 500;
+        }
+        .next-reminder.advance { color: #FF9800; }
+        .local-time {
+            font-size: 10px;
+            color: #999;
+            margin-left: 4px;
+        }
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #333;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            animation: slideIn 0.3s ease-out;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .toast .icon {
+            font-size: 24px;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        .toast.hiding {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+        .notification-status {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 12px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .notification-status.granted {
+            color: #4CAF50;
+            background: #e8f5e9;
+        }
+        .notification-status.denied {
+            color: #f44336;
+            background: #ffebee;
+        }
+        .notification-status.default {
+            color: #FF9800;
+            background: #fff3e0;
+            cursor: pointer;
+        }
+        .notification-status.default:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="time-display">
+            标准时间 <span id="time-label"></span>
+        </div>
+        <div class="time-value" id="current-time">--:--:--</div>
+
+        <div class="section-label">间隔</div>
+        <div class="btn-group" id="interval-buttons">
+            <button class="btn" data-value="1">1</button>
+            <button class="btn" data-value="5">5</button>
+            <button class="btn" data-value="10">10</button>
+            <button class="btn" data-value="15">15</button>
+            <button class="btn" data-value="30">30</button>
+        </div>
+        <div class="custom-input">
+            <span>自定义:</span>
+            <input type="number" id="custom-interval" min="1" placeholder="分钟">
+            <span>分钟</span>
+        </div>
+
+        <div class="section-label">提前提醒</div>
+        <div class="btn-group" id="advance-buttons">
+            <button class="btn active" data-value="0">关闭</button>
+            <button class="btn" data-value="10">10s</button>
+            <button class="btn" data-value="30">30s</button>
+            <button class="btn" data-value="60">60s</button>
+        </div>
+
+        <div class="status" id="status">
+            <span class="dot"></span>已停止
+        </div>
+
+        <div style="text-align: center;">
+            <span id="notification-status" class="notification-status"></span>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-start" id="start-btn" disabled>开始</button>
+            <button class="btn btn-stop" id="stop-btn" disabled>停止</button>
+            <button class="btn btn-test" id="test-btn">测试</button>
+        </div>
+
+        <div class="next-reminder" id="next-reminder"></div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script>
+const state = {
+    currentTime: null,
+    isNetworkTime: false,
+    timerInterval: null,
+    selectedInterval: null,
+    selectedAdvance: 0,
+    isRunning: false
+};
+
+const TIME_API = 'https://worldtimeapi.org/api/ip';
+
+async function syncTime() {
+    try {
+        const response = await fetch(TIME_API);
+        const data = await response.json();
+        state.currentTime = new Date(data.datetime);
+        state.isNetworkTime = true;
+        document.getElementById('time-label').textContent = '';
+    } catch (e) {
+        state.currentTime = new Date();
+        state.isNetworkTime = false;
+        document.getElementById('time-label').innerHTML = '<span class="local-time">(本地时间)</span>';
+    }
+}
+
+function updateTimeDisplay() {
+    if (!state.currentTime) return;
+    state.currentTime.setSeconds(state.currentTime.getSeconds() + 1);
+    const h = String(state.currentTime.getHours()).padStart(2, '0');
+    const m = String(state.currentTime.getMinutes()).padStart(2, '0');
+    const s = String(state.currentTime.getSeconds()).padStart(2, '0');
+    document.getElementById('current-time').textContent = `${h}:${m}:${s}`;
+}
+
+async function requestNotificationPermission() {
+    if (!('Notification' in window)) {
+        console.log('Browser does not support notifications');
+        return false;
+    }
+    if (Notification.permission !== 'granted') {
+        const permission = await Notification.requestPermission();
+        console.log('Notification permission:', permission);
+        return permission === 'granted';
+    }
+    return true;
+}
+
+function showToast(body) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<span class="icon">⏰</span><span>${body}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.classList.add('hiding');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+function triggerNotification(body) {
+    showToast(body);
+    
+    if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification('定时提醒', { body });
+    }
+}
+
+function playSound() {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const duration = 1.5;
+    const sampleRate = audioCtx.sampleRate;
+    const length = duration * sampleRate;
+    const buffer = audioCtx.createBuffer(1, length, sampleRate);
+    const data = buffer.getChannelData(0);
+    
+    const baseFreq = 523.25;
+    
+    for (let i = 0; i < length; i++) {
+        const t = i / sampleRate;
+        const attack = 0.02;
+        const decay = 0.3;
+        const sustain = 0.3;
+        const release = 1.0;
+        
+        let envelope;
+        if (t < attack) {
+            envelope = t / attack;
+        } else if (t < attack + decay) {
+            envelope = 1 - (t - attack) / decay * (1 - sustain);
+        } else if (t < duration - release) {
+            envelope = sustain;
+        } else {
+            envelope = sustain * (1 - (t - (duration - release)) / release);
+        }
+        
+        const bell = Math.sin(2 * Math.PI * baseFreq * t) * 0.6
+                   + Math.sin(2 * Math.PI * baseFreq * 2 * t) * 0.2
+                   + Math.sin(2 * Math.PI * baseFreq * 3 * t) * 0.1
+                   + Math.sin(2 * Math.PI * baseFreq * 4.5 * t) * 0.1;
+        
+        data[i] = bell * envelope * 0.4;
+    }
+    
+    const source = audioCtx.createBufferSource();
+    source.buffer = buffer;
+    source.connect(audioCtx.destination);
+    source.start();
+}
+
+function calculateNextTriggers(now, intervalMinutes) {
+    const triggers = [];
+    
+    const nextPoint = new Date(now);
+    const currentMinutes = nextPoint.getMinutes();
+    const remainder = currentMinutes % intervalMinutes;
+    
+    if (remainder === 0) {
+        nextPoint.setMinutes(nextPoint.getMinutes() + intervalMinutes);
+    } else {
+        nextPoint.setMinutes(currentMinutes + (intervalMinutes - remainder));
+    }
+    nextPoint.setSeconds(0);
+    nextPoint.setMilliseconds(0);
+    
+    const advanceSeconds = state.selectedAdvance;
+    if (advanceSeconds > 0) {
+        triggers.push({
+            time: new Date(nextPoint.getTime() - advanceSeconds * 1000),
+            type: 'advance',
+            label: '提前'
+        });
+    }
+    triggers.push({
+        time: new Date(nextPoint.getTime()),
+        type: 'exact',
+        label: '整点'
+    });
+    
+    return triggers;
+}
+
+function formatTime(date) {
+    const h = String(date.getHours()).padStart(2, '0');
+    const m = String(date.getMinutes()).padStart(2, '0');
+    const s = String(date.getSeconds()).padStart(2, '0');
+    return `${h}:${m}:${s}`;
+}
+
+function updateNextReminderDisplay() {
+    const el = document.getElementById('next-reminder');
+    if (!state.isRunning || !state.selectedInterval) {
+        el.innerHTML = '';
+        return;
+    }
+    
+    const triggers = calculateNextTriggers(state.currentTime, state.selectedInterval);
+    
+    el.innerHTML = triggers.map(t => 
+        `<div class="${t.type === 'advance' ? 'advance' : ''}">` +
+        `${t.label}提醒: <span class="time">${formatTime(t.time)}</span></div>`
+    ).join('');
+}
+
+function scheduleTriggers() {
+    if (!state.isRunning || !state.selectedInterval) return;
+    
+    const triggers = calculateNextTriggers(state.currentTime, state.selectedInterval);
+    const nowTime = state.currentTime.getTime();
+    
+    console.log('Scheduling triggers:', triggers.map(t => ({ type: t.type, time: t.time.toISOString() })));
+    
+    for (const trigger of triggers) {
+        const triggerTime = trigger.time.getTime();
+        
+        if (triggerTime > nowTime) {
+            const delay = triggerTime - nowTime;
+            console.log(`Setting ${trigger.type} trigger in ${delay}ms`);
+            
+            state.timerInterval = setTimeout(() => {
+                if (!state.isRunning) return;
+                
+                console.log('Trigger fired:', trigger.type);
+                
+                const nextTrigger = new Date(triggerTime + state.selectedInterval * 60 * 1000);
+                
+                if (trigger.type === 'advance') {
+                    triggerNotification(`提前提醒 - ${formatTime(nextTrigger)} 即将到来`);
+                } else {
+                    triggerNotification(formatTime(new Date(triggerTime)));
+                }
+                playSound();
+                
+                updateNextReminderDisplay();
+                scheduleTriggers();
+            }, delay);
+            
+            break;
+        }
+    }
+}
+
+function startTimeUpdate() {
+    setInterval(() => {
+        updateTimeDisplay();
+        if (state.isRunning) {
+            updateNextReminderDisplay();
+        }
+    }, 1000);
+}
+
+function updateNextReminderDisplay() {
+    const el = document.getElementById('next-reminder');
+    if (!state.isRunning || !state.selectedInterval) {
+        el.innerHTML = '';
+        return;
+    }
+    
+    const now = new Date(state.currentTime);
+    const triggers = calculateNextTriggers(now, state.selectedInterval);
+    
+    el.innerHTML = triggers.map(t => 
+        `<div class="${t.type === 'advance' ? 'advance' : ''}">` +
+        `${t.label}提醒: <span class="time">${formatTime(t.time)}</span></div>`
+    ).join('');
+}
+
+function startTimeUpdate() {
+    setInterval(() => {
+        updateTimeDisplay();
+    }, 1000);
+}
+
+function updateNotificationStatus() {
+    const statusEl = document.getElementById('notification-status');
+    if (!('Notification' in window)) {
+        statusEl.textContent = '浏览器不支持通知';
+        statusEl.className = 'notification-status denied';
+        return;
+    }
+    
+    if (Notification.permission === 'granted') {
+        statusEl.textContent = '通知已开启';
+        statusEl.className = 'notification-status granted';
+    } else if (Notification.permission === 'denied') {
+        statusEl.innerHTML = '通知被阻止 <a href="https://support.microsoft.com/zh-cn/windows/%E5%9C%A8-windows-10-%E4%B8%AD%E6%9B%B4%E6%94%B9%E9%80%89%E9%A1%B9%E7%9A%84%E9%80%89%E9%A1%B9%E9%92%A9%E9%80%89%E9%A1%B9%E7%9A%84%E9%80%89%E9%A1%B9%E7%9A%84%E9%80%89%E9%A1%B9-7558e2d9-95c0-40f4-9e96-62fbed15125f" target="_blank" style="color: inherit;">(点击查看解决方法)</a>';
+        statusEl.className = 'notification-status denied';
+    } else {
+        statusEl.textContent = '点击启用通知';
+        statusEl.className = 'notification-status default';
+        statusEl.onclick = async () => {
+            await requestNotificationPermission();
+            updateNotificationStatus();
+        };
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await syncTime();
+    startTimeUpdate();
+    updateNotificationStatus();
+    await requestNotificationPermission();
+    updateNotificationStatus();
+
+    const intervalButtons = document.getElementById('interval-buttons');
+    const advanceButtons = document.getElementById('advance-buttons');
+    const customInput = document.getElementById('custom-interval');
+    const startBtn = document.getElementById('start-btn');
+
+    intervalButtons.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn');
+        if (!btn) return;
+        
+        document.querySelectorAll('#interval-buttons .btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        customInput.value = '';
+        state.selectedInterval = parseInt(btn.dataset.value);
+        startBtn.disabled = false;
+    });
+
+    customInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const val = parseInt(customInput.value);
+            if (val > 0) {
+                document.querySelectorAll('#interval-buttons .btn').forEach(b => b.classList.remove('active'));
+                state.selectedInterval = val;
+                startBtn.disabled = false;
+            }
+        }
+    });
+
+    advanceButtons.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn');
+        if (!btn) return;
+        
+        document.querySelectorAll('#advance-buttons .btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.selectedAdvance = parseInt(btn.dataset.value);
+    });
+
+    const stopBtn = document.getElementById('stop-btn');
+    const statusEl = document.getElementById('status');
+
+    startBtn.addEventListener('click', async () => {
+        if (!state.selectedInterval) return;
+        
+        await requestNotificationPermission();
+        
+        state.isRunning = true;
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        document.querySelectorAll('#interval-buttons .btn, #advance-buttons .btn').forEach(b => b.disabled = true);
+        customInput.disabled = true;
+        statusEl.className = 'status running';
+        statusEl.innerHTML = '<span class="dot"></span>计时中';
+        
+        updateNextReminderDisplay();
+        scheduleTriggers();
+    });
+
+    stopBtn.addEventListener('click', () => {
+        state.isRunning = false;
+        if (state.timerInterval) {
+            clearTimeout(state.timerInterval);
+            state.timerInterval = null;
+        }
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        document.querySelectorAll('#interval-buttons .btn, #advance-buttons .btn').forEach(b => b.disabled = false);
+        customInput.disabled = false;
+        statusEl.className = 'status';
+        statusEl.innerHTML = '<span class="dot"></span>已停止';
+        document.getElementById('next-reminder').innerHTML = '';
+    });
+
+    const testBtn = document.getElementById('test-btn');
+    testBtn.addEventListener('click', async () => {
+        await requestNotificationPermission();
+        triggerNotification('测试提醒 - ' + formatTime(state.currentTime));
+        playSound();
+    });
+});
+    </script>
+</body>
+</html>
