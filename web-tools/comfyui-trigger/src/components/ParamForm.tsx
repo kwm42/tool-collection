@@ -13,6 +13,7 @@ interface ParamFormProps {
   };
   onParamsChange: (params: ParamFormProps['params']) => void;
   submitting: boolean;
+  workflowLoading?: boolean;
 }
 
 export function ParamForm({
@@ -22,6 +23,7 @@ export function ParamForm({
   params,
   onParamsChange,
   submitting,
+  workflowLoading = false,
 }: ParamFormProps) {
   const handleChange = (field: keyof ParamFormProps['params'], value: string | number) => {
     onParamsChange({ ...params, [field]: value });
@@ -30,19 +32,28 @@ export function ParamForm({
   return (
     <div className="space-y-4 p-4 bg-white border rounded-lg">
       <div>
-        <label className="block text-sm font-medium mb-1">Workflow</label>
-        <select
-          value={params.workflow}
-          onChange={(e) => handleChange('workflow', e.target.value)}
-          className="w-full px-3 py-2 border rounded-md"
-        >
-          <option value="">加载中...</option>
-          {workflows.map((w) => (
-            <option key={w.id} value={w.id}>
-              {w.name}
-            </option>
-          ))}
-        </select>
+        <label className="block text-sm font-medium mb-2">Workflow</label>
+        <div className="flex flex-wrap gap-2">
+          {workflowLoading ? (
+            <span className="text-gray-500">加载中...</span>
+          ) : workflows.length === 0 ? (
+            <span className="text-gray-500">无可用工作流</span>
+          ) : (
+            workflows.map((w) => (
+              <button
+                key={w.id}
+                onClick={() => handleChange('workflow', w.id)}
+                className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                  params.workflow === w.id
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {w.name}
+              </button>
+            ))
+          )}
+        </div>
       </div>
 
       <div>

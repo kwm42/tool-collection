@@ -63,7 +63,7 @@ export function FileTree({ files, selectedFile, onSelect }: FileTreeProps) {
   }
 
   return (
-    <div className="border rounded-lg overflow-auto max-h-96">
+    <div className="border rounded-lg overflow-auto" style={{ maxHeight: '70vh' }}>
       {files.map((node, idx) => (
         <TreeNode
           key={idx}

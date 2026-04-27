@@ -4,6 +4,7 @@ export interface FileNode {
   path?: string;
   handle?: FileSystemFileHandle;
   children?: FileNode[];
+  previewUrl?: string;
 }
 
 export interface Workflow {

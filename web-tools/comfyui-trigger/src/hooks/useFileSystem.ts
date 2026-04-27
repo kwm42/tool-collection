@@ -38,11 +38,15 @@ export function useFileSystem() {
           });
         }
       } else if (isImageFile(entry.name)) {
+        const fileHandle = entry as FileSystemFileHandle;
+        const file = await fileHandle.getFile();
+        const previewUrl = URL.createObjectURL(file);
         entries.push({
           name: entry.name,
           type: 'file',
           path: path + '/' + entry.name,
-          handle: entry as FileSystemFileHandle,
+          handle: fileHandle,
+          previewUrl,
         });
       }
     }

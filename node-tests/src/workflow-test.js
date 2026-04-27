@@ -67,7 +67,6 @@ const params = {
   inputImage: "kiss03 抓奶，kiss1.png",
   width: 360,
   height: 240,
-  seed: Math.floor(Math.random() * 2 ** 32),
 };
 
 params.filenamePrefix = getFilenamePrefix(params.inputImage);
@@ -195,7 +194,6 @@ async function runWorkflow() {
 
   nodes.prompt.inputs.wildcard_text = params.prompt;
   nodes.prompt.inputs.populated_text = params.prompt;
-  nodes.prompt.inputs.seed = params.seed;
 
   nodes.seconds.inputs.value = params.seconds;
 
