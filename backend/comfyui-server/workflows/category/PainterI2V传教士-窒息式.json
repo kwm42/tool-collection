@@ -1081,13 +1081,13 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-Handjob-HIGH-v1.safetensors",
+          "lora": "wan2.2\\HIGH\\wan2.2_i2v_highnoise_pov_missionary_v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
-          "on": false,
-          "lora": "wan2.2\\HIGH\\Balls_sucking_handjob_high_noise.safetensors",
+          "on": true,
+          "lora": "wan2.2\\HIGH\\wan2.2_t2v_highnoise_sidemissionary_v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
@@ -1481,13 +1481,13 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-Handjob-LOW-v1.safetensors",
+          "lora": "wan2.2\\LOW\\wan2.2_i2v_lownoise_pov_missionary_v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
-          "on": false,
-          "lora": "wan2.2\\LOW\\Balls_sucking_handjob_low_noise.safetensors",
+          "on": true,
+          "lora": "wan2.2\\LOW\\wan2.2_t2v_lownoise_sidemissionary_v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
@@ -6788,8 +6788,8 @@
         "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
       },
       "widgets_values": [
-        "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
-        "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
+        "missionary asphyxiation, woman lying on her back in missionary position, man on top choking her neck with hand during intense sex, deep vaginal penetration, hard rhythmic thrusting, penis thrusting deeply in and out of her vagina, strong hip movement, choking grip on her throat, asphyxiation play, woman gasping with mouth open, eyes rolling slightly, intense mating sex, deep insertion, repeated deep penetration, choking during intercourse",
+        "((exact image girl position and pose, exact woman's face shape)), ((exact penis position, circumcised penis))\n\nsensualBJ. She is licking the shaft of the penis with long, deliberate strokes of her tongue.",
         "populate",
         999344221919312,
         "randomize",
@@ -11699,10 +11699,10 @@
       ]
     },
     "ds": {
-      "scale": 0.2367349255733922,
+      "scale": 0.8996052039649118,
       "offset": [
-        7854.28843503077,
-        -466.8026345132994
+        4772.023231421554,
+        -2929.792699749773
       ]
     }
   },

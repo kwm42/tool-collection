@@ -20,29 +20,39 @@
         "strength": 0.8
       },
       "lora_4": {
-        "on": false,
+        "on": true,
         "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
         "strength": 0.4
       },
       "lora_5": {
         "on": true,
-        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-Handjob-HIGH-v1.safetensors",
+        "lora": "wan2.2\\HIGH\\wan2.2-i2v-high-breast-insertion-v1.0.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": false,
-        "lora": "wan2.2\\HIGH\\Balls_sucking_handjob_high_noise.safetensors",
+        "on": true,
+        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-POV-Titfuck-Paizuri-HIGH-v1.0.safetensors",
         "strength": 0.9
       },
       "lora_7": {
         "on": false,
-        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-HandjobBlowjobCombo-HIGH-v1.safetensors",
+        "lora": "wan2.2\\HIGH\\asymmetrical_paizuri_wan22_v1.0_000002000_high_noise.safetensors",
         "strength": 1
       },
       "lora_8": {
         "on": false,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
+        "lora": "wan2.2\\HIGH\\DaSiWa_Wan22_High_Deepthroat_v11.safetensors",
         "strength": 0.7
+      },
+      "lora_9": {
+        "on": true,
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
+        "strength": 1
+      },
+      "lora_10": {
+        "on": false,
+        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-BreastPlay-HIGH-v2.safetensors",
+        "strength": 0.6
       },
       "➕ Add Lora": "",
       "model": [
@@ -76,29 +86,39 @@
         "strength": 0.8
       },
       "lora_4": {
-        "on": false,
+        "on": true,
         "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
         "strength": 0.4
       },
       "lora_5": {
         "on": true,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-Handjob-LOW-v1.safetensors",
+        "lora": "wan2.2\\LOW\\wan2.2-i2v-low-breast-insertion-v1.0.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": false,
-        "lora": "wan2.2\\LOW\\Balls_sucking_handjob_low_noise.safetensors",
+        "on": true,
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-POV-Titfuck-Paizuri-LOW-v1.0.safetensors",
         "strength": 0.9
       },
       "lora_7": {
         "on": false,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-HandjobBlowjobCombo-LOW-v1.safetensors",
+        "lora": "wan2.2\\LOW\\asymmetrical_paizuri_wan22_v1.0_000002000_low_noise.safetensors",
         "strength": 1
       },
       "lora_8": {
         "on": false,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
+        "lora": "wan2.2\\LOW\\DaSiWa_Wan22_Low_Deepthroat_v11.safetensors",
         "strength": 0.7
+      },
+      "lora_9": {
+        "on": true,
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
+        "strength": 1
+      },
+      "lora_10": {
+        "on": false,
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-BreastPlay-LOW-v2.safetensors",
+        "strength": 0.6
       },
       "➕ Add Lora": "",
       "model": [
@@ -207,8 +227,8 @@
   },
   "882": {
     "inputs": {
-      "wildcard_text": "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
-      "populated_text": "nsfwsks, SmoothMixAnime, blowjob, deepthroat, POV close-up, exact image girl position and pose, exact red hair girl, (looking at viewer constantly), a video on a woman performing a deepthroat blowjob. She kneeling in front of a man. while she is sucking the man's penis, the penis is going deep into her mouth and throat gently, titJob, paizuri, girlMove, gather, (She rubs her breasts up and down his penis. Her breasts are gathered around the penis and touching together, her breasts rapidly bounce and jiggle up and down very fast, her breasts are pushed together constantly), gentle rhythmic body motion\n\nHer hand gesture was a peace sign.",
+      "wildcard_text": "titJob, paizuri, girlMove, gather, fingersTogether She rubs her breasts up and down his penis. She gathers her breasts together around the penis, with her fingertips touching together.\n\nsensualBJ. She sucks and kisses the penis",
+      "populated_text": "A woman is giving a man a blowjob and a handjob. She is in front of the man. She is giving him a blowjob, while simultaneously giving a handjob. She is performing fellatio while stroking the shaft of his penis with one hand.\nsensualBJ. She is licking the shaft of the penis with long, deliberate strokes of her tongue.She is sliding her mouth down the shaft of the penis with her tongue extended.\nbl0wj0b. She sensually starts performing a deepthroat blowjob. She engages in an intense, strenuous deepthroat blowjob. She is bobbing her head back and forth rapidly while sucking the man's erect penis with the foreskin pulled back, the penis is going deep into her mouth and throat. She rams her head forward, swallowing the entire penis until her nose smashes against his hips, then pulls back gasping for air. ",
       "mode": "populate",
       "seed": 999344221919312,
       "Select to add Wildcard": "Select the Wildcard to add to the text"

@@ -26,28 +26,23 @@
       },
       "lora_5": {
         "on": true,
-        "lora": "wan2.2\\HIGH\\Kissing_high_noise.safetensors",
+        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-Handjob-HIGH-v1.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": true,
-        "lora": "wan2.2\\HIGH\\WAN2.2-FrenchKiss_HighNoise.safetensors",
+        "on": false,
+        "lora": "wan2.2\\HIGH\\Balls_sucking_handjob_high_noise.safetensors",
         "strength": 0.9
       },
       "lora_7": {
         "on": false,
-        "lora": "wan2.2\\HIGH\\glass-kiss-high.safetensors",
+        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-HandjobBlowjobCombo-HIGH-v1.safetensors",
         "strength": 1
       },
       "lora_8": {
         "on": false,
-        "lora": "wan2.2\\kiss you_V2_wan_comfy.safetensors",
-        "strength": 1
-      },
-      "lora_9": {
-        "on": false,
-        "lora": "wan2.2\\HIGH\\POVkissing_WAN22_I2V_high_noise.safetensors",
-        "strength": 1
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
+        "strength": 0.7
       },
       "➕ Add Lora": "",
       "model": [
@@ -87,28 +82,23 @@
       },
       "lora_5": {
         "on": true,
-        "lora": "wan2.2\\LOW\\Kissing_low_noise.safetensors",
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-Handjob-LOW-v1.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": true,
-        "lora": "wan2.2\\LOW\\WAN2.2-FrenchKiss_LowNoise.safetensors",
+        "on": false,
+        "lora": "wan2.2\\LOW\\Balls_sucking_handjob_low_noise.safetensors",
         "strength": 0.9
       },
       "lora_7": {
         "on": false,
-        "lora": "wan2.2\\LOW\\glass-kiss-low.safetensors",
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-HandjobBlowjobCombo-LOW-v1.safetensors",
         "strength": 1
       },
       "lora_8": {
         "on": false,
-        "lora": "wan2.2\\kiss you_V2_wan_comfy.safetensors",
-        "strength": 0.6
-      },
-      "lora_9": {
-        "on": false,
-        "lora": "wan2.2\\LOW\\POVkissing_WAN22_I2V_low_noise.safetensors",
-        "strength": 1
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
+        "strength": 0.7
       },
       "➕ Add Lora": "",
       "model": [
@@ -182,7 +172,7 @@
   },
   "864": {
     "inputs": {
-      "image": "kj01 侧面 床沿垂首.png"
+      "image": "hj08 舔奶头撸管.png"
     },
     "class_type": "LoadImage",
     "_meta": {
@@ -217,10 +207,10 @@
   },
   "882": {
     "inputs": {
-      "wildcard_text": "SmoothMixAnime\nA man and a woman are kissing and licking each others tongues, they are passionately kissing and their mouths are open.\n\nthe woman french kisses the man\nthe woman are tongue playing as they french kiss each other",
-      "populated_text": "kiss",
+      "wildcard_text": "SmoothMixAnime, nsfwsks\nhandj0b oneHanded, (twistJob)\n\nthis video shows a woman giving a man a handjob. \n\nshe is stroking his penis with one hand\n\nshe twists her wrists as she strokes his penis",
+      "populated_text": "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
       "mode": "populate",
-      "seed": 445295730540103,
+      "seed": 999344221919312,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
     },
     "class_type": "ImpactWildcardProcessor",
@@ -233,7 +223,7 @@
       "wildcard_text": "",
       "populated_text": "",
       "mode": "populate",
-      "seed": 241181860036668,
+      "seed": 24718622657369,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
     },
     "class_type": "ImpactWildcardProcessor",

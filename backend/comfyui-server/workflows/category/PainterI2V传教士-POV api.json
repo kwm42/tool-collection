@@ -20,18 +20,18 @@
         "strength": 0.8
       },
       "lora_4": {
-        "on": false,
+        "on": true,
         "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
         "strength": 0.4
       },
       "lora_5": {
         "on": true,
-        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-Handjob-HIGH-v1.safetensors",
+        "lora": "wan2.2\\HIGH\\wan2.2_i2v_highnoise_pov_missionary_v1.0.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": false,
-        "lora": "wan2.2\\HIGH\\Balls_sucking_handjob_high_noise.safetensors",
+        "on": true,
+        "lora": "wan2.2\\HIGH\\wan2.2_t2v_highnoise_sidemissionary_v1.0.safetensors",
         "strength": 0.9
       },
       "lora_7": {
@@ -76,18 +76,18 @@
         "strength": 0.8
       },
       "lora_4": {
-        "on": false,
+        "on": true,
         "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
         "strength": 0.4
       },
       "lora_5": {
         "on": true,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-Handjob-LOW-v1.safetensors",
+        "lora": "wan2.2\\LOW\\wan2.2_i2v_lownoise_pov_missionary_v1.0.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": false,
-        "lora": "wan2.2\\LOW\\Balls_sucking_handjob_low_noise.safetensors",
+        "on": true,
+        "lora": "wan2.2\\LOW\\wan2.2_t2v_lownoise_sidemissionary_v1.0.safetensors",
         "strength": 0.9
       },
       "lora_7": {
@@ -207,8 +207,8 @@
   },
   "882": {
     "inputs": {
-      "wildcard_text": "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
-      "populated_text": "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
+      "wildcard_text": "SmoothMixAnime, nsfwsks, her breasts are bouncing, m15510n4ry, missionary\nwith her legs spread having sex with a man\nMovement is fast with bouncing breasts\nHer breasts are large\nA man is thrusting his penis back and forth inside her vagina rapidly",
+      "populated_text": "((exact image girl position and pose, exact woman's face shape)), ((exact penis position, circumcised penis))\n\nsensualBJ. She is licking the shaft of the penis with long, deliberate strokes of her tongue.",
       "mode": "populate",
       "seed": 999344221919312,
       "Select to add Wildcard": "Select the Wildcard to add to the text"

@@ -1,7 +1,7 @@
 {
-  "id": "b2111d45-09f3-42ff-bb33-59a0a3339863",
+  "id": "605ae248-94bb-4217-978c-480ee1362334",
   "revision": 0,
-  "last_node_id": 1555,
+  "last_node_id": 1554,
   "last_link_id": 2158,
   "nodes": [
     {
@@ -1081,19 +1081,25 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\curved_cowgirl_position_wan22_v1.1_000004000_high_noise.safetensors",
-          "strength": 0.7,
+          "lora": "wan2.2\\HIGH\\wan2.2_i2v_highnoise_pov_missionary_v1.0.safetensors",
+          "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-POV-Cowgirl-HIGH-v1.0-fixed.safetensors",
-          "strength": 0.7,
+          "lora": "wan2.2\\HIGH\\wan2.2_t2v_highnoise_sidemissionary_v1.0.safetensors",
+          "strength": 0.9,
           "strengthTwo": null
         },
         {
-          "on": true,
-          "lora": "wan2.2\\HIGH\\wan2.2_t2v_highnoise_cowgirl_v1.0.safetensors",
+          "on": false,
+          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-HandjobBlowjobCombo-HIGH-v1.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
@@ -1475,19 +1481,25 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\curved_cowgirl_position_wan22_v1.1_000004000_low_noise.safetensors",
-          "strength": 0.7,
+          "lora": "wan2.2\\LOW\\wan2.2_i2v_lownoise_pov_missionary_v1.0.safetensors",
+          "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-POV-Cowgirl-LOW-v1.0-fixed.safetensors",
-          "strength": 0.7,
+          "lora": "wan2.2\\LOW\\wan2.2_t2v_lownoise_sidemissionary_v1.0.safetensors",
+          "strength": 0.9,
           "strengthTwo": null
         },
         {
-          "on": true,
-          "lora": "wan2.2\\LOW\\wan2.2_t2v_lownoise_cowgirl_v1.0.safetensors",
+          "on": false,
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-HandjobBlowjobCombo-LOW-v1.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
@@ -6549,54 +6561,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "cg07 伸手 hug 正面低视角.png",
+        "hj08 舔奶头撸管.png",
         "image"
       ],
       "color": "#222",
       "bgcolor": "#000"
-    },
-    {
-      "id": 973,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -3254.3817098235727,
-        3063.0695460112147
-      ],
-      "size": [
-        738.2654452944553,
-        153.7752144881497
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 75,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 1583
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            1579
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "watermark, text, subtitles, letterbox, pillarbox, frame, border, split screen, noise, artifacts, blur, vignette, 色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走,"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
     },
     {
       "id": 1030,
@@ -6686,7 +6655,7 @@
         "",
         "",
         "populate",
-        9392473689892,
+        24718622657369,
         "randomize",
         "Select Wildcard 🟢 Full Cache"
       ],
@@ -6742,6 +6711,49 @@
       "widgets_values": []
     },
     {
+      "id": 973,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -3254.3817098235727,
+        3063.0695460112147
+      ],
+      "size": [
+        738.2654452944553,
+        153.7752144881497
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 75,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1583
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            1579
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "watermark, text, subtitles, letterbox, pillarbox, frame, border, split screen, noise, artifacts, blur, vignette, 色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走,"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
       "id": 882,
       "type": "ImpactWildcardProcessor",
       "pos": [
@@ -6776,10 +6788,10 @@
         "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
       },
       "widgets_values": [
-        "SmoothMixAnime, nsfwsks, c0wg1rl, cowgirl\n\nThe girl moves while swaying her hips. she gyrates her hips in a seductive manner. she rolling her hips\nSwaying her hips as she dances joyfully\n\nher mouth biting the shirt",
-        "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
+        "一位女性双腿高举并紧紧锁住男性腰部和臀部，处于leglock mating press姿势，男性臀部强烈反复起伏，按压，猛烈撞击，深插入后大幅度抽出再重重按压，节奏有力且连续，男性臀部肌肉紧绷并大幅度前后摆动，臀部向下用力按压的动作非常明显，激烈性交，阴茎在阴道内反复深顶，流畅的性爱运动\n\nA woman raises her legs high and locks them tightly around the man's waist and hips in a leglock mating press position. The man's hips move vigorously and repeatedly, pressing and thrusting, deeply penetrating and then withdrawing sharply before pressing down again. The rhythm is powerful and continuous, with the man's gluteal muscles tense and swinging back and forth dramatically. The downward pressing motion of his hips is very obvious. It is intense intercourse, with the penis repeatedly thrusting deeply into the vagina, creating a smooth sexual movement.",
+        "((exact image girl position and pose, exact woman's face shape)), ((exact penis position, circumcised penis))\n\nsensualBJ. She is licking the shaft of the penis with long, deliberate strokes of her tongue.",
         "populate",
-        847310895774492,
+        999344221919312,
         "randomize",
         "Select Wildcard 🟢 Full Cache"
       ],
@@ -7908,7 +7920,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1555,
+          "lastNodeId": 1554,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -8905,13 +8917,13 @@
                 "hidden": false,
                 "paused": false,
                 "params": {
-                  "filename": "temp_save_00047.mkv",
+                  "filename": "temp_save_00077.mkv",
                   "subfolder": "Wan2.2-sub-save",
                   "type": "temp",
                   "format": "video/ffv1-mkv",
                   "frame_rate": 16,
-                  "workflow": "temp_save_00047.png",
-                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\temp\\Wan2.2-sub-save\\temp_save_00047.mkv"
+                  "workflow": "temp_save_00077.png",
+                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\temp\\Wan2.2-sub-save\\temp_save_00077.mkv"
                 }
               }
             }
@@ -9209,7 +9221,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1555,
+          "lastNodeId": 1554,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -10514,7 +10526,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1555,
+          "lastNodeId": 1554,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -10839,7 +10851,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1555,
+          "lastNodeId": 1554,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -11100,13 +11112,13 @@
                 "hidden": false,
                 "paused": false,
                 "params": {
-                  "filename": "wanvideo_20260426_00073.mp4",
+                  "filename": "wanvideo_20260426_00103.mp4",
                   "subfolder": "Video",
                   "type": "output",
                   "format": "video/h264-mp4",
                   "frame_rate": 64,
-                  "workflow": "wanvideo_20260426_00073.png",
-                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\output\\Video\\wanvideo_20260426_00073.mp4"
+                  "workflow": "wanvideo_20260426_00103.png",
+                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\output\\Video\\wanvideo_20260426_00103.mp4"
                 }
               }
             }
@@ -11164,7 +11176,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1555,
+          "lastNodeId": 1554,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -11687,10 +11699,10 @@
       ]
     },
     "ds": {
-      "scale": 0.7363386472198791,
+      "scale": 0.8996052039649118,
       "offset": [
-        3891.968803535398,
-        -3041.4278570225833
+        4772.023231421554,
+        -2929.792699749773
       ]
     }
   },

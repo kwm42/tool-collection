@@ -1080,7 +1080,7 @@
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-Handjob-HIGH-v1.safetensors",
           "strength": 0.9,
           "strengthTwo": null
@@ -1098,7 +1098,7 @@
           "strengthTwo": null
         },
         {
-          "on": false,
+          "on": true,
           "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
           "strength": 0.7,
           "strengthTwo": null
@@ -1480,7 +1480,7 @@
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\LOW\\WAN-2.2-I2V-Handjob-LOW-v1.safetensors",
           "strength": 0.9,
           "strengthTwo": null
@@ -1498,7 +1498,7 @@
           "strengthTwo": null
         },
         {
-          "on": false,
+          "on": true,
           "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
           "strength": 0.7,
           "strengthTwo": null
@@ -6788,7 +6788,7 @@
         "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
       },
       "widgets_values": [
-        "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
+        "((exact image girl position and pose, exact woman's face shape)), ((exact penis position, circumcised penis))\n\nsensualBJ. She is licking the shaft of the penis with long, deliberate strokes of her tongue.",
         "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
         "populate",
         999344221919312,
@@ -11701,8 +11701,8 @@
     "ds": {
       "scale": 0.8178229126953743,
       "offset": [
-        5353.384470558959,
-        -2686.6599839623823
+        4606.001917836388,
+        -2888.569232276436
       ]
     }
   },

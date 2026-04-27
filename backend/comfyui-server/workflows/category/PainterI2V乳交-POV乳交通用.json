@@ -1074,32 +1074,32 @@
           "strengthTwo": null
         },
         {
-          "on": false,
+          "on": true,
           "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
           "strength": 0.4,
           "strengthTwo": null
         },
         {
+          "on": false,
+          "lora": "wan2.2\\HIGH\\wan2.2-i2v-high-breast-insertion-v1.0.safetensors",
+          "strength": 0.9,
+          "strengthTwo": null
+        },
+        {
           "on": true,
-          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-Handjob-HIGH-v1.safetensors",
+          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-POV-Titfuck-Paizuri-HIGH-v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\HIGH\\Balls_sucking_handjob_high_noise.safetensors",
-          "strength": 0.9,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-HandjobBlowjobCombo-HIGH-v1.safetensors",
+          "lora": "wan2.2\\HIGH\\asymmetrical_paizuri_wan22_v1.0_000002000_high_noise.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
+          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-BreastPlay-HIGH-v2.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
@@ -1474,32 +1474,32 @@
           "strengthTwo": null
         },
         {
-          "on": false,
+          "on": true,
           "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
           "strength": 0.4,
           "strengthTwo": null
         },
         {
+          "on": false,
+          "lora": "wan2.2\\LOW\\wan2.2-i2v-low-breast-insertion-v1.0.safetensors",
+          "strength": 0.9,
+          "strengthTwo": null
+        },
+        {
           "on": true,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-Handjob-LOW-v1.safetensors",
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-POV-Titfuck-Paizuri-LOW-v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\Balls_sucking_handjob_low_noise.safetensors",
-          "strength": 0.9,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-HandjobBlowjobCombo-LOW-v1.safetensors",
+          "lora": "wan2.2\\LOW\\asymmetrical_paizuri_wan22_v1.0_000002000_low_noise.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-BreastPlay-LOW-v2.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
@@ -6788,8 +6788,8 @@
         "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
       },
       "widgets_values": [
-        "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
-        "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
+        "titJob, paizuri, girlMove, gather, fingersTogether She rubs her breasts up and down his penis. She gathers her breasts together around the penis, with her fingertips touching together.\nher breasts are bouncing",
+        "A sexy woman is giving a man a blowjob and a handjob. The man is out of frame.\n\nShe is in front of the man. She is giving him a blowjob, while simultaneously giving a handjob. She is performing fellatio while stroking the shaft of his penis with one hand.",
         "populate",
         999344221919312,
         "randomize",
@@ -11699,10 +11699,10 @@
       ]
     },
     "ds": {
-      "scale": 0.8178229126953743,
+      "scale": 1.0885222967975434,
       "offset": [
-        5353.384470558959,
-        -2686.6599839623823
+        4447.73387447685,
+        -2990.417663797687
       ]
     }
   },

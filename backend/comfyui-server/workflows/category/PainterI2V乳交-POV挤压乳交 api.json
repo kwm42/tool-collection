@@ -20,28 +20,28 @@
         "strength": 0.8
       },
       "lora_4": {
-        "on": false,
+        "on": true,
         "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
         "strength": 0.4
       },
       "lora_5": {
-        "on": true,
-        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-Handjob-HIGH-v1.safetensors",
+        "on": false,
+        "lora": "wan2.2\\HIGH\\wan2.2-i2v-high-breast-insertion-v1.0.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": false,
-        "lora": "wan2.2\\HIGH\\Balls_sucking_handjob_high_noise.safetensors",
+        "on": true,
+        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-POV-Titfuck-Paizuri-HIGH-v1.0.safetensors",
         "strength": 0.9
       },
       "lora_7": {
         "on": false,
-        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-HandjobBlowjobCombo-HIGH-v1.safetensors",
+        "lora": "wan2.2\\HIGH\\asymmetrical_paizuri_wan22_v1.0_000002000_high_noise.safetensors",
         "strength": 1
       },
       "lora_8": {
         "on": false,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
+        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-BreastPlay-HIGH-v2.safetensors",
         "strength": 0.7
       },
       "➕ Add Lora": "",
@@ -76,28 +76,28 @@
         "strength": 0.8
       },
       "lora_4": {
-        "on": false,
+        "on": true,
         "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
         "strength": 0.4
       },
       "lora_5": {
-        "on": true,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-Handjob-LOW-v1.safetensors",
+        "on": false,
+        "lora": "wan2.2\\LOW\\wan2.2-i2v-low-breast-insertion-v1.0.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": false,
-        "lora": "wan2.2\\LOW\\Balls_sucking_handjob_low_noise.safetensors",
+        "on": true,
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-POV-Titfuck-Paizuri-LOW-v1.0.safetensors",
         "strength": 0.9
       },
       "lora_7": {
         "on": false,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-HandjobBlowjobCombo-LOW-v1.safetensors",
+        "lora": "wan2.2\\LOW\\asymmetrical_paizuri_wan22_v1.0_000002000_low_noise.safetensors",
         "strength": 1
       },
       "lora_8": {
         "on": false,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-BreastPlay-LOW-v2.safetensors",
         "strength": 0.7
       },
       "➕ Add Lora": "",
@@ -207,8 +207,8 @@
   },
   "882": {
     "inputs": {
-      "wildcard_text": "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
-      "populated_text": "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
+      "wildcard_text": "nsfwsks, SmoothMixAnime, POV close-up angle, fixed camera, exact image girl position and pose, (closed mouth, silent, looking at man constantly), titJob, paizuri, girlMove, gather, (She rubs her breasts up and down his penis. Her breasts are gathered around the penis and nearly touching together, her breasts rapidly bounce and jiggle up and down very fast, her breasts are pushed together constantly), masterpiece, very aesthetic, best quality",
+      "populated_text": "A sexy woman is giving a man a blowjob and a handjob. The man is out of frame.\n\nShe is in front of the man. She is giving him a blowjob, while simultaneously giving a handjob. She is performing fellatio while stroking the shaft of his penis with one hand.",
       "mode": "populate",
       "seed": 999344221919312,
       "Select to add Wildcard": "Select the Wildcard to add to the text"

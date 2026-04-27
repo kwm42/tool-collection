@@ -1,7 +1,7 @@
 {
-  "id": "0ef8740b-20a7-44e2-a3ab-f458d1169d18",
+  "id": "605ae248-94bb-4217-978c-480ee1362334",
   "revision": 0,
-  "last_node_id": 1554,
+  "last_node_id": 1555,
   "last_link_id": 2158,
   "nodes": [
     {
@@ -1081,32 +1081,32 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\Kissing_high_noise.safetensors",
+          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-Handjob-HIGH-v1.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
+          "lora": "wan2.2\\HIGH\\Balls_sucking_handjob_high_noise.safetensors",
+          "strength": 0.9,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-HandjobBlowjobCombo-HIGH-v1.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
+          "strength": 0.7,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
           "lora": "wan2.2\\HIGH\\WAN2.2-FrenchKiss_HighNoise.safetensors",
-          "strength": 0.9,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "wan2.2\\HIGH\\glass-kiss-high.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "wan2.2\\kiss you_V2_wan_comfy.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "wan2.2\\HIGH\\POVkissing_WAN22_I2V_high_noise.safetensors",
-          "strength": 1,
+          "strength": 0.7,
           "strengthTwo": null
         },
         {},
@@ -1487,32 +1487,32 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\Kissing_low_noise.safetensors",
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-Handjob-LOW-v1.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
+          "lora": "wan2.2\\LOW\\Balls_sucking_handjob_low_noise.safetensors",
+          "strength": 0.9,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-HandjobBlowjobCombo-LOW-v1.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
+          "strength": 0.7,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
           "lora": "wan2.2\\LOW\\WAN2.2-FrenchKiss_LowNoise.safetensors",
-          "strength": 0.9,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "wan2.2\\LOW\\glass-kiss-low.safetensors",
-          "strength": 1,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "wan2.2\\kiss you_V2_wan_comfy.safetensors",
-          "strength": 0.6,
-          "strengthTwo": null
-        },
-        {
-          "on": false,
-          "lora": "wan2.2\\LOW\\POVkissing_WAN22_I2V_low_noise.safetensors",
-          "strength": 1,
+          "strength": 0.7,
           "strengthTwo": null
         },
         {},
@@ -4459,7 +4459,7 @@
         }
       },
       "widgets_values": [
-        1
+        5
       ],
       "color": "#233",
       "bgcolor": "#355"
@@ -6573,54 +6573,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "kiss03 抓奶，kiss1.png",
+        "hj08 舔奶头撸管.png",
         "image"
       ],
       "color": "#222",
       "bgcolor": "#000"
-    },
-    {
-      "id": 973,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -3254.3817098235727,
-        3063.0695460112147
-      ],
-      "size": [
-        738.2654452944553,
-        153.7752144881497
-      ],
-      "flags": {
-        "pinned": true
-      },
-      "order": 75,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 1583
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            1579
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "watermark, text, subtitles, letterbox, pillarbox, frame, border, split screen, noise, artifacts, blur, vignette, 色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走,"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
     },
     {
       "id": 1030,
@@ -6710,7 +6667,7 @@
         "",
         "",
         "populate",
-        241181860036668,
+        24718622657369,
         "randomize",
         "Select Wildcard 🟢 Full Cache"
       ],
@@ -6766,6 +6723,49 @@
       "widgets_values": []
     },
     {
+      "id": 973,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -3254.3817098235727,
+        3063.0695460112147
+      ],
+      "size": [
+        738.2654452944553,
+        153.7752144881497
+      ],
+      "flags": {
+        "pinned": true
+      },
+      "order": 75,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 1583
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            1579
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "watermark, text, subtitles, letterbox, pillarbox, frame, border, split screen, noise, artifacts, blur, vignette, 色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走,"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
       "id": 882,
       "type": "ImpactWildcardProcessor",
       "pos": [
@@ -6800,10 +6800,10 @@
         "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
       },
       "widgets_values": [
-        "SmoothMixAnime\nA man and a woman are kissing and licking each others tongues, they are passionately kissing and their mouths are open.\n\nthe woman french kisses the man\nthe woman are tongue playing as they french kiss each other",
-        "SmoothMixAnime\nA man and a woman are kissing and licking each others tongues, they are passionately kissing and their mouths are open.\n\nthe woman french kisses the man\nthe woman are tongue playing as they french kiss each other",
+        "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
+        "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
         "populate",
-        445295730540103,
+        999344221919312,
         "randomize",
         "Select Wildcard 🟢 Full Cache"
       ],
@@ -7932,7 +7932,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1554,
+          "lastNodeId": 1555,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -8929,13 +8929,13 @@
                 "hidden": false,
                 "paused": false,
                 "params": {
-                  "filename": "temp_save_00061.mkv",
+                  "filename": "temp_save_00077.mkv",
                   "subfolder": "Wan2.2-sub-save",
                   "type": "temp",
                   "format": "video/ffv1-mkv",
                   "frame_rate": 16,
-                  "workflow": "temp_save_00061.png",
-                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\temp\\Wan2.2-sub-save\\temp_save_00061.mkv"
+                  "workflow": "temp_save_00077.png",
+                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\temp\\Wan2.2-sub-save\\temp_save_00077.mkv"
                 }
               }
             }
@@ -9233,7 +9233,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1554,
+          "lastNodeId": 1555,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -10538,7 +10538,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1554,
+          "lastNodeId": 1555,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -10863,7 +10863,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1554,
+          "lastNodeId": 1555,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -11124,13 +11124,13 @@
                 "hidden": false,
                 "paused": false,
                 "params": {
-                  "filename": "wanvideo_20260426_00087.mp4",
+                  "filename": "wanvideo_20260426_00103.mp4",
                   "subfolder": "Video",
                   "type": "output",
                   "format": "video/h264-mp4",
                   "frame_rate": 64,
-                  "workflow": "wanvideo_20260426_00087.png",
-                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\output\\Video\\wanvideo_20260426_00087.mp4"
+                  "workflow": "wanvideo_20260426_00103.png",
+                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\output\\Video\\wanvideo_20260426_00103.mp4"
                 }
               }
             }
@@ -11188,7 +11188,7 @@
         "version": 1,
         "state": {
           "lastGroupId": 41,
-          "lastNodeId": 1554,
+          "lastNodeId": 1555,
           "lastLinkId": 2158,
           "lastRerouteId": 0
         },
@@ -11711,10 +11711,10 @@
       ]
     },
     "ds": {
-      "scale": 1.078073413394624,
+      "scale": 1.196569646730729,
       "offset": [
-        1866.6669063479412,
-        -2035.747535916084
+        4635.256735080241,
+        -3118.9229157306886
       ]
     }
   },

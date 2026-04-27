@@ -20,23 +20,28 @@
         "strength": 0.8
       },
       "lora_4": {
-        "on": false,
+        "on": true,
         "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
         "strength": 0.4
       },
       "lora_5": {
-        "on": true,
-        "lora": "wan2.2\\HIGH\\curved_cowgirl_position_wan22_v1.1_000004000_high_noise.safetensors",
-        "strength": 0.7
+        "on": false,
+        "lora": "wan2.2\\HIGH\\wan2.2-i2v-high-breast-insertion-v1.0.safetensors",
+        "strength": 0.9
       },
       "lora_6": {
         "on": true,
-        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-POV-Cowgirl-HIGH-v1.0-fixed.safetensors",
-        "strength": 0.7
+        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-POV-Titfuck-Paizuri-HIGH-v1.0.safetensors",
+        "strength": 0.9
       },
       "lora_7": {
-        "on": true,
-        "lora": "wan2.2\\HIGH\\wan2.2_t2v_highnoise_cowgirl_v1.0.safetensors",
+        "on": false,
+        "lora": "wan2.2\\HIGH\\asymmetrical_paizuri_wan22_v1.0_000002000_high_noise.safetensors",
+        "strength": 1
+      },
+      "lora_8": {
+        "on": false,
+        "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-BreastPlay-HIGH-v2.safetensors",
         "strength": 0.7
       },
       "➕ Add Lora": "",
@@ -71,23 +76,28 @@
         "strength": 0.8
       },
       "lora_4": {
-        "on": false,
+        "on": true,
         "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
         "strength": 0.4
       },
       "lora_5": {
-        "on": true,
-        "lora": "wan2.2\\LOW\\curved_cowgirl_position_wan22_v1.1_000004000_low_noise.safetensors",
-        "strength": 0.7
+        "on": false,
+        "lora": "wan2.2\\LOW\\wan2.2-i2v-low-breast-insertion-v1.0.safetensors",
+        "strength": 0.9
       },
       "lora_6": {
         "on": true,
-        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-POV-Cowgirl-LOW-v1.0-fixed.safetensors",
-        "strength": 0.7
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-POV-Titfuck-Paizuri-LOW-v1.0.safetensors",
+        "strength": 0.9
       },
       "lora_7": {
-        "on": true,
-        "lora": "wan2.2\\LOW\\wan2.2_t2v_lownoise_cowgirl_v1.0.safetensors",
+        "on": false,
+        "lora": "wan2.2\\LOW\\asymmetrical_paizuri_wan22_v1.0_000002000_low_noise.safetensors",
+        "strength": 1
+      },
+      "lora_8": {
+        "on": false,
+        "lora": "wan2.2\\LOW\\WAN-2.2-I2V-BreastPlay-LOW-v2.safetensors",
         "strength": 0.7
       },
       "➕ Add Lora": "",
@@ -162,7 +172,7 @@
   },
   "864": {
     "inputs": {
-      "image": "cg07 伸手 hug 正面低视角.png"
+      "image": "hj08 舔奶头撸管.png"
     },
     "class_type": "LoadImage",
     "_meta": {
@@ -197,10 +207,10 @@
   },
   "882": {
     "inputs": {
-      "wildcard_text": "SmoothMixAnime, nsfwsks, c0wg1rl, cowgirl\n\nThe girl moves while swaying her hips. she gyrates her hips in a seductive manner. she rolling her hips\nSwaying her hips as she dances joyfully\n\nher mouth biting the shirt",
-      "populated_text": "nsfwsks, SmoothMixAnime, blowjob, deepthroat, POV close-up, exact image girl position and pose, exact red hair girl, (looking at viewer constantly), a video on a woman performing a deepthroat blowjob. She kneeling in front of a man. while she is sucking the man's penis, the penis is going deep into her mouth and throat gently, titJob, paizuri, girlMove, gather, (She rubs her breasts up and down his penis. Her breasts are gathered around the penis and touching together, her breasts rapidly bounce and jiggle up and down very fast, her breasts are pushed together constantly), gentle rhythmic body motion\n\nHer hand gesture was a peace sign.",
+      "wildcard_text": "titJob, paizuri, girlMove, gather, fingersTogether She rubs her breasts up and down his penis. She gathers her breasts together around the penis, with her fingertips touching together.\nher breasts are bouncing",
+      "populated_text": "A sexy woman is giving a man a blowjob and a handjob. The man is out of frame.\n\nShe is in front of the man. She is giving him a blowjob, while simultaneously giving a handjob. She is performing fellatio while stroking the shaft of his penis with one hand.",
       "mode": "populate",
-      "seed": 847310895774492,
+      "seed": 999344221919312,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
     },
     "class_type": "ImpactWildcardProcessor",
@@ -213,7 +223,7 @@
       "wildcard_text": "",
       "populated_text": "",
       "mode": "populate",
-      "seed": 9392473689892,
+      "seed": 24718622657369,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
     },
     "class_type": "ImpactWildcardProcessor",
