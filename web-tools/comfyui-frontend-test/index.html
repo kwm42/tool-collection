@@ -25,6 +25,13 @@
   <h1>ComfyUI 任务创建</h1>
   
   <div class="form-group">
+    <label for="workflow">工作流 (workflow)</label>
+    <select id="workflow" style="width:100%;padding:10px;border:1px solid #ddd;border-radius:4px;font-size:14px;">
+      <option value="">加载中...</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
     <label for="prompt">提示词 (prompt)</label>
     <textarea id="prompt" placeholder="A beautiful woman with long hair, walking in a forest">kiss</textarea>
   </div>
@@ -58,6 +65,25 @@
   <script>
     const API_URL = 'http://localhost:3001';
 
+    async function loadWorkflows() {
+      try {
+        const response = await fetch(`${API_URL}/api/workflows`);
+        const workflows = await response.json();
+        const select = document.getElementById('workflow');
+        select.innerHTML = '';
+        for (const w of workflows) {
+          const opt = document.createElement('option');
+          opt.value = w.id;
+          opt.textContent = w.name;
+          select.appendChild(opt);
+        }
+      } catch (e) {
+        console.error('Load workflows error:', e);
+      }
+    }
+
+    loadWorkflows();
+
     document.getElementById('submitBtn').addEventListener('click', async () => {
       const btn = document.getElementById('submitBtn');
       const resultDiv = document.getElementById('result');
@@ -68,7 +94,8 @@
       const seconds = parseInt(document.getElementById('seconds').value) || 2;
       const width = parseInt(document.getElementById('width').value) || 360;
       const height = parseInt(document.getElementById('height').value) || 240;
-      const filenamePrefix = '1212'
+      const workflow = document.getElementById('workflow').value;
+      const filenamePrefix = Date.now().toString();
 
       if (!prompt || !inputImage) {
         alert('请填写提示词和输入图片');
@@ -83,7 +110,7 @@
         const response = await fetch(`${API_URL}/api/simpletasks`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt, seconds, inputImage, width, height, filenamePrefix })
+          body: JSON.stringify({ prompt, seconds, inputImage, width, height, workflow, filenamePrefix })
         });
 
         const data = await response.json();

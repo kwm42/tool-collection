@@ -45,8 +45,23 @@ export class ComfyUIService {
    * @returns {Promise<Object>} ComfyUI 返回的结果
    */
   async submitPrompt(workflow, params) {
-    const workflowApiPath = join(dirname(__dirname), '..', 'workflows', `${workflow}-api.json`);
-    const workflowFullPath = join(dirname(__dirname), '..', 'workflows', `${workflow}.json`);
+    let workflowApiPath, workflowFullPath;
+    
+    const workflowsDir = join(dirname(__dirname), '..', 'workflows');
+    const categoryDir = join(workflowsDir, 'category');
+    
+    const mainPath = join(workflowsDir, `${workflow}-api.json`);
+    const categoryPath = join(categoryDir, `${workflow}.json`);
+    
+    if (existsSync(mainPath)) {
+      workflowApiPath = mainPath;
+      workflowFullPath = join(workflowsDir, `${workflow}.json`);
+    } else if (existsSync(categoryPath)) {
+      workflowApiPath = categoryPath;
+      workflowFullPath = categoryPath;
+    } else {
+      throw new Error(`Workflow not found: ${workflow}`);
+    }
 
     const workflowData = JSON.parse(readFileSync(workflowApiPath, 'utf-8'));
     const workflowFull = JSON.parse(readFileSync(workflowFullPath, 'utf-8'));

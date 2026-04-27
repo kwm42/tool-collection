@@ -1,0 +1,6 @@
+[
+  { "id": "base", "name": "基础", "workflow": "PainterI2V-base", "description": "基础工作流" },
+  { "id": "kiss", "name": "接吻", "workflow": "PainterI2V接吻 api", "description": "接吻动作" },
+  { "id": "cowgirl", "name": "cowgirl", "workflow": "PainterI2Vcowgirl api", "description": "cowgirl姿势" },
+  { "id": "milk", "name": "乳交", "workflow": "PainterI2V乳交 api", "description": "乳交动作" }
+]

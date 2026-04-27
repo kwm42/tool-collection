@@ -1,3 +1,10 @@
+import { readFileSync } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /**
  * @typedef {Object} Task
  * @property {string} id - Task ID (UUID)
@@ -162,21 +169,40 @@ try {
   });
 
   /**
+   * GET /api/workflows - List available workflows
+   * @summary 获取可用工作流列表
+   * @returns {Array} Array of workflow names
+   */
+app.get('/api/workflows', (req, res) => {
+    const workflowsDir = path.join(__dirname, '..', '..', 'workflows');
+    const configPath = path.join(workflowsDir, 'workflows.json');
+    const config = JSON.parse(readFileSync(configPath, 'utf-8'));
+    res.json(config);
+  });
+
+  /**
    * POST /api/simpletasks - Simple task without polling
    * @summary 简单任务（只调用ComfyUI，不处理结果）
    * @body {CreateTaskRequest}
    * @returns {Object} ComfyUI result
    */
   app.post('/api/simpletasks', async (req, res) => {
-    const { prompt, seconds, inputImage, width, height, filenamePrefix, seed } = req.body;
-    console.log('[POST /api/simpletasks] Received params:', { prompt, seconds, inputImage, width, height, filenamePrefix, seed });
+    const { prompt, seconds, inputImage, width, height, filenamePrefix, seed, workflow } = req.body;
+    console.log('[POST /api/simpletasks] Received params:', { prompt, seconds, inputImage, width, height, filenamePrefix, seed, workflow });
     
     if (!prompt || !inputImage) {
       return res.status(400).json({ error: 'prompt and inputImage are required' });
     }
 
+    const workflowsDir = path.join(__dirname, '..', '..', 'workflows');
+    const configPath = path.join(workflowsDir, 'workflows.json');
+    const config = JSON.parse(readFileSync(configPath, 'utf-8'));
+    const wf = config.find(w => w.id === workflow);
+    const workflowName = wf ? wf.workflow : 'PainterI2V-base';
+    console.log('[api/simpletasks] workflow id:', workflow, '-> name:', workflowName);
+    
     try {
-      const result = await comfyuiService.submitPrompt('PainterI2V-base', {
+      const result = await comfyuiService.submitPrompt(workflowName, {
         prompt,
         seconds: seconds || 2,
         inputImage,
