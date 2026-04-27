@@ -100,13 +100,16 @@ export default function App() {
     const fullPath = getFullPath();
     const pathParts = selectedFile.path.split('/');
     const fullFileName = pathParts.pop() || '';
-    const fileName = fullFileName.replace(/\.[^.]+$/, '');
+    const lastDot = fullFileName.lastIndexOf('.');
+    const fileName = lastDot > 0 ? fullFileName.substring(0, lastDot) : fullFileName;
     const folderPath = pathParts.join('__');
+    console.log('[filenamePrefix]', { fullFileName, fileName, folderPath });
     const selectedWorkflow = workflows.find(w => w.id === params.workflow);
     const workflowName = selectedWorkflow?.name || '';
     const filenamePrefix = folderPath 
       ? `${folderPath}__${fileName}__${workflowName}`
       : `${fileName}__${workflowName}`;
+    console.log('[filenamePrefix]', filenamePrefix);
 
     try {
       const response = await fetch(`${apiUrl}/api/simpletasks`, {
