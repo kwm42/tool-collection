@@ -1,3 +1,37 @@
+/**
+ * @typedef {Object} Task
+ * @property {string} id - Task ID (UUID)
+ * @property {'pending'|'running'|'completed'|'failed'} status - Task status
+ * @property {number} progress - Progress percentage (0-100)
+ * @property {string|null} promptId - ComfyUI prompt ID
+ * @property {Object} params - Task parameters
+ * @property {string} params.prompt - Text prompt
+ * @property {number} params.seconds - Video duration in seconds
+ * @property {string} params.inputImage - Input image filename
+ * @property {number} params.width - Output width
+ * @property {number} params.height - Output height
+ * @property {string} createdAt - Creation timestamp (ISO 8601)
+ * @property {string} updatedAt - Last update timestamp (ISO 8601)
+ * @property {Object|null} result - Result data
+ * @property {string[]} result.files - Output file paths
+ * @property {string|null} error - Error message
+ */
+
+/**
+ * @typedef {Object} CreateTaskRequest
+ * @property {string} prompt - Text prompt for image generation
+ * @property {number} [seconds=2] - Video duration in seconds
+ * @property {string} inputImage - Input image filename
+ * @property {number} [width=360] - Output width
+ * @property {number} [height=240] - Output height
+ */
+
+/**
+ * GET /api/tasks - List all tasks
+ * @summary 获取任务列表
+ * @param {string} [status] - Filter by status: pending|running|completed|failed
+ * @returns {Task[]} Array of tasks
+ */
 export default function registerTaskRoutes(app, taskManager, comfyuiService, wsPush) {
   app.get('/api/tasks', (req, res) => {
     const { status } = req.query;
@@ -5,6 +39,13 @@ export default function registerTaskRoutes(app, taskManager, comfyuiService, wsP
     res.json(tasks);
   });
 
+  /**
+   * GET /api/tasks/:id - Get task by ID
+   * @summary 获取单个任务详情
+   * @param {string} req.params.id - Task ID
+   * @returns {Task} Task object
+   * @returns {404} Task not found
+   */
   app.get('/api/tasks/:id', (req, res) => {
     const task = taskManager.getTask(req.params.id);
     if (!task) {
@@ -13,6 +54,13 @@ export default function registerTaskRoutes(app, taskManager, comfyuiService, wsP
     res.json(task);
   });
 
+  /**
+   * POST /api/tasks - Create a new task
+   * @summary 创建新任务
+   * @body {CreateTaskRequest}
+   * @returns {Task} Created task
+   * @returns {400} Missing required fields
+   */
   app.post('/api/tasks', async (req, res) => {
     const { prompt, seconds, inputImage, width, height } = req.body;
     
@@ -86,6 +134,13 @@ export default function registerTaskRoutes(app, taskManager, comfyuiService, wsP
     res.status(201).json(task);
   });
 
+  /**
+   * DELETE /api/tasks/:id - Cancel a task
+   * @summary 取消任务
+   * @param {string} req.params.id - Task ID
+   * @returns {204} Task deleted
+   * @returns {404} Task not found
+   */
   app.delete('/api/tasks/:id', (req, res) => {
     const deleted = taskManager.deleteTask(req.params.id);
     if (!deleted) {
