@@ -50,15 +50,14 @@ export class ComfyUIService {
     const workflowsDir = join(dirname(__dirname), '..', 'workflows');
     const categoryDir = join(workflowsDir, 'category');
     
-    const mainPath = join(workflowsDir, `${workflow}-api.json`);
-    const categoryPath = join(categoryDir, `${workflow}.json`);
+    const wfApiName = workflow.endsWith(' api') ? workflow : `${workflow} api`;
+    const apiPath = join(categoryDir, `${wfApiName}.json`);
+    const wfFullName = workflow.replace(' api', '');
+    const fullPath = join(categoryDir, `${wfFullName}.json`);
     
-    if (existsSync(mainPath)) {
-      workflowApiPath = mainPath;
-      workflowFullPath = join(workflowsDir, `${workflow}.json`);
-    } else if (existsSync(categoryPath)) {
-      workflowApiPath = categoryPath;
-      workflowFullPath = categoryPath;
+    if (existsSync(apiPath)) {
+      workflowApiPath = apiPath;
+      workflowFullPath = existsSync(fullPath) ? fullPath : apiPath;
     } else {
       throw new Error(`Workflow not found: ${workflow}`);
     }

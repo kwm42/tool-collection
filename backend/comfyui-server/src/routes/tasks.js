@@ -190,20 +190,23 @@ app.get('/api/workflows', (req, res) => {
     const { prompt, seconds, inputImage, width, height, filenamePrefix, seed, workflow } = req.body;
     console.log('[POST /api/simpletasks] Received params:', { prompt, seconds, inputImage, width, height, filenamePrefix, seed, workflow });
     
-    if (!prompt || !inputImage) {
-      return res.status(400).json({ error: 'prompt and inputImage are required' });
+    if (!inputImage) {
+      return res.status(400).json({ error: 'inputImage is required' });
     }
 
     const workflowsDir = path.join(__dirname, '..', '..', 'workflows');
     const configPath = path.join(workflowsDir, 'workflows.json');
     const config = JSON.parse(readFileSync(configPath, 'utf-8'));
     const wf = config.find(w => w.id === workflow);
-    const workflowName = wf ? wf.workflow : 'PainterI2V-base';
+    const workflowName = wf ? wf.workflow : null;
+    if (!workflowName) {
+      return res.status(400).json({ error: 'Invalid workflow' });
+    }
     console.log('[api/simpletasks] workflow id:', workflow, '-> name:', workflowName);
     
     try {
       const result = await comfyuiService.submitPrompt(workflowName, {
-        prompt,
+        prompt: prompt || undefined,
         seconds: seconds || 2,
         inputImage,
         width: width || 360,

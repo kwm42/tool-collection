@@ -57,7 +57,7 @@
     },
     "class_type": "Power Lora Loader (rgthree)",
     "_meta": {
-      "title": "1st_Power Lora Loader (rgthree)"
+      "title": "1st_Power Lora Loader High (rgthree)"
     }
   },
   "826": {
@@ -118,7 +118,7 @@
     },
     "class_type": "Power Lora Loader (rgthree)",
     "_meta": {
-      "title": "1st_Power Lora Loader (rgthree)"
+      "title": "1st_Power Lora Loader Low (rgthree)"
     }
   },
   "846": {
@@ -218,7 +218,7 @@
   "882": {
     "inputs": {
       "wildcard_text": "SmoothMixAnime\nA man and a woman are kissing and licking each others tongues, they are passionately kissing and their mouths are open.\n\nthe woman french kisses the man\nthe woman are tongue playing as they french kiss each other",
-      "populated_text": "SmoothMixAnime\nA man and a woman are kissing and licking each others tongues, they are passionately kissing and their mouths are open.\n\nthe woman french kisses the man\nthe woman are tongue playing as they french kiss each other",
+      "populated_text": "kiss",
       "mode": "populate",
       "seed": 445295730540103,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
@@ -1071,15 +1071,6 @@
       "title": "Math Calculate"
     }
   },
-  "1554:1552": {
-    "inputs": {
-      "value": 360
-    },
-    "class_type": "PrimitiveInt",
-    "_meta": {
-      "title": "预设宽高 横屏"
-    }
-  },
   "1554:1550": {
     "inputs": {
       "preset": "custom",
@@ -1130,7 +1121,16 @@
     },
     "class_type": "PrimitiveInt",
     "_meta": {
-      "title": "预设宽高 横屏"
+      "title": "Preset_Resolution_Width"
+    }
+  },
+  "1554:1552": {
+    "inputs": {
+      "value": 360
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Preset_Resolution_Height"
     }
   },
   "1006:1124": {
@@ -1191,7 +1191,7 @@
     },
     "class_type": "VHS_VideoCombine",
     "_meta": {
-      "title": "Video Combine 🎥🅥🅗🅢"
+      "title": "Video Combine 1st"
     }
   }
 }

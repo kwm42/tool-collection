@@ -47,7 +47,7 @@
     },
     "class_type": "Power Lora Loader (rgthree)",
     "_meta": {
-      "title": "1st_Power Lora Loader (rgthree)"
+      "title": "1st_Power Lora Loader High (rgthree)"
     }
   },
   "826": {
@@ -98,7 +98,7 @@
     },
     "class_type": "Power Lora Loader (rgthree)",
     "_meta": {
-      "title": "1st_Power Lora Loader (rgthree)"
+      "title": "1st_Power Lora Loader Low (rgthree)"
     }
   },
   "846": {
@@ -198,7 +198,7 @@
   "882": {
     "inputs": {
       "wildcard_text": "SmoothMixAnime, nsfwsks, c0wg1rl, cowgirl\n\nThe girl moves while swaying her hips. she gyrates her hips in a seductive manner. she rolling her hips\nSwaying her hips as she dances joyfully\n\nher mouth biting the shirt",
-      "populated_text": "SmoothMixAnime, nsfwsks, c0wg1rl, cowgirl\n\nThe girl moves while swaying her hips. she gyrates her hips in a seductive manner. she rolling her hips\nSwaying her hips as she dances joyfully\n\nher mouth biting the shirt",
+      "populated_text": "nsfwsks, SmoothMixAnime, blowjob, deepthroat, POV close-up, exact image girl position and pose, exact red hair girl, (looking at viewer constantly), a video on a woman performing a deepthroat blowjob. She kneeling in front of a man. while she is sucking the man's penis, the penis is going deep into her mouth and throat gently, titJob, paizuri, girlMove, gather, (She rubs her breasts up and down his penis. Her breasts are gathered around the penis and touching together, her breasts rapidly bounce and jiggle up and down very fast, her breasts are pushed together constantly), gentle rhythmic body motion\n\nHer hand gesture was a peace sign.",
       "mode": "populate",
       "seed": 847310895774492,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
@@ -1051,15 +1051,6 @@
       "title": "Math Calculate"
     }
   },
-  "1554:1552": {
-    "inputs": {
-      "value": 360
-    },
-    "class_type": "PrimitiveInt",
-    "_meta": {
-      "title": "预设宽高 横屏"
-    }
-  },
   "1554:1550": {
     "inputs": {
       "preset": "custom",
@@ -1110,7 +1101,16 @@
     },
     "class_type": "PrimitiveInt",
     "_meta": {
-      "title": "预设宽高 横屏"
+      "title": "Preset_Resolution_Width"
+    }
+  },
+  "1554:1552": {
+    "inputs": {
+      "value": 360
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Preset_Resolution_Height"
     }
   },
   "1006:1124": {
@@ -1171,7 +1171,7 @@
     },
     "class_type": "VHS_VideoCombine",
     "_meta": {
-      "title": "Video Combine 🎥🅥🅗🅢"
+      "title": "Video Combine 1st"
     }
   }
 }

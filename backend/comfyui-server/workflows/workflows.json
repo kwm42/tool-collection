@@ -1,6 +1,9 @@
 [
-  { "id": "base", "name": "基础", "workflow": "PainterI2V-base", "description": "基础工作流" },
   { "id": "kiss", "name": "接吻", "workflow": "PainterI2V接吻 api", "description": "接吻动作" },
   { "id": "cowgirl", "name": "cowgirl", "workflow": "PainterI2Vcowgirl api", "description": "cowgirl姿势" },
-  { "id": "milk", "name": "乳交", "workflow": "PainterI2V乳交 api", "description": "乳交动作" }
+  { "id": "milk", "name": "乳交", "workflow": "PainterI2V乳交 api", "description": "乳交动作" },
+  { "id": "missionary", "name": "传教士", "workflow": "PainterI2V传教士 api", "description": "传教士姿势" },
+  { "id": "oral", "name": "口交", "workflow": "PainterI2V口交 api", "description": "口交动作" },
+  { "id": "doggy", "name": "后入", "workflow": "PainterI2V后入 api", "description": "后入姿势" },
+  { "id": "handjob", "name": "手交", "workflow": "PainterI2V手交 api", "description": "手交动作" }
 ]
