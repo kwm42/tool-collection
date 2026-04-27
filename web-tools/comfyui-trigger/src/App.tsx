@@ -99,7 +99,8 @@ export default function App() {
 
     const fullPath = getFullPath();
     const pathParts = selectedFile.path.split('/');
-    const fileName = pathParts.pop() || '';
+    const fullFileName = pathParts.pop() || '';
+    const fileName = fullFileName.replace(/\.[^.]+$/, '');
     const folderPath = pathParts.join('__');
     const selectedWorkflow = workflows.find(w => w.id === params.workflow);
     const workflowName = selectedWorkflow?.name || '';
