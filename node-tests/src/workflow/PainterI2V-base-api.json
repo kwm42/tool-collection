@@ -1,0 +1,1197 @@
+{
+  "825": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "lora_1": {
+        "on": true,
+        "lora": "wan2.2\\HIGH\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
+        "strength": 0.8
+      },
+      "lora_2": {
+        "on": true,
+        "lora": "wan2.2\\HIGH\\NSFW-22-H-e8.safetensors",
+        "strength": 0.6
+      },
+      "lora_3": {
+        "on": true,
+        "lora": "wan2.2\\HIGH\\SmoothXXXAnimation_High.safetensors",
+        "strength": 0.8
+      },
+      "lora_4": {
+        "on": false,
+        "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
+        "strength": 0.4
+      },
+      "lora_5": {
+        "on": true,
+        "lora": "wan2.2\\HIGH\\Kissing_high_noise.safetensors",
+        "strength": 0.9
+      },
+      "lora_6": {
+        "on": true,
+        "lora": "wan2.2\\HIGH\\WAN2.2-FrenchKiss_HighNoise.safetensors",
+        "strength": 0.9
+      },
+      "lora_7": {
+        "on": false,
+        "lora": "wan2.2\\HIGH\\glass-kiss-high.safetensors",
+        "strength": 1
+      },
+      "lora_8": {
+        "on": false,
+        "lora": "wan2.2\\kiss you_V2_wan_comfy.safetensors",
+        "strength": 1
+      },
+      "lora_9": {
+        "on": false,
+        "lora": "wan2.2\\HIGH\\POVkissing_WAN22_I2V_high_noise.safetensors",
+        "strength": 1
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "1489",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "1st_Power Lora Loader High (rgthree)"
+    }
+  },
+  "826": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "lora_1": {
+        "on": true,
+        "lora": "wan2.2\\LOW\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
+        "strength": 0.8
+      },
+      "lora_2": {
+        "on": true,
+        "lora": "wan2.2\\LOW\\NSFW-22-L-e8.safetensors",
+        "strength": 0.6
+      },
+      "lora_3": {
+        "on": true,
+        "lora": "wan2.2\\LOW\\SmoothXXXAnimation_Low.safetensors",
+        "strength": 0.8
+      },
+      "lora_4": {
+        "on": false,
+        "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
+        "strength": 0.4
+      },
+      "lora_5": {
+        "on": true,
+        "lora": "wan2.2\\LOW\\Kissing_low_noise.safetensors",
+        "strength": 0.9
+      },
+      "lora_6": {
+        "on": true,
+        "lora": "wan2.2\\LOW\\WAN2.2-FrenchKiss_LowNoise.safetensors",
+        "strength": 0.9
+      },
+      "lora_7": {
+        "on": false,
+        "lora": "wan2.2\\LOW\\glass-kiss-low.safetensors",
+        "strength": 1
+      },
+      "lora_8": {
+        "on": false,
+        "lora": "wan2.2\\kiss you_V2_wan_comfy.safetensors",
+        "strength": 0.6
+      },
+      "lora_9": {
+        "on": false,
+        "lora": "wan2.2\\LOW\\POVkissing_WAN22_I2V_low_noise.safetensors",
+        "strength": 1
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "1487",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "1st_Power Lora Loader Low (rgthree)"
+    }
+  },
+  "846": {
+    "inputs": {
+      "expression": "a*b+1\n",
+      "a": [
+        "851",
+        0
+      ],
+      "b": [
+        "1085",
+        0
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "1st_Math Ex"
+    }
+  },
+  "851": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "1st_Second"
+    }
+  },
+  "853": {
+    "inputs": {
+      "value": 7
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Total_Steps"
+    }
+  },
+  "860": {
+    "inputs": {
+      "value": [
+        "1554:1550",
+        1
+      ]
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Width"
+    }
+  },
+  "861": {
+    "inputs": {
+      "value": [
+        "1554:1553",
+        1
+      ]
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Height"
+    }
+  },
+  "864": {
+    "inputs": {
+      "image": "kiss03 抓奶，kiss1.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image_1st"
+    }
+  },
+  "867": {
+    "inputs": {
+      "width": [
+        "1554:1550",
+        1
+      ],
+      "height": [
+        "1554:1553",
+        1
+      ],
+      "upscale_method": "lanczos",
+      "keep_proportion": "crop",
+      "pad_color": "0, 0, 0",
+      "crop_position": "center",
+      "divisible_by": 2,
+      "device": "cpu",
+      "image": [
+        "864",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "Image Resize KJ v2 (Swwan)"
+    }
+  },
+  "882": {
+    "inputs": {
+      "wildcard_text": "SmoothMixAnime\nA man and a woman are kissing and licking each others tongues, they are passionately kissing and their mouths are open.\n\nthe woman french kisses the man\nthe woman are tongue playing as they french kiss each other",
+      "populated_text": "SmoothMixAnime\nA man and a woman are kissing and licking each others tongues, they are passionately kissing and their mouths are open.\n\nthe woman french kisses the man\nthe woman are tongue playing as they french kiss each other",
+      "mode": "populate",
+      "seed": 445295730540103,
+      "Select to add Wildcard": "Select the Wildcard to add to the text"
+    },
+    "class_type": "ImpactWildcardProcessor",
+    "_meta": {
+      "title": "ImpactWildcardProcessor_1st_Positive"
+    }
+  },
+  "883": {
+    "inputs": {
+      "wildcard_text": "",
+      "populated_text": "",
+      "mode": "populate",
+      "seed": 241181860036668,
+      "Select to add Wildcard": "Select the Wildcard to add to the text"
+    },
+    "class_type": "ImpactWildcardProcessor",
+    "_meta": {
+      "title": "ImpactWildcardProcessor_2nd_Positive"
+    }
+  },
+  "894": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "lora_1": {
+        "on": false,
+        "lora": "HIGH\\Body-Cumshot-Pullout-HIGH-v1.safetensors",
+        "strength": 0.29999999999999977
+      },
+      "lora_2": {
+        "on": false,
+        "lora": "HIGH\\BreastRubv2_HighNoise.safetensors",
+        "strength": 0.6
+      },
+      "lora_3": {
+        "on": false,
+        "lora": "HIGH\\DR34ML4Y_HIGH_V2.safetensors",
+        "strength": 0.8
+      },
+      "lora_4": {
+        "on": false,
+        "lora": "HIGH\\F4c3spl4sh-high-k3nk.safetensors",
+        "strength": 0.3
+      },
+      "lora_5": {
+        "on": false,
+        "lora": "HIGH\\Handjob-HIGH-v1.safetensors",
+        "strength": 0.3
+      },
+      "lora_6": {
+        "on": false,
+        "lora": "HIGH\\M4crom4sti4-i2v-high-k3nk.safetensors",
+        "strength": 0.5
+      },
+      "lora_7": {
+        "on": false,
+        "lora": "HIGH\\NSFW-22-H-e8.safetensors",
+        "strength": 0.3
+      },
+      "lora_8": {
+        "on": false,
+        "lora": "HIGH\\Titfuck-Paizuri-HIGH-v1.0.safetensors",
+        "strength": 0.3
+      },
+      "lora_9": {
+        "on": false,
+        "lora": "HIGH\\Walk-Wan2.2-i2v_Normal-H.safetensors",
+        "strength": 0.3
+      },
+      "lora_10": {
+        "on": false,
+        "lora": "HIGH\\Body-Cumshot-Pullout-HIGH-v1.safetensors",
+        "strength": 0.3
+      },
+      "lora_11": {
+        "on": false,
+        "lora": "big_breasts_v2_epoch_30.safetensors",
+        "strength": 0.3
+      },
+      "lora_12": {
+        "on": false,
+        "lora": "HIGH\\Pov-insertion-v1.0-high.safetensors",
+        "strength": 0.3
+      },
+      "lora_13": {
+        "on": false,
+        "lora": "HIGH\\PussyLoRA_High.safetensors",
+        "strength": 0.3
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "1489",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "2nd_Power Lora Loader (rgthree)"
+    }
+  },
+  "895": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "lora_1": {
+        "on": false,
+        "lora": "LOW\\Body-Cumshot-Pullout-LOW-v1.safetensors",
+        "strength": 0.3
+      },
+      "lora_2": {
+        "on": false,
+        "lora": "LOW\\BreastRubv2_LowNoise.safetensors",
+        "strength": 0.6
+      },
+      "lora_3": {
+        "on": false,
+        "lora": "LOW\\DR34ML4Y_LOW_V2.safetensors",
+        "strength": 0.8
+      },
+      "lora_4": {
+        "on": false,
+        "lora": "LOW\\F4c3spl4sh-low-k3nk.safetensors",
+        "strength": 0.3
+      },
+      "lora_5": {
+        "on": false,
+        "lora": "LOW\\Handjob-LOW-v1.safetensors",
+        "strength": 0.3
+      },
+      "lora_6": {
+        "on": false,
+        "lora": "LOW\\M4crom4sti4-low-k3nk.safetensors",
+        "strength": 0.5
+      },
+      "lora_7": {
+        "on": false,
+        "lora": "LOW\\NSFW-22-L-e8.safetensors",
+        "strength": 0.3
+      },
+      "lora_8": {
+        "on": false,
+        "lora": "LOW\\Titfuck-Paizuri-LOW-v1.0.safetensors",
+        "strength": 0.3
+      },
+      "lora_9": {
+        "on": false,
+        "lora": "LOW\\Walk-Wan2.2-i2v_Normal-L.safetensors",
+        "strength": 0.3
+      },
+      "lora_10": {
+        "on": false,
+        "lora": "LOW\\Body-Cumshot-Pullout-LOW-v1.safetensors",
+        "strength": 0.3
+      },
+      "lora_11": {
+        "on": false,
+        "lora": "big_breasts_v2_epoch_30.safetensors",
+        "strength": 0.3
+      },
+      "lora_12": {
+        "on": false,
+        "lora": "LOW\\Pov-insertion-v1.0-low.safetensors",
+        "strength": 0.29999999999999954
+      },
+      "lora_13": {
+        "on": false,
+        "lora": "LOW\\PussyLoRA_Low.safetensors",
+        "strength": 0.3
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "1487",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "2nd_Power Lora Loader (rgthree)"
+    }
+  },
+  "973": {
+    "inputs": {
+      "text": "watermark, text, subtitles, letterbox, pillarbox, frame, border, split screen, noise, artifacts, blur, vignette, 色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走,",
+      "clip": [
+        "1528",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "975": {
+    "inputs": {
+      "text": [
+        "882",
+        0
+      ],
+      "clip": [
+        "1528",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "1st_CLIP Text Encode (Prompt)"
+    }
+  },
+  "1012": {
+    "inputs": {
+      "value": 1.1
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Motion_Amplitude"
+    }
+  },
+  "1027": {
+    "inputs": {
+      "value": 3
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Split_Steps"
+    }
+  },
+  "1030": {
+    "inputs": {
+      "text": [
+        "882",
+        0
+      ],
+      "clip": [
+        "1528",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "2nd_CLIP Text Encode (Prompt)"
+    }
+  },
+  "1044": {
+    "inputs": {
+      "value": 4
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "2nd_Second"
+    }
+  },
+  "1046": {
+    "inputs": {
+      "expression": "a*b+1\n",
+      "a": [
+        "1044",
+        0
+      ],
+      "b": [
+        "1085",
+        0
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "2nd_Math Ex"
+    }
+  },
+  "1085": {
+    "inputs": {
+      "value": 16
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Frame_Rate"
+    }
+  },
+  "1086": {
+    "inputs": {
+      "value": 4
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "RIFE_VFI_Multiplier"
+    }
+  },
+  "1087": {
+    "inputs": {
+      "expression": "a*b",
+      "a": [
+        "1085",
+        0
+      ],
+      "b": [
+        "1086",
+        0
+      ]
+    },
+    "class_type": "MathExpression|pysssss",
+    "_meta": {
+      "title": "RIFE_VFI_Math Ex"
+    }
+  },
+  "1120": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "1st_Seed (rgthree)"
+    }
+  },
+  "1121": {
+    "inputs": {
+      "seed": -1
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "2nd_Seed (rgthree)"
+    }
+  },
+  "1486": {
+    "inputs": {
+      "model": [
+        "1523",
+        0
+      ]
+    },
+    "class_type": "Context (rgthree)",
+    "_meta": {
+      "title": "Context (rgthree)"
+    }
+  },
+  "1487": {
+    "inputs": {
+      "shift": 5,
+      "model": [
+        "1494",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "采样算法（SD3）"
+    }
+  },
+  "1489": {
+    "inputs": {
+      "shift": 5,
+      "model": [
+        "1493",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "采样算法（SD3）"
+    }
+  },
+  "1492": {
+    "inputs": {
+      "sage_attention": "auto",
+      "allow_compile": false,
+      "model": [
+        "1526",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "Patch Sage Attention KJ"
+    }
+  },
+  "1493": {
+    "inputs": {
+      "enable_fp16_accumulation": true,
+      "model": [
+        "1492",
+        0
+      ]
+    },
+    "class_type": "ModelPatchTorchSettings",
+    "_meta": {
+      "title": "Model Patch Torch Settings"
+    }
+  },
+  "1494": {
+    "inputs": {
+      "enable_fp16_accumulation": true,
+      "model": [
+        "1495",
+        0
+      ]
+    },
+    "class_type": "ModelPatchTorchSettings",
+    "_meta": {
+      "title": "Model Patch Torch Settings"
+    }
+  },
+  "1495": {
+    "inputs": {
+      "sage_attention": "auto",
+      "allow_compile": false,
+      "model": [
+        "1527",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "Patch Sage Attention KJ"
+    }
+  },
+  "1504": {
+    "inputs": {},
+    "class_type": "Context (rgthree)",
+    "_meta": {
+      "title": "Context (rgthree)"
+    }
+  },
+  "1505": {
+    "inputs": {
+      "ctx_01": [
+        "1486",
+        0
+      ],
+      "ctx_02": [
+        "1504",
+        0
+      ]
+    },
+    "class_type": "Context Switch (rgthree)",
+    "_meta": {
+      "title": "Context Switch (rgthree)"
+    }
+  },
+  "1506": {
+    "inputs": {},
+    "class_type": "Context (rgthree)",
+    "_meta": {
+      "title": "Context (rgthree)"
+    }
+  },
+  "1507": {
+    "inputs": {
+      "model": [
+        "1522",
+        0
+      ]
+    },
+    "class_type": "Context (rgthree)",
+    "_meta": {
+      "title": "Context (rgthree)"
+    }
+  },
+  "1508": {
+    "inputs": {
+      "ctx_01": [
+        "1507",
+        0
+      ],
+      "ctx_02": [
+        "1506",
+        0
+      ]
+    },
+    "class_type": "Context Switch (rgthree)",
+    "_meta": {
+      "title": "Context Switch (rgthree)"
+    }
+  },
+  "1509": {
+    "inputs": {
+      "lora_name": "wan2.2\\LOW\\wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+      "strength_model": 1,
+      "model": [
+        "1505",
+        1
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Lightx2v_Lora_Low"
+    }
+  },
+  "1510": {
+    "inputs": {
+      "lora_name": "wan2.2\\HIGH\\Wan_2_2_I2V_A14B_HIGH_lightx2v_4step_lora_v1030_rank_64_bf16.safetensors",
+      "strength_model": 1,
+      "model": [
+        "1508",
+        1
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Lightx2v_Lora_High"
+    }
+  },
+  "1522": {
+    "inputs": {
+      "unet_name": "wan2.2\\wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "1523": {
+    "inputs": {
+      "unet_name": "wan2.2\\wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "1526": {
+    "inputs": {
+      "lora_name": "wan2.2\\HIGH\\Wan22_FFGO-LoRA-HIGH_bf16.safetensors",
+      "strength_model": 0.3,
+      "model": [
+        "1510",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "FFGO LORA"
+    }
+  },
+  "1527": {
+    "inputs": {
+      "lora_name": "wan2.2\\LOW\\Wan22_FFGO-LoRA-LOW_bf16.safetensors",
+      "strength_model": 0.3,
+      "model": [
+        "1509",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "FFGO LORA"
+    }
+  },
+  "1528": {
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "cpu"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "1529": {
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "814:8": {
+    "inputs": {
+      "samples": [
+        "814:90",
+        0
+      ],
+      "vae": [
+        "1529",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "814:90": {
+    "inputs": {
+      "add_noise": "disable",
+      "noise_seed": [
+        "1120",
+        0
+      ],
+      "steps": [
+        "853",
+        0
+      ],
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "start_at_step": [
+        "1027",
+        0
+      ],
+      "end_at_step": 999,
+      "return_with_leftover_noise": "disable",
+      "model": [
+        "814:852",
+        0
+      ],
+      "positive": [
+        "814:849",
+        2
+      ],
+      "negative": [
+        "814:849",
+        3
+      ],
+      "latent_image": [
+        "814:227",
+        0
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)_1st_Low"
+    }
+  },
+  "814:849": {
+    "inputs": {
+      "width": [
+        "860",
+        0
+      ],
+      "height": [
+        "861",
+        0
+      ],
+      "length": [
+        "846",
+        0
+      ],
+      "batch_size": 1,
+      "motion_amplitude": [
+        "1012",
+        0
+      ],
+      "color_protect": true,
+      "correct_strength": 0.01,
+      "positive": [
+        "975",
+        0
+      ],
+      "negative": [
+        "973",
+        0
+      ],
+      "vae": [
+        "1529",
+        0
+      ],
+      "start_image": [
+        "867",
+        0
+      ]
+    },
+    "class_type": "PainterI2VAdvanced",
+    "_meta": {
+      "title": "PainterI2VAdvanced"
+    }
+  },
+  "814:852": {
+    "inputs": {
+      "model": [
+        "814:850",
+        0
+      ]
+    },
+    "class_type": "CFGZeroStar",
+    "_meta": {
+      "title": "CFGZeroStar"
+    }
+  },
+  "814:848": {
+    "inputs": {
+      "nag_scale": 11,
+      "nag_alpha": 0.25,
+      "nag_tau": 2.5,
+      "input_type": "default",
+      "model": [
+        "825",
+        0
+      ],
+      "conditioning": [
+        "973",
+        0
+      ]
+    },
+    "class_type": "WanVideoNAG",
+    "_meta": {
+      "title": "WanVideoNAG"
+    }
+  },
+  "814:1122": {
+    "inputs": {
+      "model": [
+        "814:848",
+        0
+      ]
+    },
+    "class_type": "CFGZeroStar",
+    "_meta": {
+      "title": "CFGZeroStar"
+    }
+  },
+  "814:850": {
+    "inputs": {
+      "nag_scale": 11,
+      "nag_alpha": 0.25,
+      "nag_tau": 2.5,
+      "input_type": "default",
+      "model": [
+        "826",
+        0
+      ],
+      "conditioning": [
+        "973",
+        0
+      ]
+    },
+    "class_type": "WanVideoNAG",
+    "_meta": {
+      "title": "WanVideoNAG"
+    }
+  },
+  "814:227": {
+    "inputs": {
+      "add_noise": "enable",
+      "noise_seed": [
+        "1120",
+        0
+      ],
+      "steps": [
+        "853",
+        0
+      ],
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "start_at_step": 0,
+      "end_at_step": [
+        "1027",
+        0
+      ],
+      "return_with_leftover_noise": "enable",
+      "model": [
+        "814:1122",
+        0
+      ],
+      "positive": [
+        "814:849",
+        0
+      ],
+      "negative": [
+        "814:849",
+        1
+      ],
+      "latent_image": [
+        "814:849",
+        4
+      ]
+    },
+    "class_type": "KSamplerAdvanced",
+    "_meta": {
+      "title": "KSampler (Advanced)_1st_High"
+    }
+  },
+  "814:1123": {
+    "inputs": {
+      "split_index": -1,
+      "images": [
+        "814:8",
+        0
+      ]
+    },
+    "class_type": "VHS_SplitImages",
+    "_meta": {
+      "title": "Split Images 🎥🅥🅗🅢"
+    }
+  },
+  "814:843": {
+    "inputs": {
+      "frame_rate": [
+        "1085",
+        0
+      ],
+      "loop_count": 0,
+      "filename_prefix": "Wan2.2-sub-save/temp_save",
+      "format": "video/ffv1-mkv",
+      "level": "3",
+      "coder": "1",
+      "context": "1",
+      "gop_size": 1,
+      "slices": "16",
+      "slicecrc": "1",
+      "pix_fmt": "yuv444p",
+      "save_metadata": false,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "814:8",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "1554:1548": {
+    "inputs": {
+      "image": [
+        "864",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "获取图像尺寸"
+    }
+  },
+  "1554:1549": {
+    "inputs": {
+      "preset": "a > b",
+      "expression": "",
+      "a": [
+        "1554:1548",
+        0
+      ],
+      "b": [
+        "1554:1548",
+        1
+      ]
+    },
+    "class_type": "math_calculate",
+    "_meta": {
+      "title": "Math Calculate"
+    }
+  },
+  "1554:1550": {
+    "inputs": {
+      "preset": "custom",
+      "expression": "(c)*a + (1-c)*b",
+      "a": [
+        "1554:1551",
+        0
+      ],
+      "b": [
+        "1554:1552",
+        0
+      ],
+      "c": [
+        "1554:1549",
+        1
+      ]
+    },
+    "class_type": "math_calculate",
+    "_meta": {
+      "title": "Math Calculate"
+    }
+  },
+  "1554:1553": {
+    "inputs": {
+      "preset": "custom",
+      "expression": "(1-c)*a + c*b",
+      "a": [
+        "1554:1551",
+        0
+      ],
+      "b": [
+        "1554:1552",
+        0
+      ],
+      "c": [
+        "1554:1549",
+        1
+      ]
+    },
+    "class_type": "math_calculate",
+    "_meta": {
+      "title": "Math Calculate"
+    }
+  },
+  "1554:1551": {
+    "inputs": {
+      "value": 540
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Preset_Resolution_Width"
+    }
+  },
+  "1554:1552": {
+    "inputs": {
+      "value": 360
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Preset_Resolution_Height"
+    }
+  },
+  "1006:1124": {
+    "inputs": {
+      "anything": [
+        "814:8",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "清理显存占用"
+    }
+  },
+  "1006:1126": {
+    "inputs": {
+      "ckpt_name": "rife49.pth",
+      "clear_cache_after_n_frames": 10,
+      "multiplier": [
+        "1086",
+        0
+      ],
+      "fast_mode": true,
+      "ensemble": true,
+      "scale_factor": 1,
+      "dtype": "float32",
+      "torch_compile": false,
+      "batch_size": 1,
+      "frames": [
+        "1006:1124",
+        0
+      ]
+    },
+    "class_type": "RIFE VFI",
+    "_meta": {
+      "title": "RIFE VFI (recommend rife47 and rife49)"
+    }
+  },
+  "1006:1125": {
+    "inputs": {
+      "frame_rate": [
+        "1087",
+        1
+      ],
+      "loop_count": 0,
+      "filename_prefix": "Video/wanvideo_20260427",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 18,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "1006:1126",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 1st"
+    }
+  }
+}

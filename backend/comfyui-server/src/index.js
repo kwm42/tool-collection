@@ -9,12 +9,23 @@ import registerTaskRoutes from './routes/tasks.js';
 const app = express();
 const server = createServer(app);
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 app.use(express.json());
 
 const taskManager = new TaskManager();
 const comfyuiService = new ComfyUIService({
   host: process.env.COMFYUI_HOST || '127.0.0.1:8188',
-  outputDir: process.env.COMFYUI_OUTPUT_DIR
+  outputDir: process.env.COMFYUI_OUTPUT_DIR,
+  resultDir: process.env.COMFYUI_RESULT_DIR,
 });
 
 createWebSocketServer(server);

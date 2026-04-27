@@ -62,7 +62,8 @@ export default function registerTaskRoutes(app, taskManager, comfyuiService, wsP
    * @returns {400} Missing required fields
    */
   app.post('/api/tasks', async (req, res) => {
-    const { prompt, seconds, inputImage, width, height } = req.body;
+    const { prompt, seconds, inputImage, width, height, filenamePrefix, seed } = req.body;
+    console.log('[POST /api/tasks] Received params:', { prompt, seconds, inputImage, width, height, filenamePrefix, seed });
     
     if (!prompt || !inputImage) {
       return res.status(400).json({ error: 'prompt and inputImage are required' });
@@ -73,42 +74,66 @@ export default function registerTaskRoutes(app, taskManager, comfyuiService, wsP
       seconds: seconds || 2,
       inputImage,
       width: width || 360,
-      height: height || 240
+      height: height || 240,
+      filenamePrefix
     });
 
-    try {
+try {
+      console.log('[submitPrompt] Calling with params:', JSON.stringify(task.params));
       const result = await comfyuiService.submitPrompt('PainterI2V-base', {
-        ...task.params,
-        taskId: task.id
+        prompt: task.params.prompt,
+        seconds: task.params.seconds,
+        inputImage: task.params.inputImage,
+        width: task.params.width,
+        height: task.params.height,
+        filenamePrefix: task.params.filenamePrefix,
+        seed: task.params.seed,
       });
+      console.log('[submitPrompt] Result:', result);
 
       const promptId = result.prompt_id;
       taskManager.updateTask(task.id, { status: 'running', promptId });
+      const inputFilename = task.params.inputImage.split(/[\\/]/).pop();
+      console.log(`[${task.id}] Task started, promptId: ${promptId}`);
       wsPush({ type: 'progress', taskId: task.id, progress: 0 });
 
       const poll = async () => {
         let attempts = 0;
-        const maxAttempts = 120;
+        const maxAttempts = 90;
+        const pollInterval = 10000;
         
         while (attempts < maxAttempts) {
-          await new Promise(r => setTimeout(r, 1000));
+          await new Promise(r => setTimeout(r, pollInterval));
           attempts++;
           
           try {
             const history = await comfyuiService.getHistory(promptId);
-            const status = history[promptId]?.status;
+            const taskStatus = history[promptId]?.status;
+            const statusStr = taskStatus?.status_str;
+            console.log(`[${task.id}] Check ${attempts}/${maxAttempts}, status: ${statusStr}`);
             
-            if (status === 'completed') {
-              const files = await comfyuiService.copyOutputFiles(promptId);
+            if (statusStr === 'success') {
+              let files = [];
+              try {
+                files = await comfyuiService.copyOutputFiles(promptId, task.params.inputImage);
+              } catch (e) {
+                console.error('Copy error:', e.message);
+              }
+              comfyuiService.deleteInputFile(inputFilename);
               taskManager.updateTask(task.id, {
                 status: 'completed',
                 result: { files },
                 progress: 100
               });
+              console.log(`[${task.id}] Task completed`);
               wsPush({ type: 'complete', taskId: task.id, status: 'completed', files });
               return;
-            } else if (status === 'failed') {
-              const error = history[promptId]?.errors?.[0]?.message || 'Execution failed';
+            }
+            
+            if (statusStr === 'error') {
+              const error = taskStatus?.messages?.[0]?.message || 'Execution failed';
+              console.log(`[${task.id}] Error: ${error}`);
+              comfyuiService.deleteInputFile(inputFilename);
               taskManager.updateTask(task.id, { status: 'failed', error });
               wsPush({ type: 'error', taskId: task.id, error });
               return;
@@ -122,16 +147,50 @@ export default function registerTaskRoutes(app, taskManager, comfyuiService, wsP
         }
         
         taskManager.updateTask(task.id, { status: 'failed', error: 'Timeout' });
+        comfyuiService.deleteInputFile(inputFilename);
         wsPush({ type: 'error', taskId: task.id, error: 'Timeout' });
       };
       
       poll();
     } catch (error) {
+      console.error(`[${task.id}] Error: ${error.message}`);
       taskManager.updateTask(task.id, { status: 'failed', error: error.message });
       wsPush({ type: 'error', taskId: task.id, error: error.message });
     }
 
     res.status(201).json(task);
+  });
+
+  /**
+   * POST /api/simpletasks - Simple task without polling
+   * @summary 简单任务（只调用ComfyUI，不处理结果）
+   * @body {CreateTaskRequest}
+   * @returns {Object} ComfyUI result
+   */
+  app.post('/api/simpletasks', async (req, res) => {
+    const { prompt, seconds, inputImage, width, height, filenamePrefix, seed } = req.body;
+    console.log('[POST /api/simpletasks] Received params:', { prompt, seconds, inputImage, width, height, filenamePrefix, seed });
+    
+    if (!prompt || !inputImage) {
+      return res.status(400).json({ error: 'prompt and inputImage are required' });
+    }
+
+    try {
+      const result = await comfyuiService.submitPrompt('PainterI2V-base', {
+        prompt,
+        seconds: seconds || 2,
+        inputImage,
+        width: width || 360,
+        height: height || 240,
+        filenamePrefix,
+        seed,
+      });
+      console.log('[api/simpletasks] Result:', result);
+      res.status(201).json(result);
+    } catch (error) {
+      console.error('[api/simpletasks] Error:', error.message);
+      res.status(500).json({ error: error.message });
+    }
   });
 
   /**

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComfyUI 任务创建</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+    h1 { margin-bottom: 20px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: 500; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+    textarea { height: 80px; resize: vertical; }
+    button { background: #4a90d9; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    button:hover { background: #3a7bc8; }
+    button:disabled { background: #ccc; cursor: not-allowed; }
+    .result { margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 4px; display: none; }
+    .result.show { display: block; }
+    .result pre { white-space: pre-wrap; word-break: break-all; margin: 0; }
+    .error { color: #d9534f; }
+  </style>
+</head>
+<body>
+  <h1>ComfyUI 任务创建</h1>
+  
+  <div class="form-group">
+    <label for="prompt">提示词 (prompt)</label>
+    <textarea id="prompt" placeholder="A beautiful woman with long hair, walking in a forest">kiss</textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputImage">输入图片（本地路径或文件名）</label>
+    <input type="text" id="inputImage" placeholder="C:\Users\WIT_User\Downloads\kiss03 抓奶，kiss2.png" value="F:\视频图片\kiss03 抓奶，kiss2.png">
+  </div>
+  
+  <div class="form-group">
+    <label for="seconds">时长 (秒)</label>
+    <input type="number" id="seconds" value="1" min="1" max="10">
+  </div>
+  
+  <div class="form-group">
+    <label for="width">宽度</label>
+    <input type="number" id="width" value="360" min="64">
+  </div>
+  
+  <div class="form-group">
+    <label for="height">高度</label>
+    <input type="number" id="height" value="240" min="64">
+  </div>
+  
+  <button id="submitBtn">创建任务</button>
+  
+  <div class="result" id="result">
+    <pre id="resultContent"></pre>
+  </div>
+
+  <script>
+    const API_URL = 'http://localhost:3001';
+
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('submitBtn');
+      const resultDiv = document.getElementById('result');
+      const resultContent = document.getElementById('resultContent');
+      
+      const prompt = document.getElementById('prompt').value.trim();
+      const inputImage = document.getElementById('inputImage').value.trim();
+      const seconds = parseInt(document.getElementById('seconds').value) || 2;
+      const width = parseInt(document.getElementById('width').value) || 360;
+      const height = parseInt(document.getElementById('height').value) || 240;
+      const filenamePrefix = '1212'
+
+      if (!prompt || !inputImage) {
+        alert('请填写提示词和输入图片');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = '创建中...';
+      resultDiv.classList.remove('show');
+
+      try {
+        const response = await fetch(`${API_URL}/api/simpletasks`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt, seconds, inputImage, width, height, filenamePrefix })
+        });
+
+        const data = await response.json();
+        
+        resultContent.textContent = JSON.stringify(data, null, 2);
+        resultDiv.classList.add('show');
+      } catch (error) {
+        resultContent.textContent = '请求失败: ' + error.message;
+        resultContent.classList.add('error');
+        resultDiv.classList.add('show');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '创建任务';
+      }
+    });
+  </script>
+</body>
+</html>

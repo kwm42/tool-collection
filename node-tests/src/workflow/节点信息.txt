@@ -1,0 +1,20 @@
+
+视频1提示词：
+ImpactWildcardProcessor_1st_Positive
+
+视频时长：
+1st_Second
+
+视频1 lora
+1st_Power Lora Loader High (rgthree)
+1st_Power Lora Loader Low (rgthree)
+
+视频1 输入图片
+Load Image_1st
+
+预设宽高
+Preset_Resolution_Width
+Preset_Resolution_Height
+
+视频输出,设置文件名
+Video Combine 1st

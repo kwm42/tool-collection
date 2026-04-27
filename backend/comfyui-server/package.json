@@ -11,6 +11,7 @@
     "ws": "^8.18.0",
     "@stable-canvas/comfyui-client": "^1.5.9",
     "uuid": "^11.0.0",
-    "dotenv": "^16.4.0"
+    "dotenv": "^16.4.0",
+    "node-fetch": "^3.3.2"
   }
 }

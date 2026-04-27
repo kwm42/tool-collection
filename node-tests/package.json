@@ -1,0 +1,15 @@
+{
+  "name": "comfyui-node-tests",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules src/basic-test.js",
+    "test:pipeline": "node --experimental-vm-modules src/pipeline-test.js",
+    "test:workflow": "node --experimental-vm-modules src/workflow-test.js"
+  },
+  "dependencies": {
+    "@stable-canvas/comfyui-client": "^1.5.9",
+    "ws": "^8.18.0",
+    "node-fetch": "^3.3.2"
+  }
+}
