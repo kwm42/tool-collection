@@ -1,0 +1,16 @@
+{
+  "name": "comfyui-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "ws": "^8.18.0",
+    "@stable-canvas/comfyui-client": "^1.5.9",
+    "uuid": "^11.0.0",
+    "dotenv": "^16.4.0"
+  }
+}
