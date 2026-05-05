@@ -1057,61 +1057,61 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
+          "lora": "wan2.2\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\NSFW-22-H-e8.safetensors",
+          "lora": "wan2.2\\NSFW-22-H-e8.safetensors",
           "strength": 0.6,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\SmoothXXXAnimation_High.safetensors",
+          "lora": "wan2.2\\SmoothXXXAnimation_High.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
+          "lora": "wan2.2\\BounceHighWan2_2.safetensors",
           "strength": 0.4,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\wan2.2-i2v-high-breast-insertion-v1.0.safetensors",
+          "lora": "wan2.2\\wan2.2-i2v-high-breast-insertion-v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-POV-Titfuck-Paizuri-HIGH-v1.0.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-POV-Titfuck-Paizuri-HIGH-v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\HIGH\\asymmetrical_paizuri_wan22_v1.0_000002000_high_noise.safetensors",
+          "lora": "wan2.2\\asymmetrical_paizuri_wan22_v1.0_000002000_high_noise.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\HIGH\\DaSiWa_Wan22_High_Deepthroat_v11.safetensors",
+          "lora": "wan2.2\\DaSiWa_Wan22_High_Deepthroat_v11.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-SensualTeasingBlowjob-HIGH-v1.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-BreastPlay-HIGH-v2.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-BreastPlay-HIGH-v2.safetensors",
           "strength": 0.6,
           "strengthTwo": null
         },
@@ -1469,61 +1469,61 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
+          "lora": "wan2.2\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\NSFW-22-L-e8.safetensors",
+          "lora": "wan2.2\\NSFW-22-L-e8.safetensors",
           "strength": 0.6,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\SmoothXXXAnimation_Low.safetensors",
+          "lora": "wan2.2\\SmoothXXXAnimation_Low.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
+          "lora": "wan2.2\\BounceLowWan2_2.safetensors",
           "strength": 0.4,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\wan2.2-i2v-low-breast-insertion-v1.0.safetensors",
+          "lora": "wan2.2\\wan2.2-i2v-low-breast-insertion-v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-POV-Titfuck-Paizuri-LOW-v1.0.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-POV-Titfuck-Paizuri-LOW-v1.0.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\asymmetrical_paizuri_wan22_v1.0_000002000_low_noise.safetensors",
+          "lora": "wan2.2\\asymmetrical_paizuri_wan22_v1.0_000002000_low_noise.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\DaSiWa_Wan22_Low_Deepthroat_v11.safetensors",
+          "lora": "wan2.2\\DaSiWa_Wan22_Low_Deepthroat_v11.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-SensualTeasingBlowjob-LOW-v1.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-BreastPlay-LOW-v2.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-BreastPlay-LOW-v2.safetensors",
           "strength": 0.6,
           "strengthTwo": null
         },

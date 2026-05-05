@@ -1057,43 +1057,43 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
+          "lora": "wan2.2\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\NSFW-22-H-e8.safetensors",
+          "lora": "wan2.2\\NSFW-22-H-e8.safetensors",
           "strength": 0.6,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\SmoothXXXAnimation_High.safetensors",
+          "lora": "wan2.2\\SmoothXXXAnimation_High.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
-          "on": false,
-          "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
+          "on": true,
+          "lora": "wan2.2\\BounceHighWan2_2.safetensors",
           "strength": 0.4,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\curved_cowgirl_position_wan22_v1.1_000004000_high_noise.safetensors",
+          "lora": "wan2.2\\curved_cowgirl_position_wan22_v1.1_000004000_high_noise.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-POV-Cowgirl-HIGH-v1.0-fixed.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-POV-Cowgirl-HIGH-v1.0-fixed.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\wan2.2_t2v_highnoise_cowgirl_v1.0.safetensors",
+          "lora": "wan2.2\\wan2.2_t2v_highnoise_cowgirl_v1.0.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
@@ -1451,43 +1451,43 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
+          "lora": "wan2.2\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\NSFW-22-L-e8.safetensors",
+          "lora": "wan2.2\\NSFW-22-L-e8.safetensors",
           "strength": 0.6,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\SmoothXXXAnimation_Low.safetensors",
+          "lora": "wan2.2\\SmoothXXXAnimation_Low.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
-          "on": false,
-          "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
+          "on": true,
+          "lora": "wan2.2\\BounceLowWan2_2.safetensors",
           "strength": 0.4,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\curved_cowgirl_position_wan22_v1.1_000004000_low_noise.safetensors",
+          "lora": "wan2.2\\curved_cowgirl_position_wan22_v1.1_000004000_low_noise.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-POV-Cowgirl-LOW-v1.0-fixed.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-POV-Cowgirl-LOW-v1.0-fixed.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\wan2.2_t2v_lownoise_cowgirl_v1.0.safetensors",
+          "lora": "wan2.2\\wan2.2_t2v_lownoise_cowgirl_v1.0.safetensors",
           "strength": 0.7,
           "strengthTwo": null
         },

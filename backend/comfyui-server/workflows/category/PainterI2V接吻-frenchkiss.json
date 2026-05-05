@@ -1057,43 +1057,43 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
+          "lora": "wan2.2\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\NSFW-22-H-e8.safetensors",
+          "lora": "wan2.2\\NSFW-22-H-e8.safetensors",
           "strength": 0.6,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\SmoothXXXAnimation_High.safetensors",
+          "lora": "wan2.2\\SmoothXXXAnimation_High.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\HIGH\\BounceHighWan2_2.safetensors",
+          "lora": "wan2.2\\BounceHighWan2_2.safetensors",
           "strength": 0.4,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\Kissing_high_noise.safetensors",
+          "lora": "wan2.2\\Kissing_high_noise.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\HIGH\\WAN2.2-FrenchKiss_HighNoise.safetensors",
+          "lora": "wan2.2\\WAN2.2-FrenchKiss_HighNoise.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\HIGH\\glass-kiss-high.safetensors",
+          "lora": "wan2.2\\glass-kiss-high.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
@@ -1105,13 +1105,13 @@
         },
         {
           "on": false,
-          "lora": "wan2.2\\HIGH\\POVkissing_WAN22_I2V_high_noise.safetensors",
+          "lora": "wan2.2\\POVkissing_WAN22_I2V_high_noise.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\HIGH\\WAN-2.2-I2V-BreastPlay-HIGH-v2.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-BreastPlay-HIGH-v2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
@@ -1469,43 +1469,43 @@
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
+          "lora": "wan2.2\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\NSFW-22-L-e8.safetensors",
+          "lora": "wan2.2\\NSFW-22-L-e8.safetensors",
           "strength": 0.6,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\SmoothXXXAnimation_Low.safetensors",
+          "lora": "wan2.2\\SmoothXXXAnimation_Low.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\BounceLowWan2_2.safetensors",
+          "lora": "wan2.2\\BounceLowWan2_2.safetensors",
           "strength": 0.4,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\Kissing_low_noise.safetensors",
+          "lora": "wan2.2\\Kissing_low_noise.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": true,
-          "lora": "wan2.2\\LOW\\WAN2.2-FrenchKiss_LowNoise.safetensors",
+          "lora": "wan2.2\\WAN2.2-FrenchKiss_LowNoise.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\glass-kiss-low.safetensors",
+          "lora": "wan2.2\\glass-kiss-low.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
@@ -1517,13 +1517,13 @@
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\POVkissing_WAN22_I2V_low_noise.safetensors",
+          "lora": "wan2.2\\POVkissing_WAN22_I2V_low_noise.safetensors",
           "strength": 1,
           "strengthTwo": null
         },
         {
           "on": false,
-          "lora": "wan2.2\\LOW\\WAN-2.2-I2V-BreastPlay-LOW-v2.safetensors",
+          "lora": "wan2.2\\WAN-2.2-I2V-BreastPlay-LOW-v2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
         },
