@@ -107,7 +107,7 @@ export default function App() {
     const selectedWorkflow = workflows.find(w => w.id === params.workflow);
     const workflowName = selectedWorkflow?.name || '';
     const filenamePrefix = folderPath 
-      ? `${folderPath}__${fileName}__${workflowName}`
+      ? `${fileName}__${workflowName}`
       : `${fileName}__${workflowName}`;
     console.log('[filenamePrefix]', filenamePrefix);
 
@@ -133,6 +133,7 @@ export default function App() {
 
   return (
     <div className="w-[90vw] mx-auto p-6">
+      <div className="text-xs text-gray-400 mb-2 whitespace-pre">{`var comfyuiQueue = await fetch("http://127.0.0.1:8188/queue").then(res => res.json());comfyuiQueue.queue_pending.map(queueItem => { return queueItem[2]["1006:1125"].inputs.filename_prefix });`}</div>
       <h1 className="text-2xl font-bold mb-6">ComfyUI 图片触发</h1>
 
       <ConfigPanel

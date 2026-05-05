@@ -1,5 +1,5 @@
 {
-  "id": "605ae248-94bb-4217-978c-480ee1362334",
+  "id": "780c7142-30d5-4bbe-b143-37a476ea7be0",
   "revision": 0,
   "last_node_id": 1554,
   "last_link_id": 2158,
@@ -1056,7 +1056,7 @@
           "type": "PowerLoraLoaderHeaderWidget"
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\HIGH\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
@@ -1080,13 +1080,13 @@
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\HIGH\\derpfuckedfrombehind_000002125_high_noise.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\HIGH\\sfbehind_v2.1_high_noise.safetensors",
           "strength": 0.9,
           "strengthTwo": null
@@ -1101,6 +1101,12 @@
           "on": false,
           "lora": "wan2.2\\HIGH\\doggy_style_sex_front_view_Wan2.2_I2V_high_v1.0.safetensors",
           "strength": 0.7,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "wan2.2\\HIGH\\DaSiWa_Wan22_High_Deepthroat_v11.safetensors",
+          "strength": 1,
           "strengthTwo": null
         },
         {},
@@ -1456,7 +1462,7 @@
           "type": "PowerLoraLoaderHeaderWidget"
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\LOW\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
           "strength": 0.8,
           "strengthTwo": null
@@ -1480,13 +1486,13 @@
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\LOW\\derpfuckedfrombehind_000002125_low_noise.safetensors",
           "strength": 0.9,
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\LOW\\sfbehind_v2.1_low_noise.safetensors",
           "strength": 0.9,
           "strengthTwo": null
@@ -1501,6 +1507,12 @@
           "on": false,
           "lora": "wan2.2\\LOW\\doggy_style_sex_front_view_Wan2.2_I2V_Low_v1.0.safetensors",
           "strength": 0.7,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "wan2.2\\LOW\\DaSiWa_Wan22_Low_Deepthroat_v11.safetensors",
+          "strength": 1,
           "strengthTwo": null
         },
         {},
@@ -4403,7 +4415,7 @@
         "cnr_id": "rgthree-comfy"
       },
       "widgets_values": [
-        376929419326480,
+        -1,
         "",
         "",
         ""
@@ -4447,7 +4459,7 @@
         }
       },
       "widgets_values": [
-        5
+        8
       ],
       "color": "#233",
       "bgcolor": "#355"
@@ -6561,7 +6573,7 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "hj08 舔奶头撸管.png",
+        "分镜9_00005_.png",
         "image"
       ],
       "color": "#222",
@@ -6654,8 +6666,8 @@
       "widgets_values": [
         "",
         "",
-        "reproduce",
-        24718622657369,
+        "populate",
+        398080712313223,
         "randomize",
         "Select Wildcard 🟢 Full Cache"
       ],
@@ -6788,10 +6800,10 @@
         "aux_id": "ltdrdata/ComfyUI-Impact-Pack"
       },
       "widgets_values": [
-        "SmoothMixAnime, nsfwsks\ngetting fucked from behind, twerks causing her ass to jiggle and shake, sfb3hind, sfbehind, d0gg1e, doggy style\nd0gg1e, A woman is having doggy style sex with a man. She thrusts her ass violently towards the camera repeatedly. man behind thrusting deep and fast into her pussy,The male penis thrusts in and out rapidly and violently, penile at extremely high speed and depth, she is fucking the man by rapidly moving her hips, her buttocks move around. She bounces her ass up and down. jiggle with recoil, rhythmic up-and-down motion with her hips, dynamic hip thrusts, thighs shaking, peak jiggle moments, realistic skin deformation. twerks causing her ass to jiggle and shake. \n\nMan thrusts his hips back and forward. (fast and rapid thrusts:1)\n\nShe stares at the camera with a seductive stare. She keeps looking at the camera. \nAuthentic film look,High-fidelity details",
-        "SmoothMixAnime, nsfwsks\ngetting fucked from behind, twerks causing her ass to jiggle and shake, sfb3hind, sfbehind, d0gg1e, doggy style\nd0gg1e, A woman is having doggy style sex with a man. She thrusts her ass violently towards the camera repeatedly. man behind thrusting deep and fast into her pussy,The male penis thrusts in and out rapidly and violently, penile at extremely high speed and depth, she is fucking the man by rapidly moving her hips, her buttocks move around. She bounces her ass up and down. jiggle with recoil, rhythmic up-and-down motion with her hips, dynamic hip thrusts, thighs shaking, peak jiggle moments, realistic skin deformation. twerks causing her ass to jiggle and shake. \n\nMan thrusts his hips back and forward. (fast and rapid thrusts:1)\n\nShe stares at the camera with a seductive stare. She keeps looking at the camera. \nAuthentic film look,High-fidelity details",
-        "reproduce",
-        999344221919312,
+        "SmoothMixAnime\n\nsensualBJ, He is licking women's vaginas",
+        "SmoothMixAnime\n\nsensualBJ, He is licking women's vaginas",
+        "populate",
+        939613291911340,
         "randomize",
         "Select Wildcard 🟢 Full Cache"
       ],
@@ -8917,13 +8929,13 @@
                 "hidden": false,
                 "paused": false,
                 "params": {
-                  "filename": "temp_save_00077.mkv",
+                  "filename": "temp_save_00022.mkv",
                   "subfolder": "Wan2.2-sub-save",
                   "type": "temp",
                   "format": "video/ffv1-mkv",
                   "frame_rate": 16,
-                  "workflow": "temp_save_00077.png",
-                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\temp\\Wan2.2-sub-save\\temp_save_00077.mkv"
+                  "workflow": "temp_save_00022.png",
+                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\temp\\Wan2.2-sub-save\\temp_save_00022.mkv"
                 }
               }
             }
@@ -11039,7 +11051,7 @@
             ],
             "size": [
               379.9245885767484,
-              334
+              550.457581074421
             ],
             "flags": {},
             "order": 1,
@@ -11100,7 +11112,7 @@
             "widgets_values": {
               "frame_rate": 64,
               "loop_count": 0,
-              "filename_prefix": "Video/wanvideo_%date:yyyyMMdd%",
+              "filename_prefix": "Video/分镜10",
               "format": "video/h264-mp4",
               "pix_fmt": "yuv420p",
               "crf": 18,
@@ -11112,13 +11124,13 @@
                 "hidden": false,
                 "paused": false,
                 "params": {
-                  "filename": "wanvideo_20260426_00103.mp4",
+                  "filename": "分镜8_00001.mp4",
                   "subfolder": "Video",
                   "type": "output",
                   "format": "video/h264-mp4",
                   "frame_rate": 64,
-                  "workflow": "wanvideo_20260426_00103.png",
-                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\output\\Video\\wanvideo_20260426_00103.mp4"
+                  "workflow": "分镜8_00001.png",
+                  "fullpath": "F:\\ComfyUI_windows_portable\\ComfyUI\\output\\Video\\分镜8_00001.mp4"
                 }
               }
             }
@@ -11507,45 +11519,6 @@
             ]
           },
           {
-            "id": 1551,
-            "type": "PrimitiveInt",
-            "pos": [
-              -6480.822364515499,
-              3300.292263029501
-            ],
-            "size": [
-              270,
-              82
-            ],
-            "flags": {},
-            "order": 0,
-            "mode": 0,
-            "inputs": [],
-            "outputs": [
-              {
-                "localized_name": "整数",
-                "name": "INT",
-                "type": "INT",
-                "links": [
-                  2139,
-                  2142
-                ]
-              }
-            ],
-            "title": "Preset_Resolution_Width",
-            "properties": {
-              "cnr_id": "comfy-core",
-              "ver": "0.18.1",
-              "Node name for S&R": "PrimitiveInt"
-            },
-            "widgets_values": [
-              540,
-              "fixed"
-            ],
-            "color": "#2a363b",
-            "bgcolor": "#3f5159"
-          },
-          {
             "id": 1552,
             "type": "PrimitiveInt",
             "pos": [
@@ -11557,7 +11530,7 @@
               82
             ],
             "flags": {},
-            "order": 1,
+            "order": 0,
             "mode": 0,
             "inputs": [],
             "outputs": [
@@ -11579,6 +11552,45 @@
             },
             "widgets_values": [
               360,
+              "fixed"
+            ],
+            "color": "#2a363b",
+            "bgcolor": "#3f5159"
+          },
+          {
+            "id": 1551,
+            "type": "PrimitiveInt",
+            "pos": [
+              -6480.822364515499,
+              3300.292263029501
+            ],
+            "size": [
+              270,
+              82
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [],
+            "outputs": [
+              {
+                "localized_name": "整数",
+                "name": "INT",
+                "type": "INT",
+                "links": [
+                  2139,
+                  2142
+                ]
+              }
+            ],
+            "title": "Preset_Resolution_Width",
+            "properties": {
+              "cnr_id": "comfy-core",
+              "ver": "0.18.1",
+              "Node name for S&R": "PrimitiveInt"
+            },
+            "widgets_values": [
+              640,
               "fixed"
             ],
             "color": "#2a363b",
@@ -11699,10 +11711,10 @@
       ]
     },
     "ds": {
-      "scale": 0.9895657243614041,
+      "scale": 0.8996052039649133,
       "offset": [
-        4759.9469461578865,
-        -2793.6300602947003
+        4394.375349937406,
+        -2433.4880937390412
       ]
     }
   },

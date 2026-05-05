@@ -1,0 +1,1 @@
+npx concurrently "npm run dev --prefix web-tools/comfyui-trigger" "npm run dev --prefix backend/comfyui-server"

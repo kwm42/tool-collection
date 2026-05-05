@@ -35,7 +35,7 @@
         "strength": 0.9
       },
       "lora_7": {
-        "on": true,
+        "on": false,
         "lora": "wan2.2\\HIGH\\slop_twerk_HighNoise_merged3_7_v2.safetensors",
         "strength": 0.5
       },
@@ -91,7 +91,7 @@
         "strength": 0.9
       },
       "lora_7": {
-        "on": true,
+        "on": false,
         "lora": "wan2.2\\LOW\\slop_twerk_LowNoise_merged3_7_v2.safetensors",
         "strength": 0.5
       },
@@ -208,8 +208,8 @@
   "882": {
     "inputs": {
       "wildcard_text": "SmoothMixAnime, nsfwsks\ngetting fucked from behind, twerks causing her ass to jiggle and shake, sfb3hind, sfbehind, d0gg1e, doggy style\nd0gg1e, A woman is having doggy style sex with a man. She thrusts her ass violently towards the camera repeatedly. man behind thrusting deep and fast into her pussy,The male penis thrusts in and out rapidly and violently, penile at extremely high speed and depth, she is fucking the man by rapidly moving her hips, her buttocks move around. She bounces her ass up and down. jiggle with recoil, rhythmic up-and-down motion with her hips, dynamic hip thrusts, thighs shaking, peak jiggle moments, realistic skin deformation. twerks causing her ass to jiggle and shake. \n\nMan thrusts his hips back and forward. (fast and rapid thrusts:1)\n\nShe stares at the camera with a seductive stare. She keeps looking at the camera. \nAuthentic film look,High-fidelity details",
-      "populated_text": "SmoothMixAnime, nsfwsks, handjob, licking\nhandjob while licking nipple, woman stroking erect penis while licking and sucking man's nipple, simultaneous handjob and nipple licking\nthe woman's body is basically still no moving",
-      "mode": "populate",
+      "populated_text": "SmoothMixAnime, nsfwsks\ngetting fucked from behind, twerks causing her ass to jiggle and shake, sfb3hind, sfbehind, d0gg1e, doggy style\nd0gg1e, A woman is having doggy style sex with a man. She thrusts her ass violently towards the camera repeatedly. man behind thrusting deep and fast into her pussy,The male penis thrusts in and out rapidly and violently, penile at extremely high speed and depth, she is fucking the man by rapidly moving her hips, her buttocks move around. She bounces her ass up and down. jiggle with recoil, rhythmic up-and-down motion with her hips, dynamic hip thrusts, thighs shaking, peak jiggle moments, realistic skin deformation. twerks causing her ass to jiggle and shake. \n\nMan thrusts his hips back and forward. (fast and rapid thrusts:1)\n\nShe stares at the camera with a seductive stare. She keeps looking at the camera. \nAuthentic film look,High-fidelity details",
+      "mode": "reproduce",
       "seed": 999344221919312,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
     },
@@ -222,7 +222,7 @@
     "inputs": {
       "wildcard_text": "",
       "populated_text": "",
-      "mode": "populate",
+      "mode": "reproduce",
       "seed": 24718622657369,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
     },
@@ -519,7 +519,7 @@
   },
   "1120": {
     "inputs": {
-      "seed": -1
+      "seed": 376929419326480
     },
     "class_type": "Seed (rgthree)",
     "_meta": {
@@ -1166,7 +1166,7 @@
         1
       ],
       "loop_count": 0,
-      "filename_prefix": "Video/wanvideo_20260427",
+      "filename_prefix": "Video/wanvideo_20260430",
       "format": "video/h264-mp4",
       "pix_fmt": "yuv420p",
       "crf": 18,

@@ -1,4 +1,5 @@
 [
+  { "id": "base", "name": "base", "workflow": "PainterI2Vbase api", "description": "普通，无特殊行为" },
   { "id": "kiss-pov", "name": "接吻-POVkiss", "workflow": "PainterI2V接吻-POVkiss api", "description": "接吻-POVkiss" },
   { "id": "kiss-french", "name": "接吻-frenchkiss", "workflow": "PainterI2V接吻-frenchkiss api", "description": "接吻-frenchkiss" },
   { "id": "kiss-grab", "name": "接吻-抓奶", "workflow": "PainterI2V接吻-抓奶 api", "description": "接吻-抓奶" },

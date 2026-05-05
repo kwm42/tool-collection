@@ -5,7 +5,7 @@
         "type": "PowerLoraLoaderHeaderWidget"
       },
       "lora_1": {
-        "on": true,
+        "on": false,
         "lora": "wan2.2\\HIGH\\DR34ML4Y_I2V_14B_HIGH_V2.safetensors",
         "strength": 0.8
       },
@@ -25,12 +25,12 @@
         "strength": 0.4
       },
       "lora_5": {
-        "on": true,
+        "on": false,
         "lora": "wan2.2\\HIGH\\derpfuckedfrombehind_000002125_high_noise.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": true,
+        "on": false,
         "lora": "wan2.2\\HIGH\\sfbehind_v2.1_high_noise.safetensors",
         "strength": 0.9
       },
@@ -43,6 +43,11 @@
         "on": false,
         "lora": "wan2.2\\HIGH\\doggy_style_sex_front_view_Wan2.2_I2V_high_v1.0.safetensors",
         "strength": 0.7
+      },
+      "lora_9": {
+        "on": false,
+        "lora": "wan2.2\\HIGH\\DaSiWa_Wan22_High_Deepthroat_v11.safetensors",
+        "strength": 1
       },
       "➕ Add Lora": "",
       "model": [
@@ -61,7 +66,7 @@
         "type": "PowerLoraLoaderHeaderWidget"
       },
       "lora_1": {
-        "on": true,
+        "on": false,
         "lora": "wan2.2\\LOW\\DR34ML4Y_I2V_14B_LOW_V2.safetensors",
         "strength": 0.8
       },
@@ -81,12 +86,12 @@
         "strength": 0.4
       },
       "lora_5": {
-        "on": true,
+        "on": false,
         "lora": "wan2.2\\LOW\\derpfuckedfrombehind_000002125_low_noise.safetensors",
         "strength": 0.9
       },
       "lora_6": {
-        "on": true,
+        "on": false,
         "lora": "wan2.2\\LOW\\sfbehind_v2.1_low_noise.safetensors",
         "strength": 0.9
       },
@@ -99,6 +104,11 @@
         "on": false,
         "lora": "wan2.2\\LOW\\doggy_style_sex_front_view_Wan2.2_I2V_Low_v1.0.safetensors",
         "strength": 0.7
+      },
+      "lora_9": {
+        "on": false,
+        "lora": "wan2.2\\LOW\\DaSiWa_Wan22_Low_Deepthroat_v11.safetensors",
+        "strength": 1
       },
       "➕ Add Lora": "",
       "model": [
@@ -130,7 +140,7 @@
   },
   "851": {
     "inputs": {
-      "value": 5
+      "value": 8
     },
     "class_type": "PrimitiveFloat",
     "_meta": {
@@ -172,7 +182,7 @@
   },
   "864": {
     "inputs": {
-      "image": "hj08 舔奶头撸管.png"
+      "image": "分镜9_00005_.png"
     },
     "class_type": "LoadImage",
     "_meta": {
@@ -207,10 +217,10 @@
   },
   "882": {
     "inputs": {
-      "wildcard_text": "getting fucked from behind, twerks causing her ass to jiggle and shake, sfb3hind, sfbehind, d0gg1e, doggy style\nA video of a beautiful anime girl having doggy style, she is being (fucked fast and hard) by a man from behind. The man rapidly and aggressively thrusts his large penis deep into her vagina. The girl stares at the viewer. Her ass jiggle and bounce. Man thrusts his hips back and forward. (fast and rapid thrusts:1),The male penis is rapidly and violently thrust in and out repeatedly, with extremely high-speed, deep insertion followed by forceful withdrawal. This continuous, rapid piston-like thrusting involves large, high-speed entry and exit of the penis, The man’s movements are fast and forceful. She is getting fucked from behind. She pushes her body against his cock to increase the sexual gratification, very seductive lewd erotic behavior, tightly as he is piston fucking causing her hips into a rocking motion from each thrust. She moans as she is getting her ass fucked. She has a suffering expression whi The animation is smooth and clear. Smooth animation.",
-      "populated_text": "((exact image girl position and pose, exact woman's face shape)), ((exact penis position, circumcised penis))\n\nsensualBJ. She is licking the shaft of the penis with long, deliberate strokes of her tongue.",
+      "wildcard_text": "SmoothMixAnime\n\nsensualBJ, He is licking women's vaginas",
+      "populated_text": "SmoothMixAnime\n\nsensualBJ, He is licking women's vaginas",
       "mode": "populate",
-      "seed": 999344221919312,
+      "seed": 939613291911340,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
     },
     "class_type": "ImpactWildcardProcessor",
@@ -223,7 +233,7 @@
       "wildcard_text": "",
       "populated_text": "",
       "mode": "populate",
-      "seed": 24718622657369,
+      "seed": 398080712313223,
       "Select to add Wildcard": "Select the Wildcard to add to the text"
     },
     "class_type": "ImpactWildcardProcessor",
@@ -1105,15 +1115,6 @@
       "title": "Math Calculate"
     }
   },
-  "1554:1551": {
-    "inputs": {
-      "value": 540
-    },
-    "class_type": "PrimitiveInt",
-    "_meta": {
-      "title": "Preset_Resolution_Width"
-    }
-  },
   "1554:1552": {
     "inputs": {
       "value": 360
@@ -1121,6 +1122,15 @@
     "class_type": "PrimitiveInt",
     "_meta": {
       "title": "Preset_Resolution_Height"
+    }
+  },
+  "1554:1551": {
+    "inputs": {
+      "value": 640
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Preset_Resolution_Width"
     }
   },
   "1006:1124": {
@@ -1166,7 +1176,7 @@
         1
       ],
       "loop_count": 0,
-      "filename_prefix": "Video/wanvideo_20260427",
+      "filename_prefix": "Video/分镜10",
       "format": "video/h264-mp4",
       "pix_fmt": "yuv420p",
       "crf": 18,

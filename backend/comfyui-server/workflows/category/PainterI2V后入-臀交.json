@@ -1092,7 +1092,7 @@
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\HIGH\\slop_twerk_HighNoise_merged3_7_v2.safetensors",
           "strength": 0.5,
           "strengthTwo": null
@@ -1498,7 +1498,7 @@
           "strengthTwo": null
         },
         {
-          "on": true,
+          "on": false,
           "lora": "wan2.2\\LOW\\slop_twerk_LowNoise_merged3_7_v2.safetensors",
           "strength": 0.5,
           "strengthTwo": null
