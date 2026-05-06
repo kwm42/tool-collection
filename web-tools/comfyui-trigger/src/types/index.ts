@@ -5,6 +5,7 @@ export interface FileNode {
   handle?: FileSystemFileHandle;
   children?: FileNode[];
   previewUrl?: string;
+  hasVideo?: boolean;
 }
 
 export interface Workflow {

@@ -52,6 +52,14 @@ function TreeNode({ node, level, selectedFile, onSelect }: TreeNodeProps) {
       onClick={() => onSelect(node)}
     >
       <span className="text-xs">📄</span>
+      {node.hasVideo !== undefined && (
+        <span
+          className={`inline-block w-2 h-2 rounded-full ${
+            node.hasVideo ? 'bg-green-500' : 'bg-gray-300'
+          }`}
+          title={node.hasVideo ? '有视频' : '无视频'}
+        />
+      )}
       <span>{node.name}</span>
     </div>
   );
