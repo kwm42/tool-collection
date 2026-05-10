@@ -5501,7 +5501,7 @@
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [
-        "wan2.2\\LOW\\wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
+        "wan2.2\\wan2.2_i2v_A14b_low_noise_lora_rank64_lightx2v_4step_1022.safetensors",
         1
       ],
       "color": "#323",
@@ -5546,7 +5546,7 @@
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [
-        "wan2.2\\HIGH\\Wan_2_2_I2V_A14B_HIGH_lightx2v_4step_lora_v1030_rank_64_bf16.safetensors",
+        "wan2.2\\Wan_2_2_I2V_A14B_HIGH_lightx2v_4step_lora_v1030_rank_64_bf16.safetensors",
         1
       ],
       "color": "#223",
@@ -6215,7 +6215,7 @@
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [
-        "wan2.2\\LOW\\Wan22_FFGO-LoRA-LOW_bf16.safetensors",
+        "wan2.2\\Wan22_FFGO-LoRA-LOW_bf16.safetensors",
         0.3
       ],
       "color": "#323",
@@ -6336,7 +6336,7 @@
         "Node name for S&R": "LoraLoaderModelOnly"
       },
       "widgets_values": [
-        "wan2.2\\HIGH\\Wan22_FFGO-LoRA-HIGH_bf16.safetensors",
+        "wan2.2\\Wan22_FFGO-LoRA-HIGH_bf16.safetensors",
         0.3
       ],
       "color": "#223",
