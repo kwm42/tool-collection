@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETF实时监控</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.top-bar .time { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.top-bar .status { font-size: 13px; display: flex; align-items: center; gap: 16px; }
+.top-bar .status .dot {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px;
+}
+.dot.trading { background: #4CAF50; }
+.dot.closed { background: #999; }
+.data-source { font-size: 13px; color: #666; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  user-select: none;
+}
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); transform: translateY(-2px); }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.card-name { font-size: 14px; font-weight: 600; color: #555; }
+.card-code { font-size: 12px; color: #999; }
+.card-price { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+.card-change { font-size: 13px; margin-bottom: 4px; }
+.card.up .card-change { color: #f44336; }
+.card.down .card-change { color: #4CAF50; }
+.card-premium { font-size: 13px; margin-bottom: 2px; }
+.card-premium.premium-alert { color: #FF9800; font-weight: 700; }
+.card-nav { font-size: 12px; color: #999; margin-bottom: 6px; }
+.card-settings {
+  display: none;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #eee;
+  font-size: 12px;
+}
+.card-settings label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: #666;
+}
+.card-settings input {
+  width: 60px;
+  padding: 3px 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: right;
+}
+.card-settings input:focus { outline: none; border-color: #4a90d9; }
+
+.bottom-panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.settings-row:last-child { margin-bottom: 0; }
+.btn {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.btn:hover { border-color: #999; background: #f5f5f5; }
+.btn.active { background: #333; color: #fff; border-color: #333; }
+.settings-row label {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #555;
+}
+.settings-row input[type="number"] {
+  width: 60px;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  text-align: right;
+}
+.settings-row input:focus { outline: none; border-color: #4a90d9; }
+
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toast {
+  background: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease-out;
+  max-width: 360px;
+}
+.toast.hiding { animation: fadeOut 0.3s ease-out forwards; }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+@media (max-width: 600px) {
+  body { padding: 8px; }
+  .card-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .card { padding: 12px; }
+  .card-price { font-size: 22px; }
+  .top-bar { padding: 10px 16px; }
+  .top-bar .time { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="time" id="current-time">--:--:--</div>
+  <div class="status">
+    <span id="trading-status"><span class="dot closed"></span>加载中</span>
+    <span class="data-source">数据源: <span id="data-source">--</span></span>
+  </div>
+</div>
+
+<div class="card-grid" id="card-grid"></div>
+
+<div class="bottom-panel">
+  <div class="settings-row">
+    <button class="btn" id="add-etf-btn">+ 添加ETF</button>
+    <button class="btn" id="sound-toggle">🔊 音效开</button>
+    <button class="btn" id="test-sound-btn">测试声音</button>
+  </div>
+  <div class="settings-row">
+    <label>默认溢价预警 <input type="number" id="default-premium" value="5" min="0" step="0.5">%</label>
+    <label>默认涨跌预警 <input type="number" id="default-price" value="3" min="0" step="0.5">%</label>
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+const PRESET_ETFS = [
+  { code: '513500', market: 'sh', secId: '1.513500', name: '标普500ETF' },
+  { code: '513100', market: 'sh', secId: '1.513100', name: '纳指ETF' },
+  { code: '159941', market: 'sz', secId: '0.159941', name: '纳指ETF' },
+  { code: '159612', market: 'sz', secId: '0.159612', name: '标普ETF' },
+  { code: '513520', market: 'sh', secId: '1.513520', name: '标普ETF' },
+  { code: '161125', market: 'sz', secId: '0.161125', name: '标普500LOF' },
+  { code: '513300', market: 'sh', secId: '1.513300', name: '纳指ETF' },
+  { code: '513200', market: 'sh', secId: '1.513200', name: '标普ETF' },
+  { code: '159501', market: 'sz', secId: '0.159501', name: '标普ETF' },
+  { code: '513390', market: 'sh', secId: '1.513390', name: '纳指ETF' },
+];
+
+const STORAGE_KEY = 'etf-monitor-config';
+const EASTMONEY_FIELDS = 'f43,f44,f45,f46,f47,f48,f57,f58,f59,f60,f169,f170,f171,f162';
+const REFRESH_INTERVAL = 10000;
+const ALERT_COOLDOWN = 60000;
+
+let audioCtx = null;
+let refreshTimer = null;
+let alertDebounce = {};
+
+const appState = {
+  etfs: [],
+  settings: {
+    soundEnabled: true,
+    defaultPremiumAlert: 5,
+    defaultPriceAlert: 3,
+  },
+  dataSource: 'eastmoney',
+};
+
+function getAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  return audioCtx;
+}
+
+function playAlertSound(type) {
+  if (!appState.settings.soundEnabled) return;
+  try {
+    const ctx = getAudioContext();
+    if (type === 'premium') {
+      for (let i = 0; i < 3; i++) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = 800;
+        osc.type = 'square';
+        gain.gain.setValueAtTime(0.2, ctx.currentTime + i * 0.25);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.25 + 0.12);
+        osc.start(ctx.currentTime + i * 0.25);
+        osc.stop(ctx.currentTime + i * 0.25 + 0.12);
+      }
+    } else {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 400;
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0.25, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.8);
+    }
+  } catch {}
+}
+
+function showToast(message) {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.add('hiding');
+    setTimeout(() => toast.remove(), 300);
+  }, 4000);
+}
+
+function jsonp(url, callbackName) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    const timeout = setTimeout(() => {
+      script.remove();
+      delete window[callbackName];
+      reject(new Error('JSONP timeout'));
+    }, 10000);
+    window[callbackName] = (data) => {
+      clearTimeout(timeout);
+      script.remove();
+      delete window[callbackName];
+      resolve(data);
+    };
+    script.src = url;
+    document.body.appendChild(script);
+  });
+}
+
+function isTradingTime() {
+  const now = new Date();
+  if (now.getDay() === 0 || now.getDay() === 6) return false;
+  const h = now.getHours();
+  const m = now.getMinutes();
+  const t = h * 100 + m;
+  return (t >= 930 && t <= 1130) || (t >= 1300 && t <= 1500);
+}
+
+async function fetchETF(etf) {
+  const ts = Date.now();
+  const cb = `em_${ts}_${etf.code}`;
+  const url = `https://push2.eastmoney.com/api/qt/stock/get?secid=${etf.secId}&fields=${EASTMONEY_FIELDS}&invt=2&cb=${cb}`;
+  try {
+    const data = await jsonp(url, cb);
+    if (data && data.data) return data.data;
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchAllFromEastMoney() {
+  const results = await Promise.all(appState.etfs.map(etf => fetchETF(etf)));
+  return results;
+}
+
+async function fetchFromSina() {
+  const codes = appState.etfs.map(e => e.market + e.code).join(',');
+  if (!codes) return null;
+  const url = `https://hq.sinajs.cn/list=${codes}`;
+  try {
+    const res = await fetch(url, { headers: { 'Referer': 'https://finance.sina.com.cn' } });
+    const text = await res.text();
+    const lines = text.split(';\n').filter(Boolean);
+    return lines.map(line => {
+      const m = line.match(/hq_str_(\w+)="(.+)"/);
+      if (!m) return null;
+      const parts = m[2].split(',');
+      const code = m[1].replace(/^(sh|sz)/, '');
+      const name = parts[0];
+      const open = parseFloat(parts[1]);
+      const preClose = parseFloat(parts[2]);
+      const price = parseFloat(parts[3]);
+      const change = price - preClose;
+      const changePercent = preClose > 0 ? (change / preClose) * 100 : 0;
+      const high = parseFloat(parts[4]);
+      const low = parseFloat(parts[5]);
+      return { f57: code, f58: name, f43: price, f170: changePercent };
+    }).filter(Boolean);
+  } catch {
+    return null;
+  }
+}
+
+function calcPremiumRate(marketPrice, iopv) {
+  const p = toNum(marketPrice);
+  const i = toNum(iopv);
+  if (p == null || i == null || i === 0) return null;
+  return ((p - i) / i) * 100;
+}
+
+function toNum(v) {
+  if (v == null) return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+function calcPrice(f43, f59) {
+  const price = toNum(f43);
+  const prec = toNum(f59);
+  if (price == null || prec == null) return null;
+  return price / (10 ** prec);
+}
+
+function formatPrice(f43, f59) {
+  const yuan = calcPrice(f43, f59);
+  if (yuan == null) return '--';
+  return yuan < 10 ? yuan.toFixed(3) : yuan.toFixed(2);
+}
+
+function renderCards(dataArray) {
+  const grid = document.getElementById('card-grid');
+  grid.innerHTML = '';
+  appState.etfs.forEach((etf, index) => {
+    const quote = dataArray ? dataArray[index] : null;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.index = index;
+
+    let price = '--';
+    let change = null;
+    let iopv = null;
+    let premium = null;
+    let hasAlert = false;
+
+    if (quote && quote.f43 != null) {
+      price = formatPrice(quote.f43, quote.f59);
+      change = (quote.f170 || 0) / 100;
+      if (change > 0) card.classList.add('up');
+      else if (change < 0) card.classList.add('down');
+
+      if (quote.f162 != null) {
+        iopv = calcPrice(quote.f162, quote.f59);
+        premium = calcPremiumRate(quote.f43, quote.f162);
+      }
+      const pThreshold = etf.premiumAlert != null ? etf.premiumAlert : appState.settings.defaultPremiumAlert;
+      const cThreshold = etf.priceAlert != null ? etf.priceAlert : appState.settings.defaultPriceAlert;
+      hasAlert = (pThreshold > 0 && premium != null && Math.abs(premium) >= pThreshold)
+              || (cThreshold > 0 && Math.abs(change) >= cThreshold);
+    }
+
+    const changeStr = change != null
+      ? `${change > 0 ? '+' : ''}${change.toFixed(2)}%`
+      : '--';
+
+    const premiumStr = premium != null
+      ? `${premium > 0 ? '+' : ''}${premium.toFixed(2)}%`
+      : '--';
+
+    const iopvStr = iopv != null ? iopv.toFixed(4) : '--';
+
+    const premiumAlertVal = etf.premiumAlert != null ? etf.premiumAlert : '';
+    const priceAlertVal = etf.priceAlert != null ? etf.priceAlert : '';
+
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-name">${etf.name || etf.code}</span>
+        <span class="card-code">${etf.code}</span>
+      </div>
+      <div class="card-price">${price}</div>
+      <div class="card-change">${changeStr}</div>
+      <div class="card-premium ${hasAlert && premium != null ? 'premium-alert' : ''}">溢价: ${premiumStr}</div>
+      <div class="card-nav">IOPV: ${iopvStr}</div>
+      <div class="card-settings">
+        <label>溢价预警 <input type="number" class="premium-input" value="${premiumAlertVal}" placeholder="${appState.settings.defaultPremiumAlert}" min="0" step="0.5">%</label>
+        <label>涨跌预警 <input type="number" class="price-input" value="${priceAlertVal}" placeholder="${appState.settings.defaultPriceAlert}" min="0" step="0.5">%</label>
+      </div>
+    `;
+
+    let settingsVisible = false;
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.card-settings input')) return;
+      settingsVisible = !settingsVisible;
+      const settingsDiv = card.querySelector('.card-settings');
+      settingsDiv.style.display = settingsVisible ? 'block' : 'none';
+      if (settingsVisible) {
+        const pInput = settingsDiv.querySelector('.premium-input');
+        const cInput = settingsDiv.querySelector('.price-input');
+        pInput.onchange = () => {
+          const v = parseFloat(pInput.value);
+          appState.etfs[index].premiumAlert = isNaN(v) ? null : v;
+          saveConfig();
+        };
+        cInput.onchange = () => {
+          const v = parseFloat(cInput.value);
+          appState.etfs[index].priceAlert = isNaN(v) ? null : v;
+          saveConfig();
+        };
+      }
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+function updateStatusBar() {
+  const now = new Date();
+  document.getElementById('current-time').textContent = now.toLocaleTimeString('zh-CN');
+  const trading = isTradingTime();
+  const statusEl = document.getElementById('trading-status');
+  statusEl.innerHTML = `<span class="dot ${trading ? 'trading' : 'closed'}"></span>${trading ? '交易中' : '已休市'}`;
+  document.getElementById('data-source').textContent = appState.dataSource === 'eastmoney' ? '东方财富' : '新浪财经';
+}
+
+function checkAlerts(dataArray) {
+  const now = Date.now();
+  appState.etfs.forEach((etf, index) => {
+    const quote = dataArray[index];
+    if (!quote || quote.f43 == null) return;
+
+    const change = Math.abs((quote.f170 || 0) / 100);
+    const premium = quote.f162 != null ? calcPremiumRate(quote.f43, quote.f162) : null;
+    const premiumAbs = Math.abs(premium || 0);
+    const pThreshold = etf.premiumAlert != null ? etf.premiumAlert : appState.settings.defaultPremiumAlert;
+    const cThreshold = etf.priceAlert != null ? etf.priceAlert : appState.settings.defaultPriceAlert;
+
+    if (pThreshold > 0 && premium != null && premiumAbs >= pThreshold) {
+      const key = `${etf.code}-premium`;
+      if (!alertDebounce[key] || now - alertDebounce[key] > ALERT_COOLDOWN) {
+        alertDebounce[key] = now;
+        playAlertSound('premium');
+        showToast(`${etf.name} 溢价率 ${premium.toFixed(2)}% 超阈值 ${pThreshold}%`);
+      }
+    }
+
+    if (cThreshold > 0 && change >= cThreshold) {
+      const key = `${etf.code}-price`;
+      if (!alertDebounce[key] || now - alertDebounce[key] > ALERT_COOLDOWN) {
+        alertDebounce[key] = now;
+        playAlertSound('price');
+        const dir = (quote.f170 || 0) > 0 ? '上涨' : '下跌';
+        showToast(`${etf.name} ${dir} ${change.toFixed(2)}% 超阈值 ${cThreshold}%`);
+      }
+    }
+  });
+}
+
+async function refreshData() {
+  if (!isTradingTime()) {
+    renderCards(null);
+    updateStatusBar();
+    return;
+  }
+  let data = await fetchAllFromEastMoney();
+  appState.dataSource = 'eastmoney';
+  if (!data || data.length === 0) {
+    data = await fetchFromSina();
+    appState.dataSource = data ? 'sina' : 'eastmoney';
+  }
+  renderCards(data);
+  if (data && data.length > 0) checkAlerts(data);
+  updateStatusBar();
+}
+
+function startAutoRefresh() {
+  refreshData();
+  if (refreshTimer) clearInterval(refreshTimer);
+  refreshTimer = setInterval(refreshData, REFRESH_INTERVAL);
+}
+
+function loadConfig() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {}
+  return null;
+}
+
+function getDefaultConfig() {
+  return {
+    etfs: PRESET_ETFS.map(e => ({
+      code: e.code,
+      market: e.market,
+      secId: e.secId,
+      name: e.name,
+      enable: true,
+    })),
+    settings: {
+      soundEnabled: true,
+      defaultPremiumAlert: 5,
+      defaultPriceAlert: 3,
+    },
+  };
+}
+
+function saveConfig() {
+  try {
+    const data = {
+      etfs: appState.etfs.map(e => ({
+        code: e.code,
+        market: e.market,
+        secId: e.secId,
+        name: e.name,
+        enable: e.enable,
+        premiumAlert: e.premiumAlert,
+        priceAlert: e.priceAlert,
+      })),
+      settings: appState.settings,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch {}
+}
+
+function renderBottomPanel() {
+  document.getElementById('sound-toggle').textContent = appState.settings.soundEnabled ? '🔊 音效开' : '🔇 音效关';
+  document.getElementById('default-premium').value = appState.settings.defaultPremiumAlert;
+  document.getElementById('default-price').value = appState.settings.defaultPriceAlert;
+}
+
+function addETF(code) {
+  code = String(code).trim();
+  if (!code) return;
+  if (appState.etfs.find(e => e.code === code)) {
+    showToast('该ETF已存在');
+    return;
+  }
+  const market = code.startsWith('6') || code.startsWith('5') ? 'sh' : 'sz';
+  const secId = (market === 'sh' ? '1.' : '0.') + code;
+  appState.etfs.push({
+    code, market, secId, name: code,
+    enable: true,
+    premiumAlert: null,
+    priceAlert: null,
+  });
+  saveConfig();
+  refreshData();
+}
+
+function removeETF(code) {
+  appState.etfs = appState.etfs.filter(e => e.code !== code);
+  saveConfig();
+  refreshData();
+}
+
+async function initApp() {
+  const saved = loadConfig();
+  if (saved) {
+    appState.settings = { ...appState.settings, ...saved.settings };
+    appState.etfs = saved.etfs.map(e => {
+      const preset = PRESET_ETFS.find(p => p.code === e.code);
+      return { ...preset, ...e, nav: null };
+    });
+    if (appState.etfs.length === 0) {
+      const def = getDefaultConfig();
+      appState.etfs = def.etfs;
+    }
+  } else {
+    const def = getDefaultConfig();
+    appState.etfs = def.etfs;
+    appState.settings = def.settings;
+  }
+  saveConfig();
+
+  renderBottomPanel();
+  updateStatusBar();
+
+  startAutoRefresh();
+}
+
+document.getElementById('sound-toggle').addEventListener('click', () => {
+  appState.settings.soundEnabled = !appState.settings.soundEnabled;
+  renderBottomPanel();
+  saveConfig();
+});
+
+document.getElementById('test-sound-btn').addEventListener('click', () => {
+  playAlertSound('premium');
+  setTimeout(() => playAlertSound('price'), 1200);
+});
+
+document.getElementById('default-premium').addEventListener('change', (e) => {
+  const v = parseFloat(e.target.value);
+  appState.settings.defaultPremiumAlert = isNaN(v) || v < 0 ? 0 : v;
+  saveConfig();
+  refreshData();
+});
+
+document.getElementById('default-price').addEventListener('change', (e) => {
+  const v = parseFloat(e.target.value);
+  appState.settings.defaultPriceAlert = isNaN(v) || v < 0 ? 0 : v;
+  saveConfig();
+  refreshData();
+});
+
+document.getElementById('add-etf-btn').addEventListener('click', () => {
+  const code = prompt('输入ETF代码:');
+  if (code) addETF(code);
+});
+
+document.addEventListener('DOMContentLoaded', initApp);
+</script>
+</body>
+</html>
