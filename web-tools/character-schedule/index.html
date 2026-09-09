@@ -224,6 +224,94 @@
         .toast.hiding {
             animation: fadeOut 0.3s ease-out forwards;
         }
+        .settings-wrap {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease;
+        }
+        .settings-wrap.open {
+            max-height: 400px;
+        }
+        .settings-inner {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .settings-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .color-rule-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 12px;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+        .color-rule-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .color-rule-row input[type="text"] {
+            flex: 1;
+            padding: 5px 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 13px;
+            outline: none;
+        }
+        .color-rule-row input[type="text"]:focus {
+            border-color: #999;
+        }
+        .color-rule-row input[type="color"] {
+            width: 32px;
+            height: 28px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 1px;
+        }
+        .color-rule-row .btn-remove {
+            width: 28px;
+            height: 28px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .color-rule-row .btn-remove:hover {
+            border-color: #e74c3c;
+            color: #e74c3c;
+        }
+        .btn-add-rule {
+            padding: 5px 12px;
+            border: 1px dashed #ccc;
+            background: transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #999;
+            transition: all 0.2s;
+        }
+        .btn-add-rule:hover {
+            border-color: #999;
+            color: #555;
+        }
+        .char-tag.custom-color {
+            border: 1px solid currentColor;
+        }
     </style>
 </head>
 <body>
@@ -234,6 +322,7 @@
         <div class="toolbar">
             <div class="toolbar-left">
                 <button class="btn" id="toggle-editor-btn">编辑</button>
+                <button class="btn" id="toggle-settings-btn">设置</button>
                 <span class="save-indicator" id="save-dot"></span>
             </div>
             <div>
@@ -243,6 +332,14 @@
 
         <div class="editor-wrap" id="editor-wrap">
             <textarea id="editor" placeholder="输入格式：日期：人物1，人物2，人物3...&#10;例如：6.7：射手座，洛基，荷鲁斯"></textarea>
+        </div>
+
+        <div class="settings-wrap" id="settings-wrap">
+            <div class="settings-inner">
+                <div class="settings-title">自定义颜色</div>
+                <div class="color-rule-list" id="color-rule-list"></div>
+                <button class="btn-add-rule" id="add-rule-btn">+ 添加</button>
+            </div>
         </div>
 
         <div class="legend">
@@ -265,20 +362,98 @@
 
     <script>
 const STORAGE_KEY = 'character-schedule-data';
+const COLOR_RULES_KEY = 'character-schedule-colors';
 const editor = document.getElementById('editor');
 const scheduleList = document.getElementById('schedule-list');
 const statsEl = document.getElementById('stats');
 const saveDot = document.getElementById('save-dot');
 const editorWrap = document.getElementById('editor-wrap');
 const toggleBtn = document.getElementById('toggle-editor-btn');
+const settingsWrap = document.getElementById('settings-wrap');
+const toggleSettingsBtn = document.getElementById('toggle-settings-btn');
+const colorRuleList = document.getElementById('color-rule-list');
+const addRuleBtn = document.getElementById('add-rule-btn');
 
 let editorOpen = false;
+let settingsOpen = false;
+let colorRules = [];
 
 toggleBtn.addEventListener('click', () => {
     editorOpen = !editorOpen;
     editorWrap.classList.toggle('open', editorOpen);
     toggleBtn.textContent = editorOpen ? '收起' : '编辑';
     if (editorOpen) editor.focus();
+});
+
+toggleSettingsBtn.addEventListener('click', () => {
+    settingsOpen = !settingsOpen;
+    settingsWrap.classList.toggle('open', settingsOpen);
+    toggleSettingsBtn.textContent = settingsOpen ? '收起' : '设置';
+});
+
+function loadColorRules() {
+    try {
+        colorRules = JSON.parse(localStorage.getItem(COLOR_RULES_KEY)) || [];
+    } catch {
+        colorRules = [];
+    }
+}
+
+function saveColorRules() {
+    localStorage.setItem(COLOR_RULES_KEY, JSON.stringify(colorRules));
+}
+
+function getColorMap() {
+    const map = {};
+    for (const rule of colorRules) {
+        if (rule.name && rule.color) {
+            map[rule.name] = rule.color;
+        }
+    }
+    return map;
+}
+
+function renderColorRules() {
+    colorRuleList.innerHTML = colorRules.map((rule, i) => `
+        <div class="color-rule-row">
+            <input type="text" value="${rule.name}" placeholder="角色名" data-idx="${i}" class="rule-name">
+            <input type="color" value="${rule.color}" data-idx="${i}" class="rule-color">
+            <button class="btn-remove" data-idx="${i}">&times;</button>
+        </div>
+    `).join('');
+
+    colorRuleList.querySelectorAll('.rule-name').forEach(input => {
+        input.addEventListener('input', e => {
+            colorRules[parseInt(e.target.dataset.idx)].name = e.target.value.trim();
+            saveColorRules();
+            render();
+        });
+    });
+
+    colorRuleList.querySelectorAll('.rule-color').forEach(input => {
+        input.addEventListener('input', e => {
+            colorRules[parseInt(e.target.dataset.idx)].color = e.target.value;
+            saveColorRules();
+            render();
+        });
+    });
+
+    colorRuleList.querySelectorAll('.btn-remove').forEach(btn => {
+        btn.addEventListener('click', e => {
+            colorRules.splice(parseInt(e.target.dataset.idx), 1);
+            saveColorRules();
+            renderColorRules();
+            render();
+        });
+    });
+}
+
+addRuleBtn.addEventListener('click', () => {
+    colorRules.push({ name: '', color: '#e74c3c' });
+    saveColorRules();
+    renderColorRules();
+    const inputs = colorRuleList.querySelectorAll('.rule-name');
+    if (inputs.length) inputs[inputs.length - 1].focus();
 });
 
 function save() {
@@ -392,6 +567,7 @@ function render() {
     }
 
     const highlightSet = findDuplicates(entries);
+    const colorMap = getColorMap();
     let highlightedCount = 0;
 
     scheduleList.innerHTML = entries.map(entry => {
@@ -399,6 +575,10 @@ function render() {
             const key = `${entry.date}|${char}`;
             const isHighlighted = highlightSet[key];
             if (isHighlighted) highlightedCount++;
+            const customColor = colorMap[char];
+            if (customColor) {
+                return `<span class="char-tag custom-color" style="color:${customColor};border-color:${customColor};">${char}</span>`;
+            }
             return `<span class="char-tag ${isHighlighted ? 'highlight' : 'normal'}">${char}</span>`;
         }).join('');
 
@@ -420,6 +600,8 @@ document.getElementById('clear-btn').addEventListener('click', () => {
     }
 });
 
+loadColorRules();
+renderColorRules();
 load();
 render();
     </script>
