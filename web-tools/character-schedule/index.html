@@ -309,9 +309,6 @@
             border-color: #999;
             color: #555;
         }
-        .char-tag.custom-color {
-            border: 1px solid currentColor;
-        }
     </style>
 </head>
 <body>
@@ -577,7 +574,7 @@ function render() {
             if (isHighlighted) highlightedCount++;
             const customColor = colorMap[char];
             if (customColor) {
-                return `<span class="char-tag custom-color" style="color:${customColor};border-color:${customColor};">${char}</span>`;
+                return `<span class="char-tag ${isHighlighted ? 'highlight' : 'normal'}" style="color:${customColor};">${char}</span>`;
             }
             return `<span class="char-tag ${isHighlighted ? 'highlight' : 'normal'}">${char}</span>`;
         }).join('');
