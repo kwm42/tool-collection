@@ -309,6 +309,52 @@
             border-color: #999;
             color: #555;
         }
+        .quality-section {
+            margin-top: 24px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .quality-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #333;
+            padding: 12px 16px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .quality-table-wrap {
+            overflow-x: auto;
+        }
+        .quality-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .quality-table th,
+        .quality-table td {
+            padding: 8px 14px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+            white-space: nowrap;
+        }
+        .quality-table th {
+            background: #fafafa;
+            font-weight: 600;
+            color: #555;
+        }
+        .quality-table thead th:first-child {
+            background: #f5f6fa;
+            color: #999;
+        }
+        .quality-table td:first-child {
+            font-weight: 600;
+            color: #777;
+            background: #fafafa;
+        }
+        .quality-table tbody tr:hover td {
+            background: #fafafa;
+        }
     </style>
 </head>
 <body>
@@ -353,6 +399,32 @@
 
         <div id="schedule-list"></div>
         <div class="stats" id="stats"></div>
+
+        <div class="quality-section">
+            <div class="quality-title">抽卡消耗表</div>
+            <div class="quality-table-wrap">
+                <table class="quality-table">
+                    <thead>
+                        <tr>
+                            <th>星级</th>
+                            <th>SSR</th>
+                            <th>SSR+</th>
+                            <th>UR</th>
+                            <th>UR+</th>
+                            <th>MR/IR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0星</td><td>144</td><td>168</td><td>176</td><td>192</td><td>195</td></tr>
+                        <tr><td>1星</td><td>176</td><td>210</td><td>224</td><td>240</td><td>259</td></tr>
+                        <tr><td>2星</td><td>224</td><td>273</td><td>312</td><td>325</td><td>330</td></tr>
+                        <tr><td>3星</td><td>312</td><td>357</td><td>416</td><td>432</td><td>448</td></tr>
+                        <tr><td>4星</td><td>416</td><td>480</td><td>552</td><td>570</td><td>585</td></tr>
+                        <tr><td>5星</td><td>552</td><td>620</td><td>715</td><td>720</td><td>741</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div id="toast-container"></div>
