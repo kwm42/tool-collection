@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>屏幕标尺</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="rulerCanvas"></canvas>
+
+    <div id="calibrationModal">
+        <div class="modal-box">
+            <h2>屏幕标尺校准</h2>
+            <p class="hint">找一件常见物品放到屏幕上，调整参考线使其与物品大小一致</p>
+
+            <div class="item-tabs">
+                <button class="item-btn active" data-index="0">银行卡</button>
+                <button class="item-btn" data-index="1">A4纸宽</button>
+                <button class="item-btn" data-index="2">纸币100元</button>
+                <button class="item-btn" data-index="3">一圆硬币</button>
+            </div>
+
+            <div class="item-info">
+                <span class="item-name" id="itemName">银行卡</span>
+                <span class="item-size" id="itemSize">宽度 85.60 mm</span>
+            </div>
+
+            <p class="tip" id="tipText">把银行卡水平放在屏幕中间或边缘，拖动滑块让两条绿线与卡片左右边缘对齐</p>
+
+            <div class="guide-wrap" id="guideWrap">
+                <div class="guide-line guide-left"></div>
+                <div class="guide-line guide-right"></div>
+                <span class="guide-label" id="guideLabel"></span>
+            </div>
+
+            <div class="slider-row">
+                <button class="btn" id="minusBtn">−1</button>
+                <input type="range" id="sizeSlider" min="100" max="1600" step="1">
+                <button class="btn" id="plusBtn">+1</button>
+            </div>
+            <div class="fine-row">
+                <button class="btn fine" id="minusFineBtn">−0.1</button>
+                <span class="px-label">参考线宽度（像素）</span>
+                <button class="btn fine" id="plusFineBtn">+0.1</button>
+            </div>
+
+            <div class="calib-info" id="calibInfo"></div>
+
+            <div class="modal-actions">
+                <button class="btn primary" id="confirmBtn">完成校准，显示标尺</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="resetFloat" class="float-btn">⚙ 重校</div>
+    <div id="hiddenFloat" class="float-btn hidden-btn">隐藏</div>
+    <div id="shapesFloat" class="float-btn">▦</div>
+
+    <div id="shapePanel" class="shape-panel">
+        <div class="sp-header">
+            <span id="spTitle">添加图形</span>
+            <span class="sp-close" id="spClose">×</span>
+        </div>
+        <div class="sp-types" id="spTypes">
+            <button data-type="rect" class="sp-type active">长方形</button>
+            <button data-type="square" class="sp-type">正方形</button>
+            <button data-type="circle" class="sp-type">圆形</button>
+            <button data-type="triangle" class="sp-type">三角形</button>
+        </div>
+        <div class="sp-image">
+            <button class="sp-upload" id="spUpload">📷 上传本地图片</button>
+            <input type="file" id="spFile" accept="image/*" hidden>
+        </div>
+        <div class="sp-size">
+            <div class="sp-field">
+                <span>宽</span>
+                <input type="number" id="spW" min="1" step="1">
+                <em>mm</em>
+            </div>
+            <div class="sp-field">
+                <span>高</span>
+                <input type="number" id="spH" min="1" step="1">
+                <em>mm</em>
+            </div>
+        </div>
+        <div class="sp-px" id="spPx"></div>
+        <div class="sp-actions">
+            <button class="btn primary small" id="spAdd">添加</button>
+            <button class="btn danger small" id="spDelete" style="display:none">删除选中</button>
+        </div>
+        <p class="sp-status" id="spStatus"></p>
+    </div>
+
+    <script>
+const ITEMS = [
+    { name: '银行卡', size: 85.60, hint: '把银行卡水平放在屏幕中间或边缘，拖动滑块让两条绿线与卡片左右边缘对齐' },
+    { name: 'A4纸宽', size: 210.0, hint: '把A4纸横向放在屏幕上，让两条绿线与纸张左右边缘对齐' },
+    { name: '纸币100元', size: 156.0, hint: '把百元钞票水平放好，让两条绿线与钞票左右边缘对齐（实测约156mm）' },
+    { name: '一圆硬币', size: 25.00, hint: '把硬币放屏幕中间，让两条绿线与硬币左右两侧相切（直径25mm）' },
+];
+
+const canvas = document.getElementById('rulerCanvas');
+const ctx = canvas.getContext('2d');
+
+const state = {
+    calibrated: false,
+    guidePx: 300,
+    itemIndex: 0,
+};
+
+const RULER_W = 46;
+const RULER_H = 46;
+const COLOR_MARK = '#2b2b2b';
+
+function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    drawRulers();
+}
+
+function ppmm() {
+    if (!state.calibrated) return 0;
+    return state.guidePx / ITEMS[state.itemIndex].size;
+}
+
+function drawRulers() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    ctx.clearRect(0, 0, w, h);
+    const mm = ppmm();
+    if (!mm) return;
+
+    ctx.fillStyle = '#ecebe6';
+    ctx.fillRect(0, 0, RULER_W, h);
+    ctx.fillRect(0, h - RULER_H, w, RULER_H);
+
+    ctx.strokeStyle = '#c6c3ba';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(0.5, 0.5, RULER_W - 1, h - 1);
+    ctx.strokeRect(0.5, h - RULER_H - 0.5, w - 1, RULER_H);
+
+    const major = 10 * mm;
+    const mid = 5 * mm;
+    const minor = mm;
+
+    ctx.fillStyle = COLOR_MARK;
+    ctx.strokeStyle = COLOR_MARK;
+    ctx.font = '9px "Segoe UI", "Microsoft YaHei", sans-serif';
+
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    for (let y = 0; y <= h; y += major) {
+        ctx.fillRect(RULER_W - 20, y - 0.5, 20, 1);
+        ctx.fillRect(RULER_W - 13, y - 0.5, 13, 1);
+        ctx.fillRect(RULER_W - 8, y - 0.5, 8, 1);
+        const cm = Math.round((y / mm) / 10);
+        ctx.fillStyle = '#555';
+        ctx.fillText(cm + '', RULER_W - 22, y - (cm === 0 ? 8 : 10));
+        ctx.fillStyle = COLOR_MARK;
+    }
+
+    ctx.strokeStyle = 'rgba(0,0,0,0.45)';
+    for (let y = 0; y <= h; y += mid) {
+        ctx.beginPath();
+        ctx.moveTo(RULER_W - 13, y + 0.5);
+        ctx.lineTo(RULER_W, y + 0.5);
+        ctx.stroke();
+    }
+    ctx.strokeStyle = 'rgba(0,0,0,0.28)';
+    for (let y = 0; y <= h; y += minor) {
+        ctx.beginPath();
+        ctx.moveTo(RULER_W - 8, y + 0.5);
+        ctx.lineTo(RULER_W, y + 0.5);
+        ctx.stroke();
+    }
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    for (let x = 0; x <= w; x += major) {
+        ctx.fillRect(x - 0.5, h - RULER_H, 1, 20);
+        ctx.fillRect(x - 0.5, h - RULER_H, 1, 13);
+        ctx.fillRect(x - 0.5, h - RULER_H, 1, 8);
+        const cm = Math.round((x / mm) / 10);
+        ctx.fillStyle = '#555';
+        ctx.fillText(cm + '', x, h - RULER_H + (cm === 0 ? 28 : 24));
+        ctx.fillStyle = COLOR_MARK;
+    }
+    ctx.strokeStyle = 'rgba(0,0,0,0.45)';
+    for (let x = 0; x <= w; x += mid) {
+        ctx.beginPath();
+        ctx.moveTo(x + 0.5, h - RULER_H + 13);
+        ctx.lineTo(x + 0.5, h - RULER_H);
+        ctx.stroke();
+    }
+    ctx.strokeStyle = 'rgba(0,0,0,0.28)';
+    for (let x = 0; x <= w; x += minor) {
+        ctx.beginPath();
+        ctx.moveTo(x + 0.5, h - RULER_H + 8);
+        ctx.lineTo(x + 0.5, h - RULER_H);
+        ctx.stroke();
+    }
+}
+
+const guideWrap = document.getElementById('guideWrap');
+const guideLeft = document.querySelector('.guide-left');
+const guideRight = document.querySelector('.guide-right');
+const sizeSlider = document.getElementById('sizeSlider');
+const guideLabel = document.getElementById('guideLabel');
+const itemNameEl = document.getElementById('itemName');
+const itemSizeEl = document.getElementById('itemSize');
+const tipEl = document.getElementById('tipText');
+const calibInfo = document.getElementById('calibInfo');
+const modal = document.getElementById('calibrationModal');
+
+function selectItem(index) {
+    state.itemIndex = index;
+    const item = ITEMS[index];
+    itemNameEl.textContent = item.name;
+    itemSizeEl.textContent = '宽度 ' + item.size.toFixed(2) + ' mm';
+    tipEl.textContent = item.hint;
+    updateGuide();
+}
+
+function updateGuide() {
+    const px = state.guidePx;
+    const half = px / 2;
+
+    guideLeft.style.left = 'calc(50% - ' + half + 'px)';
+    guideRight.style.left = 'calc(50% + ' + half + 'px - 2px)';
+    guideLabel.textContent = px.toFixed(1) + ' px';
+    sizeSlider.value = px;
+
+    const known = ITEMS[state.itemIndex].size;
+    const perCm = (state.guidePx / known) * 10;
+    calibInfo.textContent = '校准结果：每厘米 ≈ ' + perCm.toFixed(1) + ' px  (每英寸 ' + (perCm * 2.54).toFixed(0) + ' px)';
+}
+
+sizeSlider.addEventListener('input', () => {
+    state.guidePx = parseFloat(sizeSlider.value);
+    updateGuide();
+});
+
+const minusBtn = document.getElementById('minusBtn');
+const plusBtn = document.getElementById('plusBtn');
+const minusFineBtn = document.getElementById('minusFineBtn');
+const plusFineBtn = document.getElementById('plusFineBtn');
+
+function adjust(delta) {
+    state.guidePx = Math.max(50, Math.min(3000, state.guidePx + delta));
+    updateGuide();
+}
+
+minusBtn.addEventListener('click', () => adjust(-1));
+plusBtn.addEventListener('click', () => adjust(1));
+minusFineBtn.addEventListener('click', () => adjust(-0.1));
+plusFineBtn.addEventListener('click', () => adjust(0.1));
+
+let dragSide = null;
+guideWrap.addEventListener('mousedown', (e) => {
+    const rect = guideWrap.getBoundingClientRect();
+    const left = rect.x + rect.width / 2 - state.guidePx / 2;
+    const right = rect.x + rect.width / 2 + state.guidePx / 2;
+    if (Math.abs(e.clientX - left) < 20) dragSide = 'left';
+    else if (Math.abs(e.clientX - right) < 20) dragSide = 'right';
+});
+
+window.addEventListener('mousemove', (e) => {
+    if (!dragSide) return;
+    const rect = guideWrap.getBoundingClientRect();
+    const right = rect.x + rect.width / 2 + state.guidePx / 2;
+    const delta = dragSide === 'left' ? right - e.clientX : e.clientX - (rect.x + rect.width / 2 - state.guidePx / 2);
+    state.guidePx = Math.max(50, Math.min(3000, delta));
+    updateGuide();
+});
+
+window.addEventListener('mouseup', () => { dragSide = null; });
+
+document.querySelectorAll('.item-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.item-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectItem(parseInt(btn.dataset.index));
+    });
+});
+
+const confirmBtn = document.getElementById('confirmBtn');
+confirmBtn.addEventListener('click', () => {
+    state.calibrated = true;
+    modal.style.display = 'none';
+    document.getElementById('resetFloat').style.display = 'flex';
+    document.getElementById('hiddenFloat').style.display = 'flex';
+    resizeCanvas();
+});
+
+document.getElementById('resetFloat').addEventListener('click', () => {
+    state.calibrated = false;
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    modal.style.display = 'flex';
+    updateGuide();
+});
+
+document.getElementById('hiddenFloat').addEventListener('click', () => {
+    const btn = document.getElementById('hiddenFloat');
+    canvas.classList.toggle('hidden-mode');
+    btn.textContent = canvas.classList.contains('hidden-mode') ? '显示' : '隐藏';
+    resizeCanvas();
+});
+
+const shapesFloat = document.getElementById('shapesFloat');
+const shapePanel = document.getElementById('shapePanel');
+const spTitle = document.getElementById('spTitle');
+const spClose = document.getElementById('spClose');
+const spTypes = document.getElementById('spTypes');
+const spW = document.getElementById('spW');
+const spH = document.getElementById('spH');
+const spPx = document.getElementById('spPx');
+const spAdd = document.getElementById('spAdd');
+const spDelete = document.getElementById('spDelete');
+const spStatus = document.getElementById('spStatus');
+const spUpload = document.getElementById('spUpload');
+const spFile = document.getElementById('spFile');
+
+const shapes = [];
+let shapeSeq = 0;
+let selectedShapeId = null;
+let currentShapeType = 'rect';
+
+function mm() {
+    return ppmm();
+}
+
+function setShapePanelOpen(open) {
+    shapePanel.classList.toggle('open', open);
+}
+
+shapesFloat.addEventListener('click', () => {
+    setShapePanelOpen(!shapePanel.classList.contains('open'));
+});
+
+spClose.addEventListener('click', () => setShapePanelOpen(false));
+
+const DEFAULTS = {
+    rect: [80, 50],
+    square: [50, 50],
+    circle: [50, 50],
+    triangle: [70, 50],
+};
+
+spTypes.addEventListener('click', (e) => {
+    const btn = e.target.closest('.sp-type');
+    if (!btn) return;
+    document.querySelectorAll('.sp-type').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentShapeType = btn.dataset.type;
+    spH.disabled = typeIsSquareLike(currentShapeType);
+
+    if (selectedShapeId) {
+        const s = findShape(selectedShapeId);
+        s.type = currentShapeType;
+        if (typeIsSquareLike(s.type)) {
+            s.hMm = s.wMm;
+            spH.value = roundMm(s.hMm);
+        }
+        renderShape(s);
+        refreshPxPreview();
+        return;
+    }
+
+    const def = DEFAULTS[currentShapeType];
+    spW.value = def[0];
+    spH.value = def[1];
+    refreshPxPreview();
+});
+
+function findShape(id) {
+    return shapes.find(s => s.id === id);
+}
+
+function typeIsSquareLike(t) {
+    return t === 'square' || t === 'circle';
+}
+
+function applyTypeConstraints(s) {
+    if (typeIsSquareLike(s.type)) {
+        s.hMm = s.wMm;
+        spH.value = roundMm(s.hMm);
+        spH.disabled = true;
+    } else if (s.type === 'image') {
+        spH.disabled = false;
+    } else {
+        spH.disabled = false;
+    }
+}
+
+function roundMm(v) {
+    return Math.round(v * 100) / 100;
+}
+
+function createShapeMeta(type, wMm, hMm) {
+    const m = mm();
+    const shape = {
+        id: 's' + (++shapeSeq),
+        type,
+        wMm,
+        hMm,
+        x: 0,
+        y: 0,
+        el: null,
+    };
+    const wPx = wMm * m;
+    const hPx = hMm * m;
+    shape.x = Math.max(8, (window.innerWidth - wPx) / 2);
+    shape.y = Math.max(8, (window.innerHeight - hPx) / 2 - 60);
+    return shape;
+}
+
+function renderShape(shape) {
+    if (!shape.el) {
+        shape.el = document.createElement('div');
+        shape.el.className = 'shape';
+        shape.el.dataset.id = shape.id;
+        document.body.appendChild(shape.el);
+    }
+    const m = mm();
+    const el = shape.el;
+    el.className = 'shape ' + shape.type + (shape.id === selectedShapeId ? ' selected' : '');
+    el.style.left = shape.x + 'px';
+    el.style.top = shape.y + 'px';
+    el.style.width = (shape.wMm * m) + 'px';
+    el.style.height = (shape.hMm * m) + 'px';
+    if (shape.type === 'image') {
+        el.style.background = 'url("' + shape.img + '") center / 100% 100% no-repeat';
+    } else if (shape.type === 'triangle') {
+        el.style.background = 'rgba(74,163,255,0.22)';
+    } else {
+        el.style.background = 'rgba(74,163,255,0.16)';
+    }
+}
+
+function addShape() {
+    if (!state.calibrated) {
+        spStatus.textContent = '请先完成标尺校准，才能按真实尺寸添加图形';
+        return;
+    }
+    const m = mm();
+    if (!m) return;
+
+    let wMm = parseFloat(spW.value);
+    let hMm = parseFloat(spH.value);
+    if (!wMm || wMm <= 0) wMm = DEFAULTS[currentShapeType][0];
+    if (!hMm || hMm <= 0) hMm = DEFAULTS[currentShapeType][1];
+    if (typeIsSquareLike(currentShapeType) || spH.disabled) hMm = wMm;
+
+    const shape = createShapeMeta(currentShapeType, wMm, hMm);
+    shapes.push(shape);
+    renderShape(shape);
+
+    const wPx = Math.round(wMm * m);
+    const hPx = Math.round(hMm * m);
+    spStatus.textContent = '已添加 ' + shapeName(currentShapeType) + '（' + wPx + '×' + hPx + ' px），可点击图形编辑尺寸';
+}
+
+function shapeName(type) {
+    const names = { rect: '长方形', square: '正方形', circle: '圆形', triangle: '三角形', image: '图片' };
+    return names[type];
+}
+
+function selectShape(id) {
+    selectedShapeId = id;
+    shapes.forEach(s => {
+        if (s.el) s.el.classList.toggle('selected', s.id === id);
+    });
+    const s = findShape(id);
+    spW.value = roundMm(s.wMm);
+    spH.value = roundMm(s.hMm);
+    spTitle.textContent = '编辑图形（可拖动）';
+    spAdd.style.display = 'none';
+    spDelete.style.display = 'inline-flex';
+    applyTypeConstraints(s);
+    syncTypeTab(s.type);
+    refreshPxPreview();
+}
+
+function deselectShape() {
+    selectedShapeId = null;
+    shapes.forEach(s => { if (s.el) s.el.classList.remove('selected'); });
+    spTitle.textContent = '添加图形';
+    spAdd.style.display = 'inline-flex';
+    spDelete.style.display = 'none';
+    spH.disabled = typeIsSquareLike(currentShapeType);
+    refreshPxPreview();
+}
+
+function syncTypeTab(type) {
+    document.querySelectorAll('.sp-type').forEach(b => b.classList.toggle('active', b.dataset.type === type));
+    currentShapeType = type;
+}
+
+function refreshPxPreview() {
+    if (!state.calibrated) {
+        spPx.textContent = '';
+        return;
+    }
+    const m = mm();
+    const w = parseFloat(spW.value) || 0;
+    const h = parseFloat(spH.value) || 0;
+    spPx.textContent = '≈ ' + Math.round(w * m) + ' × ' + Math.round(h * m) + ' px';
+}
+
+spW.addEventListener('input', () => {
+    const v = parseFloat(spW.value);
+    if (!(v > 0)) { refreshPxPreview(); return; }
+    if (selectedShapeId) {
+        const s = findShape(selectedShapeId);
+        s.wMm = v;
+        if (typeIsSquareLike(s.type)) {
+            s.hMm = v;
+            spH.value = roundMm(v);
+        } else if (s.type === 'image' && s.ratio) {
+            s.hMm = roundMm(v * s.ratio);
+            spH.value = roundMm(s.hMm);
+        }
+        renderShape(s);
+    }
+    refreshPxPreview();
+});
+
+spH.addEventListener('input', () => {
+    const v = parseFloat(spH.value);
+    if (!(v > 0) || spH.disabled) { refreshPxPreview(); return; }
+    if (selectedShapeId) {
+        const s = findShape(selectedShapeId);
+        s.hMm = v;
+        if (s.type === 'image' && s.ratio) {
+            s.wMm = roundMm(v / s.ratio);
+            spW.value = roundMm(s.wMm);
+        }
+        renderShape(s);
+    }
+    refreshPxPreview();
+});
+
+spAdd.addEventListener('click', addShape);
+
+spUpload.addEventListener('click', () => {
+    if (!state.calibrated) {
+        spStatus.textContent = '请先完成标尺校准，才能添加图片';
+        return;
+    }
+    spFile.click();
+});
+
+spFile.addEventListener('change', () => {
+    const file = spFile.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+            addImageShape(reader.result, img.naturalWidth, img.naturalHeight);
+        };
+        img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+    spFile.value = '';
+});
+
+function addImageShape(dataUrl, naturalW, naturalH) {
+    if (!state.calibrated) return;
+    const ratio = naturalH / naturalW;
+    const imgW = 160;
+    const shape = {
+        id: 's' + (++shapeSeq),
+        type: 'image',
+        wMm: imgW,
+        hMm: Math.round(imgW * ratio * 100) / 100,
+        ratio,
+        img: dataUrl,
+        x: Math.max(8, (window.innerWidth - imgW * mm()) / 2),
+        y: Math.max(8, (window.innerHeight - imgW * ratio * mm()) / 2 - 60),
+        el: null,
+    };
+    shapes.push(shape);
+    renderShape(shape);
+    spStatus.textContent = '已添加图片（默认按原始比例显示），可拖动或点击编辑';
+}
+
+spDelete.addEventListener('click', () => {
+    if (!selectedShapeId) return;
+    const idx = shapes.findIndex(s => s.id === selectedShapeId);
+    if (idx >= 0) {
+        const s = shapes[idx];
+        if (s.el) s.el.remove();
+        shapes.splice(idx, 1);
+    }
+    deselectShape();
+});
+
+let drag = null;
+document.addEventListener('mousedown', (e) => {
+    const el = e.target.closest('.shape');
+    if (el) {
+        e.preventDefault();
+        selectShape(el.dataset.id);
+        drag = {
+            id: el.dataset.id,
+            dx: e.clientX - el.offsetLeft,
+            dy: e.clientY - el.offsetTop,
+        };
+    } else if (!e.target.closest('.shape-panel') && !e.target.closest('.float-btn')) {
+        deselectShape();
+    }
+});
+
+window.addEventListener('mousemove', (e) => {
+    if (!drag) return;
+    const s = findShape(drag.id);
+    if (!s) return;
+    const wPx = s.wMm * mm();
+    const hPx = s.hMm * mm();
+    s.x = Math.max(-wPx + 30, Math.min(window.innerWidth - 30, e.clientX - drag.dx));
+    s.y = Math.max(-hPx + 30, Math.min(window.innerHeight - 30, e.clientY - drag.dy));
+    if (s.el) {
+        s.el.style.left = s.x + 'px';
+        s.el.style.top = s.y + 'px';
+    }
+});
+
+window.addEventListener('mouseup', () => {
+    drag = null;
+});
+
+function clampAllShapes() {
+    const m = mm();
+    if (!m) return;
+    shapes.forEach(s => {
+        const wPx = s.wMm * mm();
+        const hPx = s.hMm * mm();
+        s.x = Math.max(0, Math.min(window.innerWidth - wPx, s.x));
+        s.y = Math.max(0, Math.min(window.innerHeight - hPx, s.y));
+        if (s.el) {
+            s.el.style.left = s.x + 'px';
+            s.el.style.top = s.y + 'px';
+        }
+    });
+}
+
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    clampAllShapes();
+});
+
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    clampAllShapes();
+});
+
+resizeCanvas();
+selectItem(0);
+spW.value = DEFAULTS.rect[0];
+spH.value = DEFAULTS.rect[1];
+refreshPxPreview();
+shapesFloat.style.display = 'flex';
+    </script>
+</body>
+</html>
