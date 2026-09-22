@@ -1,150 +1,72 @@
 # AGENTS.md - Agent Coding Guidelines
 
-Multi-tool collection with web tools and desktop tools.
+Personal tool collection: root `index.html` is a Chinese-language nav hub, plus fully independent subprojects. There is NO root workspace/package.json; each project has its own lockfile and package manager.
 
-## Project Structure
+## Project structure
 
 ```
 tool-collection/
-├── index.html
-├── desktop-tools/WallTools/           # Electron + React + TypeScript
-└── web-tools/
-    ├── image-concat/                   # Vite + React + Tailwind
-    ├── pip-calculator/                 # Vanilla HTML/JS
-    ├── pip-calculator-react/           # Vite + React + Tailwind
-    ├── prompt-generator/               # Vite + React + TypeScript + Tailwind
-    └── vtt-to-srt/                     # Vanilla HTML/JS
+├── index.html                       # 工具导航 hub — add a card here for every new tool
+├── backend/comfyui-server/          # Node Express + WebSocket server that drives ComfyUI (npm)
+└── web-tools/                       # standalone tools, one per dir
+    ├── comfyui-trigger/             # React 18 + Vite + Tailwind (pnpm) — pairs with backend
+    ├── image-concat/                # React 18 + Vite + Tailwind (pnpm)
+    ├── prompt-generator/            # React 19 + TS + Vite + Tailwind (npm), dev port 3002
+    ├── script-collection/           # React 19 + TS + Vite (npm), dev port 3001, not in nav
+    ├── risk-position-calculator/    # React 18 + Vite + Tailwind (pnpm), dev port 3003
+    ├── srt-convertor/               # vanilla HTML/JS (renamed from vtt-to-srt)
+    ├── pip-calculator/              # vanilla HTML/JS
+    ├── screen-ruler/                # vanilla HTML/CSS
+    ├── character-schedule/          # vanilla HTML
+    ├── etf-monitor/                 # vanilla HTML (has api.md)
+    ├── comfyui-frontend-test/       # throwaway scratch page, not in nav
+    └── position-calculator/         # empty stub (unused)
 ```
 
----
+Vanilla = no build/install; edit the HTML/JS directly. Built tools use Vite and each has `vite.config` with `base: './'` (all except script-collection).
 
 ## Build / Lint / Test Commands
 
-### WallTools (Electron)
+### Vite + React tools (comfyui-trigger, image-concat, risk-position-calculator)
 
 ```bash
-cd desktop-tools/WallTools
-yarn install
-yarn dev                    # Vite dev server
-yarn dev:electron           # Electron app
-yarn build                  # Build Vite + Electron
-yarn dist                   # Create distributable
-yarn lint && yarn lint:fix  # Lint + fix
-yarn type-check             # TypeScript check
-```
-
-### prompt-generator (ComfyUI Prompt Generator)
-
-```bash
-cd web-tools/prompt-generator
-pnpm install                # or npm install
-pnpm dev                    # Vite dev server (port 3002)
-pnpm build                  # TypeScript check + Vite build
-pnpm lint                   # ESLint with typescript-eslint
-pnpm preview                # Preview production build
-```
-
-### image-concat / pip-calculator-react
-
-```bash
-cd web-tools/[project]
+cd web-tools/<tool>
 pnpm install
 pnpm dev
 pnpm build && pnpm preview
 ```
 
-### pip-calculator / vtt-to-srt
+### Vite + TS tools (prompt-generator, script-collection)
 
-No build required. Edit HTML/JS directly.
-
----
-
-## Code Style Guidelines
-
-### General
-- **No comments** unless explicitly requested
-- English for code, Chinese for UI labels and error messages
-- `const` by default, `let` when mutation needed, never `var`
-- Arrow functions for callbacks and anonymous functions
-- async/await over raw Promises, template literals over concatenation
-
-### ESLint Configuration
-| Project | ESLint Config | Default Exports |
-|---------|---------------|-----------------|
-| WallTools | Airbnb config | Not allowed |
-| prompt-generator | typescript-eslint | Allowed |
-| Others | None | - |
-
-React Hooks rules enforced in prompt-generator (`react-hooks/rules-of-hooks`, `react-hooks/exhaustive-deps`).
-
-### Imports (WallTools)
-```typescript
-// Order: external → internal → relative
-import React from 'react';
-import axios from 'axios';
-import { useAuth } from '@/hooks';
-import { Button } from './components';
-```
-- Use path aliases (`@/` for src) when available
-- Named exports for components and utilities
-
-### Naming Conventions
-| Type | Convention | Example |
-|------|------------|---------|
-| Components | PascalCase | `UserProfile.tsx` |
-| Hooks | camelCase + `use` prefix | `useAuth.ts` |
-| Utils | kebab-case | `random-utils.ts` |
-| Variables | camelCase | `userName`, `isLoading` |
-| Constants | UPPER_SNAKE_CASE | `MAX_RETRY` |
-
-### TypeScript
-- Avoid `any`
-- Define interfaces for all component props and API responses
-- Use `ReactNode` for children prop
-
-### Component Patterns
-```tsx
-interface ButtonProps {
-  variant?: 'primary' | 'secondary';
-  children: ReactNode;
-}
-
-export function Button({ variant = 'primary', children }: ButtonProps) {
-  return <button className={variant}>{children}</button>;
-}
+```bash
+cd web-tools/<tool>
+npm install
+npm run dev            # script-collection :3001, prompt-generator :3002
+npm run build          # runs tsc -b && vite build (type-check included)
+npm run lint           # ESLint flat config (typescript-eslint + react-hooks + react-refresh)
 ```
 
-### CSS / Tailwind
-- Use Tailwind CSS in React projects
-- Keep custom CSS minimal (only when Tailwind can't handle it)
+No dedicated test scripts exist in any project.
 
----
+### backend/comfyui-server (used by comfyui-trigger)
 
-## prompt-generator Project Structure
-
-```
-prompt-generator/src/
-├── components/           # React components (PascalCase)
-│   └── common/           # Shared (Button, etc.)
-├── hooks/                # Custom hooks (useXxx.ts)
-├── utils/                # Utility functions
-├── types/                # TypeScript interfaces
-├── data/                 # JSON presets
-└── index.css             # Global styles + Tailwind
+```bash
+cd backend/comfyui-server
+npm install
+npm run dev            # node --watch src/index.js, serves 127.0.0.1:3001
 ```
 
----
+Reads `.env` (currently committed with machine-specific Windows paths like `F:\ComfyUI_windows_portable\...`). Defaults when unset: `COMFYUI_HOST=127.0.0.1:8188`, `PORT=3001`. Adjust paths for the local machine; never add credentials to it. Generated task outputs go to `comfyui_result/` (untracked).
 
-## Git Conventions
+### ComfyUI Trigger run flow
 
-- Messages in English, present tense
-- Format: `<type>(<scope>): <description>`
-- Types: `feat`, `fix`, `refactor`, `docs`, `chore`, `build`
+`start-comfyui-trigger.bat` (Windows): starts backend on 3001 and `pnpm preview` of comfyui-trigger on port 4173, opens `http://localhost:4173`. The frontend `dist/` must be built first (`pnpm build`). `start-comfyui-trigger.sh` instead runs both dev servers via `npx concurrently`.
 
----
+## Style / conventions
 
-## Important Notes
-
-1. **Never commit secrets** - .env files in .gitignore
-2. Run `yarn lint && yarn type-check` before submitting WallTools changes
-3. Use pnpm for image-concat and pip-calculator-react
+- Chinese for UI labels/error messages, English for code.
+- No comments unless explicitly requested.
+- `const` by default; arrow functions; async/await; template literals.
+- prompt-generator / script-collection: ESLint flat config with typescript-eslint; React Hooks rules enforced (`react-hooks/exhaustive-deps`).
+- Git: conventional commits, English present tense — `<type>(<scope>): <description>`, types `feat`/`fix`/`refactor`/`docs`/`chore`/`build`.
+- `.gitignore` covers `node_modules` and `.worktrees` (git worktree push/pull state). Broken pnpm store symlinks under a tool's `node_modules` will make recursive directory scans error out — run `pnpm install` to repair, and prefer search tools that skip `node_modules`.
