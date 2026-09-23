@@ -2,6 +2,15 @@
 
 Personal tool collection: root `index.html` is a Chinese-language nav hub, plus fully independent subprojects. There is NO root workspace/package.json; each project has its own lockfile and package manager.
 
+## Workflow
+
+When the user proposes a requirement, follow this order:
+
+1. **Discuss first** — ask clarifying questions and present a design plan (`讨论/提问，给出设计方案`).
+2. **Read-only during discussion** — explore files as needed, but DO NOT modify, create, or delete anything.
+3. **Wait for explicit confirmation** — start writing/changing code only after the user approves the plan (`修改确认后才能开始`).
+4. Only then implement, and verify per the commands below.
+
 ## Project structure
 
 ```
@@ -11,6 +20,7 @@ tool-collection/
 └── web-tools/                       # standalone tools, one per dir
     ├── comfyui-trigger/             # React 18 + Vite + Tailwind (pnpm) — pairs with backend
     ├── image-concat/                # React 18 + Vite + Tailwind (pnpm)
+    ├── image-composer/              # React 18 + Vite + Tailwind (pnpm) — layer-based image composer
     ├── prompt-generator/            # React 19 + TS + Vite + Tailwind (npm), dev port 3002
     ├── script-collection/           # React 19 + TS + Vite (npm), dev port 3001, not in nav
     ├── risk-position-calculator/    # React 18 + Vite + Tailwind (pnpm), dev port 3003
