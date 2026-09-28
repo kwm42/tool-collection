@@ -289,12 +289,59 @@ document.querySelectorAll('.item-btn').forEach(btn => {
 });
 
 const confirmBtn = document.getElementById('confirmBtn');
+const STORAGE_KEY = 'screenRulerState';
+
+function saveState() {
+    try {
+        const data = {
+            calibration: { calibrated: state.calibrated, guidePx: state.guidePx, itemIndex: state.itemIndex },
+            shapes: shapes.map(s => ({ id: s.id, type: s.type, wMm: s.wMm, hMm: s.hMm, ratio: s.ratio, img: s.img, x: s.x, y: s.y })),
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+        spStatus.textContent = '保存失败：本地存储空间不足';
+    }
+}
+
+function loadState() {
+    let data;
+    try {
+        data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+    } catch (e) {
+        return;
+    }
+    if (!data) return;
+
+    if (data.calibration && data.calibration.calibrated) {
+        state.calibrated = true;
+        state.guidePx = data.calibration.guidePx;
+        state.itemIndex = data.calibration.itemIndex || 0;
+        modal.style.display = 'none';
+        document.getElementById('resetFloat').style.display = 'flex';
+        document.getElementById('hiddenFloat').style.display = 'flex';
+        shapesFloat.style.display = 'flex';
+        selectItem(state.itemIndex);
+    }
+
+    (data.shapes || []).forEach(s => {
+        s.el = null;
+        shapes.push(s);
+        renderShape(s);
+    });
+    shapeSeq = shapes.reduce((mx, s) => Math.max(mx, parseInt((s.id || '').replace('s', ''), 10) || 0), shapeSeq);
+    clampAllShapes();
+    resizeCanvas();
+}
+
 confirmBtn.addEventListener('click', () => {
     state.calibrated = true;
     modal.style.display = 'none';
     document.getElementById('resetFloat').style.display = 'flex';
     document.getElementById('hiddenFloat').style.display = 'flex';
     resizeCanvas();
+    shapes.forEach(renderShape);
+    clampAllShapes();
+    saveState();
 });
 
 document.getElementById('resetFloat').addEventListener('click', () => {
@@ -302,6 +349,7 @@ document.getElementById('resetFloat').addEventListener('click', () => {
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     modal.style.display = 'flex';
     updateGuide();
+    saveState();
 });
 
 document.getElementById('hiddenFloat').addEventListener('click', () => {
@@ -368,6 +416,7 @@ spTypes.addEventListener('click', (e) => {
         }
         renderShape(s);
         refreshPxPreview();
+        saveState();
         return;
     }
 
@@ -463,6 +512,7 @@ function addShape() {
     const wPx = Math.round(wMm * m);
     const hPx = Math.round(hMm * m);
     spStatus.textContent = '已添加 ' + shapeName(currentShapeType) + '（' + wPx + '×' + hPx + ' px），可点击图形编辑尺寸';
+    saveState();
 }
 
 function shapeName(type) {
@@ -528,6 +578,7 @@ spW.addEventListener('input', () => {
         renderShape(s);
     }
     refreshPxPreview();
+    saveState();
 });
 
 spH.addEventListener('input', () => {
@@ -543,6 +594,7 @@ spH.addEventListener('input', () => {
         renderShape(s);
     }
     refreshPxPreview();
+    saveState();
 });
 
 spAdd.addEventListener('click', addShape);
@@ -559,12 +611,13 @@ spFile.addEventListener('change', () => {
     const file = spFile.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
+        const compressed = await compressImage(reader.result, 1200);
         const img = new Image();
         img.onload = () => {
-            addImageShape(reader.result, img.naturalWidth, img.naturalHeight);
+            addImageShape(compressed, img.naturalWidth, img.naturalHeight);
         };
-        img.src = reader.result;
+        img.src = compressed;
     };
     reader.readAsDataURL(file);
     spFile.value = '';
@@ -588,6 +641,26 @@ function addImageShape(dataUrl, naturalW, naturalH) {
     shapes.push(shape);
     renderShape(shape);
     spStatus.textContent = '已添加图片（默认按原始比例显示），可拖动或点击编辑';
+    saveState();
+}
+
+function compressImage(dataUrl, maxDim) {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+            const scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
+            const w = Math.max(1, Math.round(img.naturalWidth * scale));
+            const h = Math.max(1, Math.round(img.naturalHeight * scale));
+            const cv = document.createElement('canvas');
+            cv.width = w;
+            cv.height = h;
+            cv.getContext('2d').drawImage(img, 0, 0, w, h);
+            const isPng = dataUrl.indexOf('data:image/png') === 0;
+            resolve(cv.toDataURL(isPng ? 'image/png' : 'image/jpeg', 0.85));
+        };
+        img.onerror = () => resolve(dataUrl);
+        img.src = dataUrl;
+    });
 }
 
 spDelete.addEventListener('click', () => {
@@ -599,6 +672,7 @@ spDelete.addEventListener('click', () => {
         shapes.splice(idx, 1);
     }
     deselectShape();
+    saveState();
 });
 
 let drag = null;
@@ -633,6 +707,7 @@ window.addEventListener('mousemove', (e) => {
 
 window.addEventListener('mouseup', () => {
     drag = null;
+    saveState();
 });
 
 function clampAllShapes() {
@@ -655,17 +730,13 @@ window.addEventListener('resize', () => {
     clampAllShapes();
 });
 
-window.addEventListener('resize', () => {
-    resizeCanvas();
-    clampAllShapes();
-});
-
 resizeCanvas();
 selectItem(0);
 spW.value = DEFAULTS.rect[0];
 spH.value = DEFAULTS.rect[1];
 refreshPxPreview();
 shapesFloat.style.display = 'flex';
+loadState();
     </script>
 </body>
 </html>
