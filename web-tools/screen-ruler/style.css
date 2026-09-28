@@ -392,6 +392,27 @@ canvas.hidden-mode {
     min-height: 16px;
 }
 
+.sp-border {
+    margin-bottom: 10px;
+}
+
+.sp-border-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sp-border-toggle input {
+    width: 16px;
+    height: 16px;
+    accent-color: #4aa3ff;
+    cursor: pointer;
+}
+
 .sp-actions {
     display: flex;
     gap: 8px;

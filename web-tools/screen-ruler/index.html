@@ -85,6 +85,12 @@
             </div>
         </div>
         <div class="sp-px" id="spPx"></div>
+        <div class="sp-border">
+            <label class="sp-border-toggle">
+                <input type="checkbox" id="spBorder" checked>
+                <span>显示图形边框</span>
+            </label>
+        </div>
         <div class="sp-actions">
             <button class="btn primary small" id="spAdd">添加</button>
             <button class="btn danger small" id="spDelete" style="display:none">删除选中</button>
@@ -296,7 +302,12 @@ function saveState() {
         const data = {
             calibration: { calibrated: state.calibrated, guidePx: state.guidePx, itemIndex: state.itemIndex },
             imageW: lastImageW,
-            shapes: shapes.map(s => ({ id: s.id, type: s.type, wMm: s.wMm, hMm: s.hMm, ratio: s.ratio, img: s.img, x: s.x, y: s.y })),
+            showBorders,
+            shapes: shapes.map(s => {
+                const d = { id: s.id, type: s.type, wMm: s.wMm, hMm: s.hMm, ratio: s.ratio, x: s.x, y: s.y };
+                if (s.type !== 'image') d.img = s.img;
+                return d;
+            }),
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch (e) {
@@ -316,6 +327,10 @@ function loadState() {
     if (typeof data.imageW === 'number' && data.imageW > 0) {
         lastImageW = data.imageW;
     }
+    if (typeof data.showBorders === 'boolean') {
+        showBorders = data.showBorders;
+        document.getElementById('spBorder').checked = showBorders;
+    }
 
     if (data.calibration && data.calibration.calibrated) {
         state.calibrated = true;
@@ -329,6 +344,7 @@ function loadState() {
     }
 
     (data.shapes || []).forEach(s => {
+        if (s.type === 'image') return;
         s.el = null;
         shapes.push(s);
         renderShape(s);
@@ -383,6 +399,7 @@ let shapeSeq = 0;
 let selectedShapeId = null;
 let currentShapeType = 'rect';
 let lastImageW = 160;
+let showBorders = true;
 
 function mm() {
     return ppmm();
@@ -494,6 +511,13 @@ function renderShape(shape) {
         el.style.background = 'rgba(74,163,255,0.22)';
     } else {
         el.style.background = 'rgba(74,163,255,0.16)';
+    }
+    if (!showBorders || shape.type === 'triangle') {
+        el.style.border = 'none';
+    } else if (shape.type === 'image') {
+        el.style.border = '1px solid #bbb';
+    } else {
+        el.style.border = '1.5px solid #4aa3ff';
     }
 }
 
@@ -612,6 +636,12 @@ spUpload.addEventListener('click', () => {
         return;
     }
     spFile.click();
+});
+
+document.getElementById('spBorder').addEventListener('change', (e) => {
+    showBorders = e.target.checked;
+    shapes.forEach(renderShape);
+    saveState();
 });
 
 spFile.addEventListener('change', () => {
