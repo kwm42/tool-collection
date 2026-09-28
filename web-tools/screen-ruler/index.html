@@ -295,6 +295,7 @@ function saveState() {
     try {
         const data = {
             calibration: { calibrated: state.calibrated, guidePx: state.guidePx, itemIndex: state.itemIndex },
+            imageW: lastImageW,
             shapes: shapes.map(s => ({ id: s.id, type: s.type, wMm: s.wMm, hMm: s.hMm, ratio: s.ratio, img: s.img, x: s.x, y: s.y })),
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -311,6 +312,10 @@ function loadState() {
         return;
     }
     if (!data) return;
+
+    if (typeof data.imageW === 'number' && data.imageW > 0) {
+        lastImageW = data.imageW;
+    }
 
     if (data.calibration && data.calibration.calibrated) {
         state.calibrated = true;
@@ -377,6 +382,7 @@ const shapes = [];
 let shapeSeq = 0;
 let selectedShapeId = null;
 let currentShapeType = 'rect';
+let lastImageW = 160;
 
 function mm() {
     return ppmm();
@@ -574,6 +580,7 @@ spW.addEventListener('input', () => {
         } else if (s.type === 'image' && s.ratio) {
             s.hMm = roundMm(v * s.ratio);
             spH.value = roundMm(s.hMm);
+            lastImageW = s.wMm;
         }
         renderShape(s);
     }
@@ -626,7 +633,7 @@ spFile.addEventListener('change', () => {
 function addImageShape(dataUrl, naturalW, naturalH) {
     if (!state.calibrated) return;
     const ratio = naturalH / naturalW;
-    const imgW = 160;
+    const imgW = lastImageW;
     const shape = {
         id: 's' + (++shapeSeq),
         type: 'image',
