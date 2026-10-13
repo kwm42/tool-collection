@@ -8,10 +8,16 @@ export interface ScheduleEntry {
   characters: string[];
 }
 
-export interface ScheduleData {
+export type SectionId = "schedule" | "wish" | "activity";
+
+export interface SectionData {
   text: string;
   colorRules: ColorRule[];
-  updatedAt: number;
+}
+
+export interface AppData {
+  version: 2;
+  sections: Record<SectionId, SectionData>;
 }
 
 export type SaveState = "saved" | "unsaved" | "saving" | "error";

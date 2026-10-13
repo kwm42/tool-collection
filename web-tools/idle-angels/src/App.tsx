@@ -1,15 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import type { ColorRule, SaveState, ScheduleData } from "./types";
-import {
-  DEFAULT_DATA,
-  buildColorMap,
-  findDuplicates,
-  parseText,
-} from "./lib/schedule";
-import { loadLocalCache, saveLocalCache } from "./lib/storage";
+import type {
+  AppData,
+  ColorRule,
+  SaveState,
+  SectionData,
+  SectionId,
+} from "./types";
+import { buildColorMap, findDuplicates, parseText } from "./lib/schedule";
+import { loadAppData, normalizeAppData, saveAppData } from "./lib/storage";
 import { isUnlocked } from "./lib/unlock";
 import { store } from "./lib/firebase";
+import { createDefaultSections, getSectionMeta } from "./sections";
+import { Tabs } from "./components/Tabs";
 import { Toolbar } from "./components/Toolbar";
 import { Legend } from "./components/Legend";
 import { ScheduleList } from "./components/ScheduleList";
@@ -17,9 +20,13 @@ import { SettingsPanel } from "./components/SettingsPanel";
 import { QualityTable } from "./components/QualityTable";
 import { Toasts, type ToastItem } from "./components/Toasts";
 
+const serialize = (sections: Record<SectionId, SectionData>) =>
+  JSON.stringify(sections);
+
 export default function App() {
-  const [text, setText] = useState("");
-  const [colorRules, setColorRules] = useState<ColorRule[]>([]);
+  const [activeSection, setActiveSection] = useState<SectionId>("schedule");
+  const [sections, setSections] =
+    useState<Record<SectionId, SectionData>>(createDefaultSections);
   const [editorOpen, setEditorOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>("saved");
@@ -39,40 +46,25 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const local = loadLocalCache();
-    const initialText = local?.text ?? DEFAULT_DATA;
-    const initialRules = local?.colorRules ?? [];
-    setText(initialText);
-    setColorRules(initialRules);
-    lastSaved.current = JSON.stringify({
-      text: initialText,
-      colorRules: initialRules,
-    });
+    const local = loadAppData();
+    const initial = local?.sections ?? createDefaultSections();
+    setSections(initial);
+    lastSaved.current = serialize(initial);
 
     let cancelled = false;
     store
-      .get<ScheduleData>()
+      .get<AppData>()
       .then(async (remote) => {
         if (cancelled) return;
         if (remote) {
-          const nextText = typeof remote.text === "string" ? remote.text : "";
-          const nextRules = Array.isArray(remote.colorRules)
-            ? remote.colorRules
-            : [];
-          setText(nextText);
-          setColorRules(nextRules);
-          saveLocalCache({ text: nextText, colorRules: nextRules });
-          lastSaved.current = JSON.stringify({
-            text: nextText,
-            colorRules: nextRules,
-          });
+          const normalized = normalizeAppData(remote);
+          const wasLegacy = !(remote as { sections?: unknown }).sections;
+          setSections(normalized.sections);
+          saveAppData(normalized);
+          lastSaved.current = wasLegacy ? "" : serialize(normalized.sections);
           setSaveState("saved");
-        } else if (initialText) {
-          await store.save<ScheduleData>({
-            text: initialText,
-            colorRules: initialRules,
-            updatedAt: Date.now(),
-          });
+        } else if (local === null) {
+          await store.save<AppData>({ version: 2, sections: initial });
         }
       })
       .catch(() => {
@@ -89,20 +81,16 @@ export default function App() {
 
   useEffect(() => {
     if (!hydrated.current) return;
-    const current = JSON.stringify({ text, colorRules });
+    const current = serialize(sections);
     if (current === lastSaved.current) return;
 
     setSaveState("unsaved");
     const timer = setTimeout(async () => {
       lastSaved.current = current;
-      saveLocalCache({ text, colorRules });
+      saveAppData({ version: 2, sections });
       setSaveState("saving");
       try {
-        await store.save<ScheduleData>({
-          text,
-          colorRules,
-          updatedAt: Date.now(),
-        });
+        await store.save<AppData>({ version: 2, sections });
         setSaveState("saved");
       } catch {
         setSaveState("error");
@@ -111,7 +99,7 @@ export default function App() {
     }, 600);
 
     return () => clearTimeout(timer);
-  }, [text, colorRules, pushToast]);
+  }, [sections, pushToast]);
 
   useEffect(() => {
     const sync = () => setUnlocked(isUnlocked());
@@ -130,9 +118,21 @@ export default function App() {
     if (editorOpen) editorRef.current?.focus();
   }, [editorOpen]);
 
-  const entries = parseText(text);
+  const updateSection = useCallback(
+    (patch: Partial<SectionData>) => {
+      setSections((prev) => ({
+        ...prev,
+        [activeSection]: { ...prev[activeSection], ...patch },
+      }));
+    },
+    [activeSection],
+  );
+
+  const meta = getSectionMeta(activeSection);
+  const current = sections[activeSection];
+  const entries = parseText(current.text);
   const highlight = findDuplicates(entries);
-  const colorMap = buildColorMap(colorRules);
+  const colorMap = buildColorMap(current.colorRules);
 
   const uniqueChars = new Set<string>();
   let highlightedCount = 0;
@@ -144,9 +144,9 @@ export default function App() {
   }
 
   const handleClear = () => {
-    if (!text.trim()) return;
-    if (confirm("确定要清空所有内容吗？")) {
-      setText("");
+    if (!current.text.trim()) return;
+    if (confirm(`确定要清空「${meta.label}」的内容吗？`)) {
+      updateSection({ text: "" });
       pushToast("已清空");
     }
   };
@@ -155,11 +155,13 @@ export default function App() {
     <div className="min-h-screen p-10">
       <div className="mx-auto max-w-[1000px]">
         <h1 className="mb-2 text-center text-[28px] font-bold text-[#222]">
-          Idle Angels 角色神域归来记录
+          Idle Angels 记录
         </h1>
         <p className="mb-6 text-center text-sm text-[#999]">
-          自动高亮重复出现的早期角色
+          神域归来 · 心愿召唤 · 活动记录（自动高亮重复出现的早期条目）
         </p>
+
+        <Tabs active={activeSection} onChange={setActiveSection} />
 
         <Toolbar
           unlocked={unlocked}
@@ -178,9 +180,9 @@ export default function App() {
         >
           <textarea
             ref={editorRef}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder={"输入格式：日期：人物1，人物2，人物3...\n例如：6.7：射手座，洛基，荷鲁斯"}
+            value={current.text}
+            onChange={(e) => updateSection({ text: e.target.value })}
+            placeholder={meta.placeholder}
             className="mb-4 min-h-[200px] w-full resize-y rounded-lg border border-[#e0e0e0] p-3.5 text-sm leading-[1.7] text-[#333] outline-none transition-colors focus:border-[#999]"
           />
         </div>
@@ -190,7 +192,10 @@ export default function App() {
             settingsOpen ? "max-h-[400px]" : "max-h-0"
           }`}
         >
-          <SettingsPanel colorRules={colorRules} onChange={setColorRules} />
+          <SettingsPanel
+            colorRules={current.colorRules}
+            onChange={(colorRules: ColorRule[]) => updateSection({ colorRules })}
+          />
         </div>
 
         <Legend />
@@ -202,7 +207,7 @@ export default function App() {
         />
         <div className="mt-3 text-center text-xs text-[#bbb]">
           {entries.length > 0
-            ? `${entries.length} 日期 · ${uniqueChars.size} 角色 · ${highlightedCount} 高亮`
+            ? `${entries.length} 日期 · ${uniqueChars.size} 条目 · ${highlightedCount} 高亮`
             : ""}
         </div>
 
