@@ -27,7 +27,7 @@ tool-collection/
     ├── srt-convertor/               # vanilla HTML/JS (renamed from vtt-to-srt)
     ├── pip-calculator/              # vanilla HTML/JS
     ├── screen-ruler/                # vanilla HTML/CSS
-    ├── character-schedule/          # vanilla HTML
+    ├── idle-angels/                 # React 18 + TS + Vite + Tailwind (pnpm), dev port 3004, uses @tool-collection/json-store
     ├── etf-monitor/                 # vanilla HTML (has api.md)
     ├── comfyui-frontend-test/       # throwaway scratch page, not in nav
     └── position-calculator/         # empty stub (unused)
